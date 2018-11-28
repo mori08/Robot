@@ -275,9 +275,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Main.h" />
+    <ClInclude Include="Code\Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp" />
+    <ClCompile Include="Code\Scene\TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
