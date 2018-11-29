@@ -7,8 +7,8 @@ Robot::Button::Button(const String & key, const Rect region)
 {
 	_adjacentButtonList[UP]    = nullptr;
 	_adjacentButtonList[DOWN]  = nullptr;
-	_adjacentButtonList[RIGHT] = nullptr;
 	_adjacentButtonList[LEFT]  = nullptr;
+	_adjacentButtonList[RIGHT] = nullptr;
 }
 
 

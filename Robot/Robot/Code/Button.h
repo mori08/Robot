@@ -6,11 +6,18 @@
 
 namespace Robot
 {
+
+	/*
+	Buttonクラス
+	隣接するボタンや上にカーソルがあるかなどを示します。
+	InputManagerクラスで使用します。
+	*/
+
 	class Button
 	{
 	private:
 
-		static const int ADJACENT_BUTTON_SIZE = 4;                                 // 隣接するボタンの数
+		static const int ADJACENT_BUTTON_SIZE = 4;                                     // 隣接するボタンの数
 
 		std::array<std::shared_ptr<Button>, ADJACENT_BUTTON_SIZE> _adjacentButtonList; // 隣接するボタンのポインタ
 
@@ -22,13 +29,14 @@ namespace Robot
 
 		static const int UP    = 0; // 上
 		static const int DOWN  = 1; // 下
-		static const int RIGHT = 2; // 右
-		static const int LEFT  = 3; // 左
+		static const int LEFT  = 2; // 左
+		static const int RIGHT = 3; // 右
 
 	public:
 
 		/// <summary>
 		/// ボタン
+		/// </summary>
 		/// <param name="key"> 出力用のキー </param>
 		/// <param name="region"> マウス入力時の有効範囲 </param>
 		Button(const String & key,const Rect region);
