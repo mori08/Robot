@@ -274,16 +274,17 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Button.h" />
-    <ClInclude Include="Code\InputManager.h" />
+    <ClInclude Include="Code\Input\Button.h" />
+    <ClInclude Include="Code\Input\InputManager.h" />
+    <ClInclude Include="Code\Input\InputState.h" />
     <ClInclude Include="Code\Main.h" />
     <ClInclude Include="Code\Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Button.cpp" />
+    <ClCompile Include="Code\Input\Button.cpp" />
+    <ClCompile Include="Code\Input\InputManager.cpp" />
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\Scene\TitleScene.cpp" />
-    <ClCompile Include="Code\InputManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

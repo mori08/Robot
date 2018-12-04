@@ -28,7 +28,7 @@ namespace Robot
 	/*
 	InputManagerクラス
 	入力を管理します。
-	マウス・キー・コントローラの切り替えや
+	マウス・キーの切り替えや
 	それに応じた入力の取得、
 	ボタンでの入力を管理します。
 	*/
@@ -37,17 +37,15 @@ namespace Robot
 	{
 	private:
 
-		using ButtonList = std::unordered_map<String, std::shared_ptr<Button>>;
+		using ButtonPtr  = std::shared_ptr<Button>;
 
-		using InputList  = std::unordered_map<Which, std::unordered_map<How, bool>>;
+		using ButtonList = std::unordered_map<String, ButtonPtr>;
 
 	private:
 
-		ButtonList _buttonList; // 管理しているボタンのリスト
+		ButtonList _buttonList;     // 管理しているボタンのリスト
 
-		InputList  _inputList;  // 各入力についてのフラグ管理用リスト
-
-		std::function<void(void)> setInput; // 各入力のセット
+		ButtonPtr  _selectedButton; // 選択しているボタン
 
 	private:
 
@@ -73,18 +71,20 @@ namespace Robot
 		}
 
 		/// <summary>
-		/// 全入力をリセットします。
-		/// </summary>
-		void resetInputList();
-
-		/// <summary>
 		/// ボタンを登録します。
 		/// </summary>
 		/// <param name="key"> キー </param>
 		/// <param name="region"> マウス入力用範囲 </param>
 		void registerButton(const String & key, const Rect & region);
 
-	private:
+		/// <summary>
+		/// ボタンのリストを空にします。
+		/// </summary>
+		void clearButtonList()
+		{
+			_selectedButton = nullptr;
+			_buttonList.clear();
+		}
 
 	};
 

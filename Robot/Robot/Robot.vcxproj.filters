@@ -82,6 +82,12 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{1486175c-3afc-4461-a8b5-f56689e0e2ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Input">
+      <UniqueIdentifier>{3d243ea4-1c1b-481b-8492-b5145a759811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{82129fe5-89fb-46a7-be1e-570357314ecd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -402,11 +408,14 @@
     <ClInclude Include="Code\Scene\TitleScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Code\InputManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Code\Input\Button.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Button.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Code\Input\InputManager.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Input\InputState.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -416,11 +425,11 @@
     <ClCompile Include="Code\Scene\TitleScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Code\InputManager.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Code\Input\InputManager.cpp">
+      <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Button.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Code\Input\Button.cpp">
+      <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
