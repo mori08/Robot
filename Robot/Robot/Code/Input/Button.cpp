@@ -1,7 +1,7 @@
 #include "Button.h"
 
 
-Robot::Button::Button(const String & key, const Rect region)
+Robot::Button::Button(const String & key, const Rect & region)
 	: _key(key)
 	, _region(region)
 {

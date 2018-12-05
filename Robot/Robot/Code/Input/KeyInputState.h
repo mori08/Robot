@@ -11,7 +11,7 @@ namespace Robot
 	キーボードでの入力を行うときに
 	InputStateをこの状態にします。
 	*/
-	class KeyInputState: public InputState
+	class KeyInputState : public InputState
 	{
 	private:
 
@@ -22,8 +22,6 @@ namespace Robot
 		Point direction() const override;
 
 		Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList &) const override;
-
-		
 
 	private:
 

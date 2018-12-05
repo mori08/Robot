@@ -39,7 +39,7 @@ namespace Robot
 		/// </summary>
 		/// <param name="key"> 出力用のキー </param>
 		/// <param name="region"> マウス入力時の有効範囲 </param>
-		Button(const String & key,const Rect region);
+		Button(const String & key,const Rect & region);
 
 		/// <summary>
 		/// 隣接するボタンを設定します。
@@ -86,12 +86,13 @@ namespace Robot
 		}
 
 		/// <summary>
-		/// カーソルが上にあるかを示します。
+		/// マウス入力時の有効範囲を取得します。
 		/// </summary>
-		/// <returns> カーソルが上にあるとき true , そうでないとき false </returns>
-		bool mouseOver() const
+		/// <returns> マウス入力時の有効範囲 </returns>
+		const Rect & getRegion() const
 		{
-			return _region.mouseOver;
+			return _region;
 		}
+
 	};
 }
