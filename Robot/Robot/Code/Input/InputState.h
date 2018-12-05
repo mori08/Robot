@@ -6,9 +6,12 @@
 
 namespace Robot
 {
+	/*
+		入力の状態の基底
+	*/
 	class InputState
 	{
-	private:
+	protected:
 
 		using ButtonPtr = std::shared_ptr<Button>;
 
@@ -39,7 +42,15 @@ namespace Robot
 		/// </summary>
 		/// <param name="selectedButton"> 選択中のボタン </param>
 		/// <param name="buttonList"> ボタンのリスト </param>
-		virtual void selectButton(ButtonPtr & selectedButton, Button & buttonList) = 0;
+		/// <returns> 
+		/// 決定が入力されたときにそのボタンのキーを返します。
+		/// 何も選択されていないとき無効値を返します。
+		/// </returns>
+		/// <remarks>
+		/// 入力に応じたボタン選択の変更を行います。
+		/// 1フレームに2度以上使わないでください。
+		/// <remarks>
+		virtual Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const = 0;
 
 	};
 }

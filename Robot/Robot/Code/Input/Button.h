@@ -46,7 +46,44 @@ namespace Robot
 		/// </summary>
 		/// <param name="direction"> 方向 </param>
 		/// <param name="adjacentButton"> 隣接するボタン </param> 
-		void setAdjacentButton(int direction, std::shared_ptr<Button> adjacentButton);
+		void setAdjacentButton(int direction, std::shared_ptr<Button> adjacentButton)
+		{
+#ifdef _DEBUG
+			if (direction < 0 || direction > ADJACENT_BUTTON_SIZE)
+			{
+				Println(L"Error > setAdjuacnetButtonで不適切な入力 : ", direction);
+				return;
+			}
+#endif // _DEBUG
+
+			_adjacentButtonList[direction] = adjacentButton;
+		}
+
+		/// <summary>
+		/// 隣接するボタンを取得します。
+		/// </summary>
+		/// <param name="direction"> 方向 </param>
+		/// <returns> 隣接するボタンのポインタ </returns>
+		std::shared_ptr<Button> getAdjacentButton(int direction) const
+		{
+#ifdef _DEBUG
+			if (direction < 0 || direction > ADJACENT_BUTTON_SIZE)
+			{
+				Println(L"Error > setAdjuacnetButtonで不適切な入力 : ", direction);
+				return nullptr;
+			}
+#endif // _DEBUG
+
+			return _adjacentButtonList[direction];
+		}
+
+		/// <summary>
+		/// キーを取得します。
+		/// </summary>
+		String getKey() const
+		{
+			return _key;
+		}
 
 		/// <summary>
 		/// カーソルが上にあるかを示します。

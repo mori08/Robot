@@ -277,12 +277,14 @@
     <ClInclude Include="Code\Input\Button.h" />
     <ClInclude Include="Code\Input\InputManager.h" />
     <ClInclude Include="Code\Input\InputState.h" />
+    <ClInclude Include="Code\Input\KeyInputState.h" />
     <ClInclude Include="Code\Main.h" />
     <ClInclude Include="Code\Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />
+    <ClCompile Include="Code\Input\KeyInputState.cpp" />
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\Scene\TitleScene.cpp" />
   </ItemGroup>

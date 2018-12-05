@@ -417,6 +417,9 @@
     <ClInclude Include="Code\Input\InputState.h">
       <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Input\KeyInputState.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -429,6 +432,9 @@
       <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
     <ClCompile Include="Code\Input\Button.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Input\KeyInputState.cpp">
       <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>

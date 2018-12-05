@@ -10,17 +10,3 @@ Robot::Button::Button(const String & key, const Rect region)
 	_adjacentButtonList[LEFT]  = nullptr;
 	_adjacentButtonList[RIGHT] = nullptr;
 }
-
-
-void Robot::Button::setAdjacentButton(int direction, std::shared_ptr<Button> adjacentButton)
-{
-#ifdef _DEBUG
-	if (direction < 0 || direction > ADJACENT_BUTTON_SIZE)
-	{
-		Println(L"Error > setAdjuacnetButton‚Å•s“KØ‚È“ü—Í : ", direction);
-		return;
-	}
-#endif // _DEBUG
-
-	_adjacentButtonList[direction] = adjacentButton;
-}
