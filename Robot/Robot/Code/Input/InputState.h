@@ -48,9 +48,17 @@ namespace Robot
 		/// </returns>
 		/// <remarks>
 		/// 入力に応じたボタン選択の変更を行います。
-		/// 1フレームに2度以上使わないでください。
-		/// <remarks>
+		/// 1フレームに2度以上使用しないでください。
+		/// ボタンが登録されていない状態で使用しないでください。
+		/// </remarks>
 		virtual Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const = 0;
+
+		/// <summary>
+		/// 状態を切り替える。
+		/// </summary>
+		/// <param name="inputState"> 入力の状態 </param>
+		virtual Optional<String> changeState(std::unique_ptr<InputState> & inputState) const = 0;
+
 
 	};
 }

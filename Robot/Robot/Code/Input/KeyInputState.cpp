@@ -50,6 +50,17 @@ Optional<String> Robot::KeyInputState::selectButton(ButtonPtr & selectedButton, 
 }
 
 
+Optional<String> Robot::KeyInputState::changeState(std::unique_ptr<InputState> & inputState) const
+{
+	if (Input::MouseL.clicked || Input::MouseR.clicked)
+	{
+		return L"MouseInputState";
+	}
+
+	return none;
+}
+
+
 void Robot::KeyInputState::checkAndChangeSelectedButton(const Key & key, ButtonPtr & selectedButton, const ButtonPtr & adjacentButton) const
 {
 	if (key.clicked && adjacentButton != nullptr)

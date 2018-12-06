@@ -6,19 +6,19 @@ namespace
 }
 
 
-bool Robot::MosueInputState::decesion() const
+bool Robot::MouseInputState::decesion() const
 {
 	return Input::MouseL.released;
 }
 
 
-bool Robot::MosueInputState::option() const
+bool Robot::MouseInputState::option() const
 {
 	return Input::MouseR.released;
 }
 
 
-Point Robot::MosueInputState::direction() const
+Point Robot::MouseInputState::direction() const
 {
 	Point sub = Mouse::Pos() - Window::Center();
 
@@ -49,7 +49,7 @@ Point Robot::MosueInputState::direction() const
 }
 
 
-Optional<String> Robot::MosueInputState::selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const
+Optional<String> Robot::MouseInputState::selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const
 {
 #ifdef _DEBUG
 
@@ -70,6 +70,17 @@ Optional<String> Robot::MosueInputState::selectButton(ButtonPtr & selectedButton
 		if (decesion()) { return itr->first; }
 
 		return none;
+	}
+
+	return none;
+}
+
+
+Optional<String> Robot::MouseInputState::changeState(std::unique_ptr<InputState>& inputState) const
+{
+	if (Input::AnyKeyClicked)
+	{
+		return L"KeyInputState";
 	}
 
 	return none;

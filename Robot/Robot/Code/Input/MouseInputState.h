@@ -11,7 +11,7 @@ namespace Robot
 	マウスでの入力を行うときに
 	InputStateをこの状態にします。
 	*/
-	class MosueInputState : public InputState
+	class MouseInputState : public InputState
 	{
 	private:
 
@@ -22,6 +22,8 @@ namespace Robot
 		Point direction() const override;
 
 		Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const override;
+
+		Optional<String> changeState(std::unique_ptr<InputState> & inputState) const override;
 
 	};
 }

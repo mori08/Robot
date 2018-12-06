@@ -1,5 +1,6 @@
 ﻿
 #include"Main.h"
+#include"Input\InputManager.h"
 
 
 void Main()
@@ -10,5 +11,7 @@ void Main()
 	while (System::Update())
 	{
 		sceneManager.updateAndDraw();
+
+		Robot::InputManager::Instance().changeState();
 	}
 }
