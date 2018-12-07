@@ -60,6 +60,35 @@ namespace Robot
 		void registerButton(const String & key, const Rect & region);
 
 		/// <summary>
+		/// ボタンの垂直方向の隣接関係を設定します。
+		/// </summary>
+		/// <param name="upKey"> 左側のボタンのキー </param>
+		/// <param name="downKey"> 右側のボタンのキー </param>
+		void setVerticalAdjacentButton(const String & upKey, const String & downKey);
+
+		/// <summary>
+		/// ボタンの水平方向の隣接関係を設定します。
+		/// </summary>
+		/// <param name="leftKey"> 左側のボタンのキー </param>
+		/// <param name="rightKey"> 右側のボタンのキー </param>
+		void setHorizontalAdjacentButton(const String & leftKey, const String & rightKey);
+
+		/// <summary>
+		/// 選択中のボタンを設定します。
+		/// </summary>
+		/// <param name="key"> ボタンのキー </param>
+		void setSelectedButton(const String & key);
+
+		/// <summary>
+		/// 選択中のボタンを取得します。
+		/// </summary>
+		/// <return> 選択中のボタン </returns>
+		const Button & getSelectedButton() const
+		{
+			return *_selectedButton;
+		}
+
+		/// <summary>
 		/// ボタンのリストを空にします。
 		/// </summary>
 		void clearButtonList()

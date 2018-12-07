@@ -80,7 +80,7 @@ namespace Robot
 		/// <summary>
 		/// ƒL[‚ğæ“¾‚µ‚Ü‚·B
 		/// </summary>
-		String getKey() const
+		const String & getKey() const
 		{
 			return _key;
 		}

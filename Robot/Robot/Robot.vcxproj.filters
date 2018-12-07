@@ -76,17 +76,17 @@
     <Filter Include="リソース ファイル\Example\Well">
       <UniqueIdentifier>{eb86b9be-05b8-45c6-89c8-f91a5437157c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Scene">
-      <UniqueIdentifier>{ce7e7970-104d-44aa-bcd7-ca81e489f43b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Scene">
-      <UniqueIdentifier>{1486175c-3afc-4461-a8b5-f56689e0e2ba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Input">
       <UniqueIdentifier>{3d243ea4-1c1b-481b-8492-b5145a759811}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Input">
       <UniqueIdentifier>{82129fe5-89fb-46a7-be1e-570357314ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Title">
+      <UniqueIdentifier>{4240e128-bbdc-4c56-aab6-103d9c7de939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Title">
+      <UniqueIdentifier>{01f1fcb5-0d91-4a48-9a01-6386fd56c06d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -405,9 +405,6 @@
     <ClInclude Include="Code\Main.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Scene\TitleScene.h">
-      <Filter>ヘッダー ファイル\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Input\Button.h">
       <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
@@ -423,13 +420,13 @@
     <ClInclude Include="Code\Input\MouseInputState.h">
       <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Title\TitleScene.h">
+      <Filter>ヘッダー ファイル\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Scene\TitleScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Code\Input\InputManager.cpp">
       <Filter>ソース ファイル\Input</Filter>
@@ -442,6 +439,9 @@
     </ClCompile>
     <ClCompile Include="Code\Input\MouseInputState.cpp">
       <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Title\TitleScene.cpp">
+      <Filter>ソース ファイル\Title</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@
 namespace Robot
 {
 
-	class TitleScene : MyApp::Scene
+	class TitleScene : public MyApp::Scene
 	{
 	private:
 

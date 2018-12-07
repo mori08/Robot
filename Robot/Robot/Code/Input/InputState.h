@@ -57,7 +57,7 @@ namespace Robot
 		/// ó‘Ô‚ğØ‚è‘Ö‚¦‚éB
 		/// </summary>
 		/// <param name="inputState"> “ü—Í‚Ìó‘Ô </param>
-		virtual Optional<String> changeState(std::unique_ptr<InputState> & inputState) const = 0;
+		virtual Optional<String> changeState() const = 0;
 
 
 	};

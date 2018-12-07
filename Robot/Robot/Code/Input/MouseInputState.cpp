@@ -46,6 +46,8 @@ Point Robot::MouseInputState::direction() const
 	{
 		return std::move(Point::Right);
 	}
+
+	return std::move(Point::Zero);
 }
 
 
@@ -76,9 +78,9 @@ Optional<String> Robot::MouseInputState::selectButton(ButtonPtr & selectedButton
 }
 
 
-Optional<String> Robot::MouseInputState::changeState(std::unique_ptr<InputState>& inputState) const
+Optional<String> Robot::MouseInputState::changeState() const
 {
-	if (Input::AnyKeyClicked)
+	if (Input::AnyKeyClicked())
 	{
 		return L"KeyInputState";
 	}

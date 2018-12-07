@@ -23,7 +23,7 @@ namespace Robot
 
 		Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList & buttonList) const override;
 
-		Optional<String> changeState(std::unique_ptr<InputState> & inputState) const override;
+		Optional<String> changeState() const override;
 
 	};
 }
