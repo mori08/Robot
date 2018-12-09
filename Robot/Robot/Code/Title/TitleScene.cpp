@@ -21,8 +21,10 @@ namespace
 	const double SHADOW_BLUR_RADIUS = 20.0; // 影のぼかしの大きさ
 	const double SHADOW_SPREAD      = 8.0;  // 影の広がりかた
 
-	const int MAX_GENERATE_FRAME_COUNT = 120;
-	const int MIN_GENERATE_FRAME_COUNT = 30;
+	const int MAX_GENERATE_FRAME_COUNT = 240; // 光生成までの時間の最大値
+	const int MIN_GENERATE_FRAME_COUNT = 60;  // 光生成までの時間の最小値
+
+	const double CURSOR_MOVE_RATE = 0.8; // カーソルが動くときの割合
 }
 
 
@@ -37,6 +39,8 @@ Robot::TitleScene::TitleScene()
 	InputManager::Instance().setVerticalAdjacentButton(ENTER_KEY, EXIT_KEY);
 
 	InputManager::Instance().setSelectedButton(ENTER_KEY);
+
+	_cursor = InputManager::Instance().getSelectedButton().getRegion();
 }
 
 
@@ -63,6 +67,8 @@ void Robot::TitleScene::update()
 	Erase_if(_lightList, [](Light & light) {return light.isEraseAble(); });
 
 	Optional<String> selectButtonkey = InputManager::Instance().selectButton();
+
+	_cursor.pos = CURSOR_MOVE_RATE*_cursor.pos + (1 - CURSOR_MOVE_RATE)*InputManager::Instance().getSelectedButton().getRegion().pos;
 }
 
 
@@ -72,12 +78,15 @@ void Robot::TitleScene::draw() const
 
 	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, GRAY);
 
+	_cursor.draw(WHITE);
+
 	for (const auto & light : _lightList)
 	{
 		light.draw();
 	}
 
+	TextureAsset(L"WakeButton").draw(ENTER_BUTTON_POS);
+	TextureAsset(L"SleepButton").draw(EXIT_BUTTON_POS);
+
 	TextureAsset(L"TitleLogo").draw(TITLE_LOGO_POS);
-	
-	InputManager::Instance().getSelectedButton().getRegion().drawFrame(1, 1, WHITE);
 }
