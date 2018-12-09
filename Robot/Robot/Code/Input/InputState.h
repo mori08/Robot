@@ -35,7 +35,7 @@ namespace Robot
 		/// 入力された方向を示します。
 		/// </summary>
 		/// <returns> 入力された方向 </returns>
-		virtual Point direction() const = 0;
+		virtual const Point & direction() const = 0;
 
 		/// <summary>
 		/// ボタンを選択します。

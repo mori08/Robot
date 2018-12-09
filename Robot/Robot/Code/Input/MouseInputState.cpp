@@ -17,8 +17,7 @@ bool Robot::MouseInputState::option() const
 	return Input::MouseR.released;
 }
 
-
-Point Robot::MouseInputState::direction() const
+const Point & Robot::MouseInputState::direction() const
 {
 	Point sub = Mouse::Pos() - Window::Center();
 
@@ -29,25 +28,25 @@ Point Robot::MouseInputState::direction() const
 
 	if (sub.y < sub.x && sub.y < -sub.x)
 	{
-		return std::move(Point::Up);
+		return Point::Up;
 	}
 
 	if (sub.y > sub.x && sub.y > -sub.x)
 	{
-		return std::move(Point::Down);
+		return Point::Down;
 	}
 
 	if (sub.y > sub.x && sub.y < -sub.x)
 	{
-		return std::move(Point::Left);
+		return Point::Left;
 	}
 
 	if (sub.y < sub.x && sub.y > -sub.x)
 	{
-		return std::move(Point::Right);
+		return Point::Right;
 	}
 
-	return std::move(Point::Zero);
+	return Point::Zero;
 }
 
 

@@ -423,6 +423,9 @@
     <ClInclude Include="Code\Title\TitleScene.h">
       <Filter>ヘッダー ファイル\Title</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Title\Light.h">
+      <Filter>ヘッダー ファイル\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -441,6 +444,9 @@
       <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
     <ClCompile Include="Code\Title\TitleScene.cpp">
+      <Filter>ソース ファイル\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Title\Light.cpp">
       <Filter>ソース ファイル\Title</Filter>
     </ClCompile>
   </ItemGroup>

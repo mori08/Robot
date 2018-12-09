@@ -13,12 +13,12 @@ bool Robot::KeyInputState::option() const
 }
 
 
-Point Robot::KeyInputState::direction() const
+const Point & Robot::KeyInputState::direction() const
 {
-	if (Input::KeyW.pressed) { return std::move(Point::Up); }
-	if (Input::KeyS.pressed) { return std::move(Point::Down); }
-	if (Input::KeyA.pressed) { return std::move(Point::Left); }
-	if (Input::KeyD.pressed) { return std::move(Point::Right); }
+	if (Input::KeyW.pressed) { return Point::Up; }
+	if (Input::KeyS.pressed) { return Point::Down; }
+	if (Input::KeyA.pressed) { return Point::Left; }
+	if (Input::KeyD.pressed) { return Point::Right; }
 
 	return Point::Zero;
 }

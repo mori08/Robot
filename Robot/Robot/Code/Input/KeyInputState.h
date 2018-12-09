@@ -19,7 +19,7 @@ namespace Robot
 
 		bool option() const override;
 
-		Point direction() const override;
+		const Point & direction() const override;
 
 		Optional<String> selectButton(ButtonPtr & selectedButton, const ButtonList &) const override;
 

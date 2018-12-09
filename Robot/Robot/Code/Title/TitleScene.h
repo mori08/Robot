@@ -2,6 +2,7 @@
 
 
 #include"../Main.h"
+#include"Light.h"
 
 
 namespace Robot
@@ -11,6 +12,8 @@ namespace Robot
 	{
 	private:
 
+		int              _generateLightFrameCount; // 光を生成するまでのフレーム数
+		std::list<Light> _lightList;               // 光のリスト
 
 	public:
 
