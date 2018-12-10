@@ -88,6 +88,12 @@
     <Filter Include="ヘッダー ファイル\Title">
       <UniqueIdentifier>{01f1fcb5-0d91-4a48-9a01-6386fd56c06d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\SaveData">
+      <UniqueIdentifier>{e2a1d0dc-3a66-42df-8da7-901eb5c650c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\SaveData">
+      <UniqueIdentifier>{28dc7f91-bb0e-4683-b7cc-e94002354e58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -426,6 +432,9 @@
     <ClInclude Include="Code\Title\Light.h">
       <Filter>ヘッダー ファイル\Title</Filter>
     </ClInclude>
+    <ClInclude Include="Code\SaveData\SaveDataManager.h">
+      <Filter>ヘッダー ファイル\SaveData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -448,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="Code\Title\Light.cpp">
       <Filter>ソース ファイル\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SaveData\SaveDataManager.cpp">
+      <Filter>ソース ファイル\SaveData</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
