@@ -50,5 +50,19 @@ namespace Robot
 		/// <returns> フラグのリストを暗号化した文字列 </summary>
 		const String & encryption() const;
 
+		/// <summary>
+		/// 暗号文を復号し、フラグのリストに格納します。
+		/// </summary>
+		/// <param name="str"> 暗号文 </param>
+		/// <returns> 復号に成功したとき true , そうでないとき false </returns>
+		bool decryption(const String & str);
+
+		/// <summary>
+		/// String型の文字列を16進数として読みint型の整数値に変換します。
+		/// </summary>
+		/// <param name="str"> 文字列 </param>
+		/// <returns> 変換後の整数 変換に失敗したとき none </returns>
+		static Optional<int> strToHex(const String & str);
+
 	};
 }
