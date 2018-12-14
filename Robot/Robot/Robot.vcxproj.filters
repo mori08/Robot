@@ -435,6 +435,9 @@
     <ClInclude Include="Code\SaveData\SaveDataManager.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
+    <ClInclude Include="Code\SaveData\LoadDataScene.h">
+      <Filter>ヘッダー ファイル\SaveData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -459,6 +462,9 @@
       <Filter>ソース ファイル\Title</Filter>
     </ClCompile>
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp">
+      <Filter>ソース ファイル\SaveData</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SaveData\LoadDataScene.cpp">
       <Filter>ソース ファイル\SaveData</Filter>
     </ClCompile>
   </ItemGroup>
