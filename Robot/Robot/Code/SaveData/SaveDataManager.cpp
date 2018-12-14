@@ -3,6 +3,8 @@
 
 namespace
 {
+	const String SAVE_DATA_TEXT = L"SAVE-DATA"; // セーブデータのファイル
+
 	const int BASE    = 0x10;      // 暗号化の基準になる値(何進数で暗号化するか)
 	const int MUL     = BASE - 1;  // 掛け算のときのかける数
 	const int HALF    = BASE / 2;  // 基準値の半分
@@ -10,6 +12,35 @@ namespace
 	const int MAX_KEY = MOD - 1;   // キーの最大値
 
 	const int ONE_DATA_LENGTH = 2; // 暗号文における1データのとる文字数
+}
+
+
+const Robot::SaveDataManager::LoadResult & Robot::SaveDataManager::load()
+{
+	TextReader reader(SAVE_DATA_TEXT);
+
+	if (!reader.isOpened())
+	{
+		return LoadResult::NEW_GAME;
+	}
+
+	String str;
+	reader.readLine(str);
+
+	if (decryption(str))
+	{
+		return LoadResult::CONTINUE;
+	}
+
+	return LoadResult::ERROR;
+}
+
+
+void Robot::SaveDataManager::save()
+{
+	TextWriter writer(SAVE_DATA_TEXT);
+
+	writer.write(encryption());
 }
 
 

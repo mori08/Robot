@@ -13,6 +13,15 @@ namespace Robot
 	*/
 	class SaveDataManager
 	{
+	public:
+
+		enum class LoadResult
+		{
+			NEW_GAME,
+			CONTINUE,
+			ERROR
+		};
+
 	private:
 		
 		static const int FLAG_NUM = 1;        // フラグの個数
@@ -41,6 +50,16 @@ namespace Robot
 			static SaveDataManager saveDataManager;
 			return saveDataManager;
 		}
+
+		/// <summary>
+		/// ロードします。
+		/// </summary>
+		const LoadResult & load();
+
+		/// <summary>
+		/// セーブします。
+		/// </summary>
+		void save();
 
 	private:
 
