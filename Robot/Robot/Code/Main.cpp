@@ -14,8 +14,8 @@ void Main()
 
 	MyApp sceneManager;
 
-	sceneManager.add<Robot::LoadDataScene>(L"LoadScene");
 	sceneManager.add<Robot::TitleScene>(L"TitleScene");
+	sceneManager.add<Robot::LoadDataScene>(L"LoadDataScene");
 
 	while (System::Update())
 	{

@@ -10,7 +10,10 @@ Robot::LoadDataScene::LoadDataScene()
 
 Robot::LoadDataScene::~LoadDataScene()
 {
-	_loadThread.join();
+	if (_isLoading)
+	{
+		_loadThread.join();
+	}
 }
 
 

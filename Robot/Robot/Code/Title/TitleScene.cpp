@@ -68,6 +68,18 @@ void Robot::TitleScene::update()
 
 	Optional<String> selectButtonkey = InputManager::Instance().selectButton();
 
+	if(selectButtonkey)
+	{
+		if (*selectButtonkey == L"enter")
+		{
+			changeScene(L"LoadDataScene");
+		}
+		if (*selectButtonkey == L"exit")
+		{
+			System::Exit();
+		}
+	}
+
 	_cursor.pos = CURSOR_MOVE_RATE*_cursor.pos + (1 - CURSOR_MOVE_RATE)*InputManager::Instance().getSelectedButton().getRegion().pos;
 }
 
