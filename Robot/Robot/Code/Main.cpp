@@ -2,6 +2,7 @@
 #include"Main.h"
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
+#include"SaveData\LoadDataScene.h"
 
 
 void asseter(const String & dirname);
@@ -13,6 +14,7 @@ void Main()
 
 	MyApp sceneManager;
 
+	sceneManager.add<Robot::LoadDataScene>(L"LoadScene");
 	sceneManager.add<Robot::TitleScene>(L"TitleScene");
 
 	while (System::Update())

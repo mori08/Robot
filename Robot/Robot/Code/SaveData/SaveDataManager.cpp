@@ -3,7 +3,7 @@
 
 namespace
 {
-	const String SAVE_DATA_TEXT = L"SAVE-DATA"; // セーブデータのファイル
+	const String SAVE_DATA_TEXT = L"SAVE-DATA.txt"; // セーブデータのファイル
 
 	const int BASE    = 0x10;      // 暗号化の基準になる値(何進数で暗号化するか)
 	const int MUL     = BASE - 1;  // 掛け算のときのかける数
@@ -15,7 +15,16 @@ namespace
 }
 
 
-const Robot::SaveDataManager::LoadResult & Robot::SaveDataManager::load()
+Robot::SaveDataManager::SaveDataManager()
+{
+	setKey(L"Flag0", 0);
+	setKey(L"Flag1", 1);
+	setKey(L"Flag2", 2);
+	setKey(L"Flag3", 3);
+}
+
+
+Robot::SaveDataManager::LoadResult Robot::SaveDataManager::load()
 {
 	TextReader reader(SAVE_DATA_TEXT);
 
@@ -25,9 +34,8 @@ const Robot::SaveDataManager::LoadResult & Robot::SaveDataManager::load()
 	}
 
 	String str;
-	reader.readLine(str);
 
-	if (decryption(str))
+	if (reader.readLine(str) && decryption(str))
 	{
 		return LoadResult::CONTINUE;
 	}
@@ -44,7 +52,7 @@ void Robot::SaveDataManager::save()
 }
 
 
-const String & Robot::SaveDataManager::encryption() const
+String Robot::SaveDataManager::encryption() const
 {
 	std::list<int> dataList;
 
@@ -87,6 +95,8 @@ const String & Robot::SaveDataManager::encryption() const
 	{
 		rtn += ToString(data, BASE);
 	}
+
+	return rtn;
 }
 
 
@@ -98,8 +108,11 @@ bool Robot::SaveDataManager::decryption(const String & str)
 	for (size_t i = 0; i < str.length; i += ONE_DATA_LENGTH)
 	{
 		Optional<int> data = strToHex(str.substr(i, ONE_DATA_LENGTH));		
-		if(!data) { return false; }
-		dataList.emplace_back(data);
+		if(!data)
+		{
+			return false; 
+		}
+		dataList.emplace_back(*data);
 	}
 
 	// sub previous one and mod 0x100
@@ -112,16 +125,30 @@ bool Robot::SaveDataManager::decryption(const String & str)
 	}
 
 	// remove key
-	if (*dataList.begin() != *dataList.rbegin()) { return false; }
+	if (*dataList.begin() != *dataList.rbegin()) 
+	{
+		return false; 
+	}
 	dataList.pop_front();
 	dataList.pop_back();
+
+	if (dataList.size() != _flagList.size())
+	{
+		return false;
+	}
 
 	// div 0xF
 	for (auto && data : dataList)
 	{
-		if (data%MUL != 0) { return false; }
+		if (data%MUL != 0)
+		{ 
+			return false; 
+		}
 		data /= MUL;
-		if (data <= 0x0 || data > BASE) { return false; }
+		if (data <= 0x0 || data > BASE) 
+		{
+			return false; 
+		}
 	}
 
 	// even number -> 0 , odd number -> 1
@@ -131,7 +158,6 @@ bool Robot::SaveDataManager::decryption(const String & str)
 	}
 
 	// 0 -> false , 1 -> true
-	if (dataList.size() != _flagList.size()) { return false; }
 	for (auto && flag : _flagList)
 	{
 		flag = *dataList.begin() == 0 ? false : true;
@@ -148,7 +174,7 @@ Optional<int> Robot::SaveDataManager::strToHex(const String & str)
 
 	for (const auto c : str)
 	{
-		rtn *= 0xF;
+		rtn *= 0x10;
 
 		if (c >= L'0' && c <= L'9')
 		{
@@ -156,7 +182,7 @@ Optional<int> Robot::SaveDataManager::strToHex(const String & str)
 		}
 		else if (c >= L'a' && c <= L'f')
 		{
-			rtn += static_cast<int>(c - L'a');
+			rtn += static_cast<int>(c - L'a') + 0xA;
 		}
 		else
 		{

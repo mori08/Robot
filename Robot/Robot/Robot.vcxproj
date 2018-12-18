@@ -265,6 +265,7 @@
     <Text Include="Example\Shaders\Wave2DPointSprites.hlsl" />
     <Text Include="Example\Test.txt" />
     <Text Include="Example\素材について.txt" />
+    <Text Include="SAVE-DATA.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Example\Sound.mp3" />
