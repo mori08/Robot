@@ -17,6 +17,8 @@ void Main()
 	sceneManager.add<Robot::TitleScene>(L"TitleScene");
 	sceneManager.add<Robot::LoadDataScene>(L"LoadDataScene");
 
+	FontAsset::Register(L"20", 20, L"メイリオ");
+
 	while (System::Update())
 	{
 		sceneManager.updateAndDraw();

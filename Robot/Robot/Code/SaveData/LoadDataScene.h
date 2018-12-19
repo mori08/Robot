@@ -17,6 +17,8 @@ namespace Robot
 	{
 	private:
 		
+		int         _frameCount; // 経過フレーム数
+
 		bool        _isLoading;  // データをロード中のとき true , 終了したとき false
 
 		std::thread _loadThread; // データをロードするスレッド
@@ -33,6 +35,15 @@ namespace Robot
 
 		void update() override;
 
+		void updateFadeIn(double) override;
+
+		void updateFadeOut(double) override;
+
 		void draw() const override;
+
+		void drawFadeIn(double)const override;
+
+		void drawFadeOut(double)const override;
+
 	};
 }
