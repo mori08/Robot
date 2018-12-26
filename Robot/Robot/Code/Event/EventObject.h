@@ -15,13 +15,19 @@ namespace Robot
 
 		using Range = std::pair<Point, Point>;
 
-		using ActMap = std::unordered_map<String, std::function<void()>>;
+		using Act = std::shared_ptr<std::function<void()>>;
+
+		using ActMap = std::unordered_map<String, Act>;
 
 	protected:
 
 		Point  _pos;                // 座標
 
 		Range  _moveRange;          // 移動の視点と終点
+
+		bool   _isActing;           // 演出時に true , そうでないとき false
+
+		Act    _act;                // 演出
 
 		int    _moveFrameCount;     // 移動時のフレーム数
 
@@ -44,10 +50,10 @@ namespace Robot
 		}
 
 		/// <summary>
-		/// 演出を実行します。
+		/// 演出を登録します。
 		/// </summary>
 		/// <param name="actName"> 演出の名前 </param>
-		void act(const String & actName);
+		void setAct(const String & actName);
 
 		/// <summary>
 		/// 更新
