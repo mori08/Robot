@@ -441,6 +441,9 @@
     <ClInclude Include="Code\SaveData\LoadDataScene.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\EventObject.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
