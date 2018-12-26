@@ -288,6 +288,7 @@
     <ClInclude Include="Code\Title\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Event\EventObject.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />
     <ClCompile Include="Code\Input\KeyInputState.cpp" />

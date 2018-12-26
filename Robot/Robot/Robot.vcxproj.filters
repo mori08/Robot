@@ -94,6 +94,12 @@
     <Filter Include="ソース ファイル\SaveData">
       <UniqueIdentifier>{28dc7f91-bb0e-4683-b7cc-e94002354e58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Event">
+      <UniqueIdentifier>{cfff5471-8c64-46c4-befe-fe9c41662a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Event">
+      <UniqueIdentifier>{4baa3547-5d47-46ef-807b-8f922ffc672e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -442,7 +448,7 @@
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
     <ClInclude Include="Code\Event\EventObject.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -472,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="Code\SaveData\LoadDataScene.cpp">
       <Filter>ソース ファイル\SaveData</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\EventObject.cpp">
+      <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

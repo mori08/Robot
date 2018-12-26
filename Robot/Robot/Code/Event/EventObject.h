@@ -19,15 +19,13 @@ namespace Robot
 
 		using ActMap = std::unordered_map<String, Act>;
 
+		static const Act noAct; // 演出がないとき
+
 	protected:
 
 		Point  _pos;                // 座標
 
 		Range  _moveRange;          // 移動の視点と終点
-
-		bool   _isActing;           // 演出時に true , そうでないとき false
-
-		Act    _act;                // 演出
 
 		int    _moveFrameCount;     // 移動時のフレーム数
 
@@ -35,18 +33,28 @@ namespace Robot
 
 		ActMap _actMap;             // 演出用の関数のマップ
 
+		bool   _isActing;           // 演出時に true , そうでないとき false
+
+		int    _actFrameCount;      // 演出時のフレーム数
+
+		Act    _act;                // 演出
+
 	public:
 
 		/// <summary>
 		/// オブジェクトの移動を設定します。
 		/// </summary>
-		/// <param name="pos"> 移動先の座標 </param>
+		/// <param name="goal"> 移動先の座標 </param>
 		/// <param name="spanFrameCount"> 移動にかかるフレーム数 </param>
-		void setLinearMove(const Point & pos, int spanFrameCount);
+		void setLinearMove(const Point & goal, int spanFrameCount);
 
-		bool CompleteMoving() const
+		/// <summary>
+		/// 移動と演出が終了しているか示します。
+		/// </summary>
+		/// <returns> 終了しているとき true , そうでないとき false </returns>
+		bool completeMoveAndAct() const
 		{
-			return _moveFrameCount > _spanMoveFrameCount;
+			return _isActing && _moveFrameCount > _spanMoveFrameCount;
 		}
 
 		/// <summary>
@@ -58,12 +66,12 @@ namespace Robot
 		/// <summary>
 		/// 更新
 		/// </summary>
-		void update();
+		virtual void update() = 0;
 
 		/// <summary>
 		/// 描画
 		/// </summary>
-		void draw() const;
+		virtual void draw() const = 0;
 
 	};
 }
