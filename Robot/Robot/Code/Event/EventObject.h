@@ -39,14 +39,16 @@ namespace Robot
 
 		Act    _act;                // 演出
 
+		String _textureName;        // 表示する画像の名前
+
 	public:
 
 		/// <summary>
 		/// オブジェクトの移動を設定します。
 		/// </summary>
 		/// <param name="goal"> 移動先の座標 </param>
-		/// <param name="spanFrameCount"> 移動にかかるフレーム数 </param>
-		void setLinearMove(const Point & goal, int spanFrameCount);
+		/// <param name="spanFrameCount"> 移動にかかるフレーム数 (0のときはすぐ移動) </param>
+		void setLinearMove(const Point & goal, int spanFrameCount = 0);
 
 		/// <summary>
 		/// 移動と演出が終了しているか示します。
@@ -66,12 +68,16 @@ namespace Robot
 		/// <summary>
 		/// 更新
 		/// </summary>
-		virtual void update() = 0;
+		virtual void update();
 
 		/// <summary>
 		/// 描画
 		/// </summary>
-		virtual void draw() const = 0;
+		virtual void draw() const;
+
+	private:
+
+		void moveObject();
 
 	};
 }
