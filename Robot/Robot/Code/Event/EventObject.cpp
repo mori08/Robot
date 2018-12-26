@@ -47,5 +47,5 @@ void Robot::EventObject::moveObject()
 
 	double rate = 1.0*_moveFrameCount / _spanMoveFrameCount;
 
-	_pos = ((1 - rate)*_moveRange.first + rate*_moveRange.second).asPoint;
+	_pos = ((1 - rate)*_moveRange.first + rate*_moveRange.second).asPoint();
 }
