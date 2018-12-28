@@ -275,6 +275,7 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Event\EventBase.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
     <ClInclude Include="Code\Event\EventObject.h" />
     <ClInclude Include="Code\Input\Button.h" />
