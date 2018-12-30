@@ -16,9 +16,27 @@ namespace Robot
 	*/
 	class EventBase
 	{
+	protected:
+
+		bool _isSuccess;
+
 	public:
 
-		virtual void perform(EventManager & eventManager)const = 0;
+		EventBase();
+
+		/// <summary>
+		/// Eventが正しくロードできているか確認し、実行します。
+		/// </summary>
+		/// <param name="eventManager"> EventManager </param>
+		void checkAndPerform(EventManager & eventManager) const;
+
+	protected:
+
+		/// <summary>
+		/// Eventを実行します。
+		/// </summary>
+		/// <param name="eventManager"> EventManager </param>
+		virtual void perform(EventManager & eventManager) const = 0;
 
 	};
 }

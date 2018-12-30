@@ -456,6 +456,9 @@
     <ClInclude Include="Code\Event\EventBase.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\GenerateEvent.h">
+      <Filter>ヘッダー ファイル\Event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -489,6 +492,12 @@
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
     <ClCompile Include="Code\Event\EventManager.cpp">
+      <Filter>ソース ファイル\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\GenerateEvent.cpp">
+      <Filter>ソース ファイル\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\EventBase.cpp">
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
   </ItemGroup>

@@ -278,6 +278,7 @@
     <ClInclude Include="Code\Event\EventBase.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
     <ClInclude Include="Code\Event\EventObject.h" />
+    <ClInclude Include="Code\Event\GenerateEvent.h" />
     <ClInclude Include="Code\Input\Button.h" />
     <ClInclude Include="Code\Input\InputManager.h" />
     <ClInclude Include="Code\Input\InputState.h" />
@@ -290,8 +291,10 @@
     <ClInclude Include="Code\Title\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Event\EventBase.cpp" />
     <ClCompile Include="Code\Event\EventManager.cpp" />
     <ClCompile Include="Code\Event\EventObject.cpp" />
+    <ClCompile Include="Code\Event\GenerateEvent.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />
     <ClCompile Include="Code\Input\KeyInputState.cpp" />

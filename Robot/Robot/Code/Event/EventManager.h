@@ -51,11 +51,26 @@ namespace Robot
 			return eventManager;
 		}
 
-	public:
+	public: // EventSceneで使用する関数
 
+		/// <summary>
+		/// 更新
+		/// </summary>
 		void update();
 
+		/// <summary>
+		/// 描画
+		/// </summary>
 		void draw() const;
+
+	public: // EventBaseの派生クラスで使用する関数
+
+		/// <summary>
+		/// EventObjectを追加します。
+		/// </summary>
+		/// <param name="name"> 名前 </param>
+		/// <param name="object"> オブジェクト </param>
+		void generateObject(const String & name ,const std::shared_ptr<EventObject> & object);
 
 	};
 
