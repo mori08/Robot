@@ -20,7 +20,7 @@ namespace Robot
 	{
 	private:
 
-		using ObjectList = std::map<String, EventObject>;
+		using ObjectList = std::map<String, std::shared_ptr<EventObject>>;
 
 		using EventQueue = std::queue<std::shared_ptr<EventBase>>;
 

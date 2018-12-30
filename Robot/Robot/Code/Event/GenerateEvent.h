@@ -15,7 +15,13 @@ namespace Robot
 	{
 	private:
 
-		static std::unordered_map<String, std::function<EventObject&()>> objectMap;
+		using ObjectPtr    = std::shared_ptr<EventObject>;
+		using GenerateFunc = std::function<ObjectPtr()>;
+		using FuncMap      = std::unordered_map<String, GenerateFunc>;
+
+	private:
+
+		static FuncMap objectMap;
 
 	private:
 

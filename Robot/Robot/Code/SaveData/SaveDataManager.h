@@ -145,12 +145,5 @@ namespace Robot
 			_nameMap[str] = index;
 		}
 
-		/// <summary>
-		/// StringŒ^‚Ì•¶š—ñ‚ğ16i”‚Æ‚µ‚Ä“Ç‚İintŒ^‚Ì®”’l‚É•ÏŠ·‚µ‚Ü‚·B
-		/// </summary>
-		/// <param name="str"> •¶š—ñ </param>
-		/// <returns> •ÏŠ·Œã‚Ì®” •ÏŠ·‚É¸”s‚µ‚½‚Æ‚« none </returns>
-		static Optional<int> strToHex(const String & str);
-
 	};
 }

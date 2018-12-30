@@ -1,6 +1,9 @@
 #include "GenerateEvent.h"
 
 
+Robot::GenerateEvent::FuncMap Robot::GenerateEvent::objectMap;
+
+
 Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, const String & x, const String & y)
 	: _type(type)
 	, _name(name)

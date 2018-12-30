@@ -1,6 +1,15 @@
 #include "EventObject.h"
 
 
+const Robot::EventObject::Act Robot::EventObject::noAct(std::make_shared<std::function<void()>>([](){}));
+
+
+Robot::EventObject::EventObject()
+{
+
+}
+
+
 void Robot::EventObject::setLinearMove(const Point & goal, int spanFrameCount)
 {
 	if(_moveFrameCount>0)
@@ -30,7 +39,7 @@ void Robot::EventObject::setAct(const String & actName)
 
 void Robot::EventObject::update()
 {
-	_act->operator();
+	(*_act)();
 
 	moveObject();
 }

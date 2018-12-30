@@ -107,7 +107,7 @@ bool Robot::SaveDataManager::decryption(const String & str)
 	// to int array
 	for (size_t i = 0; i < str.length; i += ONE_DATA_LENGTH)
 	{
-		Optional<int> data = strToHex(str.substr(i, ONE_DATA_LENGTH));		
+		Optional<int> data = FromStringOpt<int>(str.substr(i, ONE_DATA_LENGTH), BASE);
 		if(!data)
 		{
 			return false; 
@@ -165,30 +165,4 @@ bool Robot::SaveDataManager::decryption(const String & str)
 	}
 
 	return true;
-}
-
-
-Optional<int> Robot::SaveDataManager::strToHex(const String & str)
-{
-	int rtn = 0;
-
-	for (const auto c : str)
-	{
-		rtn *= 0x10;
-
-		if (c >= L'0' && c <= L'9')
-		{
-			rtn += static_cast<int>(c - L'0');
-		}
-		else if (c >= L'a' && c <= L'f')
-		{
-			rtn += static_cast<int>(c - L'a') + 0xA;
-		}
-		else
-		{
-			return none;
-		}
-	}
-
-	return rtn;
 }

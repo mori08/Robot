@@ -43,6 +43,8 @@ namespace Robot
 
 	public:
 
+		EventObject();
+
 		/// <summary>
 		/// オブジェクトの移動を設定します。
 		/// </summary>
