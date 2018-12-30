@@ -2,6 +2,12 @@
 
 #include<Siv3D.hpp>
 
+#include<queue>
+
+#include"EventObject.h"
+
+#include"EventBase.h"
+
 namespace Robot
 {
 	/*
@@ -14,7 +20,15 @@ namespace Robot
 	{
 	private:
 
-		int _eventNumber;
+		using ObjectList = std::map<String, EventObject>;
+
+		using EventQueue = std::queue<std::shared_ptr<EventBase>>;
+
+	private:
+
+		ObjectList _objectList; // EventOjectのリスト
+
+		EventQueue _eventQueue; // EventBaseの派生を取り出すキュー
 
 	private:
 
@@ -36,6 +50,12 @@ namespace Robot
 			static EventManager eventManager;
 			return eventManager;
 		}
+
+	public:
+
+		void update();
+
+		void draw() const;
 
 	};
 

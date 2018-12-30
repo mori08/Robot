@@ -488,5 +488,8 @@
     <ClCompile Include="Code\Event\EventObject.cpp">
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Event\EventManager.cpp">
+      <Filter>ソース ファイル\Event</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
