@@ -100,6 +100,18 @@
     <Filter Include="ソース ファイル\Event">
       <UniqueIdentifier>{4baa3547-5d47-46ef-807b-8f922ffc672e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Event\Factor">
+      <UniqueIdentifier>{ab561a08-dc82-455f-b5a4-c8a23c4ff7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Event\Object">
+      <UniqueIdentifier>{a5457334-7a41-4345-a9c3-4c7458251a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Event\Factor">
+      <UniqueIdentifier>{9f13e5ec-4d3b-4526-9292-51d9d66ba053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Event\Object">
+      <UniqueIdentifier>{d0ea94b1-6d58-4b53-be5c-b7fcd4be7e66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -447,17 +459,17 @@
     <ClInclude Include="Code\SaveData\LoadDataScene.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Event\EventObject.h">
-      <Filter>ヘッダー ファイル\Event</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Event\EventManager.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Event\EventBase.h">
-      <Filter>ヘッダー ファイル\Event</Filter>
+    <ClInclude Include="Code\Event\Factor\EventBase.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Event\GenerateEvent.h">
-      <Filter>ヘッダー ファイル\Event</Filter>
+    <ClInclude Include="Code\Event\Factor\GenerateEvent.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Event\Object\EventObject.h">
+      <Filter>ヘッダー ファイル\Event\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,17 +500,17 @@
     <ClCompile Include="Code\SaveData\LoadDataScene.cpp">
       <Filter>ソース ファイル\SaveData</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Event\EventObject.cpp">
-      <Filter>ソース ファイル\Event</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Event\EventManager.cpp">
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Event\GenerateEvent.cpp">
-      <Filter>ソース ファイル\Event</Filter>
+    <ClCompile Include="Code\Event\Factor\EventBase.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Event\EventBase.cpp">
-      <Filter>ソース ファイル\Event</Filter>
+    <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Object\EventObject.cpp">
+      <Filter>ソース ファイル\Event\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

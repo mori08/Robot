@@ -4,9 +4,9 @@
 
 #include<queue>
 
-#include"EventObject.h"
+#include"Object/EventObject.h"
 
-#include"EventBase.h"
+#include"Factor/EventBase.h"
 
 namespace Robot
 {
