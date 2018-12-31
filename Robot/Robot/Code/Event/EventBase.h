@@ -30,6 +30,13 @@ namespace Robot
 		/// <param name="eventManager"> EventManager </param>
 		void checkAndPerform(EventManager & eventManager) const;
 
+		/// <summary>
+		/// I—¹‚µ‚Ä‚¢‚é‚©¦‚µ‚Ü‚·B
+		/// </summary>
+		/// <param name="eventManager"> EventManager </param>
+		/// <returns> I—¹‚µ‚Ä‚¢‚é‚Æ‚« true , ‚»‚¤‚Å‚È‚¢‚Æ‚« false </returns>
+		virtual bool isCompleted(const EventManager & eventManager) const = 0;
+
 	protected:
 
 		/// <summary>

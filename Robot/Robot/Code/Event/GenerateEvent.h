@@ -21,7 +21,7 @@ namespace Robot
 
 	private:
 
-		static FuncMap objectMap;
+		static FuncMap generateObjMap;
 
 	private:
 
@@ -42,10 +42,17 @@ namespace Robot
 		/// <param name="y"> yÀ•W </param>
 		GenerateEvent(const String & type, const String & name, const String & x, const String & y);
 
+	private:
+
 		void perform(EventManager & eventManager)const override;
+
+		bool isCompleted(const EventManager &) const override;
 
 	public:
 
+		/// <summary>
+		/// EventObject‚ğ“o˜^‚µ‚Ü‚·B
+		/// </summary>
 		static void setObjectMap();
 
 	};

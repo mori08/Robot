@@ -1,14 +1,14 @@
 #include "GenerateEvent.h"
 
 
-Robot::GenerateEvent::FuncMap Robot::GenerateEvent::objectMap;
+Robot::GenerateEvent::FuncMap Robot::GenerateEvent::generateObjMap;
 
 
 Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, const String & x, const String & y)
 	: _type(type)
 	, _name(name)
 {
-	if (objectMap.find(_type) == objectMap.end()) 
+	if (generateObjMap.find(_type) == generateObjMap.end()) 
 	{
 #ifdef _DEBUG
 		Println(L"Error > GenrateEventで登録されていないオブジェクトが指定されました。");
@@ -38,7 +38,13 @@ Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, co
 
 void Robot::GenerateEvent::perform(EventManager & eventManager) const
 {
+	eventManager.generateObject(_name, generateObjMap[_type]());
+}
 
+
+bool Robot::GenerateEvent::isCompleted(const EventManager &) const
+{
+	return true;
 }
 
 
