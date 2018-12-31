@@ -471,6 +471,9 @@
     <ClInclude Include="Code\Event\Object\EventObject.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\Object\TestEventObject.h">
+      <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">

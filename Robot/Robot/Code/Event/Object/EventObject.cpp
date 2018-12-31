@@ -4,7 +4,14 @@
 const Robot::EventObject::Act Robot::EventObject::noAct(std::make_shared<std::function<void()>>([](){}));
 
 
-Robot::EventObject::EventObject()
+Robot::EventObject::EventObject(const Point & pos)
+	: _pos(pos)
+	, _moveRange({ pos,pos })
+	, _moveFrameCount(0)
+	, _spanMoveFrameCount(0)
+	, _isActing(false)
+	, _actFrameCount(0)
+	, _act(noAct)
 {
 
 }
@@ -42,11 +49,6 @@ void Robot::EventObject::update()
 	(*_act)();
 
 	moveObject();
-}
-
-void Robot::EventObject::draw() const
-{
-	TextureAsset(_textureName).drawAt(_pos);
 }
 
 

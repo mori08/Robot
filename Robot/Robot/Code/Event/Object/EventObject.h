@@ -8,6 +8,9 @@ namespace Robot
 	EventObjectクラス
 	Eventシーンで使用するObject
 	描画・移動・その他アクションを実装する
+
+	このクラスの派生クラスを作るときは
+	GenerateObjectのsetObjectMap関数に登録する
 	*/
 	class EventObject
 	{
@@ -39,11 +42,13 @@ namespace Robot
 
 		Act    _act;                // 演出
 
-		String _textureName;        // 表示する画像の名前
-
 	public:
 
-		EventObject();
+		/// <summary>
+		/// EventObjectを生成します。
+		/// </summary>
+		/// <param name="pos"> 座標 </param>
+		EventObject(const Point & pos);
 
 		/// <summary>
 		/// オブジェクトの移動を設定します。
@@ -75,10 +80,13 @@ namespace Robot
 		/// <summary>
 		/// 描画
 		/// </summary>
-		virtual void draw() const;
+		virtual void draw() const = 0;
 
 	private:
 
+		/// <summary>
+		/// オブジェクトを動かします。
+		/// </summary>
 		void moveObject();
 
 	};

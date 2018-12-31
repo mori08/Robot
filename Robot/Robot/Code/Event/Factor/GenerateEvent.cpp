@@ -1,5 +1,7 @@
 #include "GenerateEvent.h"
 
+#include "../Object/TestEventObject.h"
+
 
 Robot::GenerateEvent::FuncMap Robot::GenerateEvent::generateObjMap;
 
@@ -38,7 +40,7 @@ Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, co
 
 void Robot::GenerateEvent::perform(EventManager & eventManager) const
 {
-	eventManager.generateObject(_name, generateObjMap[_type]());
+	eventManager.generateObject(_name, generateObjMap[_type](_pos));
 }
 
 
@@ -50,5 +52,5 @@ bool Robot::GenerateEvent::isCompleted(const EventManager &) const
 
 void Robot::GenerateEvent::setObjectMap()
 {
-
+	makeGenerateFunc<TestEventObject>(L"TestEventObject");
 }

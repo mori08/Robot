@@ -279,6 +279,7 @@
     <ClInclude Include="Code\Event\Factor\EventBase.h" />
     <ClInclude Include="Code\Event\Factor\GenerateEvent.h" />
     <ClInclude Include="Code\Event\Object\EventObject.h" />
+    <ClInclude Include="Code\Event\Object\TestEventObject.h" />
     <ClInclude Include="Code\Input\Button.h" />
     <ClInclude Include="Code\Input\InputManager.h" />
     <ClInclude Include="Code\Input\InputState.h" />

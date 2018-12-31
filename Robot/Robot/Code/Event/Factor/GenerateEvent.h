@@ -16,7 +16,7 @@ namespace Robot
 	private:
 
 		using ObjectPtr    = std::shared_ptr<EventObject>;
-		using GenerateFunc = std::function<ObjectPtr()>;
+		using GenerateFunc = std::function<ObjectPtr(const Point & pos)>;
 		using FuncMap      = std::unordered_map<String, GenerateFunc>;
 
 	private:
@@ -54,6 +54,24 @@ namespace Robot
 		/// EventObjectを登録します。
 		/// </summary>
 		static void setObjectMap();
+
+	private:
+
+		/// <summary>
+		/// 型名eventObjectTypeのshared_ptrを作る関数を返します。
+		/// </summary>
+		/// <param name="name"> オブジェクトの名前 </param>
+		template<typename eventObjectType>
+		static GenerateFunc & makeGenerateFunc(const String & name)
+		{
+			generateObjMap[name] = GenerateFunc
+			(
+				[](const Point & pos) 
+				{
+					return std::make_shared<eventObjectType>(pos); 
+				}
+			);
+		}
 
 	};
 }
