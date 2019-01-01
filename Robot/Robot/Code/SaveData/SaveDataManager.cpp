@@ -93,7 +93,7 @@ String Robot::SaveDataManager::encryption() const
 	String rtn;
 	for(auto && data : dataList)
 	{
-		rtn += ToString(data, BASE);
+		rtn += Pad(ToString(data, BASE), { 2,L'0' });
 	}
 
 	return rtn;
