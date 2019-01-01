@@ -285,6 +285,7 @@
     <ClInclude Include="Code\Input\InputState.h" />
     <ClInclude Include="Code\Input\KeyInputState.h" />
     <ClInclude Include="Code\Input\MouseInputState.h" />
+    <ClInclude Include="Code\Load\LoadScene.h" />
     <ClInclude Include="Code\Main.h" />
     <ClInclude Include="Code\SaveData\LoadDataScene.h" />
     <ClInclude Include="Code\SaveData\SaveDataManager.h" />
@@ -300,6 +301,7 @@
     <ClCompile Include="Code\Input\InputManager.cpp" />
     <ClCompile Include="Code\Input\KeyInputState.cpp" />
     <ClCompile Include="Code\Input\MouseInputState.cpp" />
+    <ClCompile Include="Code\Load\LoadScene.cpp" />
     <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\SaveData\LoadDataScene.cpp" />
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp" />

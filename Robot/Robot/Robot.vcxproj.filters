@@ -112,6 +112,12 @@
     <Filter Include="ヘッダー ファイル\Event\Object">
       <UniqueIdentifier>{d0ea94b1-6d58-4b53-be5c-b7fcd4be7e66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Load">
+      <UniqueIdentifier>{e0f4e7b5-02fa-464e-9857-b545e45742fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Load">
+      <UniqueIdentifier>{8cb0ef81-5067-45a4-b48b-e274d5a4200a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -474,6 +480,9 @@
     <ClInclude Include="Code\Event\Object\TestEventObject.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Load\LoadScene.h">
+      <Filter>ヘッダー ファイル\Load</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -514,6 +523,9 @@
     </ClCompile>
     <ClCompile Include="Code\Event\Object\EventObject.cpp">
       <Filter>ソース ファイル\Event\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Load\LoadScene.cpp">
+      <Filter>ソース ファイル\Load</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

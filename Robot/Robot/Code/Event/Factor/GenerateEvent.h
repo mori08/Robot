@@ -62,7 +62,7 @@ namespace Robot
 		/// </summary>
 		/// <param name="name"> オブジェクトの名前 </param>
 		template<typename eventObjectType>
-		static GenerateFunc & makeGenerateFunc(const String & name)
+		static void makeGenerateFunc(const String & name)
 		{
 			generateObjMap[name] = GenerateFunc
 			(
