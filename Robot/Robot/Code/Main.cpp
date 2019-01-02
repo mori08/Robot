@@ -2,7 +2,7 @@
 #include"Main.h"
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
-#include"SaveData\LoadDataScene.h"
+#include"SaveData\LoadSaveDataScene.h"
 #include"Event\Factor\GenerateEvent.h"
 
 
@@ -18,7 +18,7 @@ void Main()
 	Robot::GenerateEvent::setObjectMap();
 
 	sceneManager.add<Robot::TitleScene>(L"TitleScene");
-	sceneManager.add<Robot::LoadDataScene>(L"LoadDataScene");
+	sceneManager.add<Robot::LoadSaveDataScene>(L"LoadSaveDataScene");
 
 	FontAsset::Register(L"20", 20, L"メイリオ");
 

@@ -13,15 +13,8 @@ namespace
 
 
 Robot::LoadScene::LoadScene()
+	: _isLoading(true)
 {
-	_isLoading = true;
-	_loadThread = std::thread(
-		[this]() 
-		{
-			load();
-			_isLoading = false;
-		}
-	);
 }
 
 
@@ -34,10 +27,22 @@ Robot::LoadScene::~LoadScene()
 }
 
 
+void Robot::LoadScene::init()
+{
+	_loadThread = std::thread(
+		[this]() 
+		{
+			load();
+			_isLoading = false;
+		}
+	);
+}
+
+
 void Robot::LoadScene::update()
 {
 	++_frameCount;
-
+	
 	if (_isLoading) { return; }
 
 	_loadThread.join();

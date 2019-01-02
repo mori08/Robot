@@ -32,6 +32,8 @@ namespace Robot
 
 	public:
 
+		void init() override;
+
 		void update() override;
 
 		void updateFadeIn(double) override;

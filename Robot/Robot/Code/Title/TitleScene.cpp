@@ -72,7 +72,7 @@ void Robot::TitleScene::update()
 	{
 		if (*selectButtonkey == L"enter")
 		{
-			changeScene(L"LoadDataScene");
+			changeScene(L"LoadSaveDataScene");
 		}
 		if (*selectButtonkey == L"exit")
 		{

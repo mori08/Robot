@@ -88,7 +88,7 @@ namespace Robot
 		/// <summary>
 		/// マウス入力時の有効範囲を取得します。
 		/// </summary>
-		/// <returns> マウス入力時の有効範囲 </returns>
+		/// <return> マウス入力時の有効範囲 </return>
 		const Rect & getRegion() const
 		{
 			return _region;
