@@ -275,6 +275,7 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Event\Factor\BackgroundEvent.h" />
     <ClInclude Include="Code\Event\LoadEventScene.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
     <ClInclude Include="Code\Event\EventScene.h" />
@@ -298,6 +299,7 @@
   <ItemGroup>
     <ClCompile Include="Code\Event\EventManager.cpp" />
     <ClCompile Include="Code\Event\EventScene.cpp" />
+    <ClCompile Include="Code\Event\Factor\BackgroundEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\EventBase.cpp" />
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
     <ClCompile Include="Code\Event\LoadEventScene.cpp" />

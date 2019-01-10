@@ -30,11 +30,13 @@ namespace Robot
 
 	private:
 
-		ObjectList   _objectList;   // EventOjectのリスト
+		ObjectList   _objectList;     // EventOjectのリスト
 
-		EventQueue   _eventQueue;   // EventBaseの派生を取り出すキュー
+		EventQueue   _eventQueue;     // EventBaseの派生を取り出すキュー
 
-		MakeEventMap _makeEventMap; // イベントを生成する関数の連想配列
+		MakeEventMap _makeEventMap;   // イベントを生成する関数の連想配列
+
+		String       _backgroundName; // 背景画像の名前
 
 	private:
 
@@ -105,7 +107,19 @@ namespace Robot
 		/// </summary>
 		/// <param name="name"> 名前 </param>
 		/// <param name="object"> オブジェクト </param>
-		void generateObject(const String & name ,const std::shared_ptr<EventObject> & object);
+		void generateObject(const String & name ,const std::shared_ptr<EventObject> & object)
+		{
+			_objectList[name] = object;
+		}
+
+		/// <summary>
+		/// 背景を設定します。
+		/// </summary>
+		/// <param name="name"> 背景画像の名前 </param>
+		void setBackground(const String & name)
+		{
+			_backgroundName = name;
+		}
 
 	};
 

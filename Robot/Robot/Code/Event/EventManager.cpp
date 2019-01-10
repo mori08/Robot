@@ -2,6 +2,7 @@
 
 #include "Factor\InitEvent.h"
 #include "Factor\GenerateEvent.h"
+#include "Factor\BackgroundEvent.h"
 
 
 namespace
@@ -20,7 +21,8 @@ Robot::EventManager::EventManager()
 
 void Robot::EventManager::setAllEvent()
 {
-	setEvent<GenerateEvent>(L"Generate");
+	setEvent<GenerateEvent>  (L"Generate");
+	setEvent<BackgroundEvent>(L"Background");
 }
 
 
@@ -46,8 +48,18 @@ void Robot::EventManager::load(const String & eventName)
 	{
 		// 引数の作成
 		EventArg eventArg;
-		for (int i = EVENT_INFO_COLUMN; i < reader.columns(loadingEventId) && reader.get<String>(loadingEventId, i) != EVENT_INFO_END; ++i)
+		for (int i = EVENT_INFO_COLUMN; ; ++i)
 		{
+			if (i >= reader.columns(loadingEventId))
+			{
+#ifdef _DEBUG
+				Println(L"Error > Eventに終了文字がありません : ", loadingEventId, L"行目");
+#endif // _DEBUG
+				break;
+			}
+
+			if (reader.get<String>(loadingEventId, i) == EVENT_INFO_END) { break; }
+
 			eventArg.emplace_back(reader.get<String>(loadingEventId, i));
 		}
 
@@ -56,7 +68,10 @@ void Robot::EventManager::load(const String & eventName)
 		// マップからイベントを探す
 		if (_makeEventMap.find(eventKey) == _makeEventMap.end())
 		{
+#ifdef _DEBUG
 			Println(L"Error > 登録されていないイベントです : ", loadingEventId, L"行目");
+#endif // _DEBUG
+
 			continue;
 		}
 
@@ -83,14 +98,11 @@ void Robot::EventManager::update()
 
 void Robot::EventManager::draw() const
 {
+	TextureAsset(_backgroundName).draw();
+
 	for (const auto & object : _objectList)
 	{
 		object.second->draw();
 	}
 }
 
-
-void Robot::EventManager::generateObject(const String & name, const std::shared_ptr<EventObject>& object)
-{
-	_objectList[name] = object;
-}

@@ -492,6 +492,9 @@
     <ClInclude Include="Code\Event\LoadEventScene.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\Factor\BackgroundEvent.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -541,6 +544,9 @@
     </ClCompile>
     <ClCompile Include="Code\Event\LoadEventScene.cpp">
       <Filter>ソース ファイル\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Factor\BackgroundEvent.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
