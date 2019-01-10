@@ -1,5 +1,6 @@
 #include "EventManager.h"
 
+#include "Factor\InitEvent.h"
 #include "Factor\GenerateEvent.h"
 
 
@@ -25,6 +26,9 @@ void Robot::EventManager::setAllEvent()
 
 void Robot::EventManager::load(const String & eventName)
 {
+	while (!_eventQueue.empty()) { _eventQueue.pop(); }
+	_eventQueue.push(std::make_unique<InitEvent>());
+
 	CSVReader reader(eventName);
 
 	if (!reader.isOpened())
