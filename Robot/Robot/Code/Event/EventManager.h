@@ -21,14 +21,20 @@ namespace Robot
 	private:
 
 		using ObjectList = std::map<String, std::shared_ptr<EventObject>>;
+		using EventQueue = std::queue<std::unique_ptr<EventBase>>;
 
-		using EventQueue = std::queue<std::shared_ptr<EventBase>>;
+		using EventPtr      = std::unique_ptr<EventBase>;
+		using EventArg      = std::vector<String>;
+		using MakeEventFunc = std::function<EventPtr(const EventArg &)>;
+		using MakeEventMap  = std::unordered_map<String, MakeEventFunc>;
 
 	private:
 
-		ObjectList _objectList; // EventOjectのリスト
+		ObjectList   _objectList;   // EventOjectのリスト
 
-		EventQueue _eventQueue; // EventBaseの派生を取り出すキュー
+		EventQueue   _eventQueue;   // EventBaseの派生を取り出すキュー
+
+		MakeEventMap _makeEventMap; // イベントを生成する関数の連想配列
 
 	private:
 
@@ -51,7 +57,36 @@ namespace Robot
 			return eventManager;
 		}
 
+		/// <summary>
+		/// 全てのイベントをマップに登録します。
+		/// </summary>
+		void setAllEvent();
+
+	private:
+
+		/// <summary>
+		/// １つのイベントをマップに登録します。
+		/// </summary>
+		/// <param name="name"> イベント名 </param>
+		template<typename eventType>
+		void setEvent(const String & name)
+		{
+			_makeEventMap[name] = MakeEventFunc
+			(
+				[](const EventArg & eventArg)
+				{
+					return std::move(std::make_unique<eventType>(eventArg));
+				}
+			);
+		}
+
 	public: // EventSceneで使用する関数
+
+		/// <summary>
+		/// イベントを記述したcsvファイルを読み込む
+		/// </summary>
+		/// <param name="eventName"> csvファイルの名前 </param>
+		void load(const String & eventName);
 
 		/// <summary>
 		/// 更新

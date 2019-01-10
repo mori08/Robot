@@ -3,6 +3,7 @@
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
 #include"SaveData\LoadSaveDataScene.h"
+#include"Event\EventManager.h"
 #include"Event\Factor\GenerateEvent.h"
 
 
@@ -11,16 +12,20 @@ void asseter(const String & dirname);
 
 void Main()
 {
+	// 画像をアセット管理
 	asseter(L"Asset/");
 
-	MyApp sceneManager;
+	// フォントのアセット管理
+	FontAsset::Register(L"20", 20, L"メイリオ");
 
+	// 各クラスの準備
 	Robot::GenerateEvent::setObjectMap();
+	Robot::EventManager::Instance().setAllEvent();
 
+	// シーンの準備
+	MyApp sceneManager;
 	sceneManager.add<Robot::TitleScene>(L"TitleScene");
 	sceneManager.add<Robot::LoadSaveDataScene>(L"LoadSaveDataScene");
-
-	FontAsset::Register(L"20", 20, L"メイリオ");
 
 	while (System::Update())
 	{

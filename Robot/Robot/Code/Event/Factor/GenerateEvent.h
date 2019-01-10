@@ -36,11 +36,8 @@ namespace Robot
 		/// <summary>
 		/// オブジェクトを生成するイベントを生成します。
 		/// </summary>
-		/// <param name="type"> 種類 </param>
-		/// <param name="name"> 名前 </param>
-		/// <param name="x"> x座標 </param>
-		/// <param name="y"> y座標 </param>
-		GenerateEvent(const String & type, const String & name, const String & x, const String & y);
+		/// <param name="arg"> 引数の文字列の配列 </param>
+		GenerateEvent(const std::vector<String> & arg);
 
 	private:
 

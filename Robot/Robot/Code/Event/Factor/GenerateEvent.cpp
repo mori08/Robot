@@ -3,13 +3,29 @@
 #include "../Object/TestEventObject.h"
 
 
+namespace
+{
+	const size_t ARG_SIZE = 4; // コンストラクタで扱う引数のサイズ
+}
+
+
 Robot::GenerateEvent::FuncMap Robot::GenerateEvent::generateObjMap;
 
 
-Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, const String & x, const String & y)
-	: _type(type)
-	, _name(name)
+Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 {
+	if (arg.size() != ARG_SIZE)
+	{
+#ifdef _DEBUG
+		Println(L"Error > GenrateEventで引数のサイズが誤っています");
+#endif // _DEBUG
+
+		_isSuccess = false;
+	}
+
+	_type = arg[0];
+	_type = arg[1];
+
 	if (generateObjMap.find(_type) == generateObjMap.end()) 
 	{
 #ifdef _DEBUG
@@ -20,8 +36,8 @@ Robot::GenerateEvent::GenerateEvent(const String & type, const String & name, co
 		return;
 	}
 
-	Optional<int> optX = FromStringOpt<int>(x, 10);
-	Optional<int> optY = FromStringOpt<int>(y, 10);
+	Optional<int> optX = FromStringOpt<int>(arg[2], 10);
+	Optional<int> optY = FromStringOpt<int>(arg[3], 10);
 
 	if (!optX || !optY)
 	{
