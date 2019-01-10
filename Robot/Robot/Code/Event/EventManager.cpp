@@ -51,24 +51,25 @@ void Robot::EventManager::load(const String & eventName)
 			eventArg.emplace_back(reader.get<String>(loadingEventId, i));
 		}
 
-		String eventName = reader.get<String>(loadingEventId, EVENT_NAME_COLUMN);
+		String eventKey = reader.get<String>(loadingEventId, EVENT_NAME_COLUMN);
 
 		// マップからイベントを探す
-		if (_makeEventMap.find(eventName) == _makeEventMap.end())
+		if (_makeEventMap.find(eventKey) == _makeEventMap.end())
 		{
 			Println(L"Error > 登録されていないイベントです : ", loadingEventId, L"行目");
 			continue;
 		}
 
 		// キューにイベントを追加する
-		_eventQueue.push(_makeEventMap[eventName](eventArg));
+		_eventQueue.push(_makeEventMap[eventKey](eventArg));
 	}
 }
 
 
 void Robot::EventManager::update()
 {
-	if (!_eventQueue.empty() && _eventQueue.front()->isCompleted(*this))
+	// キューの中にイベントが1つだけならスキップ
+	if (_eventQueue.size() > 1 && _eventQueue.front()->isCompleted(*this))
 	{
 		_eventQueue.pop();
 		_eventQueue.front()->checkAndPerform(*this);

@@ -24,12 +24,12 @@ Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 	}
 
 	_type = arg[0];
-	_type = arg[1];
+	_name = arg[1];
 
 	if (generateObjMap.find(_type) == generateObjMap.end()) 
 	{
 #ifdef _DEBUG
-		Println(L"Error > GenrateEventで登録されていないオブジェクトが指定されました。");
+		Println(L"Error > 登録されていないEventObjectがです。", _type);
 #endif // _DEBUG
 
 		_isSuccess = false;
@@ -43,6 +43,7 @@ Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 	{
 #ifdef _DEBUG
 		Println(L"Error > GenrateEventで数値でない座標が指定されました。");
+		Println(L"[x : ", *optX, L"] [y : ", *optY, L"]");
 #endif // _DEBUG
 
 		_isSuccess = false;

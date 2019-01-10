@@ -275,7 +275,9 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Event\LoadEventScene.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
+    <ClInclude Include="Code\Event\EventScene.h" />
     <ClInclude Include="Code\Event\Factor\EventBase.h" />
     <ClInclude Include="Code\Event\Factor\GenerateEvent.h" />
     <ClInclude Include="Code\Event\Factor\InitEvent.h" />
@@ -295,8 +297,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Event\EventManager.cpp" />
+    <ClCompile Include="Code\Event\EventScene.cpp" />
     <ClCompile Include="Code\Event\Factor\EventBase.cpp" />
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
+    <ClCompile Include="Code\Event\LoadEventScene.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />

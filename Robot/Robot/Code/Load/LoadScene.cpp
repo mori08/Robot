@@ -12,6 +12,9 @@ namespace
 }
 
 
+int Robot::LoadScene::_frameCount = 0;
+
+
 Robot::LoadScene::LoadScene()
 	: _isLoading(true)
 {

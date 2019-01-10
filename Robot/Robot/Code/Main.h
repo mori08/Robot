@@ -7,7 +7,11 @@
 
 struct ShareData
 {
-	
+	/*
+	シーン遷移時のデータ
+	EventやGameのデータのファイル名
+	*/
+	String sceneInfo;
 };
 
 

@@ -16,9 +16,9 @@ namespace Robot
 	{
 	private:
 
-		bool _isLoading;  // ロード中のとき true , 終了したとき false
+		bool        _isLoading;  // ロード中のとき true , 終了したとき false
 
-		int  _frameCount; // 経過フレーム数
+		static int  _frameCount; // 経過フレーム数
 
 	protected:
 

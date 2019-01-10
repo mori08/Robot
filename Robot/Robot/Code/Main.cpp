@@ -3,6 +3,8 @@
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
 #include"SaveData\LoadSaveDataScene.h"
+#include"Event\EventScene.h"
+#include"Event\LoadEventScene.h"
 #include"Event\EventManager.h"
 #include"Event\Factor\GenerateEvent.h"
 
@@ -24,8 +26,10 @@ void Main()
 
 	// シーンの準備
 	MyApp sceneManager;
-	sceneManager.add<Robot::TitleScene>(L"TitleScene");
+	sceneManager.add<Robot::TitleScene>       (L"TitleScene");
 	sceneManager.add<Robot::LoadSaveDataScene>(L"LoadSaveDataScene");
+	sceneManager.add<Robot::LoadEventScene>   (L"LoadEventScene");
+	sceneManager.add<Robot::EventScene>       (L"EventScene");
 
 	while (System::Update())
 	{
