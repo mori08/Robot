@@ -19,7 +19,7 @@ namespace Robot
 	public:
 
 		/// <summary>
-		/// 背景を生成するイベントを生成します。
+		/// 背景を生成するイベント
 		/// </summary>
 		/// <param name="arg"> 引数の文字列の配列 </param>
 		BackgroundEvent(const std::vector<String> & arg);

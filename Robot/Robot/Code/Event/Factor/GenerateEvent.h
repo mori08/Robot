@@ -34,7 +34,7 @@ namespace Robot
 	public:
 
 		/// <summary>
-		/// オブジェクトを生成するイベントを生成します。
+		/// オブジェクトを生成するイベント
 		/// </summary>
 		/// <param name="arg"> 引数の文字列の配列 </param>
 		GenerateEvent(const std::vector<String> & arg);

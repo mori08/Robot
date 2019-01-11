@@ -6,6 +6,11 @@
 namespace
 {
 	const size_t ARG_SIZE = 4; // コンストラクタで扱う引数のサイズ
+
+	const size_t TYPE = 0; // オブジェクトの種類のインデックス
+	const size_t NAME = 1; // オブジェクトの名前のインデックス
+	const size_t X    = 2; // X座標のインデックス
+	const size_t Y    = 3; // Y座標のインデックス
 }
 
 
@@ -23,8 +28,8 @@ Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 		_isSuccess = false;
 	}
 
-	_type = arg[0];
-	_name = arg[1];
+	_type = arg[TYPE];
+	_name = arg[NAME];
 
 	if (generateObjMap.find(_type) == generateObjMap.end()) 
 	{
@@ -36,14 +41,14 @@ Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 		return;
 	}
 
-	Optional<int> optX = FromStringOpt<int>(arg[2], 10);
-	Optional<int> optY = FromStringOpt<int>(arg[3], 10);
+	Optional<int> optX = FromStringOpt<int>(arg[X], 10);
+	Optional<int> optY = FromStringOpt<int>(arg[Y], 10);
 
 	if (!optX || !optY)
 	{
 #ifdef _DEBUG
 		Println(L"Error > GenrateEventで数値でない座標が指定されました。");
-		Println(L"[x : ", *optX, L"] [y : ", *optY, L"]");
+		Println(L"[x : ", arg[X], L"] [y : ", arg[Y], L"]");
 #endif // _DEBUG
 
 		_isSuccess = false;

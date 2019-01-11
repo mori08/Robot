@@ -3,13 +3,15 @@
 #include "Factor\InitEvent.h"
 #include "Factor\GenerateEvent.h"
 #include "Factor\BackgroundEvent.h"
+#include "Factor\WaitEvent.h"
 
 
 namespace
 {
-	const int EVENT_NAME_COLUMN = 0;    // CSVファイル中のイベントの名前を記述する列数
-	const int EVENT_INFO_COLUMN = 1;    // CSVファイル中のイベントの詳細を最初に記述する列数
-	const String EVENT_INFO_END = L"/"; // CSVファイル中でイベントの詳細の最後に使う文字列
+	const int EVENT_NAME_COLUMN = 0;      // CSVファイル中のイベントの名前を記述する列数
+	const int EVENT_INFO_COLUMN = 1;      // CSVファイル中のイベントの詳細を最初に記述する列数
+	const String EVENT_INFO_END = L"/";   // CSVファイル中でイベントの詳細の最後に使う文字列
+	const String RUN_EVENT_KEY  = L"Run"; // CSVファイル中で登録済みのイベントを全て実行する命令
 }
 
 
@@ -23,11 +25,27 @@ void Robot::EventManager::setAllEvent()
 {
 	setEvent<GenerateEvent>  (L"Generate");
 	setEvent<BackgroundEvent>(L"Background");
+	setEvent<WaitEvent>      (L"Wait");
+}
+
+
+void Robot::EventManager::runAllEvent()
+{
+	while (!_eventQueue.empty())
+	{
+		_eventQueue.front()->checkAndPerform(*this);
+		_eventQueue.pop();
+	}
+
+	_eventQueue.push(std::make_unique<InitEvent>());
 }
 
 
 void Robot::EventManager::load(const String & eventName)
 {
+	resetFrameCount();
+
+	// キューの中を空にし、初期イベントをpushします
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 	_eventQueue.push(std::make_unique<InitEvent>());
 
@@ -46,6 +64,14 @@ void Robot::EventManager::load(const String & eventName)
 
 	for (; loadingEventId < reader.rows; ++loadingEventId)
 	{
+		String eventKey = reader.get<String>(loadingEventId, EVENT_NAME_COLUMN);
+
+		if (eventKey == RUN_EVENT_KEY)
+		{
+			runAllEvent();
+			continue;
+		}
+
 		// 引数の作成
 		EventArg eventArg;
 		for (int i = EVENT_INFO_COLUMN; ; ++i)
@@ -62,8 +88,6 @@ void Robot::EventManager::load(const String & eventName)
 
 			eventArg.emplace_back(reader.get<String>(loadingEventId, i));
 		}
-
-		String eventKey = reader.get<String>(loadingEventId, EVENT_NAME_COLUMN);
 
 		// マップからイベントを探す
 		if (_makeEventMap.find(eventKey) == _makeEventMap.end())
@@ -83,6 +107,8 @@ void Robot::EventManager::load(const String & eventName)
 
 void Robot::EventManager::update()
 {
+	++_frameCount;
+
 	// キューの中にイベントが1つだけならスキップ
 	if (_eventQueue.size() > 1 && _eventQueue.front()->isCompleted(*this))
 	{

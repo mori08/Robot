@@ -276,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Event\Factor\BackgroundEvent.h" />
+    <ClInclude Include="Code\Event\Factor\WaitEvent.h" />
     <ClInclude Include="Code\Event\LoadEventScene.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
     <ClInclude Include="Code\Event\EventScene.h" />
@@ -302,6 +303,7 @@
     <ClCompile Include="Code\Event\Factor\BackgroundEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\EventBase.cpp" />
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
+    <ClCompile Include="Code\Event\Factor\WaitEvent.cpp" />
     <ClCompile Include="Code\Event\LoadEventScene.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />

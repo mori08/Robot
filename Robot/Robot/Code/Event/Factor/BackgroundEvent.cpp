@@ -4,6 +4,8 @@
 namespace
 {
 	const size_t ARG_SIZE = 1; // コンストラクタで扱う引数のサイズ
+
+	const size_t NAME = 0; // 背景画像の名前のインデックス
 }
 
 
@@ -19,7 +21,7 @@ Robot::BackgroundEvent::BackgroundEvent(const std::vector<String> & arg)
 		_isSuccess = false;
 	}
 	
-	_name = arg[0];
+	_name = arg[NAME];
 }
 
 

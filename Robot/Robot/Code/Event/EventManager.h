@@ -38,6 +38,8 @@ namespace Robot
 
 		String       _backgroundName; // 背景画像の名前
 
+		int          _frameCount;     // 経過フレーム数
+
 	private:
 
 		EventManager();
@@ -82,6 +84,15 @@ namespace Robot
 			);
 		}
 
+		/// <summary>
+		/// Eventのファイルを読み込み中に_eventQueue内の全Eventを実行します。
+		/// </summary>
+		/// <remarks>
+		/// 初期化用に行います。
+		/// isCompleted関数での判定待ちは行いません
+		/// </remarks>
+		void runAllEvent();
+
 	public: // EventSceneで使用する関数
 
 		/// <summary>
@@ -119,6 +130,22 @@ namespace Robot
 		void setBackground(const String & name)
 		{
 			_backgroundName = name;
+		}
+
+		/// <summary>
+		/// 経過フレーム数を取得します。
+		/// </summary>
+		int getFrameCount() const
+		{
+			return _frameCount;
+		}
+
+		/// <summary>
+		/// 経過フレーム数を0にします。
+		/// </summary>
+		void resetFrameCount()
+		{
+			_frameCount = 0;
 		}
 
 	};
