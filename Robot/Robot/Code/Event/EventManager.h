@@ -20,13 +20,15 @@ namespace Robot
 	{
 	private:
 
-		using ObjectList = std::map<String, std::shared_ptr<EventObject>>;
-		using EventQueue = std::queue<std::unique_ptr<EventBase>>;
+		using ObjectPtr  = std::shared_ptr<EventObject>;
+		using ObjectList = std::map<String, ObjectPtr>;
 
 		using EventPtr      = std::unique_ptr<EventBase>;
 		using EventArg      = std::vector<String>;
 		using MakeEventFunc = std::function<EventPtr(const EventArg &)>;
 		using MakeEventMap  = std::unordered_map<String, MakeEventFunc>;
+
+		using EventQueue = std::queue<EventPtr>;
 
 	private:
 
@@ -147,6 +149,18 @@ namespace Robot
 		{
 			_frameCount = 0;
 		}
+
+		/// <summary>
+		/// オブジェクトのポインタを取得します。
+		/// </summary>
+		/// <param name="name"> オブジェクトの名前 </param>
+		Optional<ObjectPtr> getObjectOpt(const String & name);
+
+		/// <summary>
+		/// オブジェクトが待ち状態か示します。
+		/// </summary>
+		/// <param name="name"> オブジェクトの名前 </param>
+		bool isWaitingObject(const String & name) const;
 
 	};
 

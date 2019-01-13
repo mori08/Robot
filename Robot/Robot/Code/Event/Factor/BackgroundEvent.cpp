@@ -19,6 +19,7 @@ Robot::BackgroundEvent::BackgroundEvent(const std::vector<String> & arg)
 #endif // _DEBUG
 
 		_isSuccess = false;
+		return;
 	}
 	
 	_name = arg[NAME];

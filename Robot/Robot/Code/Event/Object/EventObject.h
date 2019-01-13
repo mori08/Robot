@@ -63,7 +63,7 @@ namespace Robot
 		/// <returns> I—¹‚µ‚Ä‚¢‚é‚Æ‚« true , ‚»‚¤‚Å‚È‚¢‚Æ‚« false </returns>
 		bool completeMoveAndAct() const
 		{
-			return _isActing && _moveFrameCount > _spanMoveFrameCount;
+			return !_isActing && _moveFrameCount > _spanMoveFrameCount;
 		}
 
 		/// <summary>

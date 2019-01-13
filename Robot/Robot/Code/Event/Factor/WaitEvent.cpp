@@ -18,6 +18,7 @@ Robot::WaitEvent::WaitEvent(const std::vector<String>& arg)
 #endif // _DEBUG
 
 		_isSuccess = false;
+		return;
 	}
 
 	Optional<int> opt = FromStringOpt<int>(arg[WAIT_FRAME_COUNT]);

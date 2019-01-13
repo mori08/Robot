@@ -26,6 +26,7 @@ Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
 #endif // _DEBUG
 
 		_isSuccess = false;
+		return;
 	}
 
 	_type = arg[TYPE];

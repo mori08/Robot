@@ -1,5 +1,7 @@
-Background,WorkSpace(loose),/,,,
-Generate,TestEventObject,Test1,100,100,/
-Run,/,,,,
-Wait,120,/,,,
-Generate,TestEventObject,Test2,100,200,/
+Background,WorkSpace(loose),.,,,,
+Generate,TestEventObject,Test1,100,100,.,
+Run,.,,,,,
+Wait,120,.,,,,
+Generate,TestEventObject,Test2,100,200,.,
+Move,Test1,FALSE,300,100,60,.
+Move,Test2,TRUE,300,200,60,.
