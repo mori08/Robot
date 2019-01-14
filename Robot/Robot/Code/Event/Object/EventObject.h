@@ -18,11 +18,13 @@ namespace Robot
 
 		using Range = std::pair<Point, Point>;
 
-		using Act = std::shared_ptr<std::function<void()>>;
+		using Act    = std::function<void()>;
 
-		using ActMap = std::unordered_map<String, Act>;
+		using ActPtr = std::shared_ptr<Act>;
 
-		static const Act noAct; // 演出がないとき
+		using ActMap = std::unordered_map<String, ActPtr>;
+
+		static const ActPtr noAct; // 演出がないとき
 
 	protected:
 
@@ -40,7 +42,7 @@ namespace Robot
 
 		int    _actFrameCount;      // 演出時のフレーム数
 
-		Act    _act;                // 演出
+		ActPtr _act;                // 演出
 
 	public:
 
@@ -81,6 +83,13 @@ namespace Robot
 		/// 描画
 		/// </summary>
 		virtual void draw() const = 0;
+
+	protected:
+
+		/// <summary>
+		/// 演出を終了します。
+		/// </summary>
+		void finishAct();
 
 	private:
 

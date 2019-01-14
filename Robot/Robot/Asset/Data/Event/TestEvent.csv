@@ -5,3 +5,9 @@ Wait,120,.,,,,
 Generate,TestEventObject,Test2,100,200,.,
 Move,Test1,FALSE,300,100,60,.
 Move,Test2,TRUE,300,200,60,.
+Act,Test2,Black,.,,,
+Wait,60,.,,,,
+Act,Test1,Black,.,,,
+Act,Test2,White,.,,,
+Wait,60,.,,,,
+Act,Test1,Shake,.,,,

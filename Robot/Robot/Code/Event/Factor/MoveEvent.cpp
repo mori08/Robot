@@ -3,7 +3,7 @@
 
 namespace
 {
-	const size_t ARG_SIZE = 5;
+	const size_t ARG_SIZE = 5; // コンストラクタで扱う引数のサイズ
 
 	const size_t NAME = 0; // オブジェクトの名前のインデックス
 	const size_t WAIT = 1; // 待ちのインデックス
@@ -66,7 +66,7 @@ void Robot::MoveEvent::perform(EventManager & eventManager) const
 	if (!objOpt)
 	{
 #ifdef _DEBUG
-		Println(L"Error > EventObejctでObjectが見つかりませんでした。 : ", _name);
+		Println(L"Error > MoveEventでObjectが見つかりませんでした。 : ", _name);
 #endif // _DEBUG
 		return;
 	}

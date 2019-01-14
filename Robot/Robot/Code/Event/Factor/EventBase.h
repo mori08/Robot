@@ -13,6 +13,9 @@ namespace Robot
 	csvファイルからイベントを読み込んだとき
 	その1行分がこのクラスに対応する
 	イベントの種類ごとにこのクラスの派生クラスを作成する
+
+	このクラスの派生クラスを作るときは
+	EventManagerのsetAllEvent関数に登録する
 	*/
 	class EventBase
 	{

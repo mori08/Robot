@@ -1,7 +1,7 @@
 #include "EventObject.h"
 
 
-const Robot::EventObject::Act Robot::EventObject::noAct(std::make_shared<std::function<void()>>([](){}));
+const Robot::EventObject::ActPtr Robot::EventObject::noAct(std::make_shared<std::function<void()>>([](){}));
 
 
 Robot::EventObject::EventObject(const Point & pos)
@@ -34,7 +34,7 @@ void Robot::EventObject::setAct(const String & actName)
 #ifdef _DEBUG
 	if (_actMap.find(actName) == _actMap.end())
 	{
-		Println(L"Error > setActŠÖ”‚Å“o˜^‚³‚ê‚Ä‚¢‚È‚¢‰‰o‚ªŒÄ‚Î‚ê‚Ü‚µ‚½", actName);
+		Println(L"Error > setActŠÖ”‚Å“o˜^‚³‚ê‚Ä‚¢‚È‚¢‰‰o‚ªŒÄ‚Î‚ê‚Ü‚µ‚½ : ", actName);
 		return;
 	}
 #endif // _DEBUG
@@ -46,15 +46,25 @@ void Robot::EventObject::setAct(const String & actName)
 
 void Robot::EventObject::update()
 {
+	++_moveFrameCount;
+	++_actFrameCount;
+
 	(*_act)();
 
 	moveObject();
 }
 
 
+void Robot::EventObject::finishAct()
+{
+	_act      = noAct;
+	_isActing = false;
+}
+
+
 void Robot::EventObject::moveObject()
 {
-	if (++_moveFrameCount > _spanMoveFrameCount) { return; }
+	if (_moveFrameCount > _spanMoveFrameCount) { return; }
 
 	double rate = 1.0*_moveFrameCount / _spanMoveFrameCount;
 

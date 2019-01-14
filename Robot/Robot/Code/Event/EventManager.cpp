@@ -5,6 +5,7 @@
 #include "Factor\BackgroundEvent.h"
 #include "Factor\WaitEvent.h"
 #include "Factor\MoveEvent.h"
+#include "Factor\ActEvent.h"
 
 
 namespace
@@ -28,6 +29,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<BackgroundEvent>(L"Background");
 	setEvent<WaitEvent>      (L"Wait");
 	setEvent<MoveEvent>      (L"Move");
+	setEvent<ActEvent>       (L"Act");
 }
 
 
@@ -46,6 +48,8 @@ void Robot::EventManager::runAllEvent()
 void Robot::EventManager::load(const String & eventName)
 {
 	resetFrameCount();
+
+	_objectList.clear();
 
 	// キューの中を空にし、初期イベントをpushします
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
