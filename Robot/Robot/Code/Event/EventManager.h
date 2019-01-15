@@ -32,15 +32,21 @@ namespace Robot
 
 	private:
 
-		ObjectList   _objectList;     // EventOjectのリスト
+		ObjectList   _objectList;          // EventOjectのリスト
 
-		EventQueue   _eventQueue;     // EventBaseの派生を取り出すキュー
+		EventQueue   _eventQueue;          // EventBaseの派生を取り出すキュー
 
-		MakeEventMap _makeEventMap;   // イベントを生成する関数の連想配列
+		MakeEventMap _makeEventMap;        // イベントを生成する関数の連想配列
 
-		String       _backgroundName; // 背景画像の名前
+		String       _backgroundName;      // 背景画像の名前
 
-		int          _frameCount;     // 経過フレーム数
+		int          _frameCount;          // 経過フレーム数
+
+		double       _shakeSize;           // 画面の揺れの大きさ
+
+		int          _shakeFrameCount;     // 画面の揺れについての経過フレーム数
+
+		int          _spanShakeFrameCount; // 画面を揺らす期間
 
 	private:
 
@@ -161,6 +167,36 @@ namespace Robot
 		/// </summary>
 		/// <param name="name"> オブジェクトの名前 </param>
 		bool isWaitingObject(const String & name) const;
+
+		/// <summary>
+		/// 画面の揺れを設定します。
+		/// </summary>
+		/// <param name="size"> 揺れの大きさ </param>
+		/// <param name="span"> 揺らす時間 </param>
+		void setShake(double size, int span)
+		{
+			if (size < 0 || span < 0)
+			{
+#ifdef _DEBUG
+				Println(L"Error > setShake関数で不適切な値が指定されました。");
+				Println(L"[size : ", size, L"][span : ", span, L"]");
+#endif // _DEBUG
+				return;
+			}
+
+			_shakeSize           = size;
+			_shakeFrameCount     = 0;
+			_spanShakeFrameCount = span;
+		}
+
+		/// <summary>
+		/// 画面の揺れが終了しているか示します。
+		/// </summary>
+		/// <returns> 終了しているとき true , そうでないとき false </returns>
+		bool isCompleteShaking() const
+		{
+			return _shakeFrameCount > _spanShakeFrameCount;
+		}
 
 	};
 

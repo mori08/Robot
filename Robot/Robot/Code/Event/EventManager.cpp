@@ -6,6 +6,7 @@
 #include "Factor\WaitEvent.h"
 #include "Factor\MoveEvent.h"
 #include "Factor\ActEvent.h"
+#include "Factor\ShakeEvent.h"
 
 
 namespace
@@ -18,6 +19,10 @@ namespace
 
 
 Robot::EventManager::EventManager()
+	: _frameCount(0)
+	, _shakeSize(0)
+	, _shakeFrameCount(0)
+	, _spanShakeFrameCount(0)
 {
 
 }
@@ -30,6 +35,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<WaitEvent>      (L"Wait");
 	setEvent<MoveEvent>      (L"Move");
 	setEvent<ActEvent>       (L"Act");
+	setEvent<ShakeEvent>     (L"Shake");
 }
 
 
@@ -114,6 +120,7 @@ void Robot::EventManager::load(const String & eventName)
 void Robot::EventManager::update()
 {
 	++_frameCount;
+	++_shakeFrameCount;
 
 	// キューの中にイベントが1つだけならスキップ
 	if (_eventQueue.size() > 1 && _eventQueue.front()->isCompleted(*this))
@@ -131,11 +138,19 @@ void Robot::EventManager::update()
 
 void Robot::EventManager::draw() const
 {
-	TextureAsset(_backgroundName).draw();
+	Vec2 s = Vec2::Zero; // 画面の揺れ
+
+	if (_shakeFrameCount < _spanShakeFrameCount)
+	{
+		s.x = Random(-_shakeSize, _shakeSize);
+		s.y = Random(-_shakeSize, _shakeSize);
+	}
+
+	TextureAsset(_backgroundName).draw(s);
 
 	for (const auto & object : _objectList)
 	{
-		object.second->draw();
+		object.second->draw(s);
 	}
 }
 

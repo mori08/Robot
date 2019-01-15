@@ -42,9 +42,9 @@ namespace Robot
 			_actMap[L"Shake"] = std::make_shared<Act>([this]() { shake(); });
 		}
 
-		void draw() const override
+		void draw(const Vec2 & shakeSize) const override
 		{
-			Circle(_pos, radian).draw(color);
+			Circle(_pos + shakeSize, radian).draw(color);
 		}
 
 	private:

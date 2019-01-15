@@ -82,7 +82,7 @@ namespace Robot
 		/// <summary>
 		/// •`‰æ
 		/// </summary>
-		virtual void draw() const = 0;
+		virtual void draw(const Vec2 & shakeSize) const = 0;
 
 	protected:
 
