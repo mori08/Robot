@@ -82,7 +82,8 @@ namespace Robot
 		/// CSVデータをイベントに変換します。
 		/// </summary>
 		/// <param name="eventFileName"> csvファイルの名前 </param>
-		void translateEventData(const String & eventFileName);
+		/// <returns> 変換に成功したとき true , そうでないとき false </returns> 
+		bool translateEventData(const CSVReader & eventFile);
 
 		/// <summary>
 		/// １つのイベントをマップに登録します。
@@ -108,6 +109,17 @@ namespace Robot
 		/// isCompleted関数での判定待ちは行いません
 		/// </remarks>
 		void runAllEvent();
+
+		/// <summary>
+		/// エラーメッセージを出力します。
+		/// </summary>
+		/// <param name="message"> メッセージ </param>
+		void printError(const String & message)
+		{
+#ifdef _DEBUG
+			Println(message);
+#endif // _DEBUG
+		}
 
 	public: // EventSceneで使用する関数
 
