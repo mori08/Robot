@@ -19,15 +19,9 @@ namespace Robot
 
 		int    _span; // 揺れの長さ(フレーム数)
 
-	public:
-
-		/// <summary>
-		/// 画面の揺れを設定するイベント
-		/// </summary>
-		/// <param name="arg"> 引数の文字列の配列 </param>
-		ShakeEvent(const std::vector<String> & arg);
-
 	private:
+
+		bool load(const Info & info, const EventManager & eventManager) override;
 
 		void perform(EventManager & eventManager) const override;
 

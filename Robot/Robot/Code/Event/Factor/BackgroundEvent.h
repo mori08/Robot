@@ -16,15 +16,9 @@ namespace Robot
 
 		String _name; // ”wŒi‰æ‘œ‚Ì–¼‘O
 
-	public:
-
-		/// <summary>
-		/// ”wŒi‚ğ¶¬‚·‚éƒCƒxƒ“ƒg
-		/// </summary>
-		/// <param name="arg"> ˆø”‚Ì•¶š—ñ‚Ì”z—ñ </param>
-		BackgroundEvent(const std::vector<String> & arg);
-
 	private:
+
+		bool load(const Info & info, const EventManager & eventManager)override;
 
 		void perform(EventManager & eventManager) const override;
 

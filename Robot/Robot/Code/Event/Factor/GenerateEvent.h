@@ -31,17 +31,11 @@ namespace Robot
 
 		Point  _pos;  // オブジェクトを生成する座標
 
-	public:
-
-		/// <summary>
-		/// オブジェクトを生成するイベント
-		/// </summary>
-		/// <param name="arg"> 引数の文字列の配列 </param>
-		GenerateEvent(const std::vector<String> & arg);
-
 	private:
 
-		void perform(EventManager & eventManager)const override;
+		bool load(const Info & info, const EventManager & eventManager) override;
+
+		void perform(EventManager & eventManager) const override;
 
 		bool isCompleted(const EventManager &) const override;
 

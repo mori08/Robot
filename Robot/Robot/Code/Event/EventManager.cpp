@@ -39,6 +39,12 @@ void Robot::EventManager::setAllEvent()
 }
 
 
+void Robot::EventManager::translateEventData(const String & eventName)
+{
+
+}
+
+
 void Robot::EventManager::runAllEvent()
 {
 	while (!_eventQueue.empty())
@@ -66,9 +72,8 @@ void Robot::EventManager::load(const String & eventName)
 	if (!reader.isOpened())
 	{
 #ifdef _DEBUG
-		Println(L"Error > Eventを読み込めませんでした。");
+		Println(L"Error > Eventを読み込めませんでした。 : ", eventName);
 #endif // _DEBUG
-
 		return;
 	}
 
@@ -107,7 +112,6 @@ void Robot::EventManager::load(const String & eventName)
 #ifdef _DEBUG
 			Println(L"Error > 登録されていないイベントです : ", loadingEventId+1, L"行目");
 #endif // _DEBUG
-
 			continue;
 		}
 

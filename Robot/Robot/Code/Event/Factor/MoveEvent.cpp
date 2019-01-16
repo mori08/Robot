@@ -3,61 +3,58 @@
 
 namespace
 {
-	const size_t ARG_SIZE = 5; // コンストラクタで扱う引数のサイズ
+	const size_t INFO_SIZE = 5; // 詳細の配列のサイズ
 
 	const size_t NAME = 0; // オブジェクトの名前のインデックス
 	const size_t WAIT = 1; // 待ちのインデックス
 	const size_t X    = 2; // X座標のインデックス
 	const size_t Y    = 3; // Y座標のインデックス
 	const size_t SPAN = 4; // 移動にかかるフレーム数のインデックス
+
+	const int RADIX = 10; // 10進数
 }
 
 
-Robot::MoveEvent::MoveEvent(const std::vector<String>& arg)
+bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager)
 {
-	if (arg.size() != ARG_SIZE)
+	if (info.size() == INFO_SIZE)
 	{
-#ifdef _DEBUG
-		Println(L"Error > MoveEventで引数のサイズが誤っています");
-#endif // _DEBUG
-
-		_isSuccess = false;
-
-		return;
+		printError(L"引数のサイズが違います");
+		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));
+		return false;
 	}
 
-	_name = arg[NAME];
+	_name = info[NAME];
+	if (eventManager.isExistedObject(_name))
+	{
+		printError(L"オブジェクト[" + _name + L"]は存在しません");
+		return false;
+	}
 
-	if (arg[WAIT] == L"TRUE")       { _wait = true; }
-	else if (arg[WAIT] == L"FALSE") { _wait = false; }
+	if      (info[WAIT] == L"TRUE")  { _wait = true; }
+	else if (info[WAIT] == L"FALSE") { _wait = false; }
 	else
 	{
-#ifdef _DEBUG
-		Println(L"Error > MoveEventでboolでない値が指定されました : ", arg[WAIT]);
-#endif // _DEBUG
-		_isSuccess = false;
-		return;
+		printError(L"二値ではない値が指定されました");
+		printError(L"wait : " + info[WAIT]);
+		return false;
 	}
-	
-	Optional<int> optX    = FromStringOpt<int>(arg[X]   , 10);
-	Optional<int> optY    = FromStringOpt<int>(arg[Y]   , 10);
-	Optional<int> optSpan = FromStringOpt<int>(arg[SPAN], 10);
 
+	Optional<int> optX    = FromStringOpt<int>(info[X], 10);
+	Optional<int> optY    = FromStringOpt<int>(info[Y], 10);
+	Optional<int> optSpan = FromStringOpt<int>(info[SPAN], 10);
 	if (!optX || !optY || !optSpan)
 	{
-#ifdef _DEBUG
-		Println(L"Error > GenrateEventで数値でない座標が指定されました。");
-		Println(L"[x : ", arg[X], L"] [y : ", arg[Y], L"]");
-#endif // _DEBUG
-		_isSuccess = false;
+		printError(L"数値ではない値が指定されました");
+		printError(L"");
 		return;
 	}
-
-	_goal.x             = *optX;
-	_goal.y             = *optY;
+	_goal.x = *optX;
+	_goal.y = *optY;
 	_spanMoveFrameCount = *optSpan;
-}
 
+	return _isSuccess = true;
+}
 
 void Robot::MoveEvent::perform(EventManager & eventManager) const
 {

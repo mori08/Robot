@@ -77,6 +77,12 @@ namespace Robot
 	private:
 
 		/// <summary>
+		/// CSVデータをイベントに変換します。
+		/// </summary>
+		/// <param name="eventName"> csvファイルの名前 </param>
+		void translateEventData(const String & eventName);
+
+		/// <summary>
 		/// １つのイベントをマップに登録します。
 		/// </summary>
 		/// <param name="name"> イベント名 </param>
@@ -157,9 +163,31 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// オブジェクトが存在するか示します。
+		/// </summary>
+		/// <param name="name"> オブジェクトの名前 </param>
+		/// <returns> 存在するとき true , そうでないとき false </returns>
+		bool isExistedObject(const String & name) const
+		{
+			return _objectList.find(name) != _objectList.end();
+		}
+
+		/// <summary>
+		/// あるオブジェクトの演出が存在するか示します。
+		/// </summary>
+		/// <param name=""objectName> オブジェクトの名前 </param>
+		/// <param name="actName"> 演出の名前 </param>
+		/// <returns> 存在するとき true , そうでないとき false </returns>
+		bool isExistedAct(const String & objectName, const String & actName) const
+		{
+			return isExistedObject(objectName) && _objectList.find(objectName)->second->isExistedAct(actName);
+		}
+
+		/// <summary>
 		/// オブジェクトのポインタを取得します。
 		/// </summary>
 		/// <param name="name"> オブジェクトの名前 </param>
+		/// <returns> 名前に対応するオブジェクトが存在するときそのポインタ , しないとき none </returns>
 		Optional<ObjectPtr> getObjectOpt(const String & name);
 
 		/// <summary>

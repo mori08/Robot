@@ -1,5 +1,9 @@
 #pragma once
 
+
+#include<Siv3D.hpp>
+
+
 namespace Robot
 {
 	/*
@@ -21,11 +25,23 @@ namespace Robot
 	{
 	protected:
 
+		using Info = std::vector<String>;
+
+	protected:
+
 		bool _isSuccess;
 
 	public:
 
 		EventBase();
+
+		/// <summary>
+		/// 文字列の配列を受け取り、イベントの詳細を決定します。
+		/// </summary>
+		/// <param name="info"> イベントの詳細 </param>
+		/// <param name="eventManager"> EventManager </param>
+		/// <returns> 正しく決定できたとき true , そうでないとき false </returns>
+		virtual bool load(const Info & info, const EventManager & eventManager) = 0;
 
 		/// <summary>
 		/// Eventが正しくロードできているか確認し、実行します。
@@ -47,6 +63,18 @@ namespace Robot
 		/// </summary>
 		/// <param name="eventManager"> EventManager </param>
 		virtual void perform(EventManager & eventManager) const = 0;
+
+		/// <summary>
+		/// エラーメッセージを出力します。
+		/// </summary>
+		/// <param name="message"> エラーの内容 </param>
+		/// <remarks> デバッグモードでのみ出力します。 </remarks>
+		void printError(const String & message)
+		{
+#ifdef _DEBUG
+			Println(message);
+#endif // _DEBUG
+		}
 
 	};
 }

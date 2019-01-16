@@ -19,15 +19,9 @@ namespace Robot
 
 		String _actName;    // 演出の名前
 
-	public:
-
-		/// <summary>
-		/// オブジェクトの演出を実行させるイベント
-		/// </summary>
-		/// <param name="arg"> 引数の文字列の配列 </param>
-		ActEvent(const std::vector<String> & arg);
-
 	private:
+
+		bool load(const Info & info, const EventManager & eventManager) override;
 
 		void perform(EventManager & eventManager) const override;
 

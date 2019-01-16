@@ -3,37 +3,31 @@
 
 namespace
 {
-	const size_t ARG_SIZE = 1; // コンストラクタで扱う引数のサイズ
+	const size_t INFO_SIZE = 1; // 詳細の配列のサイズ
 
 	const size_t WAIT_FRAME_COUNT = 0; // 待機フレーム数のインデックス
 }
 
 
-Robot::WaitEvent::WaitEvent(const std::vector<String>& arg)
+bool Robot::WaitEvent::load(const Info & info, const EventManager & eventManager)
 {
-	if (arg.size() != ARG_SIZE)
+	if (info.size() == INFO_SIZE)
 	{
-#ifdef _DEBUG
-		Println(L"Error > WaitEventで引数のサイズが誤っています");
-#endif // _DEBUG
-
-		_isSuccess = false;
-		return;
+		printError(L"引数のサイズが違います");
+		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));
+		return false;
 	}
 
-	Optional<int> opt = FromStringOpt<int>(arg[WAIT_FRAME_COUNT]);
-
+	Optional<int> opt = FromStringOpt<int>(info[WAIT_FRAME_COUNT]);
 	if (!opt)
 	{
-#ifdef _DEBUG
-		Println(L"Error > WaitEventで数値でない値が指定されました : ", arg[WAIT_FRAME_COUNT]);
-#endif // _DEBUG
-
-		_isSuccess = false;
-		return;
+		printError(L"数値でない値が指定されました");
+		printError(L"span : " + info[WAIT_FRAME_COUNT]);
+		return false;
 	}
-
 	_waitFrameCount = *opt;
+
+	return _isSuccess = true;
 }
 
 

@@ -3,41 +3,37 @@
 
 namespace
 {
-	const size_t ARG_SIZE = 2; // コンストラクタで扱う引数のサイズ
+	const size_t INFO_SIZE = 2; // 詳細の配列のサイズ
 
 	const size_t SHAKE_SIZE = 0; // 画面の揺れの大きさのインデックス
 	const size_t SHAKE_SPAN = 1; // 画面の揺れの長さのインデックス
+
+	const int RADIX = 10;
 }
 
 
-Robot::ShakeEvent::ShakeEvent(const std::vector<String>& arg)
+bool Robot::ShakeEvent::load(const Info & info, const EventManager & eventManager)
 {
-	if (arg.size() != ARG_SIZE)
+	if (info.size() != INFO_SIZE)
 	{
-#ifdef _DEBUG
-		Println(L"Error > ShakeEventで引数のサイズが誤っています");
-#endif // _DEBUG
-		_isSuccess = false;
-		return;
+		printError(L"引数のサイズが違います");
+		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));
+		return false;
 	}
 
-	Optional<double> optSize = FromStringOpt<double>(arg[SHAKE_SIZE], 10);
-	Optional<int>    optSpan = FromStringOpt<int>   (arg[SHAKE_SPAN], 10);
-
+	Optional<double> optSize = FromStringOpt<double>(info[SHAKE_SIZE], RADIX);
+	Optional<int>    optSpan = FromStringOpt<int>   (info[SHAKE_SPAN], RADIX);
 	if (!optSize || !optSpan)
 	{
-#ifdef _DEBUG
-		Println(L"Error > ShakeEventで数値でない座標が指定されました。");
-		Println(L"[shake : ", arg[SHAKE_SIZE], L"] [span : ", arg[SHAKE_SPAN], L"]");
-#endif // _DEBUG
-		_isSuccess = false;
-		return;
+		Println(L"数値でない座標が指定されました。");
+		Println(L"shake : ", info[SHAKE_SIZE], L" , span : ", info[SHAKE_SPAN]);
+		return false;
 	}
-
 	_size = *optSize;
 	_span = *optSpan;
-}
 
+	return _isSuccess = true;
+}
 
 void Robot::ShakeEvent::perform(EventManager & eventManager) const
 {

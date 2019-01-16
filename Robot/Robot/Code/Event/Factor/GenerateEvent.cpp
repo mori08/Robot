@@ -5,59 +5,49 @@
 
 namespace
 {
-	const size_t ARG_SIZE = 4; // コンストラクタで扱う引数のサイズ
+	const size_t INFO_SIZE = 4; // 詳細の配列のサイズ
 
 	const size_t TYPE = 0; // オブジェクトの種類のインデックス
 	const size_t NAME = 1; // オブジェクトの名前のインデックス
 	const size_t X    = 2; // X座標のインデックス
 	const size_t Y    = 3; // Y座標のインデックス
+
+	const int RADIX = 10; // 10進数
 }
 
 
 Robot::GenerateEvent::FuncMap Robot::GenerateEvent::generateObjMap;
 
 
-Robot::GenerateEvent::GenerateEvent(const std::vector<String> & arg)
+bool Robot::GenerateEvent::load(const Info & info, const EventManager & eventManager)
 {
-	if (arg.size() != ARG_SIZE)
+	if (info.size() != INFO_SIZE)
 	{
-#ifdef _DEBUG
-		Println(L"Error > GenrateEventで引数のサイズが誤っています");
-#endif // _DEBUG
-
-		_isSuccess = false;
-		return;
+		printError(L"引数のサイズが違います");
+		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));
+		return false;
 	}
 
-	_type = arg[TYPE];
-	_name = arg[NAME];
-
-	if (generateObjMap.find(_type) == generateObjMap.end()) 
+	_type = info[TYPE];
+	_name = info[NAME];
+	if (generateObjMap.find(_type) == generateObjMap.end())
 	{
-#ifdef _DEBUG
-		Println(L"Error > 登録されていないEventObjectがです。", _type);
-#endif // _DEBUG
-
-		_isSuccess = false;
-		return;
+		printError(L"オブジェクトの型[" + _type + L"]は存在しません");
+		return false;
 	}
 
-	Optional<int> optX = FromStringOpt<int>(arg[X], 10);
-	Optional<int> optY = FromStringOpt<int>(arg[Y], 10);
-
+	Optional<int> optX = FromStringOpt<int>(info[X], RADIX);
+	Optional<int> optY = FromStringOpt<int>(info[Y], RADIX);
 	if (!optX || !optY)
 	{
-#ifdef _DEBUG
-		Println(L"Error > GenrateEventで数値でない座標が指定されました。");
-		Println(L"[x : ", arg[X], L"] [y : ", arg[Y], L"]");
-#endif // _DEBUG
-
-		_isSuccess = false;
-		return;
+		printError(L"数値ではない値が指定されました");
+		printError(L"x : " + info[X] + L" , y : " + info[Y]);
+		return false;
 	}
-
 	_pos.x = *optX;
 	_pos.y = *optY;
+
+	return _isSuccess = true;
 }
 
 

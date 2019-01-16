@@ -25,15 +25,9 @@ namespace Robot
 
 		Point  _goal;               // 移動先
 
-	public:
-
-		/// <summary>
-		/// オブジェクトを移動するイベント
-		/// </summary>
-		/// <param name="arg"> 引数の文字列の配列 </param>
-		MoveEvent(const std::vector<String> & arg);
-
 	private:
+
+		bool load(const Info & info, const EventManager & eventManager) override;
 
 		void perform(EventManager & eventManager) const override;
 

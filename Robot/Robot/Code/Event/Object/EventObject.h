@@ -69,6 +69,16 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// 演出が存在するか示します。
+		/// </summary>
+		/// <param name="name"> 演出の名前 </param>
+		/// <returns> 存在するとき true , そうでないとき false </returns>
+		bool isExistedAct(const String & name) const
+		{
+			return _actMap.find(name) == _actMap.end();
+		}
+
+		/// <summary>
 		/// 演出を登録します。
 		/// </summary>
 		/// <param name="actName"> 演出の名前 </param>

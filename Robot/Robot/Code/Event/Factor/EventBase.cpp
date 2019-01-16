@@ -2,8 +2,8 @@
 
 
 Robot::EventBase::EventBase()
+	: _isSuccess(false)
 {
-	_isSuccess = true;
 }
 
 
