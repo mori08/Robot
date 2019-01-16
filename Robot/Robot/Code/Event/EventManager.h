@@ -24,13 +24,15 @@ namespace Robot
 		using ObjectList = std::map<String, ObjectPtr>;
 
 		using EventPtr      = std::unique_ptr<EventBase>;
-		using EventArg      = std::vector<String>;
-		using MakeEventFunc = std::function<EventPtr(const EventArg &)>;
+		using EventInfo     = std::vector<String>;
+		using MakeEventFunc = std::function<EventPtr()>;
 		using MakeEventMap  = std::unordered_map<String, MakeEventFunc>;
 
 		using EventQueue = std::queue<EventPtr>;
 
 	private:
+
+		bool         _isSuccess;           // ロードが成功しているか
 
 		ObjectList   _objectList;          // EventOjectのリスト
 
@@ -79,8 +81,8 @@ namespace Robot
 		/// <summary>
 		/// CSVデータをイベントに変換します。
 		/// </summary>
-		/// <param name="eventName"> csvファイルの名前 </param>
-		void translateEventData(const String & eventName);
+		/// <param name="eventFileName"> csvファイルの名前 </param>
+		void translateEventData(const String & eventFileName);
 
 		/// <summary>
 		/// １つのイベントをマップに登録します。
@@ -91,9 +93,9 @@ namespace Robot
 		{
 			_makeEventMap[name] = MakeEventFunc
 			(
-				[](const EventArg & eventArg)
+				[]()
 				{
-					return std::move(std::make_unique<eventType>(eventArg));
+					return std::move(std::make_unique<eventType>());
 				}
 			);
 		}
@@ -112,8 +114,8 @@ namespace Robot
 		/// <summary>
 		/// イベントを記述したcsvファイルを読み込む
 		/// </summary>
-		/// <param name="eventName"> csvファイルの名前 </param>
-		void load(const String & eventName);
+		/// <param name="eventFileName"> csvファイルの名前 </param>
+		void load(const String & eventFileName);
 
 		/// <summary>
 		/// 更新

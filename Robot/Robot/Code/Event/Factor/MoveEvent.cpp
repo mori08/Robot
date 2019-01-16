@@ -17,7 +17,7 @@ namespace
 
 bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager)
 {
-	if (info.size() == INFO_SIZE)
+	if (info.size() != INFO_SIZE)
 	{
 		printError(L"引数のサイズが違います");
 		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));
@@ -25,7 +25,7 @@ bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager
 	}
 
 	_name = info[NAME];
-	if (eventManager.isExistedObject(_name))
+	if (!eventManager.isExistedObject(_name))
 	{
 		printError(L"オブジェクト[" + _name + L"]は存在しません");
 		return false;
@@ -46,8 +46,8 @@ bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager
 	if (!optX || !optY || !optSpan)
 	{
 		printError(L"数値ではない値が指定されました");
-		printError(L"");
-		return;
+		printError(L"x : " + info[X] + L" , y : " + info[Y] + L" , span : " + info[SPAN]);
+		return false;
 	}
 	_goal.x = *optX;
 	_goal.y = *optY;

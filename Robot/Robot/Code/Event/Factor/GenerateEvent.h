@@ -10,6 +10,7 @@ namespace Robot
 	GenerateEventクラス
 	EventObjectを生成し
 	EventManagerの_objectListに追加します
+	EventのCSVデータでは必ずRunより前に記述する
 	*/
 	class GenerateEvent : public EventBase
 	{

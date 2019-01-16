@@ -13,7 +13,7 @@ namespace
 {
 	const int EVENT_NAME_COLUMN = 0;      // CSVファイル中のイベントの名前を記述する列数
 	const int EVENT_INFO_COLUMN = 1;      // CSVファイル中のイベントの詳細を最初に記述する列数
-	const String EVENT_INFO_END = L".";   // CSVファイル中でイベントの詳細の最後に使う文字列
+	const String EVENT_INFO_END = L"#";   // CSVファイル中でイベントの詳細の最後に使う文字列
 	const String RUN_EVENT_KEY  = L"Run"; // CSVファイル中で登録済みのイベントを全て実行する命令
 }
 
@@ -39,7 +39,7 @@ void Robot::EventManager::setAllEvent()
 }
 
 
-void Robot::EventManager::translateEventData(const String & eventName)
+void Robot::EventManager::translateEventData(const String & eventFileName)
 {
 
 }
@@ -57,7 +57,7 @@ void Robot::EventManager::runAllEvent()
 }
 
 
-void Robot::EventManager::load(const String & eventName)
+void Robot::EventManager::load(const String & eventFileName)
 {
 	resetFrameCount();
 
@@ -67,12 +67,12 @@ void Robot::EventManager::load(const String & eventName)
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 	_eventQueue.push(std::make_unique<InitEvent>());
 
-	CSVReader reader(eventName);
+	CSVReader reader(eventFileName);
 
 	if (!reader.isOpened())
 	{
 #ifdef _DEBUG
-		Println(L"Error > Eventを読み込めませんでした。 : ", eventName);
+		Println(L"Error > Eventを読み込めませんでした。 : ", eventFileName);
 #endif // _DEBUG
 		return;
 	}
@@ -89,34 +89,45 @@ void Robot::EventManager::load(const String & eventName)
 			continue;
 		}
 
-		// 引数の作成
-		EventArg eventArg;
+		// マップからイベントを探す
+		if (_makeEventMap.find(eventKey) == _makeEventMap.end())
+		{
+#ifdef _DEBUG
+			Println(L"イベント[" + eventKey + L"] は存在しません");
+			Println(L"[", eventFileName, L"] ", loadingEventId + 1, L"行目");
+#endif // _DEBUG
+			continue;
+		}
+
+		EventInfo eventInfo; // イベントの詳細をまとめた配列
 		for (int i = EVENT_INFO_COLUMN; ; ++i)
 		{
 			if (i >= reader.columns(loadingEventId))
 			{
 #ifdef _DEBUG
-				Println(L"Error > Eventに終了文字がありません : ", loadingEventId, L"行目");
+				Println(L"終了文字[", EVENT_INFO_END, L"]がありません");
+				Println(L"[", eventFileName, L"] ", loadingEventId + 1, L"行目");
 #endif // _DEBUG
 				break;
 			}
 
 			if (reader.get<String>(loadingEventId, i) == EVENT_INFO_END) { break; }
 
-			eventArg.emplace_back(reader.get<String>(loadingEventId, i));
+			eventInfo.emplace_back(reader.get<String>(loadingEventId, i));
 		}
 
-		// マップからイベントを探す
-		if (_makeEventMap.find(eventKey) == _makeEventMap.end())
+		EventPtr eventPtr = _makeEventMap[eventKey]();
+
+		if (!eventPtr->load(eventInfo, *this))
 		{
 #ifdef _DEBUG
-			Println(L"Error > 登録されていないイベントです : ", loadingEventId+1, L"行目");
+			Println(L"[", eventFileName, L"] ", loadingEventId + 1, L"行目");
 #endif // _DEBUG
 			continue;
 		}
 
 		// キューにイベントを追加する
-		_eventQueue.push(_makeEventMap[eventKey](eventArg));
+		_eventQueue.push(std::move(eventPtr));
 	}
 }
 

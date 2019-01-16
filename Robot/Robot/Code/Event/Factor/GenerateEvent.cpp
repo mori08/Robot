@@ -19,7 +19,7 @@ namespace
 Robot::GenerateEvent::FuncMap Robot::GenerateEvent::generateObjMap;
 
 
-bool Robot::GenerateEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::GenerateEvent::load(const Info & info, const EventManager &)
 {
 	if (info.size() != INFO_SIZE)
 	{

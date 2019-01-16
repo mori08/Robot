@@ -12,7 +12,7 @@ namespace
 }
 
 
-bool Robot::ShakeEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::ShakeEvent::load(const Info & info, const EventManager &)
 {
 	if (info.size() != INFO_SIZE)
 	{

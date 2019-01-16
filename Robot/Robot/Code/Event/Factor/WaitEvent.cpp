@@ -9,9 +9,9 @@ namespace
 }
 
 
-bool Robot::WaitEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::WaitEvent::load(const Info & info, const EventManager &)
 {
-	if (info.size() == INFO_SIZE)
+	if (info.size() != INFO_SIZE)
 	{
 		printError(L"引数のサイズが違います");
 		printError(L"検出値 : " + ToString(info.size()) + L" , 期待値 : " + ToString(INFO_SIZE));

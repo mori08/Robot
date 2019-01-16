@@ -75,7 +75,7 @@ namespace Robot
 		/// <returns> ‘¶İ‚·‚é‚Æ‚« true , ‚»‚¤‚Å‚È‚¢‚Æ‚« false </returns>
 		bool isExistedAct(const String & name) const
 		{
-			return _actMap.find(name) == _actMap.end();
+			return _actMap.find(name) != _actMap.end();
 		}
 
 		/// <summary>

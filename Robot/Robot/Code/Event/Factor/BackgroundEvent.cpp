@@ -9,7 +9,7 @@ namespace
 }
 
 
-bool Robot::BackgroundEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::BackgroundEvent::load(const Info & info, const EventManager &)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -19,9 +19,9 @@ bool Robot::BackgroundEvent::load(const Info & info, const EventManager & eventM
 	}
 
 	_name = info[NAME];
-	if (TextureAsset::IsRegistered(_name))
+	if (!TextureAsset::IsRegistered(_name))
 	{
-		printError(L"‰æ‘œ[" + _name + L"]‚Í‘¶İ‚µ‚Ü‚·");
+		printError(L"‰æ‘œ[" + _name + L"]‚Í‘¶İ‚µ‚Ü‚¹‚ñ");
 		return false;
 	}
 
