@@ -11,10 +11,11 @@
 
 namespace
 {
-	const int EVENT_NAME_COLUMN = 0;      // CSVファイル中のイベントの名前を記述する列数
-	const int EVENT_INFO_COLUMN = 1;      // CSVファイル中のイベントの詳細を最初に記述する列数
-	const String EVENT_INFO_END = L"#";   // CSVファイル中でイベントの詳細の最後に使う文字列
-	const String RUN_EVENT_KEY  = L"Run"; // CSVファイル中で登録済みのイベントを全て実行する命令
+	const int EVENT_NAME_COLUMN = 0;           // CSVファイル中のイベントの名前を記述する列数
+	const int EVENT_INFO_COLUMN = 1;           // CSVファイル中のイベントの詳細を最初に記述する列数
+	const String EVENT_INFO_END = L"#";        // CSVファイル中でイベントの詳細の最後に使う文字列
+	const String RUN_EVENT_KEY  = L"Run";      // CSVファイル中で登録済みのイベントを全て実行する命令
+	const String FUNC_EVENT_KEY = L"Function"; // CSVファイル中で別CSVファイルのイベントを読み込む命令
 }
 
 
@@ -52,12 +53,29 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 			runAllEvent();
 			continue;
 		}
+		
+		// 別CSVファイルを読み込む
+		if (eventName == FUNC_EVENT_KEY)
+		{
+			String funcFileName = eventFile.get<String>(loadingRow, EVENT_INFO_COLUMN);
+			CSVReader reader(L"Asset/Data/Event/Function/" + funcFileName + L".csv");
+			if (!reader.isOpened())
+			{
+				printError(L"イベント関数ファイル[" + reader.path() + L"] は存在しません");
+				printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
+			}
+			if (!translateEventData(reader))
+			{
+				return false;
+			}
+			continue;
+		}
 
 		// イベントが存在するかを確認
 		if (_makeEventMap.find(eventName) == _makeEventMap.end())
 		{
-			Println(L"イベント[" + eventName + L"] は存在しません");
-			Println(L"[", eventFile.path(), L"] ", loadingRow + 1, L"行目");
+			printError(L"イベント[" + eventName + L"] は存在しません");
+			printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
 			return false;
 		}
 
@@ -113,6 +131,7 @@ void Robot::EventManager::runAllEvent()
 void Robot::EventManager::load(const String & eventFileName)
 {
 	// 初期化を行います
+	_isSuccess = false;
 	resetFrameCount();
 	_objectList.clear();
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
