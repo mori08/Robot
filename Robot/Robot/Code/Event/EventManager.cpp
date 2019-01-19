@@ -136,6 +136,7 @@ void Robot::EventManager::load(const String & eventFileName)
 	_objectList.clear();
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 	_eventQueue.push(std::make_unique<InitEvent>());
+	_textBox.init();
 
 	CSVReader reader(eventFileName);
 	if (!reader.isOpened())
@@ -164,6 +165,8 @@ void Robot::EventManager::update()
 	{
 		object.second->update();
 	}
+
+	_textBox.update();
 }
 
 
@@ -183,6 +186,8 @@ void Robot::EventManager::draw() const
 	{
 		object.second->draw(s);
 	}
+
+	_textBox.draw();
 }
 
 

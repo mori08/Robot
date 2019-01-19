@@ -8,6 +8,8 @@
 
 #include"Factor/EventBase.h"
 
+#include"TextBox.h"
+
 namespace Robot
 {
 	/*
@@ -49,6 +51,8 @@ namespace Robot
 		int          _shakeFrameCount;     // 画面の揺れについての経過フレーム数
 
 		int          _spanShakeFrameCount; // 画面を揺らす期間
+
+		TextBox      _textBox;             // テキストボックス
 
 	private:
 
