@@ -7,6 +7,7 @@
 #include "Factor\MoveEvent.h"
 #include "Factor\ActEvent.h"
 #include "Factor\ShakeEvent.h"
+#include "Factor\TextEvent.h"
 
 
 namespace
@@ -37,6 +38,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<MoveEvent>      (L"Move");
 	setEvent<ActEvent>       (L"Act");
 	setEvent<ShakeEvent>     (L"Shake");
+	setEvent<TextEvent>      (L"Text");
 }
 
 
@@ -136,7 +138,7 @@ void Robot::EventManager::load(const String & eventFileName)
 	_objectList.clear();
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 	_eventQueue.push(std::make_unique<InitEvent>());
-	_textBox.init();
+	_textBox.reset();
 
 	CSVReader reader(eventFileName);
 	if (!reader.isOpened())
@@ -210,6 +212,22 @@ bool Robot::EventManager::isWaitingObject(const String & name) const
 	}
 
 	return _objectList.find(name)->second->completeMoveAndAct();
+}
+
+void Robot::EventManager::setShake(double size, int span)
+{
+	if (size < 0 || span < 0)
+	{
+#ifdef _DEBUG
+		Println(L"Error > setShake関数で不適切な値が指定されました。");
+		Println(L"[size : ", size, L"][span : ", span, L"]");
+#endif // _DEBUG
+		return;
+	}
+
+	_shakeSize           = size;
+	_shakeFrameCount     = 0;
+	_spanShakeFrameCount = span;
 }
 
 

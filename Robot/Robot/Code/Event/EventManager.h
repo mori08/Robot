@@ -219,21 +219,7 @@ namespace Robot
 		/// </summary>
 		/// <param name="size"> 揺れの大きさ </param>
 		/// <param name="span"> 揺らす時間 </param>
-		void setShake(double size, int span)
-		{
-			if (size < 0 || span < 0)
-			{
-#ifdef _DEBUG
-				Println(L"Error > setShake関数で不適切な値が指定されました。");
-				Println(L"[size : ", size, L"][span : ", span, L"]");
-#endif // _DEBUG
-				return;
-			}
-
-			_shakeSize           = size;
-			_shakeFrameCount     = 0;
-			_spanShakeFrameCount = span;
-		}
+		void setShake(double size, int span);
 
 		/// <summary>
 		/// 画面の揺れが終了しているか示します。
@@ -242,6 +228,26 @@ namespace Robot
 		bool isCompleteShaking() const
 		{
 			return _shakeFrameCount > _spanShakeFrameCount;
+		}
+
+		/// <summary>
+		/// テキストボックスを設定します。
+		/// </summary>
+		/// <param name="speakerName"> 話し手の名前 </param>
+		/// <param name="iconName"> アイコンの名前 </param>
+		/// <param name="text"> テキスト </param>
+		void setTextBox(const String & speakerName, const String & iconName, const String & text)
+		{
+			_textBox.set(speakerName, iconName, text);
+		}
+
+		/// <summary>
+		/// テキストボックスが設定可能か示します。
+		/// </summary>
+		/// <returns> 可能なとき true , そうでないとき false </returns>
+		bool isReadyTextBox() const
+		{
+			return _textBox.isReady();
 		}
 
 	};

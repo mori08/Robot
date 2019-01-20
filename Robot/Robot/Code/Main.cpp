@@ -27,6 +27,7 @@ void Main()
 	asseter(L"Asset/");
 
 	// フォントのアセット管理
+	FontAsset::Register(L"15", 15, L"メイリオ");
 	FontAsset::Register(L"20", 20, L"メイリオ");
 
 	// 各クラスの準備

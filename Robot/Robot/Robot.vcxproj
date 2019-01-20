@@ -279,6 +279,7 @@
     <ClInclude Include="Code\Event\Factor\BackgroundEvent.h" />
     <ClInclude Include="Code\Event\Factor\MoveEvent.h" />
     <ClInclude Include="Code\Event\Factor\ShakeEvent.h" />
+    <ClInclude Include="Code\Event\Factor\TextEvent.h" />
     <ClInclude Include="Code\Event\Factor\WaitEvent.h" />
     <ClInclude Include="Code\Event\LoadEventScene.h" />
     <ClInclude Include="Code\Event\EventManager.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\MoveEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\ShakeEvent.cpp" />
+    <ClCompile Include="Code\Event\Factor\TextEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\WaitEvent.cpp" />
     <ClCompile Include="Code\Event\LoadEventScene.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />

@@ -14,13 +14,15 @@ namespace Robot
 	{
 	private:
 		
-		size_t _drawTextLength; // 描画するテキストの長さ
+		bool   _isReady;        // テキストが設定できるか
 
-		String _text;           // 表示するテキスト
+		size_t _drawTextLength; // 描画するテキストの長さ
 
 		String _speakerName;    // 話し手の名前
 
 		String _iconName;       // 表示するアイコンの名前
+
+		String _text;           // 表示するテキスト
 
 	public:
 
@@ -32,10 +34,10 @@ namespace Robot
 		/// <summary>
 		/// 表示するテキストなどの設定
 		/// </summary>
-		/// <param name="text"> 表示するテキスト </param>
 		/// <param name="speakerName"> 話し手の名前 </param>
 		/// <param name="iconName"> 表示するアイコンの名前 </param>
-		void set(const String & text, const String & speakerName, const String & iconName);
+		/// <param name="text"> 表示するテキスト </param>
+		void set(const String & speakerName, const String & iconName, const String & text);
 
 		/// <summary>
 		/// 初期化
@@ -58,7 +60,7 @@ namespace Robot
 		/// <returns> 設定できるとき true , そうでないとき false </returns>
 		bool isReady() const
 		{
-			_drawTextLength >= _text.length;
+			return _isReady;
 		}
 
 	};
