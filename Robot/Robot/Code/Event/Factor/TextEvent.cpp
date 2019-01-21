@@ -3,7 +3,7 @@
 
 namespace
 {
-	const size_t INFO_SIZE = 3;
+	const size_t INFO_SIZE = 3; // 詳細の配列のサイズ
 
 	const size_t SPEAKER_NAME = 0; // 話し手の名前のインデックス
 	const size_t ICON_NAME    = 1; // アイコンの画像の名前のインデックス

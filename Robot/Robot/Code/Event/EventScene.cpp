@@ -12,6 +12,11 @@ void Robot::EventScene::update()
 {
 	EventManager::Instance().update();
 
+	if (EventManager::Instance().isChangeAbleScene(changeSceneName, m_data->sceneInfo))
+	{
+		changeScene(changeSceneName);
+	}
+
 #ifdef _DEBUG
 	if (Input::Key0.clicked)
 	{

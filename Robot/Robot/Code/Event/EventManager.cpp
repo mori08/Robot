@@ -8,6 +8,7 @@
 #include "Factor\ActEvent.h"
 #include "Factor\ShakeEvent.h"
 #include "Factor\TextEvent.h"
+#include "Factor\SceneEvent.h"
 
 
 namespace
@@ -39,6 +40,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<ActEvent>       (L"Act");
 	setEvent<ShakeEvent>     (L"Shake");
 	setEvent<TextEvent>      (L"Text");
+	setEvent<SceneEvent>     (L"Scene");
 }
 
 
@@ -139,6 +141,8 @@ void Robot::EventManager::load(const String & eventFileName)
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 	_eventQueue.push(std::make_unique<InitEvent>());
 	_textBox.reset();
+	_isChangeAbleScene = false;
+	_sceneName = { L"TitleScene",L"" };
 
 	CSVReader reader(eventFileName);
 	if (!reader.isOpened())
@@ -193,6 +197,18 @@ void Robot::EventManager::draw() const
 }
 
 
+bool Robot::EventManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
+{
+	if (_isChangeAbleScene)
+	{
+		sceneName = _sceneName.first;
+		sceneInfo = _sceneName.second;
+	}
+
+	return _isChangeAbleScene;
+}
+
+
 Optional<Robot::EventManager::ObjectPtr> Robot::EventManager::getObjectOpt(const String & name)
 {
 	if (_objectList.find(name) == _objectList.end())
@@ -228,6 +244,13 @@ void Robot::EventManager::setShake(double size, int span)
 	_shakeSize           = size;
 	_shakeFrameCount     = 0;
 	_spanShakeFrameCount = span;
+}
+
+
+void Robot::EventManager::setSceneName(const String & sceneName, const String & sceneInfo)
+{
+	_isChangeAbleScene = true;
+	_sceneName = { sceneName,sceneInfo };
 }
 
 

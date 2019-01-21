@@ -32,6 +32,8 @@ namespace Robot
 
 		using EventQueue = std::queue<EventPtr>;
 
+		using SceneName = std::pair<String, String>;
+
 	private:
 
 		bool         _isSuccess;           // ロードが成功しているか
@@ -53,6 +55,10 @@ namespace Robot
 		int          _spanShakeFrameCount; // 画面を揺らす期間
 
 		TextBox      _textBox;             // テキストボックス
+
+		bool         _isChangeAbleScene;   // シーン遷移可能か
+
+		SceneName    _sceneName;           // { シーン名, 遷移先の補足 }
 
 	private:
 
@@ -142,6 +148,14 @@ namespace Robot
 		/// 描画
 		/// </summary>
 		void draw() const;
+
+		/// <summary>
+		/// シーン遷移先を代入して、シーン遷移が可能か示します。
+		/// </summary>
+		/// <param name="sceneName"> シーンの遷移先 </param>
+		/// <param name="sceneInfo"> 遷移先での補足情報 </param>
+		/// <returns> 遷移可能なとき true , そうでないとき false </returns>
+		bool isChangeAbleScene(String & sceneName, String & sceneInfo) const;
 
 	public: // EventBaseの派生クラスで使用する関数
 
@@ -249,6 +263,13 @@ namespace Robot
 		{
 			return _textBox.isReady();
 		}
+
+		/// <summary>
+		/// シーンの遷移先を設定します。
+		/// </summary>
+		/// <param name="sceneName"> シーンの遷移先 </param>
+		/// <param name="sceneInfo"> 遷移先の補足情報 </param>
+		void setSceneName(const String & sceneName, const String & sceneInfo);
 
 	};
 

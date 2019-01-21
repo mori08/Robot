@@ -513,6 +513,9 @@
     <ClInclude Include="Code\Event\Factor\TextEvent.h">
       <Filter>ヘッダー ファイル\Event\Factor</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\Factor\SceneEvent.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -582,6 +585,9 @@
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
     <ClCompile Include="Code\Event\Factor\TextEvent.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Factor\SceneEvent.cpp">
       <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
   </ItemGroup>
