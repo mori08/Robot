@@ -60,6 +60,8 @@ namespace Robot
 
 		SceneName    _sceneName;           // { シーン名, 遷移先の補足 }
 
+		bool         _shadow;              // 影を付与するか
+
 	private:
 
 		EventManager();
@@ -87,6 +89,11 @@ namespace Robot
 		void setAllEvent();
 
 	private:
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		void init();
 
 		/// <summary>
 		/// CSVデータをイベントに変換します。
@@ -119,6 +126,17 @@ namespace Robot
 		/// isCompleted関数での判定待ちは行いません
 		/// </remarks>
 		void runAllEvent();
+
+		/// <summary>
+		/// 振動のずれを取得します。
+		/// </summary>
+		/// <returns> ずらす座標 </returns>
+		const Vec2 getShakePos() const;
+
+		/// <summary>
+		/// 影を描画します。
+		/// </summary>
+		void drawShadow() const;
 
 		/// <summary>
 		/// エラーメッセージを出力します。
@@ -270,6 +288,14 @@ namespace Robot
 		/// <param name="sceneName"> シーンの遷移先 </param>
 		/// <param name="sceneInfo"> 遷移先の補足情報 </param>
 		void setSceneName(const String & sceneName, const String & sceneInfo);
+
+		/// <summary>
+		/// 影を設定します。
+		/// </summary>
+		void setShadow(bool shadow)
+		{
+			_shadow = shadow;
+		}
 
 	};
 

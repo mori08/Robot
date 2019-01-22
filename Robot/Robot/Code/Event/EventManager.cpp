@@ -9,6 +9,7 @@
 #include "Factor\ShakeEvent.h"
 #include "Factor\TextEvent.h"
 #include "Factor\SceneEvent.h"
+#include "Factor\ShadowEvent.h"
 
 
 namespace
@@ -18,6 +19,25 @@ namespace
 	const String EVENT_INFO_END = L"#";        // CSVファイル中でイベントの詳細の最後に使う文字列
 	const String RUN_EVENT_KEY  = L"Run";      // CSVファイル中で登録済みのイベントを全て実行する命令
 	const String FUNC_EVENT_KEY = L"Function"; // CSVファイル中で別CSVファイルのイベントを読み込む命令
+
+	const Size EVENT_SIZE(640, 320); // テキストボックスを除くイベントのサイズ
+
+	const Color BLACK(15);  // 黒色
+	const Color WHITE(240); // 白色
+
+	const RoundRect SHADOW_SHAPE(50, 50, 540, 220, 100); // 影の形
+
+	const int SHADOW_BLUR = 100; // 影のぼかしの大きさ
+
+	const int SPREAD_BASE = 80; // 影の広がり方の基準
+	const int SPREAD_RAND = 10; // 影の広がり方のずれの頻度
+
+	const int COLOR_BASE  = 245; // 影の色の基準
+	const int COLOR_WIDTH = 3;   // 影の色のずれの大きさ
+	const int COLOR_RAND  = 120; // 影の色のずれの頻度
+
+	const int LINE_RAND  = 30; // 影の線をだす頻度
+	const int LINE_WIDTH = 1;  // 影の線の幅
 }
 
 
@@ -41,6 +61,35 @@ void Robot::EventManager::setAllEvent()
 	setEvent<ShakeEvent>     (L"Shake");
 	setEvent<TextEvent>      (L"Text");
 	setEvent<SceneEvent>     (L"Scene");
+	setEvent<ShadowEvent>    (L"Shadow");
+}
+
+
+void Robot::EventManager::init()
+{
+	// 経過フレームを 0 に戻します
+	resetFrameCount();
+
+	// イベントオブジェクトを全て削除します
+	_objectList.clear();
+
+	// イベントのキューを空にします
+	while (!_eventQueue.empty()) { _eventQueue.pop(); }
+
+	// 空のイベントをキューに入れます
+	_eventQueue.push(std::make_unique<InitEvent>());
+
+	// テキストボックスを初期化します
+	_textBox.reset();
+
+	// シーン遷移を不許可にします
+	_isChangeAbleScene = false;
+
+	// 遷移先をタイトルにします
+	_sceneName = { L"TitleScene",L"" };
+
+	// 影を取り除きます
+	_shadow = false;
 }
 
 
@@ -132,17 +181,42 @@ void Robot::EventManager::runAllEvent()
 }
 
 
+const Vec2 Robot::EventManager::getShakePos() const
+{
+	if (_shakeFrameCount >= _spanShakeFrameCount)
+	{
+		return Vec2::Zero;
+	}
+
+	return Vec2(Random(-_shakeSize, _shakeSize), Random(-_shakeSize, _shakeSize));
+}
+
+
+void Robot::EventManager::drawShadow() const
+{
+	if (!_shadow)
+	{
+		Window::ClientRect().draw(WHITE);
+		return;
+	}
+
+	SHADOW_SHAPE.drawShadow(
+		Vec2::Zero,
+		SHADOW_BLUR,
+		SPREAD_BASE + Random(SPREAD_RAND) / SPREAD_RAND,
+		Color(COLOR_BASE - COLOR_WIDTH*Random(COLOR_BASE) / COLOR_BASE)
+		);
+
+	if (Random(LINE_RAND) == 0)
+	{
+		Rect(0, Random(EVENT_SIZE.y), EVENT_SIZE.x, LINE_WIDTH).draw(BLACK);
+	}
+}
+
+
 void Robot::EventManager::load(const String & eventFileName)
 {
-	// 初期化を行います
-	_isSuccess = false;
-	resetFrameCount();
-	_objectList.clear();
-	while (!_eventQueue.empty()) { _eventQueue.pop(); }
-	_eventQueue.push(std::make_unique<InitEvent>());
-	_textBox.reset();
-	_isChangeAbleScene = false;
-	_sceneName = { L"TitleScene",L"" };
+	init();
 
 	CSVReader reader(eventFileName);
 	if (!reader.isOpened())
@@ -178,13 +252,9 @@ void Robot::EventManager::update()
 
 void Robot::EventManager::draw() const
 {
-	Vec2 s = Vec2::Zero; // 画面の揺れ
+	Vec2 s = getShakePos();
 
-	if (_shakeFrameCount < _spanShakeFrameCount)
-	{
-		s.x = Random(-_shakeSize, _shakeSize);
-		s.y = Random(-_shakeSize, _shakeSize);
-	}
+	drawShadow();
 
 	TextureAsset(_backgroundName).draw(s);
 

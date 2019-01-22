@@ -1,4 +1,5 @@
 Function,TestPrepare,#,,,,
+Shadow,TRUE,#,,,,
 Run,#,,,,,
 Move,Test1,FALSE,300,100,60,#
 Move,Test2,TRUE,300,200,60,#
@@ -10,3 +11,4 @@ Wait,60,#,,,,
 Act,Test1,Shake,#,,,
 Shake,2.5,120,#,,,
 Text,テスト,BoxRobotIcon,マイクテスト。\nマイクテスト。\nマイクテスト。,#,,
+Scene,Title,,#,,,
