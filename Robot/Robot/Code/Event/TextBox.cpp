@@ -16,7 +16,7 @@ namespace
 
 void Robot::TextBox::set(const String & speakerName, const String & iconName, const String & text)
 {
-	_isReady        = true;
+	_isReady        = false;
 	_drawTextLength = 0;
 	_speakerName    = speakerName;
 	_iconName       = iconName;
