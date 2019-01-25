@@ -7,15 +7,15 @@
 namespace Robot
 {
 	/*
-	InitEventクラス
+	StartEventクラス
 	空のイベント
 	キューの最初に入れておく
 	*/
-	class InitEvent : public EventBase
+	class StartEvent : public EventBase
 	{
 	public:
 
-		InitEvent()
+		StartEvent()
 		{
 			_isSuccess = true;
 		}

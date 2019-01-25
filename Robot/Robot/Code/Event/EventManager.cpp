@@ -1,6 +1,6 @@
 #include "EventManager.h"
 
-#include "Factor\InitEvent.h"
+#include "Factor\StartEvent.h"
 #include "Factor\GenerateEvent.h"
 #include "Factor\BackgroundEvent.h"
 #include "Factor\WaitEvent.h"
@@ -77,7 +77,7 @@ void Robot::EventManager::init()
 	while (!_eventQueue.empty()) { _eventQueue.pop(); }
 
 	// 空のイベントをキューに入れます
-	_eventQueue.push(std::make_unique<InitEvent>());
+	_eventQueue.push(std::make_unique<StartEvent>());
 
 	// テキストボックスを初期化します
 	_textBox.reset();
@@ -177,7 +177,7 @@ void Robot::EventManager::runAllEvent()
 		_eventQueue.pop();
 	}
 
-	_eventQueue.push(std::make_unique<InitEvent>());
+	_eventQueue.push(std::make_unique<StartEvent>());
 }
 
 
