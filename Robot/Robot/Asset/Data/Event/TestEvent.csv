@@ -1,6 +1,6 @@
-Function,TestPrepare,#,,,,
 Shadow,TRUE,#,,,,
-Run,#,,,,,
+Function,TestPrepare,#,,,,
+Text,テスト,BoxRobotIcon,…。,#,,
 Move,Test1,FALSE,300,100,60,#
 Move,Test2,TRUE,300,200,60,#
 Act,Test2,Black,#,,,
