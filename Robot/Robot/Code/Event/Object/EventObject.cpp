@@ -29,6 +29,20 @@ void Robot::EventObject::setLinearMove(const Point & goal, int spanFrameCount)
 }
 
 
+void Robot::EventObject::init(const String & initName)
+{
+#ifdef _DEBUG
+	if (isExistedInit(initName))
+	{
+		Println(L"Error > setInitŠÖ”‚Å“o˜^‚³‚ê‚Ä‚¢‚È‚¢ŠÖ”‚ªŒÄ‚Î‚ê‚Ü‚µ‚½ : ", initName);
+		return;
+	}
+#endif // _DEBUG
+
+	(*_initMap[initName])();
+}
+
+
 void Robot::EventObject::setAct(const String & actName)
 {
 #ifdef _DEBUG

@@ -10,6 +10,7 @@
 #include "Factor\TextEvent.h"
 #include "Factor\SceneEvent.h"
 #include "Factor\ShadowEvent.h"
+#include "Factor\InitEvent.h"
 
 
 namespace
@@ -62,6 +63,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<TextEvent>      (L"Text");
 	setEvent<SceneEvent>     (L"Scene");
 	setEvent<ShadowEvent>    (L"Shadow");
+	setEvent<InitEvent>      (L"Init");
 }
 
 

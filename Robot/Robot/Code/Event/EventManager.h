@@ -234,6 +234,17 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// あるオブジェクトの初期化関数が存在するか示します。
+		/// </summary>
+		/// <param name=""objectName> オブジェクトの名前 </param>
+		/// <param name="initName"> 初期化関数の名前 </param>
+		/// <returns> 存在するとき true , そうでないとき false </returns>
+		bool isExistedInit(const String & objectName, const String & initName) const
+		{
+			return isExistedObject(objectName) && _objectList.find(objectName)->second->isExistedInit(initName);
+		}
+
+		/// <summary>
 		/// オブジェクトのポインタを取得します。
 		/// </summary>
 		/// <param name="name"> オブジェクトの名前 </param>

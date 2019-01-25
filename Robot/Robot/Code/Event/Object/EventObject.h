@@ -36,6 +36,8 @@ namespace Robot
 
 		int    _spanMoveFrameCount; // 移動にかかるのフレーム数
 
+		ActMap _initMap;            // オブジェクトの初期化用のマップ
+
 		ActMap _actMap;             // 演出用の関数のマップ
 
 		bool   _isActing;           // 演出時に true , そうでないとき false
@@ -69,6 +71,16 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// 初期化関数が存在するか示します。
+		/// </summary>
+		/// <param name="name"> 初期化関数の名前 </param>
+		/// <returns> 存在するとき true , そうでないとき false </returns>
+		bool isExistedInit(const String & name) const
+		{
+			return _initMap.find(name) != _initMap.end();
+		}
+
+		/// <summary>
 		/// 演出が存在するか示します。
 		/// </summary>
 		/// <param name="name"> 演出の名前 </param>
@@ -77,6 +89,12 @@ namespace Robot
 		{
 			return _actMap.find(name) != _actMap.end();
 		}
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		/// <param name="initName"> 初期化関数の名前 </param>
+		void init(const String & initName);
 
 		/// <summary>
 		/// 演出を登録します。
