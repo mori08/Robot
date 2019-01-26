@@ -13,7 +13,7 @@ void Robot::LoadSaveDataScene::complete()
 	{
 	case SaveDataManager::LoadResult::NEW_GAME:
 	case SaveDataManager::LoadResult::CONTINUE:
-		m_data->sceneInfo = L"TestEvent";
+		m_data->sceneInfo = L"Event0";
 		changeScene(L"LoadEventScene");
 		break;
 	case SaveDataManager::LoadResult::ERROR:

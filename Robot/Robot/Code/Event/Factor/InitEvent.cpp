@@ -6,7 +6,7 @@ namespace
 	const size_t INFO_SIZE = 2; // 詳細の配列のサイズ
 
 	const size_t OBJECT_NAME = 0; // オブジェクトの名前のインデックス
-	const size_t INIT_NAME = 1;   // 初期化関数の名前のインデックス
+	const size_t INIT_NAME   = 1; // 初期化関数の名前のインデックス
 }
 
 
@@ -27,7 +27,7 @@ bool Robot::InitEvent::load(const Info & info, const EventManager & eventManager
 	}
 
 	_initName = info[INIT_NAME];
-	if (!eventManager.isExistedAct(_objectName, _initName))
+	if (!eventManager.isExistedInit(_objectName, _initName))
 	{
 		printError(L"初期化関数[" + _initName + L"]は存在しません");
 		return false;

@@ -116,7 +116,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 			CSVReader reader(L"Asset/Data/Event/Function/" + funcFileName + L".csv");
 			if (!reader.isOpened())
 			{
-				printError(L"イベント関数ファイル[" + reader.path() + L"] は存在しません");
+				printError(L"イベント関数ファイル[" + FileSystem::BaseName(reader.path()) + L"] は存在しません");
 				printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
 			}
 			if (!translateEventData(reader))
@@ -130,7 +130,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 		if (_makeEventMap.find(eventName) == _makeEventMap.end())
 		{
 			printError(L"イベント[" + eventName + L"] は存在しません");
-			printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
+			printError(L"[" + FileSystem::BaseName(eventFile.path()) + L"] " + ToString(loadingRow + 1) + L"行目");
 			return false;
 		}
 
@@ -142,7 +142,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 			if (column >= eventFile.columns(loadingRow))
 			{
 				printError(L"終了文字[" + EVENT_INFO_END + L"]がありません");
-				printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
+				printError(L"[" + FileSystem::BaseName(eventFile.path()) + L"] " + ToString(loadingRow + 1) + L"行目");
 				return false;
 			}
 
@@ -159,7 +159,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 		// イベントの詳細を読み込みます
 		if (!eventPtr->load(eventInfo, *this))
 		{
-			printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
+			printError(L"[" + FileSystem::BaseName(eventFile.path()) + L"] " + ToString(loadingRow + 1) + L"行目");
 			return false;
 		}
 

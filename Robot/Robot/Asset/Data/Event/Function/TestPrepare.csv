@@ -1,4 +1,4 @@
-Background,WorkSpace(loose),#,,,
+Background,WorkSpace(reduction),#,,,
 Generate,TestEventObject,Test1,100,100,#
 Generate,TestEventObject,Test2,100,200,#
 Run,#,,,,

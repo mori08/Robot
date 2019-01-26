@@ -1,0 +1,5 @@
+Background,WorkSpace(reduction),#,,,
+Generate,BoxRobot,BoxRobot,65,210,#
+Run,#,,,,
+Init,BoxRobot,Reduction,#,,
+Run,#,,,,

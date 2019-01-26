@@ -14,16 +14,17 @@ namespace Robot
 	{
 	private:
 		
-		Size _textureSize;   // ロボット一台分の画像の大きさ
+		Point  _texturePos;  // 描画する画像の番号
+		Size   _textureSize; // ロボット一台分の画像の大きさ
 		String _textureName; // 画像の名前
 
-	private:
+	public:
 
 		BoxRobotObject(const Point & pos);
 
-		void draw(const Vec2 & shakeSize) const override;
-
 	private:
+
+		void draw(const Vec2 & shakeSize) const override;
 
 		/// <summary>
 		/// 縮小版の画像を使用します。

@@ -483,9 +483,6 @@
     <ClInclude Include="Code\SaveData\LoadSaveDataScene.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Event\Factor\InitEvent.h">
-      <Filter>ヘッダー ファイル\Event\Factor</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Event\EventScene.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
@@ -521,6 +518,12 @@
     </ClInclude>
     <ClInclude Include="Code\Event\Object\BoxRobotObject.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Event\Factor\StartEvent.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Event\Factor\InitEvent.h">
+      <Filter>ヘッダー ファイル\Event\Factor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -601,6 +604,9 @@
     </ClCompile>
     <ClCompile Include="Code\Event\Object\BoxRobotObject.cpp">
       <Filter>ソース ファイル\Event\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Factor\InitEvent.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

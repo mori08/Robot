@@ -1,6 +1,7 @@
 #include "GenerateEvent.h"
 
 #include "../Object/TestEventObject.h"
+#include "../Object/BoxRobotObject.h"
 
 
 namespace
@@ -66,4 +67,5 @@ bool Robot::GenerateEvent::isCompleted(const EventManager &) const
 void Robot::GenerateEvent::setObjectMap()
 {
 	makeGenerateFunc<TestEventObject>(L"TestEventObject");
+	makeGenerateFunc<BoxRobotObject> (L"BoxRobot");
 }

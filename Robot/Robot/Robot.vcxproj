@@ -277,6 +277,7 @@
   <ItemGroup>
     <ClInclude Include="Code\Event\Factor\ActEvent.h" />
     <ClInclude Include="Code\Event\Factor\BackgroundEvent.h" />
+    <ClInclude Include="Code\Event\Factor\InitEvent.h" />
     <ClInclude Include="Code\Event\Factor\MoveEvent.h" />
     <ClInclude Include="Code\Event\Factor\SceneEvent.h" />
     <ClInclude Include="Code\Event\Factor\ShadowEvent.h" />
@@ -288,7 +289,7 @@
     <ClInclude Include="Code\Event\EventScene.h" />
     <ClInclude Include="Code\Event\Factor\EventBase.h" />
     <ClInclude Include="Code\Event\Factor\GenerateEvent.h" />
-    <ClInclude Include="Code\Event\Factor\InitEvent.h" />
+    <ClInclude Include="Code\Event\Factor\StartEvent.h" />
     <ClInclude Include="Code\Event\Object\BoxRobotObject.h" />
     <ClInclude Include="Code\Event\Object\EventObject.h" />
     <ClInclude Include="Code\Event\Object\TestEventObject.h" />
@@ -312,6 +313,7 @@
     <ClCompile Include="Code\Event\Factor\BackgroundEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\EventBase.cpp" />
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
+    <ClCompile Include="Code\Event\Factor\InitEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\MoveEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\SceneEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\ShadowEvent.cpp" />
