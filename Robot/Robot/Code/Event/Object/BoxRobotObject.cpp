@@ -18,7 +18,6 @@ Robot::BoxRobotObject::BoxRobotObject(const Point & pos)
 	, _textureSize(REDUCTION_TEXTURE_SIZE)
 	, _textureName(REDUCTION_TEXTURE_NAME)
 	, _texturePos(Point::Zero)
-	, _frameCount(0)
 {
 	_initMap[L"Reduction"] = std::make_shared<Act>([this]() { reduction(); });
 	_initMap[L"Enlarged"]  = std::make_shared<Act>([this]() { enlarged(); });

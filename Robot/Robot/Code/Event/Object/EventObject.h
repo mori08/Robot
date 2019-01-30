@@ -49,7 +49,7 @@ namespace Robot
 	public:
 
 		/// <summary>
-		/// EventObjectを生成します。
+		/// イベントオブジェクト
 		/// </summary>
 		/// <param name="pos"> 座標 </param>
 		EventObject(const Point & pos);
@@ -110,6 +110,7 @@ namespace Robot
 		/// <summary>
 		/// 描画
 		/// </summary>
+		/// <param name="shakeSize"> 振動の大きさ </param>
 		virtual void draw(const Vec2 & shakeSize) const = 0;
 
 	protected:

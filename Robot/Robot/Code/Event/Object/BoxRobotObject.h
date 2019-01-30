@@ -18,8 +18,6 @@ namespace Robot
 		Size   _textureSize; // ロボット一台分の画像の大きさ
 		String _textureName; // 画像の名前
 
-		int    _frameCount;  // 経過フレーム数
-
 	public:
 
 		BoxRobotObject(const Point & pos);
