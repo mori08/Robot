@@ -18,6 +18,8 @@ namespace Robot
 		Size   _textureSize; // ロボット一台分の画像の大きさ
 		String _textureName; // 画像の名前
 
+		int    _frameCount;  // 経過フレーム数
+
 	public:
 
 		BoxRobotObject(const Point & pos);
@@ -35,6 +37,13 @@ namespace Robot
 		/// 拡大版の画像を使用します。
 		/// </summary>
 		void enlarged();
+
+		/// <summary>
+		/// 画像を切り替える演出を行います。
+		/// </summary>
+		/// <param name="span"> 画像を切り替えるフレーム間隔 </param>
+		/// <param name="texturePosList"> 画像の座標のリスト </param>
+		void changeTextureAct(int span, const std::vector<Point> & texturePosList);
 
 	};
 

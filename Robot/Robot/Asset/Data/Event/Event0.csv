@@ -1,1 +1,9 @@
-Function,PrepareReductionWorkSpace,#
+Function,PrepareReductionWorkSpace,#,
+Shake,1,30,#
+Shake,0.5,15,#
+Wait,60,#,
+Shake,1,30,#
+Shake,0.5,15,#
+Wait,60,#,
+Act,BoxRobot,Blink,#
+Act,BoxRobot,Blink,#
