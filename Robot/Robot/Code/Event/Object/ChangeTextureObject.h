@@ -39,25 +39,25 @@ namespace Robot
 		/// <summary>
 		/// 表示する画像の名前を変更します。
 		/// </summary>
-		/// <param name="name"> 画像の名前 </param>
 		/// <param name="size"> 一つ分の画像の大きさ </param>
-		void changeTextureName(const String & name, const Size & size);
+		/// <param name="name"> 画像の名前 </param>
+		void changeTextureName(const Size & size, const String & name);
+
+		void setTextureUpdating(const size_t & span, const std::vector<Point> & texturePosList);
 
 		/// <summary>
 		/// 画像を常に変更し続ける設定を行います。
 		/// </summary>
 		/// <param name="span"> 画像を切り替えるフレームの間隔 </param>
 		/// <param name="texturePosList"> 画像の番号のリスト </param>
-		void setUpdateTexture(size_t span, const std::vector<Point> & texturePosList);
+		void updateTexture(const size_t & span, const std::vector<Point> & texturePosList);
 
 		/// <summary>
 		/// 画像を切り替える演出を行います。
 		/// </summary>
 		/// <param name="span"> 画像を切り替えるフレームの間隔 </param>
 		/// <param name="texturePosList"> 画像の番号のリスト </param>
-		void changeTextureAct(size_t, const std::vector<Point> & texturePosList);
-
-
+		void changeTextureAct(const size_t & span, const std::vector<Point> & texturePosList);
 
 	};
 }

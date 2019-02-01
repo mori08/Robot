@@ -27,6 +27,18 @@ void Robot::EventScene::update()
 }
 
 
+void Robot::EventScene::updateFadeIn(double)
+{
+	EventManager::Instance().updateEventObject();
+}
+
+
+void Robot::EventScene::updateFadeOut(double)
+{
+	EventManager::Instance().updateEventObject();
+}
+
+
 void Robot::EventScene::draw() const
 {
 	EventManager::Instance().draw();

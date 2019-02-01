@@ -16,13 +16,13 @@ namespace Robot
 	{
 	protected:
 
-		using Range = std::pair<Point, Point>;
+		using Range = std::pair<Point, Point>;             // 移動の視点と終点
 
-		using Act    = std::function<void()>;
+		using Act    = std::function<void()>;              // 演出用関数
 
-		using ActPtr = std::shared_ptr<Act>;
+		using ActPtr = std::shared_ptr<Act>;               // 演出用関数のポインタ
 
-		using ActMap = std::unordered_map<String, ActPtr>;
+		using ActMap = std::unordered_map<String, ActPtr>; // 演出用関数のポインタのマップ
 
 		static const ActPtr noAct; // 演出がないとき
 

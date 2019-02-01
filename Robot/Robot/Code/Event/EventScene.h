@@ -23,6 +23,10 @@ namespace Robot
 
 		void update() override;
 
+		void updateFadeIn(double) override;
+
+		void updateFadeOut(double) override;
+
 		void draw() const override;
 
 	};

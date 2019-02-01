@@ -243,12 +243,18 @@ void Robot::EventManager::update()
 		_eventQueue.front()->checkAndPerform(*this);
 	}
 
+	updateEventObject();
+
+	_textBox.update();
+}
+
+
+void Robot::EventManager::updateEventObject()
+{
 	for (auto & object : _objectList)
 	{
 		object.second->update();
 	}
-
-	_textBox.update();
 }
 
 

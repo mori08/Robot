@@ -163,6 +163,11 @@ namespace Robot
 		void update();
 
 		/// <summary>
+		/// イベントオブジェクトの更新
+		/// </summary>
+		void updateEventObject();
+
+		/// <summary>
 		/// 描画
 		/// </summary>
 		void draw() const;
