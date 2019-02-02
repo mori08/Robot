@@ -118,6 +118,9 @@
     <Filter Include="ヘッダー ファイル\Load">
       <UniqueIdentifier>{8cb0ef81-5067-45a4-b48b-e274d5a4200a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Game">
+      <UniqueIdentifier>{a001068f-c091-45fe-8126-326ff363c1a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -527,6 +530,9 @@
     </ClInclude>
     <ClInclude Include="Code\Event\Object\ChangeTextureObject.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\GameManager.h">
+      <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
