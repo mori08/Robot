@@ -121,6 +121,9 @@
     <Filter Include="ヘッダー ファイル\Game">
       <UniqueIdentifier>{a001068f-c091-45fe-8126-326ff363c1a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{7512fc86-9873-423a-93c3-8fdf08f787a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -534,6 +537,9 @@
     <ClInclude Include="Code\Game\GameManager.h">
       <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\StageData.h">
+      <Filter>ヘッダー ファイル\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -619,6 +625,9 @@
     </ClCompile>
     <ClCompile Include="Code\Event\Object\ChangeTextureObject.cpp">
       <Filter>ソース ファイル\Event\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\StageData.cpp">
+      <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
