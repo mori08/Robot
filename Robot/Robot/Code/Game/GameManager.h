@@ -1,6 +1,10 @@
 #pragma once
 
 
+#include <Siv3D.hpp>
+#include "StageData.h"
+
+
 namespace Robot
 {
 	/*
@@ -12,6 +16,8 @@ namespace Robot
 	class GameManager
 	{
 	private:
+
+		StageData _stageData; // ステージデータ
 
 	private:
 
@@ -33,6 +39,28 @@ namespace Robot
 			static GameManager gameManager;
 			return gameManager;
 		}
+
+	private:
+
+		/// <summary>
+		/// エラーメッセージを出力します。
+		/// </summary>
+		/// <param name="message"> メッセージ </param>
+		static void printError(const String & message)
+		{
+#ifdef _DEBUG
+			Println(message);
+#endif // _DEBUG
+		}
+
+	public: // GameSceneで使用する関数
+
+		/// <summary>
+		/// ゲームデータを記述したcsvファイルを読み込みます。
+		/// </summary>
+		/// <param name="gameDataFileName"> csvファイルの名前 </param>
+		void load(const String & gameDataFileName);
+
 
 	};
 }

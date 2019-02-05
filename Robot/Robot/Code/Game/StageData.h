@@ -8,7 +8,7 @@ namespace Robot
 {
 	class StageData
 	{
-	private:
+	public:
 
 		static const int WIDTH  = 16;           // ステージの幅(マス)
 		static const int HEIGHT = 12;           // ステージの高さ(マス)
@@ -99,10 +99,11 @@ namespace Robot
 		/// <summary>
 		/// 壁を設置します。
 		/// </summary>
-		/// <param name="pos"> 座標 </param>
-		void setWall(const Point & pos)
+		/// <param name="x"> x座標 </param>
+		/// <param name="y"> y座標 </param>
+		void setWall(int x, int y)
 		{
-			_terrain[pointToInt(pos)] = true;
+			_terrain[pointToInt(Point(x, y))] = true;
 		}
 
 		/// <summary>

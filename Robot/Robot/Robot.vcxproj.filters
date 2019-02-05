@@ -629,5 +629,8 @@
     <ClCompile Include="Code\Game\StageData.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Game\GameManager.cpp">
+      <Filter>ソース ファイル\Game</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

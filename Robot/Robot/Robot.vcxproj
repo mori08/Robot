@@ -328,6 +328,7 @@
     <ClCompile Include="Code\Event\Object\ChangeTextureObject.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />
     <ClCompile Include="Code\Event\TextBox.cpp" />
+    <ClCompile Include="Code\Game\GameManager.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />
