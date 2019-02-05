@@ -29,7 +29,20 @@ void Robot::GameManager::load(const String & gameDataFileName)
 		}
 		for (int x = 0; x < StageData::WIDTH; ++x)
 		{
-			_stageData.setWall(x, y);
+			if (gameData.get<int>(y, x) == 1)
+			{
+				_stageData.setWall(x, y);
+			}
 		}
 	}
+
+	// åoòHíTçı
+	_stageData.searchPath();
+}
+
+
+void Robot::GameManager::draw() const
+{
+	Window::ClientRect().draw(Palette::MyWhite);
+	_stageData.draw();
 }

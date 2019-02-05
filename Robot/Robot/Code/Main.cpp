@@ -7,6 +7,8 @@
 #include"Event\LoadEventScene.h"
 #include"Event\EventManager.h"
 #include"Event\Factor\GenerateEvent.h"
+#include"Game\GameScene.h"
+#include"Game\LoadGameScene.h"
 
 
 namespace
@@ -40,6 +42,8 @@ void Main()
 	sceneManager.add<Robot::LoadSaveDataScene>(L"LoadSaveDataScene");
 	sceneManager.add<Robot::LoadEventScene>   (L"LoadEventScene");
 	sceneManager.add<Robot::EventScene>       (L"EventScene");
+	sceneManager.add<Robot::GameScene>        (L"GameScene");
+	sceneManager.add<Robot::LoadGameScene>    (L"LoadGameScene");
 
 	while (System::Update())
 	{

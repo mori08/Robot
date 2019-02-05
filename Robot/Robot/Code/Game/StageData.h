@@ -111,6 +111,11 @@ namespace Robot
 		/// </summary>
 		void searchPath();
 
+		/// <summary>
+		/// ステージの描画
+		/// </summary>
+		void draw() const;
+
 	private:
 
 		/// <summary>

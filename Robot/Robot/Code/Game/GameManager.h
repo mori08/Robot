@@ -21,7 +21,10 @@ namespace Robot
 
 	private:
 
-		GameManager();
+		GameManager()
+		{
+
+		}
 
 		GameManager(const GameManager &)             = default;
 		GameManager & operator=(const GameManager &) = default;
@@ -61,6 +64,10 @@ namespace Robot
 		/// <param name="gameDataFileName"> csvファイルの名前 </param>
 		void load(const String & gameDataFileName);
 
+		/// <summary>
+		/// 描画
+		/// </summary>
+		void draw() const;
 
 	};
 }

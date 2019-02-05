@@ -296,6 +296,8 @@
     <ClInclude Include="Code\Event\Object\TestEventObject.h" />
     <ClInclude Include="Code\Event\TextBox.h" />
     <ClInclude Include="Code\Game\GameManager.h" />
+    <ClInclude Include="Code\Game\GameScene.h" />
+    <ClInclude Include="Code\Game\LoadGameScene.h" />
     <ClInclude Include="Code\Game\StageData.h" />
     <ClInclude Include="Code\Input\Button.h" />
     <ClInclude Include="Code\Input\InputManager.h" />
@@ -329,6 +331,8 @@
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />
     <ClCompile Include="Code\Event\TextBox.cpp" />
     <ClCompile Include="Code\Game\GameManager.cpp" />
+    <ClCompile Include="Code\Game\GameScene.cpp" />
+    <ClCompile Include="Code\Game\LoadGameScene.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />

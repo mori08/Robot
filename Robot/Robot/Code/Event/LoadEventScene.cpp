@@ -1,11 +1,5 @@
 #include "LoadEventScene.h"
-#include"EventManager.h"
-
-
-namespace
-{
-	const int TRANSITINO_TIME_MILLISEC = 2000;
-}
+#include "EventManager.h"
 
 
 void Robot::LoadEventScene::load()
@@ -16,5 +10,5 @@ void Robot::LoadEventScene::load()
 
 void Robot::LoadEventScene::complete()
 {
-	changeScene(L"EventScene", TRANSITINO_TIME_MILLISEC);
+	changeScene(L"EventScene");
 }

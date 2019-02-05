@@ -3,8 +3,8 @@
 
 namespace
 {
-	const int SIDE_COST     = 1;       // 縦・横方向のコスト
-	const int SLANTING_COST = Sqrt(2); // 斜め方向のコスト
+	const double SIDE_COST     = 1;       // 縦・横方向のコスト
+	const double SLANTING_COST = Sqrt(2); // 斜め方向のコスト
 }
 
 
@@ -54,6 +54,17 @@ void Robot::StageData::searchPath()
 				}
 			}
 		}
+	}
+}
+
+
+void Robot::StageData::draw() const
+{
+	for (int i = 0; i < N; ++i)
+	{
+		if (isWalkAble(i)) continue;
+
+		Rect(SIZE*intToPoint(i), SIZE).draw(Palette::MyBlack);
 	}
 }
 
