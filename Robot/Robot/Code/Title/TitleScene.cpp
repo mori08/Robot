@@ -4,10 +4,6 @@
 
 namespace
 {
-	const Color BLACK(15);  // 黒
-	const Color GRAY(120);  // 灰
-	const Color WHITE(240); // 白
-
 	const String ENTER_KEY(L"enter"); // 始めるボタンのキー
 	const String EXIT_KEY(L"exit");   // 終えるボタンのキー
 
@@ -86,11 +82,9 @@ void Robot::TitleScene::update()
 
 void Robot::TitleScene::draw() const
 {
-	Window::ClientRect().draw(Color(BLACK));
+	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 
-	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, GRAY);
-
-	_cursor.draw(WHITE);
+	_cursor.draw(Palette::MyWhite);
 
 	for (const auto & light : _lightList)
 	{

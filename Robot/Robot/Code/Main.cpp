@@ -11,19 +11,13 @@
 #include"Game\LoadGameScene.h"
 
 
-namespace
-{
-	const int BLACK = 15;
-}
-
-
 void asseter(const String & dirname);
 
 
 void Main()
 {
 	// 背景色の設定
-	Graphics::SetBackground(Color(BLACK));
+	Graphics::SetBackground(Palette::MyBlack);
 
 	// 画像をアセット管理
 	asseter(L"Asset/");

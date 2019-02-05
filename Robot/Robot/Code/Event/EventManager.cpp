@@ -23,9 +23,6 @@ namespace
 
 	const Size EVENT_SIZE(640, 320); // テキストボックスを除くイベントのサイズ
 
-	const Color BLACK(15);  // 黒色
-	const Color WHITE(240); // 白色
-
 	const RoundRect SHADOW_SHAPE(50, 50, 540, 220, 100); // 影の形
 
 	const int SHADOW_BLUR = 100; // 影のぼかしの大きさ
@@ -198,7 +195,7 @@ void Robot::EventManager::drawShadow() const
 {
 	if (!_shadow)
 	{
-		Window::ClientRect().draw(WHITE);
+		Window::ClientRect().draw(Palette::MyWhite);
 		return;
 	}
 
@@ -211,7 +208,7 @@ void Robot::EventManager::drawShadow() const
 
 	if (Random(LINE_RAND) == 0)
 	{
-		Rect(0, Random(EVENT_SIZE.y), EVENT_SIZE.x, LINE_WIDTH).draw(BLACK);
+		Rect(0, Random(EVENT_SIZE.y), EVENT_SIZE.x, LINE_WIDTH).draw(Palette::MyBlack);
 	}
 }
 

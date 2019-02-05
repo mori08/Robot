@@ -6,9 +6,6 @@
 
 namespace
 {
-	const int WHITE = 240;
-	const int BLACK = 15;
-
 	const int RADIAN_BASE = 50;
 	const int SHAKE_WIDTH = 30;
 
@@ -34,7 +31,7 @@ namespace Robot
 
 		TestEventObject(const Point & pos) 
 			: EventObject(pos)
-			, color(Color(WHITE))
+			, color(Palette::MyWhite)
 			, radian(RADIAN_BASE)
 		{
 			_actMap[L"Black"] = std::make_shared<Act>([this]() { changeBlack(); });
@@ -51,13 +48,13 @@ namespace Robot
 
 		void changeBlack()
 		{
-			color = Color(BLACK);
+			color = Palette::MyBlack;
 			finishAct();
 		}
 
 		void changeWhite()
 		{
-			color = Color(WHITE);
+			color = Palette::MyWhite;
 			finishAct();
 		}
 
