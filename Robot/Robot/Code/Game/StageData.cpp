@@ -5,6 +5,27 @@ namespace
 {
 	const double SIDE_COST     = 1;       // 縦・横方向のコスト
 	const double SLANTING_COST = Sqrt(2); // 斜め方向のコスト
+
+	const double MIN_LENGTH=1.0; // 経路探索を行う最小の距離 
+}
+
+
+const Vec2 & Robot::StageData::getPath(const Vec2 & posS, const Vec2 & posT) const
+{
+	if (!isWalkAble(posS.asPoint() / SIZE) || !isWalkAble(posT.asPoint() / SIZE) || (posT-posS).length() < MIN_LENGTH)
+	{
+		return Vec2::Zero;
+	}
+
+	int s = pointToInt(posS.asPoint() / SIZE);
+	int t = pointToInt(posT.asPoint() / SIZE);
+
+	if (s == t)
+	{
+		return (posT - posS).normalize();
+	}
+
+	return _path[s][t];
 }
 
 

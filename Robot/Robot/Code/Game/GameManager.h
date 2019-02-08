@@ -1,8 +1,16 @@
 #pragma once
 
 
-#include <Siv3D.hpp>
+#include "GameManager.h"
 #include "StageData.h"
+#include "GameObject.h"
+
+
+namespace
+{
+	// オブジェクトのリスト
+	using ObjList = std::vector<std::unique_ptr<Robot::GameObject>>;
+}
 
 
 namespace Robot
@@ -17,7 +25,9 @@ namespace Robot
 	{
 	private:
 
-		StageData _stageData; // ステージデータ
+		StageData  _stageData; // ステージデータ
+
+		ObjList    _objList;   // オブジェクトのリスト
 
 	private:
 
@@ -65,9 +75,27 @@ namespace Robot
 		void load(const String & gameDataFileName);
 
 		/// <summary>
+		/// 更新
+		/// </summary>
+		void update();
+
+		/// <summary>
 		/// 描画
 		/// </summary>
 		void draw() const;
+
+	public: // GameObjectで使用する関数
+
+		/// <summary>
+		/// 経路を取得します。
+		/// </summary>
+		/// <param name="posS"> 始点 </param>
+		/// <param name="posT"> 終点 </param>
+		/// <returns> 経路上で最初に進む方向 </returns>
+		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT)
+		{
+			return _stageData.getPath(posS, posT);
+		}
 
 	};
 }

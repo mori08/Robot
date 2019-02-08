@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "TestGameObject.h"
 
 
 void Robot::GameManager::load(const String & gameDataFileName)
@@ -38,11 +39,28 @@ void Robot::GameManager::load(const String & gameDataFileName)
 
 	// åoòHíTçı
 	_stageData.searchPath();
+
+	_objList.emplace_back(std::make_unique<TestGameObject>());
+}
+
+
+void Robot::GameManager::update()
+{
+	for (auto && obj : _objList)
+	{
+		obj->update(*this);
+	}
 }
 
 
 void Robot::GameManager::draw() const
 {
 	Window::ClientRect().draw(Palette::MyWhite);
+
+	for (const auto & obj : _objList)
+	{
+		obj->draw();
+	}
+
 	_stageData.draw();
 }

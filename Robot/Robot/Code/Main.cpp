@@ -44,6 +44,11 @@ void Main()
 		sceneManager.updateAndDraw();
 
 		Robot::InputManager::Instance().changeState();
+
+#ifdef _DEBUG
+		FontAsset(L"15")(Profiler::FPS()).draw(Point::Zero,Palette::MyBlack);
+#endif // _DEBUG
+
 	}
 }
 

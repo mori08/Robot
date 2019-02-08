@@ -4,7 +4,7 @@
 
 void Robot::GameScene::update()
 {
-	
+	GameManager::Instance().update();
 }
 
 
