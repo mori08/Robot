@@ -6,6 +6,10 @@
 
 namespace Robot
 {
+	/*
+	TestGameObjectクラス
+	経路探索や描画が正しく行われているかテストします。
+	*/
 	class TestGameObject : public GameObject
 	{
 	public:

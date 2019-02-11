@@ -4,6 +4,7 @@
 #include "GameManager.h"
 #include "StageData.h"
 #include "GameObject.h"
+#include "GameLight.h"
 
 
 namespace
@@ -28,6 +29,8 @@ namespace Robot
 		StageData  _stageData; // ステージデータ
 
 		ObjList    _objList;   // オブジェクトのリスト
+
+		GameLight  _light;     // 光
 
 	private:
 

@@ -8,6 +8,12 @@ namespace Robot
 {
 	class GameManager;
 
+	/*
+	GameObjectクラス
+	GameManagerで扱うObject(プレイヤー・敵・ゴールなど)の基底クラス
+	このクラスの派生クラスを作成するときは
+	GameManagerのObject生成関数に登録する
+	*/
 	class GameObject
 	{
 	protected:

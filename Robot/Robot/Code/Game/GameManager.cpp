@@ -41,11 +41,16 @@ void Robot::GameManager::load(const String & gameDataFileName)
 	_stageData.searchPath();
 
 	_objList.emplace_back(std::make_unique<TestGameObject>());
+
+	// Œõ‚Ì‰ŠúˆÊ’u‚ÌÝ’è
+	_light.setPos(Window::Center());
 }
 
 
 void Robot::GameManager::update()
 {
+	_light.update();
+
 	for (auto && obj : _objList)
 	{
 		obj->update(*this);
@@ -55,7 +60,15 @@ void Robot::GameManager::update()
 
 void Robot::GameManager::draw() const
 {
-	Window::ClientRect().draw(Palette::MyWhite);
+#ifdef _DEBUG
+	if (Input::Key0.pressed)
+	{
+		// Œõ‚ð”–‚­•`‰æ
+		Window::ClientRect().draw(Color(Palette::MyWhite, 128));
+	}
+#endif // _DEBUG
+
+	_light.draw();
 
 	for (const auto & obj : _objList)
 	{

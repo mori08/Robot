@@ -6,6 +6,11 @@
 
 namespace Robot
 {
+	/*
+	StageDataクラス
+	GameManagerで扱う地形の管理や
+	経路探索を行います。
+	*/
 	class StageData
 	{
 	public:
