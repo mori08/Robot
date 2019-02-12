@@ -18,7 +18,7 @@ namespace Robot
 	{
 	protected:
 		
-		Vec2 _pos; // 座標
+		Vec2 _pos;     // 座標
 
 	public:
 
@@ -40,6 +40,15 @@ namespace Robot
 		/// 描画
 		/// </summary>
 		virtual void draw() const = 0;
+
+	protected:
+
+		/// <summary>
+		/// オブジェクトの位置を移動させます。
+		/// </summary>
+		/// <param name="gameManager"> GameManager </param>
+		/// <param name="vec"> 加算する座標 </param>
+		void moveObject(const GameManager & gameManager, const Vec2 & vec);
 
 	};
 }

@@ -3,7 +3,7 @@
 
 #include "GameManager.h"
 #include "StageData.h"
-#include "GameObject.h"
+#include "Object\GameObject.h"
 #include "GameLight.h"
 
 
@@ -95,9 +95,19 @@ namespace Robot
 		/// <param name="posS"> 始点 </param>
 		/// <param name="posT"> 終点 </param>
 		/// <returns> 経路上で最初に進む方向 </returns>
-		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT)
+		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT) const
 		{
 			return _stageData.getPath(posS, posT);
+		}
+
+		/// <summary>
+		/// 示された座標が行動可能か示します．
+		/// </summary>
+		/// <param name="pos"> 座標 </param>
+		/// <returns> 行動可能なとき true , そうでないとき false </returns>
+		bool isWalkingAblePos(const Vec2 & pos) const
+		{
+			return _stageData.isWalkAble(pos.asPoint() / _stageData.SIZE);
 		}
 
 	};

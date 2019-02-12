@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include"GameManager.h"
+#include"../GameManager.h"
 
 
 namespace Robot

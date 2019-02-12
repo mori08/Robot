@@ -552,14 +552,17 @@
     <ClInclude Include="Code\Game\LoadGameScene.h">
       <Filter>ヘッダー ファイル\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Game\GameObject.h">
-      <Filter>ヘッダー ファイル\Game\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Game\TestGameObject.h">
-      <Filter>ヘッダー ファイル\Game\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Game\GameLight.h">
       <Filter>ヘッダー ファイル\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\GameObject.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\GamePlayer.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\TestGameObject.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -659,11 +662,17 @@
     <ClCompile Include="Code\Game\GameScene.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Game\TestGameObject.cpp">
-      <Filter>ソース ファイル\Game\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Game\GameLight.cpp">
       <Filter>ソース ファイル\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\GameObject.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\TestGameObject.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\GamePlayer.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,9 +1,11 @@
 #include "GameManager.h"
-#include "TestGameObject.h"
+#include "Object\TestGameObject.h"
+#include "Object\GamePlayer.h"
 
 
 void Robot::GameManager::load(const String & gameDataFileName)
 {
+	_objList.clear();
 	_stageData.clear();
 
 	CSVReader gameData(gameDataFileName);
@@ -39,6 +41,8 @@ void Robot::GameManager::load(const String & gameDataFileName)
 
 	// åoòHíTçı
 	_stageData.searchPath();
+
+	_objList.emplace_back(std::make_unique<GamePlayer>(Vec2(200, 200)));
 
 	_objList.emplace_back(std::make_unique<TestGameObject>());
 
