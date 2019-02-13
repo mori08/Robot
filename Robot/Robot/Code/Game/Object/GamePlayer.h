@@ -14,6 +14,12 @@ namespace Robot
 	*/
 	class GamePlayer : public GameObject 
 	{
+	private:
+
+		Point _texturePos; // •`‰æ‚·‚é‰æ‘œ‚Ì”Ô†
+
+		int   _frameCount; // Œo‰ßƒtƒŒ[ƒ€”
+
 	public:
 
 		/// <summary>

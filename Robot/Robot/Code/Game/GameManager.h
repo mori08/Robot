@@ -32,6 +32,8 @@ namespace Robot
 
 		GameLight  _light;     // 光
 
+		Vec2       _playerPos; // プレイヤーの座標
+
 	private:
 
 		GameManager()
@@ -108,6 +110,15 @@ namespace Robot
 		bool isWalkingAblePos(const Vec2 & pos) const
 		{
 			return _stageData.isWalkAble(pos.asPoint() / _stageData.SIZE);
+		}
+
+		/// <summary>
+		/// プレイヤーの座標を設定します。
+		/// </summary>
+		/// <param name="playerPos"> プレイヤーの座標 </param>
+		void setPlayerPos(const Vec2 & playerPos)
+		{
+			_playerPos = playerPos;
 		}
 
 	};

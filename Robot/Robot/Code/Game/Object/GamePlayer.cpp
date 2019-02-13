@@ -9,26 +9,38 @@ namespace
 	const double RADIUS = 10; // 半径
 	const double BLUR   = 10; // ぼかし方
 	const double SPREAD = 10; // 広がり方
+
+	const Size TEXTURE_SIZE(40, 40);      // 画像サイズ
+	const int  CHEANGE_TEXTURE_SPAN = 60; // 画像を変更する頻度
 }
 
 
 Robot::GamePlayer::GamePlayer(const Vec2 & pos)
 	: GameObject(pos)
+	, _texturePos(0,0)
+	, _frameCount(0)
 {
 }
 
 
 void Robot::GamePlayer::update(GameManager & gameManager)
 {
+	++_frameCount;
+
+	if (_frameCount%CHEANGE_TEXTURE_SPAN == 0)
+	{
+		_texturePos.x++;
+	}
+
 	moveObject(gameManager, getMoveVec());
+
+	gameManager.setPlayerPos(_pos)
 }
 
 
 void Robot::GamePlayer::draw() const
 {
-	static int a = 0;
-	++a;
-	TextureAsset(L"Player")(a / 5 * 40, 0, 40, 40).drawAt(_pos);
+	TextureAsset(L"Player")(_texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
 }
 
 
