@@ -130,6 +130,9 @@
     <Filter Include="ヘッダー ファイル\Game\Object">
       <UniqueIdentifier>{d73e23cb-9f75-44ad-beed-30df3f971c51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Game\State">
+      <UniqueIdentifier>{ae841fa1-ea7b-4175-836c-a66706085529}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -566,6 +569,9 @@
     </ClInclude>
     <ClInclude Include="Code\Game\Object\GameGoal.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\State\GameState.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
