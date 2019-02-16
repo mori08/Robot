@@ -34,7 +34,7 @@ void Robot::GamePlayer::update(GameManager & gameManager)
 
 	moveObject(gameManager, getMoveVec());
 
-	gameManager.setPlayerPos(_pos)
+	gameManager.setPlayerPos(_pos);
 }
 
 

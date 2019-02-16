@@ -26,6 +26,16 @@ namespace Robot
 	{
 	private:
 
+		// ゲームの進行状態
+		enum class State
+		{
+			PLAYING,   // プレイ中
+			GAMECLEAR, // ゲームクリア
+			GAMEOVER   // ゲームオーバー
+		};
+
+	private:
+
 		StageData  _stageData; // ステージデータ
 
 		ObjList    _objList;   // オブジェクトのリスト
@@ -33,6 +43,14 @@ namespace Robot
 		GameLight  _light;     // 光
 
 		Vec2       _playerPos; // プレイヤーの座標
+
+		State      _state;     // ゲームの状態
+
+		bool       _isChangeAbleScene; // シーン遷移可能か
+
+		String     _sceneName; // シーン名
+
+		String     _sceneInfo; // シーンの遷移先の補足
 
 	private:
 
@@ -71,6 +89,14 @@ namespace Robot
 #endif // _DEBUG
 		}
 
+		/// <summary>
+		/// 指定された行から座標を取得します。
+		/// </summary>
+		/// <param name="csvReader"> CSVReader </param>
+		/// <param name="readingRow"> 指定する行 </param>
+		/// <returns> 座標のOptional </returns>
+		Optional<Point> getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow);
+
 	public: // GameSceneで使用する関数
 
 		/// <summary>
@@ -88,6 +114,14 @@ namespace Robot
 		/// 描画
 		/// </summary>
 		void draw() const;
+
+		/// <summary>
+		/// シーン遷移先を代入して、シーン遷移が可能か示します。
+		/// </summary>
+		/// <param name="sceneName"> シーンの名前 </param>
+		/// <param name="sceneInfo"> 遷移先での補足情報 </param>
+		/// <returns> 遷移可能なとき true , そうでないとき false </returns>
+		bool isChangeAbleScene(String & sceneName, String & sceneInfo) const;
 
 	public: // GameObjectで使用する関数
 
@@ -120,6 +154,37 @@ namespace Robot
 		{
 			_playerPos = playerPos;
 		}
+
+		/// <summary>
+		/// プレイヤーの座標を取得します。
+		/// </summary>
+		const Vec2 & getPlayerPos() const
+		{
+			return _playerPos;
+		}
+
+		/// <summary>
+		/// ゲームクリア
+		/// </summary>
+		void gameClear()
+		{
+			if (_state != State::PLAYING) { return; }
+			_state = State::GAMECLEAR;
+		}
+
+		/// <summary>
+		/// ゲームオーバー
+		/// </summary>
+		void gameOver()
+		{
+			if (_state != State::PLAYING) { return; }
+			_state = State::GAMEOVER;
+		}
+
+		/// <summary>
+		/// シーンの設定先を設定します。
+		/// </summary>
+		void setSceneName(const String & sceneName, const String & sceneInfo);
 
 	};
 }

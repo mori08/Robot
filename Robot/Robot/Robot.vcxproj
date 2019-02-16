@@ -299,6 +299,7 @@
     <ClInclude Include="Code\Game\GameManager.h" />
     <ClInclude Include="Code\Game\GameScene.h" />
     <ClInclude Include="Code\Game\LoadGameScene.h" />
+    <ClInclude Include="Code\Game\Object\GameGoal.h" />
     <ClInclude Include="Code\Game\Object\GameObject.h" />
     <ClInclude Include="Code\Game\Object\GamePlayer.h" />
     <ClInclude Include="Code\Game\Object\TestGameObject.h" />
@@ -338,6 +339,7 @@
     <ClCompile Include="Code\Game\GameManager.cpp" />
     <ClCompile Include="Code\Game\GameScene.cpp" />
     <ClCompile Include="Code\Game\LoadGameScene.cpp" />
+    <ClCompile Include="Code\Game\Object\GameGoal.cpp" />
     <ClCompile Include="Code\Game\Object\GameObject.cpp" />
     <ClCompile Include="Code\Game\Object\GamePlayer.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
