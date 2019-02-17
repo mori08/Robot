@@ -14,6 +14,10 @@ namespace Robot
 	{
 	private:
 
+		String changeSceneName; // ‘JˆÚæ‚ÌƒV[ƒ“–¼
+
+	private:
+
 		void update() override;
 
 		void draw()const override;

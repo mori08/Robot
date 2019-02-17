@@ -304,6 +304,7 @@
     <ClInclude Include="Code\Game\Object\GamePlayer.h" />
     <ClInclude Include="Code\Game\Object\TestGameObject.h" />
     <ClInclude Include="Code\Game\StageData.h" />
+    <ClInclude Include="Code\Game\State\GameClearState.h" />
     <ClInclude Include="Code\Game\State\GameState.h" />
     <ClInclude Include="Code\Game\State\PlayingState.h" />
     <ClInclude Include="Code\Input\Button.h" />
@@ -346,6 +347,7 @@
     <ClCompile Include="Code\Game\Object\GamePlayer.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
+    <ClCompile Include="Code\Game\State\GameClearState.cpp" />
     <ClCompile Include="Code\Game\State\PlayingState.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />

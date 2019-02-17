@@ -29,16 +29,6 @@ namespace Robot
 	{
 	private:
 
-		// ゲームの進行状態
-		enum class State
-		{
-			PLAYING,   // プレイ中
-			GAMECLEAR, // ゲームクリア
-			GAMEOVER   // ゲームオーバー
-		};
-
-	private:
-
 		StatePtr   _gameState; // 状態
 
 		StageData  _stageData; // ステージデータ
@@ -48,8 +38,6 @@ namespace Robot
 		GameLight  _light;     // 光
 
 		Vec2       _playerPos; // プレイヤーの座標
-
-		State      _state;     // ゲームの状態
 
 		bool       _isChangeAbleScene; // シーン遷移可能か
 
@@ -140,6 +128,11 @@ namespace Robot
 		/// </summary>
 		void drawObjectAndLight()const;
 
+		/// <summary>
+		/// シーンの設定先を設定します。
+		/// </summary>
+		void setSceneName(const String & sceneName, const String & sceneInfo);
+
 	public: // GameObjectで使用する関数
 
 		/// <summary>
@@ -183,25 +176,12 @@ namespace Robot
 		/// <summary>
 		/// ゲームクリア
 		/// </summary>
-		void gameClear()
-		{
-			if (_state != State::PLAYING) { return; }
-			_state = State::GAMECLEAR;
-		}
+		void gameClear();
 
 		/// <summary>
 		/// ゲームオーバー
 		/// </summary>
-		void gameOver()
-		{
-			if (_state != State::PLAYING) { return; }
-			_state = State::GAMEOVER;
-		}
-
-		/// <summary>
-		/// シーンの設定先を設定します。
-		/// </summary>
-		void setSceneName(const String & sceneName, const String & sceneInfo);
+		void gameOver();
 
 	};
 }

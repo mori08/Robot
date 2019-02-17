@@ -16,14 +16,6 @@ void Robot::EventScene::update()
 	{
 		changeScene(changeSceneName);
 	}
-
-#ifdef _DEBUG
-	if (Input::Key0.clicked)
-	{
-		changeScene(L"TitleScene");
-	}
-#endif // _DEBUG
-
 }
 
 
