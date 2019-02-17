@@ -582,6 +582,9 @@
     <ClInclude Include="Code\Game\State\GameClearState.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\GameOverState.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -699,6 +702,9 @@
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\State\GameClearState.cpp">
+      <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\GameOverState.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
   </ItemGroup>

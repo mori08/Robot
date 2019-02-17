@@ -46,7 +46,7 @@ void Main()
 		Robot::InputManager::Instance().changeState();
 
 #ifdef _DEBUG
-		FontAsset(L"15")(Profiler::FPS()).draw(Point::Zero,Palette::MyBlack);
+		FontAsset(L"15")(Profiler::FPS()).draw(Point::Zero, Palette::Red);
 #endif // _DEBUG
 
 	}

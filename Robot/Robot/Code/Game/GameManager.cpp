@@ -4,6 +4,7 @@
 #include "Object\GameGoal.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
+#include "State\GameOverState.h"
 
 
 namespace
@@ -28,11 +29,20 @@ Optional<Point> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvR
 }
 
 
-void Robot::GameManager::load(const String & gameDataFileName)
+void Robot::GameManager::init()
 {
+	_gameState = std::make_unique<PlayingState>();
 	_objList.clear();
 	_stageData.clear();
-	_gameState = std::make_unique<PlayingState>();
+	_isChangeAbleScene = false;
+	_sceneName = L"";
+	_sceneInfo = L"";
+}
+
+
+void Robot::GameManager::load(const String & gameDataFileName)
+{
+	init();
 
 	int readingRow = 0;
 
@@ -166,6 +176,6 @@ void Robot::GameManager::gameClear()
 
 void Robot::GameManager::gameOver()
 {
-
+	_gameState = std::make_unique<GameOverState>();
 }
 

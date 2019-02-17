@@ -90,6 +90,11 @@ namespace Robot
 		/// <returns> À•W‚ÌOptional </returns>
 		Optional<Point> getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow);
 
+		/// <summary>
+		/// ‰Šú‰»
+		/// </summary>
+		void init();
+
 	public: // GameScene‚Åg—p‚·‚éŠÖ”
 
 		/// <summary>
