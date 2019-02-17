@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "GameManager.h"
 #include "StageData.h"
 #include "Object\GameObject.h"
+#include "State\GameState.h"
 #include "GameLight.h"
 
 
@@ -11,6 +11,9 @@ namespace
 {
 	// オブジェクトのリスト
 	using ObjList = std::vector<std::unique_ptr<Robot::GameObject>>;
+
+	// 状態のポインタ
+	using StatePtr = std::unique_ptr<Robot::GameState>;
 }
 
 
@@ -35,6 +38,8 @@ namespace Robot
 		};
 
 	private:
+
+		StatePtr   _gameState; // 状態
 
 		StageData  _stageData; // ステージデータ
 
@@ -122,6 +127,18 @@ namespace Robot
 		/// <param name="sceneInfo"> 遷移先での補足情報 </param>
 		/// <returns> 遷移可能なとき true , そうでないとき false </returns>
 		bool isChangeAbleScene(String & sceneName, String & sceneInfo) const;
+
+	public: // GameStateで使用する関数
+
+		/// <summary>
+		/// オブジェクトと光の更を行います。
+		/// </summary>
+		void updateObjectAndLight();
+
+		/// <summary>
+		/// オブジェクトと光の描画を行います。
+		/// </summary>
+		void drawObjectAndLight()const;
 
 	public: // GameObjectで使用する関数
 

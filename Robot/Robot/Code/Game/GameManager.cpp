@@ -2,6 +2,7 @@
 #include "Object\TestGameObject.h"
 #include "Object\GamePlayer.h"
 #include "Object\GameGoal.h"
+#include "State\PlayingState.h"
 
 
 namespace
@@ -31,6 +32,7 @@ void Robot::GameManager::load(const String & gameDataFileName)
 	_state = State::PLAYING;
 	_objList.clear();
 	_stageData.clear();
+	_gameState = std::make_unique<PlayingState>();
 
 	int readingRow = 0;
 
@@ -94,6 +96,30 @@ void Robot::GameManager::load(const String & gameDataFileName)
 
 void Robot::GameManager::update()
 {
+	_gameState->update(*this);
+}
+
+
+void Robot::GameManager::draw() const
+{
+	_gameState->draw(*this);
+}
+
+
+bool Robot::GameManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
+{
+	if (_isChangeAbleScene)
+	{
+		sceneName = _sceneName;
+		sceneInfo = _sceneInfo;
+	}
+
+	return _isChangeAbleScene;
+}
+
+
+void Robot::GameManager::updateObjectAndLight()
+{
 	_light.update();
 
 	for (auto && obj : _objList)
@@ -103,7 +129,7 @@ void Robot::GameManager::update()
 }
 
 
-void Robot::GameManager::draw() const
+void Robot::GameManager::drawObjectAndLight() const
 {
 #ifdef _DEBUG
 	if (Input::Key0.pressed)
@@ -121,18 +147,6 @@ void Robot::GameManager::draw() const
 	}
 
 	_stageData.draw();
-}
-
-
-bool Robot::GameManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
-{
-	if (_isChangeAbleScene)
-	{
-		sceneName = _sceneName;
-		sceneInfo = _sceneInfo;
-	}
-
-	return _isChangeAbleScene;
 }
 
 
