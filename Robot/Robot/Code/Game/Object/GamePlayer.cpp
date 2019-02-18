@@ -12,25 +12,24 @@ namespace
 
 	const Size TEXTURE_SIZE(40, 40);      // 画像サイズ
 	const int  CHEANGE_TEXTURE_SPAN = 60; // 画像を変更する頻度
+
+	const double CHANGE_RATE            = 0.95;  // _lightCircleRateを変更する割合
+	const double RATE_MIN               = 0.001; // _lightCircleRateの最小値
+	const double LIGHT_CIRCLE_RADIUS    = 40;    // 光の輪の半径
+	const double LIGHT_CIRCLE_THICKNESS = 1;     // 光の輪の厚さ
 }
 
 
 Robot::GamePlayer::GamePlayer(const Vec2 & pos)
 	: GameObject(pos)
-	, _texturePos(0,0)
-	, _frameCount(0)
 {
 }
 
 
 void Robot::GamePlayer::update(GameManager & gameManager)
 {
-	++_frameCount;
-
-	if (_frameCount%CHEANGE_TEXTURE_SPAN == 0)
-	{
-		_texturePos.x++;
-	}
+	_lightCircleRate *= CHANGE_RATE;
+	if (_lightCircleRate < RATE_MIN) { _lightCircleRate = 1; }
 
 	moveObject(gameManager, getMoveVec());
 
@@ -40,7 +39,11 @@ void Robot::GamePlayer::update(GameManager & gameManager)
 
 void Robot::GamePlayer::draw() const
 {
-	TextureAsset(L"Player")(_texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
+	ColorF lightColor(Palette::MyWhite);
+	lightColor.setAlpha(Sqrt(_lightCircleRate));
+	Circle(_pos, (1 - _lightCircleRate)*LIGHT_CIRCLE_RADIUS).drawFrame(LIGHT_CIRCLE_THICKNESS, LIGHT_CIRCLE_THICKNESS, lightColor);
+
+	TextureAsset(L"Player").drawAt(_pos);
 }
 
 

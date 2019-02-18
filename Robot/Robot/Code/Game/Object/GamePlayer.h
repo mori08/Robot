@@ -16,9 +16,7 @@ namespace Robot
 	{
 	private:
 
-		Point _texturePos; // 描画する画像の番号
-
-		int   _frameCount; // 経過フレーム数
+		double _lightCircleRate; // 光の輪を表現する値(0~1)
 
 	public:
 

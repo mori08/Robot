@@ -13,12 +13,22 @@ namespace Robot
 	*/
 	class GameGoal : public GameObject
 	{
+	private:
+
+		int   _frameCount; // 経過フレーム数
+
+		Point _texturePos; // 表示する画像の番号
+
 	public:
 
 		/// <summary>
-
+		/// ゲームでのゴール
+		/// </summary>
+		/// <param name="pos"> 生成座標 </param>
 		GameGoal(const Vec2 & pos)
 			: GameObject(pos)
+			, _texturePos(Point::Zero)
+			, _frameCount(0)
 		{
 
 		}
