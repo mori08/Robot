@@ -2,6 +2,7 @@
 
 
 #include "../Main.h"
+#include "Window\MenuWindowBase.h"
 
 
 namespace Robot
@@ -15,9 +16,13 @@ namespace Robot
 	{
 	private:
 
-		
+		std::list<std::shared_ptr<MenuWindowBase>> _windowStack;
+
+		std::unordered_map<String, std::shared_ptr<MenuWindowBase>> _windowList;
 
 	public:
+
+		MenuScene();
 
 	private:
 

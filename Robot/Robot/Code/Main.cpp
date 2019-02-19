@@ -9,6 +9,7 @@
 #include"Event\Factor\GenerateEvent.h"
 #include"Game\GameScene.h"
 #include"Game\LoadGameScene.h"
+#include"Menu\MenuScene.h"
 
 
 void asseter(const String & dirname);
@@ -38,6 +39,7 @@ void Main()
 	sceneManager.add<Robot::EventScene>       (L"EventScene");
 	sceneManager.add<Robot::GameScene>        (L"GameScene");
 	sceneManager.add<Robot::LoadGameScene>    (L"LoadGameScene");
+	sceneManager.add<Robot::MenuScene>        (L"MenuScene");
 
 	while (System::Update())
 	{

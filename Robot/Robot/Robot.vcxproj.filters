@@ -597,6 +597,9 @@
     <ClInclude Include="Code\Menu\Window\MenuWindowBase.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Menu\Window\MainWindow.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -720,6 +723,12 @@
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\MenuWindowBase.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\MainWindow.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\MenuScene.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
   </ItemGroup>

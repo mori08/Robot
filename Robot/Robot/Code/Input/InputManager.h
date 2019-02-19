@@ -60,6 +60,15 @@ namespace Robot
 		void registerButton(const String & key, const Rect & region);
 
 		/// <summary>
+		/// ボタンを登録します。
+		/// </summary>
+		/// <param name="button"> ボタン </param>
+		void registerButton(ButtonPtr button)
+		{
+			_buttonList[button->getKey()] = button;
+		}
+
+		/// <summary>
 		/// ボタンの垂直方向の隣接関係を設定します。
 		/// </summary>
 		/// <param name="upKey"> 左側のボタンのキー </param>
@@ -82,7 +91,7 @@ namespace Robot
 		/// <summary>
 		/// 選択中のボタンを取得します。
 		/// </summary>
-		/// <return> 選択中のボタン </returns>
+		/// <returns> 選択中のボタン </returns>
 		const Button & getSelectedButton() const
 		{
 			return *_selectedButton;

@@ -21,16 +21,18 @@ namespace Robot
 
 		std::vector<std::shared_ptr<Button>>      _buttonPtrList; // ボタンのポインタのリスト
 		
-		std::unordered_map<String, Color>         _colorMap;      // 色のリスト ボタンのキーと結びつける
+		std::unordered_map<String, ColorF>        _colorMap;      // 色のリスト ボタンのキーと結びつける
 
 		std::unordered_map<String, ProcessingPtr> _processingMap; // ボタンを押したときの処理リスト
+
+		String _selectedButtonKey; // 選択されているボタンのキー
 
 	public:
 
 		/// <summary>
 		/// 更新
 		/// </summary>
-		virtual void update() = 0;
+		virtual void update();
 
 		/// <summary>
 		/// 描画
@@ -52,6 +54,11 @@ namespace Robot
 	protected:
 
 		/// <summary>
+		/// ボタンを照らす光を描画します。
+		/// </summary>
+		void drawLight() const;
+
+		/// <summary>
 		/// 指定されたキーを持つボタンがあるか示します。
 		/// </summary>
 		/// <param name="buttonKey"> ボタンのキー </param>
@@ -60,6 +67,22 @@ namespace Robot
 		/// O(ボタンの数)だけの時間がかかります
 		/// </remarks>
 		bool keyExistsAtButtonList(const String & buttonKey) const;
+
+		/// <summary>
+		/// 指定された処理があるか示します。
+		/// </summary>
+		/// <param name="buttonKey"> ボタンのキー </param>
+		bool processingExists(const String & buttonKey) const
+		{
+			return _processingMap.find(buttonKey) != _processingMap.end();
+		}
+
+		/// <summary>
+		/// ボタン登録に関わる一連の処理を行います。
+		/// </summary>
+		/// <param name="butttonKey"> ボタンのキー </param>
+		/// <param name="region"> 範囲 </param>
+		void registerButton(const String & buttonKey, const Rect & region);
 
 	};
 }
