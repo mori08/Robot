@@ -136,6 +136,12 @@
     <Filter Include="ソース ファイル\Game\State">
       <UniqueIdentifier>{89fb54c1-435b-4b5b-bd23-ba712a703a40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Menu">
+      <UniqueIdentifier>{b70f5ce4-7a50-4bd4-b193-f7c1d12d2b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu">
+      <UniqueIdentifier>{81265636-6517-4a98-ad79-c36b81e7fade}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -585,6 +591,12 @@
     <ClInclude Include="Code\Game\Object\GameGoal.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Menu\MenuScene.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\Window\MenuWindowBase.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -706,6 +718,9 @@
     </ClCompile>
     <ClCompile Include="Code\Game\State\GameOverState.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\MenuWindowBase.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
