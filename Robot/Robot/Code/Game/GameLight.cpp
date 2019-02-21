@@ -4,10 +4,10 @@
 namespace
 {
 	const double RATE = 0.9;  // ˆÚ“®‚ÌŠ„‡
-	const double RADIUS = 40; // Œõ‚Ì”¼Œa
+	const double RADIUS = 50; // Œõ‚Ì”¼Œa
 
-	const double SHADOW_BLUR_RADIUS = 60.0; // ‰e‚Ì‚Ú‚©‚µ‚Ì‘å‚«‚³
-	const double SHADOW_SPREAD      = 40.0;  // ‰e‚ÌL‚ª‚è•û
+	const double SHADOW_BLUR_RADIUS = 20.0; // ‰e‚Ì‚Ú‚©‚µ‚Ì‘å‚«‚³
+	const double SHADOW_SPREAD      = 20.0;  // ‰e‚ÌL‚ª‚è•û
 }
 
 

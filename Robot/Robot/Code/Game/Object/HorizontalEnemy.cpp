@@ -1,9 +1,15 @@
 #include "HorizontalEnemy.h"
 
 
+namespace
+{
+	const double SPEED = 0.8;
+}
+
+
 Robot::HorizontalEnemy::HorizontalEnemy(const Vec2 & pos)
 	: EnemyBase(pos)
-	, _moveVec(Vec2::Right)
+	, _moveVec(SPEED*Vec2::Right)
 {
 
 }

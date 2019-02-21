@@ -1,9 +1,15 @@
 #include "VerticalEnemy.h"
 
 
+namespace
+{
+	const double SPEED = 0.8;
+}
+
+
 Robot::VerticalEnemy::VerticalEnemy(const Vec2 & pos)
 	: EnemyBase(pos)
-	, _moveVec(Vec2::Down)
+	, _moveVec(SPEED*Vec2::Down)
 {
 
 }
