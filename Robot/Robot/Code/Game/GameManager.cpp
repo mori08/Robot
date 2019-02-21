@@ -15,7 +15,7 @@ namespace
 }
 
 
-Optional<Point> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow)
+Optional<Vec2> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow)
 {
 	Optional<int> optX = FromStringOpt<int>(csvReader.get<String>(readingRow, POINT_X));
 	Optional<int> optY = FromStringOpt<int>(csvReader.get<String>(readingRow, POINT_Y));
@@ -25,7 +25,7 @@ Optional<Point> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvR
 		return none;
 	}
 
-	return Optional<Point>(Point(*optX, *optY));
+	return Optional<Vec2>(_stageData.SIZE*Point(*optX, *optY) + _stageData.SIZE*0.5*Vec2::One);
 }
 
 
@@ -85,9 +85,9 @@ void Robot::GameManager::load(const String & gameDataFileName)
 		printError(L"Error > GameDataの行数が足りません");
 		return;
 	}
-	Optional<Point> playerPos = getPointFromCSVReader(gameData, readingRow);
+	Optional<Vec2> playerPos = getPointFromCSVReader(gameData, readingRow);
 	if (!playerPos) { return; }
-	_objList.emplace_back(std::make_unique<GamePlayer>(_stageData.SIZE*(*playerPos)));
+	_objList.emplace_back(std::make_unique<GamePlayer>(*playerPos));
 
 	// ゴールの生成
 	if (gameData.rows < ++readingRow)
@@ -95,9 +95,9 @@ void Robot::GameManager::load(const String & gameDataFileName)
 		printError(L"Error > GameDataの行数が足りません");
 		return;
 	}
-	Optional<Point> goalPos = getPointFromCSVReader(gameData, readingRow);
+	Optional<Vec2> goalPos = getPointFromCSVReader(gameData, readingRow);
 	if (!goalPos) { return; }
-	_objList.emplace_back(std::make_unique<GameGoal>(_stageData.SIZE*(*goalPos)));
+	_objList.emplace_back(std::make_unique<GameGoal>(*goalPos));
 
 	// 光の初期位置の設定
 	_light.setPos(Window::Center());

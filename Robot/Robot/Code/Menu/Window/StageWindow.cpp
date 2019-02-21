@@ -19,10 +19,10 @@ Robot::StageWindow::StageWindow()
 		Point pos = POS_BASE;
 		pos += Point(i%COLUMNS, i / COLUMNS)*Point(BUTTON_SIZE + WIDTH);
 
-		registerButton(L"Stage" + ToString(i) + L"Button", Rect(pos, BUTTON_SIZE));
+		registerButton(L"Stage" + ToString(i), Rect(pos, BUTTON_SIZE));
 	}
 
-	_selectedButtonKey = L"Stage0Button";
+	_selectedButtonKey = L"Stage0";
 }
 
 

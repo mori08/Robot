@@ -6,6 +6,7 @@
 namespace
 {
 	using Processing = std::function<void()>;
+	const int STAGE_NUM = 10; // ステージ数
 }
 
 
@@ -16,6 +17,17 @@ Robot::MenuScene::MenuScene()
 	_windowList[L"Main"]->setClickedProcessing(L"Stage", std::make_unique<Processing>([this]() { openWindow(L"Stage"); }));
 
 	_windowList[L"Stage"] = std::make_shared<StageWindow>();
+	for (int i = 0; i < 10; ++i)
+	{
+		String stageName = L"Stage" + ToString(i);
+		_windowList[L"Stage"]->setClickedProcessing(stageName, std::make_unique<Processing>(
+			[this,stageName]() 
+			{
+				m_data->sceneInfo = stageName;
+				changeScene(L"LoadGameScene");
+			}
+		));
+	}
 
 	_windowStack.emplace_back(_windowList[L"Main"]);
 	(*_windowStack.rbegin())->updateInputManager();

@@ -50,7 +50,7 @@ void Robot::GameClearState::update(GameManager & gameManager)
 
 	if (_frameCount > CHANGE_SCENE_FRAME_COUNT)
 	{
-		gameManager.setSceneName(L"TitleScene", L"");
+		gameManager.setSceneName(L"MenuScene", L"");
 	}
 }
 

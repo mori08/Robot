@@ -41,13 +41,10 @@ void Robot::MenuWindowBase::update()
 
 void Robot::MenuWindowBase::setClickedProcessing(const String & buttonKey, ProcessingPtr processing)
 {
-#ifdef _DEBUG
 	if (!keyExistsAtButtonList(buttonKey))
 	{
-		Println(L"setClickedProcessingä÷êîÇ≈éwíËÇ≥ÇÍÇΩÉLÅ[Ç™å©Ç¬Ç©ÇËÇ‹ÇπÇÒÇ≈ÇµÇΩ");
-		Println(L"buttonKey : ", buttonKey);
+		return;
 	}
-#endif // _DEBUG
 
 	_processingMap[buttonKey] = std::move(processing);
 }

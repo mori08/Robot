@@ -88,7 +88,7 @@ namespace Robot
 		/// <param name="csvReader"> CSVReader </param>
 		/// <param name="readingRow"> w’è‚·‚és </param>
 		/// <returns> À•W‚ÌOptional </returns>
-		Optional<Point> getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow);
+		Optional<Vec2> getPointFromCSVReader(const CSVReader & csvReader, size_t readingRow);
 
 		/// <summary>
 		/// ‰Šú‰»
