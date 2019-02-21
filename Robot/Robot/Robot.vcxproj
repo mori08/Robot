@@ -303,7 +303,9 @@
     <ClInclude Include="Code\Game\Object\GameGoal.h" />
     <ClInclude Include="Code\Game\Object\GameObject.h" />
     <ClInclude Include="Code\Game\Object\GamePlayer.h" />
+    <ClInclude Include="Code\Game\Object\HorizontalEnemy.h" />
     <ClInclude Include="Code\Game\Object\TestGameObject.h" />
+    <ClInclude Include="Code\Game\Object\VerticalEnemy.h" />
     <ClInclude Include="Code\Game\StageData.h" />
     <ClInclude Include="Code\Game\State\GameClearState.h" />
     <ClInclude Include="Code\Game\State\GameOverState.h" />
@@ -352,7 +354,9 @@
     <ClCompile Include="Code\Game\Object\GameGoal.cpp" />
     <ClCompile Include="Code\Game\Object\GameObject.cpp" />
     <ClCompile Include="Code\Game\Object\GamePlayer.cpp" />
+    <ClCompile Include="Code\Game\Object\HorizontalEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
+    <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
     <ClCompile Include="Code\Game\State\GameClearState.cpp" />
     <ClCompile Include="Code\Game\State\GameOverState.cpp" />

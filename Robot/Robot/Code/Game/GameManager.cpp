@@ -2,6 +2,8 @@
 #include "Object\TestGameObject.h"
 #include "Object\GamePlayer.h"
 #include "Object\GameGoal.h"
+#include "Object\HorizontalEnemy.h"
+#include "Object\VerticalEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -9,9 +11,21 @@
 
 namespace
 {
-	const size_t POINT_COLUMNS = 2; // 座標を示す行の列数
-	const size_t POINT_X = 0;       // X座標のインデックス
-	const size_t POINT_Y = 1;       // Y座標のインデックス
+	const size_t POINT_COLUMNS     = 2; // 座標を示す行の列数
+	const size_t POINT_X           = 0; // X座標のインデックス
+	const size_t POINT_Y           = 1; // Y座標のインデックス
+	const size_t ENEMY_NUM_COLUMN  = 0; // 敵の数が記載されている列番号
+	const size_t ENEMY_TYPE_COLUMN = 2; // 敵の種類が記述されている列番号
+}
+
+
+Robot::GameManager::FuncMap Robot::GameManager::genarateEnemyMap;
+
+
+void Robot::GameManager::setObjMap()
+{
+	makeGenerateFunc<HorizontalEnemy>(L"Horizontal");
+	makeGenerateFunc<VerticalEnemy>(L"Vertical");
 }
 
 
@@ -98,6 +112,39 @@ void Robot::GameManager::load(const String & gameDataFileName)
 	Optional<Vec2> goalPos = getPointFromCSVReader(gameData, readingRow);
 	if (!goalPos) { return; }
 	_objList.emplace_back(std::make_unique<GameGoal>(*goalPos));
+
+	// 敵の数の確認
+	if (gameData.rows < ++readingRow)
+	{
+		printError(L"Error > GameDataの行数が足りません");
+		return;
+	}
+	int enemyNum = gameData.get<int>(readingRow, ENEMY_NUM_COLUMN); // 敵の数
+
+	// 敵の生成
+	for (int i = 0; i < enemyNum; ++i)
+	{
+		if (gameData.rows < ++readingRow)
+		{
+			printError(L"Error > GameDataの行数が足りません");
+			return;
+		}
+
+		Optional<Vec2> enemyPos = getPointFromCSVReader(gameData, readingRow);
+		if (!enemyPos) 
+		{
+			printError(L"Error > 座標に変換できません");
+			return; 
+		}
+		String enemyType = gameData.get<String>(readingRow, ENEMY_TYPE_COLUMN);
+		if (genarateEnemyMap.find(enemyType) == genarateEnemyMap.end()) 
+		{
+			printError(L"Error > 存在しない敵の種類" + enemyType);
+			return; 
+		}
+		_objList.emplace_back(genarateEnemyMap[enemyType](*enemyPos));
+	}
+
 
 	// 光の初期位置の設定
 	_light.setPos(Window::Center());

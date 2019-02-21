@@ -10,6 +10,7 @@
 #include"Game\GameScene.h"
 #include"Game\LoadGameScene.h"
 #include"Menu\MenuScene.h"
+#include"Game\GameManager.h"
 
 
 void asseter(const String & dirname);
@@ -30,6 +31,7 @@ void Main()
 	// 各クラスの準備
 	Robot::GenerateEvent::setObjectMap();
 	Robot::EventManager::Instance().setAllEvent();
+	Robot::GameManager::Instance().setObjMap();
 
 	// シーンの準備
 	MyApp sceneManager;

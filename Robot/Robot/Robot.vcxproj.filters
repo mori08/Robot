@@ -606,6 +606,12 @@
     <ClInclude Include="Code\Game\Object\EnemyBase.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\HorizontalEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\VerticalEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -741,6 +747,12 @@
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\EnemyBase.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\HorizontalEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,8 +9,14 @@
 
 namespace
 {
+	// オブジェクトのポインタ
+	using ObjPtr = std::unique_ptr<Robot::GameObject>;
+
 	// オブジェクトのリスト
-	using ObjList = std::vector<std::unique_ptr<Robot::GameObject>>;
+	using ObjList = std::vector<ObjPtr>;
+
+	// オブジェクトを生成する関数
+	using GenerateFunc = std::function<ObjPtr(const Vec2 & pos)>;
 
 	// 状態のポインタ
 	using StatePtr = std::unique_ptr<Robot::GameState>;
@@ -27,6 +33,15 @@ namespace Robot
 	*/
 	class GameManager
 	{
+	private:
+
+		// オブジェクトを生成する関数のマップ
+		using FuncMap = std::unordered_map<String, GenerateFunc>;
+
+	private:
+
+		static FuncMap genarateEnemyMap; // オブジェクトを生成する関数のマップ
+
 	private:
 
 		StatePtr   _gameState; // 状態
@@ -69,6 +84,11 @@ namespace Robot
 			return gameManager;
 		}
 
+		/// <summary>
+		/// GameObjectを生成する関数を登録します。
+		/// </summary>
+		static void setObjMap();
+
 	private:
 
 		/// <summary>
@@ -80,6 +100,22 @@ namespace Robot
 #ifdef _DEBUG
 			Println(message);
 #endif // _DEBUG
+		}
+
+		/// <summary>
+		/// 型名gameObjectTypeのunique_ptrを作る関数をマップに登録します。
+		/// </summary>
+		/// <param name="name"> オブジェクトの名前 </param>
+		template<typename gameObjectType>
+		static void makeGenerateFunc(const String & name)
+		{
+			genarateEnemyMap[name] = GenerateFunc
+			(
+				[](const Vec2 & pos)
+				{
+					return std::make_unique<gameObjectType>(pos);
+				}
+			);
 		}
 
 		/// <summary>
