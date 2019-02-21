@@ -158,6 +158,7 @@ namespace Robot
 		/// <returns> s“®‰Â”\‚È‚Æ‚« true , ‚»‚¤‚Å‚È‚¢‚Æ‚« false </returns>
 		bool isWalkingAblePos(const Vec2 & pos) const
 		{
+			if (pos.x < 0 || pos.y < 0) { return false; }
 			return _stageData.isWalkAble(pos.asPoint() / _stageData.SIZE);
 		}
 
