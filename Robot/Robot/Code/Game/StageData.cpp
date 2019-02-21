@@ -10,6 +10,20 @@ namespace
 }
 
 
+Point Robot::StageData::translatePos(const Vec2 & pos)
+{
+	int x = pos.x < 0 ? -1 : (pos.asPoint().x / SIZE);
+	int y = pos.y < 0 ? -1 : (pos.asPoint().y / SIZE);
+	return Point(x, y);
+}
+
+
+Vec2 Robot::StageData::centerPosOfCell(const Point & pos)
+{
+	return SIZE*Vec2::One*pos + Vec2::One / 2;
+}
+
+
 const Vec2 & Robot::StageData::getPath(const Vec2 & posS, const Vec2 & posT) const
 {
 	if (!isWalkAble(posS.asPoint() / SIZE) || !isWalkAble(posT.asPoint() / SIZE) || (posT-posS).length() < MIN_LENGTH)
@@ -28,6 +42,18 @@ const Vec2 & Robot::StageData::getPath(const Vec2 & posS, const Vec2 & posT) con
 	return _path[s][t];
 }
 
+
+double Robot::StageData::getDistance(const Vec2 & posS, const Vec2 & posT) const
+{
+	Point pS = translatePos(posS);
+	Point pT = translatePos(posT);
+
+	if (!isWalkAble(pS) || !isWalkAble(pT))
+	{
+		return Infinity<double>();
+	}
+	return _distance[pointToInt(pS)][pointToInt(pT)];
+}
 
 void Robot::StageData::clear()
 {
@@ -50,15 +76,13 @@ void Robot::StageData::clear()
 
 void Robot::StageData::searchPath()
 {
-	std::array<std::array<double, N>, N> distance; // 2“_ŠÔ‚Ì‹——£
-
 	for (int i = 0; i < N; ++i)
 	{
 		for (int j = 0; j < N; ++j)
 		{
 			auto edge = getEdge(i, j);
-			_path[i][j]    = edge.first;
-			distance[i][j] = edge.second;
+			_path[i][j]     = edge.first;
+			_distance[i][j] = edge.second;
 		}
 	}
 
@@ -68,10 +92,10 @@ void Robot::StageData::searchPath()
 		{
 			for (int j = 0; j < N; ++j)
 			{
-				if (distance[i][j] > distance[i][k] + distance[k][j])
+				if (_distance[i][j] > _distance[i][k] + _distance[k][j])
 				{
-					distance[i][j] = distance[i][k] + distance[k][j];
-					_path[i][j]    = _path[i][k];
+					_distance[i][j] = _distance[i][k] + _distance[k][j];
+					_path[i][j]     = _path[i][k];
 				}
 			}
 		}

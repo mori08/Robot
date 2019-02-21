@@ -299,11 +299,13 @@
     <ClInclude Include="Code\Game\GameManager.h" />
     <ClInclude Include="Code\Game\GameScene.h" />
     <ClInclude Include="Code\Game\LoadGameScene.h" />
+    <ClInclude Include="Code\Game\Object\ChaseEnemy.h" />
     <ClInclude Include="Code\Game\Object\EnemyBase.h" />
     <ClInclude Include="Code\Game\Object\GameGoal.h" />
     <ClInclude Include="Code\Game\Object\GameObject.h" />
     <ClInclude Include="Code\Game\Object\GamePlayer.h" />
     <ClInclude Include="Code\Game\Object\HorizontalEnemy.h" />
+    <ClInclude Include="Code\Game\Object\RunAwayGoal.h" />
     <ClInclude Include="Code\Game\Object\TestGameObject.h" />
     <ClInclude Include="Code\Game\Object\VerticalEnemy.h" />
     <ClInclude Include="Code\Game\StageData.h" />
@@ -350,11 +352,13 @@
     <ClCompile Include="Code\Game\GameManager.cpp" />
     <ClCompile Include="Code\Game\GameScene.cpp" />
     <ClCompile Include="Code\Game\LoadGameScene.cpp" />
+    <ClCompile Include="Code\Game\Object\ChaseEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\EnemyBase.cpp" />
     <ClCompile Include="Code\Game\Object\GameGoal.cpp" />
     <ClCompile Include="Code\Game\Object\GameObject.cpp" />
     <ClCompile Include="Code\Game\Object\GamePlayer.cpp" />
     <ClCompile Include="Code\Game\Object\HorizontalEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\RunAwayGoal.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
     <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />

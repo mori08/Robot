@@ -18,6 +18,8 @@ void Robot::GameGoal::update(GameManager & gameManager)
 		_texturePos.x++;
 	}
 
+	moveObject(gameManager, getMoveVec(gameManager));
+
 	if ((_pos - gameManager.getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
 		gameManager.gameClear();

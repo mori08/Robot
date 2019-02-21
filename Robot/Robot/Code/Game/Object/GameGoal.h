@@ -39,5 +39,16 @@ namespace Robot
 
 		void draw() const override;
 
+	protected:
+
+		/// <summary>
+		/// 移動ベクトルを取得します。
+		/// </summary>
+		/// <param name="gameManager"> GameManagerクラスのインスタンス </param>
+		virtual Vec2 getMoveVec(GameManager &)
+		{
+			return Vec2::Zero;
+		}
+
 	};
 }

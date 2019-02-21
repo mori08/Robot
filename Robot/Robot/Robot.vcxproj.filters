@@ -612,6 +612,12 @@
     <ClInclude Include="Code\Game\Object\VerticalEnemy.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\ChaseEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\RunAwayGoal.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -753,6 +759,12 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\ChaseEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\RunAwayGoal.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>

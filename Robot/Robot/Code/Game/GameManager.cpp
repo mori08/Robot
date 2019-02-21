@@ -4,6 +4,8 @@
 #include "Object\GameGoal.h"
 #include "Object\HorizontalEnemy.h"
 #include "Object\VerticalEnemy.h"
+#include "Object\ChaseEnemy.h"
+#include "Object\RunAwayGoal.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -11,11 +13,11 @@
 
 namespace
 {
-	const size_t POINT_COLUMNS     = 2; // 座標を示す行の列数
-	const size_t POINT_X           = 0; // X座標のインデックス
-	const size_t POINT_Y           = 1; // Y座標のインデックス
-	const size_t ENEMY_NUM_COLUMN  = 0; // 敵の数が記載されている列番号
-	const size_t ENEMY_TYPE_COLUMN = 2; // 敵の種類が記述されている列番号
+	const size_t POINT_COLUMNS   = 2; // 座標を示す行の列数
+	const size_t POINT_X         = 0; // X座標のインデックス
+	const size_t POINT_Y         = 1; // Y座標のインデックス
+	const size_t OBJ_NUM_COLUMN  = 0; // オブジェクトの数が記載されている列番号
+	const size_t OBJ_TYPE_COLUMN = 2; // オブジェクトの種類が記述されている列番号
 }
 
 
@@ -24,8 +26,12 @@ Robot::GameManager::FuncMap Robot::GameManager::genarateEnemyMap;
 
 void Robot::GameManager::setObjMap()
 {
+	makeGenerateFunc<GamePlayer>     (L"Player");
+	makeGenerateFunc<GameGoal>       (L"Goal");
+	makeGenerateFunc<RunAwayGoal>    (L"RunAwayGoal");
 	makeGenerateFunc<HorizontalEnemy>(L"Horizontal");
-	makeGenerateFunc<VerticalEnemy>(L"Vertical");
+	makeGenerateFunc<VerticalEnemy>  (L"Vertical");
+	makeGenerateFunc<ChaseEnemy>     (L"Chase");
 }
 
 
@@ -36,6 +42,9 @@ Optional<Vec2> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvRe
 	if (!optX || !optY)
 	{
 		printError(L"Error > getPointFromCSVReaderで座標を変換できませんでした");
+		printError(ToString(readingRow) + L"行目");
+		printError(L"x : " + csvReader.get<String>(readingRow, POINT_X));
+		printError(L"y : " + csvReader.get<String>(readingRow, POINT_Y));
 		return none;
 	}
 
@@ -93,36 +102,16 @@ void Robot::GameManager::load(const String & gameDataFileName)
 	// 経路探索
 	_stageData.searchPath();
 
-	// プレイヤーの生成
+	// オブジェクトの数の確認
 	if (gameData.rows < readingRow)
 	{
 		printError(L"Error > GameDataの行数が足りません");
 		return;
 	}
-	Optional<Vec2> playerPos = getPointFromCSVReader(gameData, readingRow);
-	if (!playerPos) { return; }
-	_objList.emplace_back(std::make_unique<GamePlayer>(*playerPos));
+	int objNum = gameData.get<int>(readingRow, OBJ_NUM_COLUMN); // 敵の数
 
-	// ゴールの生成
-	if (gameData.rows < ++readingRow)
-	{
-		printError(L"Error > GameDataの行数が足りません");
-		return;
-	}
-	Optional<Vec2> goalPos = getPointFromCSVReader(gameData, readingRow);
-	if (!goalPos) { return; }
-	_objList.emplace_back(std::make_unique<GameGoal>(*goalPos));
-
-	// 敵の数の確認
-	if (gameData.rows < ++readingRow)
-	{
-		printError(L"Error > GameDataの行数が足りません");
-		return;
-	}
-	int enemyNum = gameData.get<int>(readingRow, ENEMY_NUM_COLUMN); // 敵の数
-
-	// 敵の生成
-	for (int i = 0; i < enemyNum; ++i)
+	// オブジェクトの生成
+	for (int i = 0; i < objNum; ++i)
 	{
 		if (gameData.rows < ++readingRow)
 		{
@@ -130,19 +119,18 @@ void Robot::GameManager::load(const String & gameDataFileName)
 			return;
 		}
 
-		Optional<Vec2> enemyPos = getPointFromCSVReader(gameData, readingRow);
-		if (!enemyPos) 
+		Optional<Vec2> pos = getPointFromCSVReader(gameData, readingRow);
+		if (!pos) 
 		{
-			printError(L"Error > 座標に変換できません");
 			return; 
 		}
-		String enemyType = gameData.get<String>(readingRow, ENEMY_TYPE_COLUMN);
+		String enemyType = gameData.get<String>(readingRow, OBJ_TYPE_COLUMN);
 		if (genarateEnemyMap.find(enemyType) == genarateEnemyMap.end()) 
 		{
 			printError(L"Error > 存在しない敵の種類" + enemyType);
 			return; 
 		}
-		_objList.emplace_back(genarateEnemyMap[enemyType](*enemyPos));
+		_objList.emplace_back(genarateEnemyMap[enemyType](*pos));
 	}
 
 

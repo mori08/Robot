@@ -22,11 +22,26 @@ namespace Robot
 
 	private:
 
-		std::array<bool, N>                _terrain;  // 地形 trueのとき障害物あり
+		std::array<bool, N> _terrain;  // 地形 trueのとき障害物あり
 
-		std::array<std::array<Vec2, N>, N> _path;     // i→j への経路
+		std::array<std::array<Vec2,    N>, N> _path;     // i→j への経路
+		std::array<std::array<double , N>, N> _distance; // i→j への距離
 
 	public:
+
+		/// <summary>
+		/// Vec2座標からマスを表現するPoint座標に変換します。
+		/// </summary>
+		/// <param name="pos"> Vec2座標 </param>
+		/// <returns> マスを表現するPoint座標 </returns>
+		static Point translatePos(const Vec2 & pos);
+
+		/// <summary>
+		/// マスの中心座標を取得します。
+		/// </summary>
+		/// <param name="pos"> マスを表現するPoint座標 </param>
+		/// <returns> Vec2座標 </returns>
+		static Vec2 centerPosOfCell(const Point & pos);
 
 		/// <summary>
 		/// 座標を示す整数値を座標に変換します。
@@ -90,6 +105,15 @@ namespace Robot
 		/// <param name="posT"> 終点 </param>
 		/// <returns> 経路上で最初に進む方向 </returns>
 		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT) const;
+
+		/// <summary>
+		/// 距離を取得します
+		/// </summary>
+		/// <param name="posS"> 始点 </param>
+		/// <param name="posT"> 終点 </param>
+		/// <returns> 距離 </returns>
+		double getDistance(const Vec2 & posS, const Vec2 & posT) const;
+
 
 		/// <summary>
 		/// 地形や経路の情報をリセットします。

@@ -17,6 +17,8 @@ namespace
 	const double RATE_MIN               = 0.001; // _lightCircleRate‚ÌÅ¬’l
 	const double LIGHT_CIRCLE_RADIUS    = 40;    // Œõ‚Ì—Ö‚Ì”¼Œa
 	const double LIGHT_CIRCLE_THICKNESS = 1;     // Œõ‚Ì—Ö‚ÌŒú‚³
+
+	const double SPEED = 1.2;
 }
 
 
@@ -71,5 +73,5 @@ Vec2 Robot::GamePlayer::getMoveVec() const
 		moveVec.y += BASE_VALUE;
 	}
 	
-	return (moveVec.length() < ZERO_LINE) ? Vec2::Zero : moveVec.normalize();
+	return (moveVec.length() < ZERO_LINE) ? Vec2::Zero : SPEED*moveVec.normalize();
 }

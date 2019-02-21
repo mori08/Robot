@@ -188,6 +188,17 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// 2点間の距離を取得します。
+		/// </summary>
+		/// <param name="posS"> 始点 </param>
+		/// <param name="posT"> 終点 </param>
+		/// <returns> 距離 </returns>
+		double getDistance(const Vec2 & posS, const Vec2 & posT) const
+		{
+			return _stageData.getDistance(posS, posT);
+		}
+
+		/// <summary>
 		/// 示された座標が行動可能か示します．
 		/// </summary>
 		/// <param name="pos"> 座標 </param>
