@@ -603,6 +603,9 @@
     <ClInclude Include="Code\Menu\Window\StageWindow.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\EnemyBase.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -736,6 +739,9 @@
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\StageWindow.cpp">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\EnemyBase.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

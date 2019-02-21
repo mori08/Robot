@@ -20,7 +20,7 @@ void Robot::GameGoal::update(GameManager & gameManager)
 
 	if ((_pos - gameManager.getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		gameManager.Instance().gameClear();
+		gameManager.gameClear();
 	}
 }
 
