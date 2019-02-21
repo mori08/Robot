@@ -30,5 +30,13 @@ namespace Robot
 
 		void draw() const override;
 
+	private:
+
+		/// <summary>
+		/// ウィンドウを開きます。
+		/// </summary>
+		/// <param name="windowName"> 開くウィンドウの名前 </param>
+		void openWindow(const String & windowName);
+
 	};
 }

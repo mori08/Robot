@@ -14,7 +14,7 @@ void Robot::LoadSaveDataScene::complete()
 	case SaveDataManager::LoadResult::NEW_GAME:
 	case SaveDataManager::LoadResult::CONTINUE:
 		m_data->sceneInfo = L"Test";
-		changeScene(L"LoadGameScene");
+		changeScene(L"MenuScene");
 		break;
 	case SaveDataManager::LoadResult::ERROR:
 	default:

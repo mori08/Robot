@@ -600,6 +600,9 @@
     <ClInclude Include="Code\Menu\Window\MainWindow.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Menu\Window\StageWindow.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -729,6 +732,9 @@
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\MenuScene.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\StageWindow.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
   </ItemGroup>
