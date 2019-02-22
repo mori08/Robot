@@ -6,6 +6,7 @@
 #include "Object\VerticalEnemy.h"
 #include "Object\ChaseEnemy.h"
 #include "Object\RunAwayGoal.h"
+#include "Object\RandomEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -32,6 +33,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<HorizontalEnemy>(L"Horizontal");
 	makeGenerateFunc<VerticalEnemy>  (L"Vertical");
 	makeGenerateFunc<ChaseEnemy>     (L"Chase");
+	makeGenerateFunc<RandomEnemy>    (L"Random");
 }
 
 
