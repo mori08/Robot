@@ -5,6 +5,7 @@ namespace
 {
 	const double PLAYER_MIN_DISTANCE = 12.0;
 	const int RUN_POINT_NUM = 4;
+	const double SPEED = 0.5;
 }
 
 
@@ -22,7 +23,7 @@ Vec2 Robot::RunAwayGoal::getMoveVec(GameManager & gameManager)
 {
 	if (_runPointList[_goalPointId] != StageData::translatePos(_pos))
 	{
-		return gameManager.getPath(_pos,StageData::centerPosOfCell(_runPointList[_goalPointId]));
+		return SPEED*gameManager.getPath(_pos,StageData::centerPosOfCell(_runPointList[_goalPointId]));
 	}
 	
 	int nextId = RandomSelect<int>({ -1,1 });

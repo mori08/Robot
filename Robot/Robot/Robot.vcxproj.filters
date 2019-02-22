@@ -624,6 +624,15 @@
     <ClInclude Include="Code\Game\Object\AssassinEnemy.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\GiantEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\CentipedeBody.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\CentipedeEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -777,6 +786,15 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\AssassinEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\GiantEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\CentipedeBody.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\CentipedeEnemy.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>

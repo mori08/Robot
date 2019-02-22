@@ -8,6 +8,7 @@
 #include "Object\RunAwayGoal.h"
 #include "Object\RandomEnemy.h"
 #include "Object\AssassinEnemy.h"
+#include "Object\GiantEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -36,6 +37,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<ChaseEnemy>     (L"Chase");
 	makeGenerateFunc<RandomEnemy>    (L"Random");
 	makeGenerateFunc<AssassinEnemy>  (L"Assassin");
+	makeGenerateFunc<GiantEnemy>     (L"Giant");
 }
 
 

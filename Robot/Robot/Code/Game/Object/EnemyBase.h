@@ -27,9 +27,9 @@ namespace Robot
 
 	private:
 
-		void update(GameManager & gameManager) override;
+		virtual void update(GameManager & gameManager) override;
 
-		void draw() const override;
+		virtual void draw() const override;
 
 	protected:
 
