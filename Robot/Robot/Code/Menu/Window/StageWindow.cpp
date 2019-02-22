@@ -21,7 +21,7 @@ Robot::StageWindow::StageWindow()
 
 		registerButton(L"Stage" + ToString(i), Rect(pos, BUTTON_SIZE));
 	}
-
+	
 	_selectedButtonKey = L"Stage0";
 }
 
@@ -29,10 +29,9 @@ Robot::StageWindow::StageWindow()
 void Robot::StageWindow::draw() const
 {
 	drawLight();
-	
 	for (const auto & button : _buttonPtrList)
 	{
-		TextureAsset(button->getKey()).draw(button->getRegion().pos);
+		TextureAsset(button->getKey()).draw(button->getPoint());
 	}
 }
 

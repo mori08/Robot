@@ -94,5 +94,13 @@ namespace Robot
 			return _region;
 		}
 
+		/// <summary>
+		/// マウス入力時の有効範囲のの左上の点を取得します。
+		/// </summary>
+		Point getPoint() const
+		{
+			return _region.pos;
+		}
+
 	};
 }
