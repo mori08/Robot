@@ -299,6 +299,7 @@
     <ClInclude Include="Code\Game\GameManager.h" />
     <ClInclude Include="Code\Game\GameScene.h" />
     <ClInclude Include="Code\Game\LoadGameScene.h" />
+    <ClInclude Include="Code\Game\Object\AssassinEnemy.h" />
     <ClInclude Include="Code\Game\Object\ChaseEnemy.h" />
     <ClInclude Include="Code\Game\Object\EnemyBase.h" />
     <ClInclude Include="Code\Game\Object\GameGoal.h" />
@@ -361,6 +362,7 @@
     <ClCompile Include="Code\Game\Object\HorizontalEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\RandomEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\RunAwayGoal.cpp" />
+    <ClCompile Include="Code\Game\Object\AssassinEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
     <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />

@@ -621,6 +621,9 @@
     <ClInclude Include="Code\Game\Object\RandomEnemy.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\AssassinEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -771,6 +774,9 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\RandomEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\AssassinEnemy.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>

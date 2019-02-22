@@ -7,6 +7,7 @@
 #include "Object\ChaseEnemy.h"
 #include "Object\RunAwayGoal.h"
 #include "Object\RandomEnemy.h"
+#include "Object\AssassinEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -34,6 +35,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<VerticalEnemy>  (L"Vertical");
 	makeGenerateFunc<ChaseEnemy>     (L"Chase");
 	makeGenerateFunc<RandomEnemy>    (L"Random");
+	makeGenerateFunc<AssassinEnemy>  (L"Assassin");
 }
 
 
@@ -179,10 +181,19 @@ void Robot::GameManager::updateObjectAndLight()
 void Robot::GameManager::drawObjectAndLight() const
 {
 #ifdef _DEBUG
-	if (Input::Key0.pressed)
+	static bool debugMode = false;
+
+	debugMode = debugMode^Input::Key0.clicked;
+
+	if (debugMode)
 	{
 		// Œõ‚ð”–‚­•`‰æ
 		Window::ClientRect().draw(Color(Palette::MyWhite, 128));
+		// ƒ}ƒX–Ú‚ð•`‰æ
+		for (int i = 0; i < StageData::N; ++i)
+		{
+			Rect(StageData::SIZE*StageData::intToPoint(i), StageData::SIZE).drawFrame(1, 1, Palette::MyBlack);
+		}
 	}
 #endif // _DEBUG
 

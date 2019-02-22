@@ -182,7 +182,7 @@ namespace Robot
 		/// <param name="posS"> 始点 </param>
 		/// <param name="posT"> 終点 </param>
 		/// <returns> 経路上で最初に進む方向 </returns>
-		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT) const
+		Vec2 getPath(const Vec2 & posS, const Vec2 & posT) const
 		{
 			return _stageData.getPath(posS, posT);
 		}
@@ -224,6 +224,14 @@ namespace Robot
 		const Vec2 & getPlayerPos() const
 		{
 			return _playerPos;
+		}
+
+		/// <summary>
+		/// 光の中心座標を取得します。
+		/// </summary>
+		const Vec2 & getLightPos() const
+		{
+			return _light.getPos();
 		}
 
 		/// <summary>

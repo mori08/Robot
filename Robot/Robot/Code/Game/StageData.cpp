@@ -24,7 +24,7 @@ Vec2 Robot::StageData::centerPosOfCell(const Point & pos)
 }
 
 
-const Vec2 & Robot::StageData::getPath(const Vec2 & posS, const Vec2 & posT) const
+Vec2 Robot::StageData::getPath(const Vec2 & posS, const Vec2 & posT) const
 {
 	if (!isWalkAble(posS.asPoint() / SIZE) || !isWalkAble(posT.asPoint() / SIZE) || (posT-posS).length() < MIN_LENGTH)
 	{

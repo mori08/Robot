@@ -28,6 +28,15 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// À•W‚ğæ“¾‚µ‚Ü‚·B
+		/// </summary>
+		/// <returns> À•W </returns>
+		const Vec2 & getPos() const
+		{
+			return _pos;
+		}
+
+		/// <summary>
 		/// •`‰æ
 		/// </summary>
 		void update();

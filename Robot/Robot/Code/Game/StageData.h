@@ -104,7 +104,7 @@ namespace Robot
 		/// <param name="posS"> 始点 </param>
 		/// <param name="posT"> 終点 </param>
 		/// <returns> 経路上で最初に進む方向 </returns>
-		const Vec2 & getPath(const Vec2 & posS, const Vec2 & posT) const;
+		Vec2 getPath(const Vec2 & posS, const Vec2 & posT) const;
 
 		/// <summary>
 		/// 距離を取得します
