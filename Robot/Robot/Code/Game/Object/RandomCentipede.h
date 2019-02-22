@@ -10,11 +10,15 @@ namespace Robot
 	ChaseLightCentibeteクラス
 	光を追跡するムカデ型の敵
 	*/
-	class ChaseLightCentipede : public CentipedeEnemy
+	class RandomCentipede : public CentipedeEnemy
 	{
+	private:
+
+		Vec2 _goalPos;
+
 	public:
 
-		ChaseLightCentipede(const Vec2 & pos);
+		RandomCentipede(const Vec2 & pos);
 
 	private:
 

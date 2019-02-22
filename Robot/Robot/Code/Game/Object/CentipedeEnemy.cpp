@@ -10,7 +10,11 @@ namespace
 
 void Robot::CentipedeEnemy::update(GameManager & gameManager)
 {
-	_bodyList[LEADER_INDEX]->setGoalPos(getGoalPos());
+	if (gameManager.isWalkingAblePos(getGoalPos()))
+	{
+		_bodyList[LEADER_INDEX]->setGoalPos(getGoalPos());
+	}
+
 	for (int i = 1; i < _bodyList.size(); ++i)
 	{
 		if ((_bodyList[i]->getPos() - _bodyList[i-1]->getPos()).length() < BODY_DISTANCE)
