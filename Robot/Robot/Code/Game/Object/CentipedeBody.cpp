@@ -13,6 +13,7 @@ namespace
 Robot::CentipedeBody::CentipedeBody(const Vec2 & pos)
 	: GameObject(pos)
 	, _goalPos(pos)
+	, _frameCount(0)
 {
 }
 
@@ -32,7 +33,7 @@ void Robot::CentipedeBody::update(GameManager & gameManager)
 
 void Robot::CentipedeBody::draw() const
 {
-	const Point texturePos = TEXTURE_SIZE*Point(_frameCount / TEXTURE_CHANGE_SPAN, 0);
+	Point texturePos = Point(_frameCount / TEXTURE_CHANGE_SPAN, 0);
 	TextureAsset(L"Enemy")(texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
 }
 

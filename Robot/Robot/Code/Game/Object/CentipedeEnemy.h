@@ -19,9 +19,16 @@ namespace Robot
 
 	public:
 
+		CentipedeEnemy(const Vec2 & pos)
+			: GameObject(pos)
+		{
+		}
+
 		void update(GameManager & gameManager) override;
 
 		void draw() const override;
+
+	protected:
 
 		/// <summary>
 		/// 目的地の座標を取得します。

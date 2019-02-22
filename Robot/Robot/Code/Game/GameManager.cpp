@@ -9,6 +9,7 @@
 #include "Object\RandomEnemy.h"
 #include "Object\AssassinEnemy.h"
 #include "Object\GiantEnemy.h"
+#include "Object\ChaseLightCentipede.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -29,15 +30,16 @@ Robot::GameManager::FuncMap Robot::GameManager::genarateEnemyMap;
 
 void Robot::GameManager::setObjMap()
 {
-	makeGenerateFunc<GamePlayer>     (L"Player");
-	makeGenerateFunc<GameGoal>       (L"Goal");
-	makeGenerateFunc<RunAwayGoal>    (L"RunAwayGoal");
-	makeGenerateFunc<HorizontalEnemy>(L"Horizontal");
-	makeGenerateFunc<VerticalEnemy>  (L"Vertical");
-	makeGenerateFunc<ChaseEnemy>     (L"Chase");
-	makeGenerateFunc<RandomEnemy>    (L"Random");
-	makeGenerateFunc<AssassinEnemy>  (L"Assassin");
-	makeGenerateFunc<GiantEnemy>     (L"Giant");
+	makeGenerateFunc<GamePlayer>         (L"Player");
+	makeGenerateFunc<GameGoal>           (L"Goal");
+	makeGenerateFunc<RunAwayGoal>        (L"RunAwayGoal");
+	makeGenerateFunc<HorizontalEnemy>    (L"Horizontal");
+	makeGenerateFunc<VerticalEnemy>      (L"Vertical");
+	makeGenerateFunc<ChaseEnemy>         (L"Chase");
+	makeGenerateFunc<RandomEnemy>        (L"Random");
+	makeGenerateFunc<AssassinEnemy>      (L"Assassin");
+	makeGenerateFunc<GiantEnemy>         (L"Giant");
+	makeGenerateFunc<ChaseLightCentipede>(L"ChaseLightCentipede");
 }
 
 
