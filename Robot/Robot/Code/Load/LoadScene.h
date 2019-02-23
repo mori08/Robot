@@ -18,9 +18,9 @@ namespace Robot
 
 		bool        _isLoading;  // ロード中のとき true , 終了したとき false
 
-		static int  _frameCount; // 経過フレーム数
-
 	protected:
+
+		static int  _frameCount; // 経過フレーム数
 
 		std::thread _loadThread; // ロードするスレッド
 
@@ -40,7 +40,7 @@ namespace Robot
 
 		void updateFadeOut(double) override;
 
-		void draw() const override;
+		virtual void draw() const override;
 
 		void drawFadeIn(double) const override;
 

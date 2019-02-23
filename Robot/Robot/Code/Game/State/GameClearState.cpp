@@ -52,7 +52,7 @@ void Robot::GameClearState::update(GameManager & gameManager)
 	if (_frameCount > CHANGE_SCENE_FRAME_COUNT)
 	{
 		SaveDataManager::Instance().setFlag(gameManager.getStageName(), true);
-		gameManager.setSceneName(L"MenuScene", L"");
+		gameManager.setSceneName(L"SavingDataScene", L"");
 	}
 }
 

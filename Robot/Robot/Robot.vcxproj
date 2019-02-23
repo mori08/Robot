@@ -342,6 +342,7 @@
     <ClInclude Include="Code\Menu\Window\StageWindow.h" />
     <ClInclude Include="Code\SaveData\LoadSaveDataScene.h" />
     <ClInclude Include="Code\SaveData\SaveDataManager.h" />
+    <ClInclude Include="Code\SaveData\SavingDataScene.h" />
     <ClInclude Include="Code\Title\Light.h" />
     <ClInclude Include="Code\Title\TitleScene.h" />
   </ItemGroup>
@@ -409,6 +410,7 @@
     <ClCompile Include="Code\Menu\Window\StageWindow.cpp" />
     <ClCompile Include="Code\SaveData\LoadSaveDataScene.cpp" />
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp" />
+    <ClCompile Include="Code\SaveData\SavingDataScene.cpp" />
     <ClCompile Include="Code\Title\Light.cpp" />
     <ClCompile Include="Code\Title\TitleScene.cpp" />
   </ItemGroup>

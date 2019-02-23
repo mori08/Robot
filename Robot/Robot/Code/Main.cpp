@@ -11,6 +11,7 @@
 #include"Game\LoadGameScene.h"
 #include"Menu\MenuScene.h"
 #include"Game\GameManager.h"
+#include"SaveData\SavingDataScene.h"
 
 
 void asseter(const String & dirname);
@@ -42,6 +43,7 @@ void Main()
 	sceneManager.add<Robot::GameScene>        (L"GameScene");
 	sceneManager.add<Robot::LoadGameScene>    (L"LoadGameScene");
 	sceneManager.add<Robot::MenuScene>        (L"MenuScene");
+	sceneManager.add<Robot::SavingDataScene>  (L"SavingDataScene");
 
 	while (System::Update())
 	{

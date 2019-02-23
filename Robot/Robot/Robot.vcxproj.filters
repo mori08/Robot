@@ -666,6 +666,9 @@
     <ClInclude Include="Code\Game\State\TutorialOfSearchGoal.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\SaveData\SavingDataScene.h">
+      <Filter>ヘッダー ファイル\SaveData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -862,6 +865,9 @@
     </ClCompile>
     <ClCompile Include="Code\Game\State\TutorialOfSearchGoal.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SaveData\SavingDataScene.cpp">
+      <Filter>ソース ファイル\SaveData</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
