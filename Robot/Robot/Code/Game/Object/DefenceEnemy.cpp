@@ -3,14 +3,13 @@
 
 namespace
 {
-	const double SPEED = 0.4;
-	const int    CHANGE_MOTION_SPAN = 60;
+	const double SPEED = 0.8;
+	const double RATE = 0.5; // プレイヤーとゴールの内分点の比
 }
 
 
 Robot::DefenceEnemy::DefenceEnemy(const Vec2 & pos)
 	: EnemyBase(pos)
-	, _attackOrDefence(false)
 {
 
 }
@@ -18,17 +17,10 @@ Robot::DefenceEnemy::DefenceEnemy(const Vec2 & pos)
 
 Vec2 Robot::DefenceEnemy::getMoveVec(GameManager & gameManager)
 {
-	if (_frameCount%CHANGE_MOTION_SPAN == 0)
+	Vec2 goalPos = (1-RATE)*gameManager.getPlayerPos() + RATE*gameManager.getGoalPos();
+	if (gameManager.isWalkingAblePos(goalPos))
 	{
-		_attackOrDefence = !_attackOrDefence;
+		return SPEED*gameManager.getPath(_pos, goalPos);
 	}
-
-	if (_attackOrDefence)
-	{
-		return SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
-	}
-	else
-	{
-		return SPEED*gameManager.getPath(_pos, gameManager.getGoalPos());
-	}
+	return SPEED*gameManager.getPath(_pos, gameManager.getGoalPos());
 }

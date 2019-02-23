@@ -14,6 +14,8 @@
 #include "Object\GoalTailCentipede.h"
 #include "Object\HorizontalBlockEnemy.h"
 #include "Object\VerticalBlockEnemy.h"
+#include "Object\LastGoal.h"
+#include "Object\DefenceEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -37,6 +39,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<GamePlayer>          (L"Player");
 	makeGenerateFunc<GameGoal>            (L"Goal");
 	makeGenerateFunc<RunAwayGoal>         (L"RunAwayGoal");
+	makeGenerateFunc<LastGoal>            (L"LastGoal");
 	makeGenerateFunc<HorizontalEnemy>     (L"Horizontal");
 	makeGenerateFunc<VerticalEnemy>       (L"Vertical");
 	makeGenerateFunc<ChaseEnemy>          (L"Chase");
@@ -48,6 +51,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<GoalTailCentipede>   (L"GoalTailCentipede");
 	makeGenerateFunc<HorizontalBlockEnemy>(L"HorizontalBlock");
 	makeGenerateFunc<VerticalBlockEnemy>  (L"VerticalBlock");
+	makeGenerateFunc<DefenceEnemy>        (L"Defence");
 }
 
 

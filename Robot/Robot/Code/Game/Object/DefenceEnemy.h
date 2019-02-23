@@ -12,10 +12,6 @@ namespace Robot
 	*/
 	class DefenceEnemy : public EnemyBase
 	{
-	private:
-
-		bool _attackOrDefence; // trueのときプレイヤーを追いかけ , falseのときゴールを追いかける
-
 	public:
 
 		/// <summary>
