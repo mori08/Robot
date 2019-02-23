@@ -663,6 +663,9 @@
     <ClInclude Include="Code\Game\State\TutorialOfLightMove.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\TutorialOfSearchGoal.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -855,6 +858,9 @@
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\State\TutorialOfLightMove.cpp">
+      <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\TutorialOfSearchGoal.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
   </ItemGroup>

@@ -185,6 +185,11 @@ namespace Robot
 		/// </summary>
 		void setSceneName(const String & sceneName, const String & sceneInfo);
 
+		/// <summary>
+		/// チュートリアル用のゴールを作成します。
+		/// </summary>
+		void makeTutorialGoal();
+
 	public: // GameObjectで使用する関数
 
 		/// <summary>

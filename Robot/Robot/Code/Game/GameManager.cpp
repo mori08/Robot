@@ -241,6 +241,33 @@ void Robot::GameManager::setSceneName(const String & sceneName, const String & s
 }
 
 
+void Robot::GameManager::makeTutorialGoal()
+{
+	static const std::vector<Vec2> GOAL_POS_LIST // ゴールの候補地リスト
+	{
+		Vec2(20 ,20),
+		Vec2(620,20),
+		Vec2(20 ,460),
+		Vec2(620,460)
+	};
+
+	Vec2 goalPos;
+	double max_dist = 0;
+
+	for (const auto & pos : GOAL_POS_LIST)
+	{
+		double dist = (pos - getPlayerPos()).length();
+		if (dist > max_dist)
+		{
+			max_dist = dist;
+			goalPos = pos;
+		}
+	}
+
+	_objList.emplace_back(std::make_unique<GameGoal>(goalPos));
+}
+
+
 void Robot::GameManager::gameClear()
 {
 	_gameState = std::make_unique<GameClearState>();

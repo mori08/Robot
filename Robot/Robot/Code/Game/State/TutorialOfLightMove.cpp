@@ -1,4 +1,5 @@
 #include "TutorialOfLightMove.h"
+#include "TutorialOfSearchGoal.h"
 
 
 namespace
@@ -24,7 +25,8 @@ void Robot::TutorialOfLightMove::update(GameManager & gameManager)
 
 	if (_frameCount > CHANGE_STATE_FRAMECOUNT)
 	{
-		// 次のチュートリアルに遷移する
+		gameManager.makeTutorialGoal();
+		gameManager.changeGameState(std::make_unique<TutorialOfSearchGoal>());
 	}
 }
 

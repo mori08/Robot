@@ -328,6 +328,7 @@
     <ClInclude Include="Code\Game\State\PlayingState.h" />
     <ClInclude Include="Code\Game\State\TutorialOfLightMove.h" />
     <ClInclude Include="Code\Game\State\TutorialOfPlayerMove.h" />
+    <ClInclude Include="Code\Game\State\TutorialOfSearchGoal.h" />
     <ClInclude Include="Code\Input\Button.h" />
     <ClInclude Include="Code\Input\InputManager.h" />
     <ClInclude Include="Code\Input\InputState.h" />
@@ -395,6 +396,7 @@
     <ClCompile Include="Code\Game\State\PlayingState.cpp" />
     <ClCompile Include="Code\Game\State\TutorialOfLightMove.cpp" />
     <ClCompile Include="Code\Game\State\TutorialOfPlayerMove.cpp" />
+    <ClCompile Include="Code\Game\State\TutorialOfSearchGoal.cpp" />
     <ClCompile Include="Code\Input\Button.cpp" />
     <ClCompile Include="Code\Input\InputManager.cpp" />
     <ClCompile Include="Code\Input\KeyInputState.cpp" />
