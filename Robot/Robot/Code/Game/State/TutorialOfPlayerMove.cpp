@@ -1,11 +1,12 @@
 #include "TutorialOfPlayerMove.h"
+#include "TutorialOfLightMove.h"
 
 
 namespace
 {
 	const size_t DRAW_TEXT_SPAN = 5;
 	const Point  DRAW_TEXT_POS(320, 460);
-	const double CHANGE_SCENE_DIST = 500;
+	const double CHANGE_STATE_DIST = 500;
 }
 
 
@@ -28,9 +29,9 @@ void Robot::TutorialOfPlayerMove::update(GameManager & gameManager)
 	_playerMoveDist += (gameManager.getPlayerPos() - _prePlayerPos).length();
 	_prePlayerPos = gameManager.getPlayerPos();
 	
-	if (_playerMoveDist > CHANGE_SCENE_DIST)
+	if (_playerMoveDist > CHANGE_STATE_DIST)
 	{
-		// 次のチュートリアルに遷移する
+		gameManager.changeGameState(std::make_unique<TutorialOfLightMove>());
 	}
 }
 
@@ -38,7 +39,7 @@ void Robot::TutorialOfPlayerMove::update(GameManager & gameManager)
 void Robot::TutorialOfPlayerMove::draw(const GameManager & gameManager) const
 {
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"WASDキーを用いてプレイヤーを操作してください";
+	String text = L"WASDキーでプレイヤーを操作してください";
 
 	gameManager.drawObjectAndLight();
 

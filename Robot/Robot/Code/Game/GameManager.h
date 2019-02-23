@@ -172,6 +172,15 @@ namespace Robot
 		void drawObjectAndLight()const;
 
 		/// <summary>
+		/// gameStateを変更します。
+		/// </summary>
+		/// <param name="gameState"> gameStateのunique_ptr </param>
+		void changeGameState(StatePtr gameState)
+		{
+			_gameState = std::move(gameState);
+		}
+
+		/// <summary>
 		/// シーンの設定先を設定します。
 		/// </summary>
 		void setSceneName(const String & sceneName, const String & sceneInfo);
