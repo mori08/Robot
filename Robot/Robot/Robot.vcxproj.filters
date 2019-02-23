@@ -657,6 +657,9 @@
     <ClInclude Include="Code\Game\Object\LastGoal.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\TutorialOfPlayerMove.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -844,6 +847,9 @@
     </ClCompile>
     <ClCompile Include="Code\Game\Object\LastGoal.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\TutorialOfPlayerMove.cpp">
+      <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

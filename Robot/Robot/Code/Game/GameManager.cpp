@@ -19,6 +19,7 @@
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
+#include "State\TutorialOfPlayerMove.h"
 
 
 namespace
@@ -93,6 +94,14 @@ void Robot::GameManager::load(const String & gameDataFileName)
 	if (!gameData.isOpened())
 	{
 		printError(L"Error > GameData‚ğ“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½B : " + gameDataFileName);
+		return;
+	}
+
+	if (gameData.get<String>(0, 0) == L"Tutorial")
+	{
+		_gameState = std::make_unique<TutorialOfPlayerMove>();
+		_objList.emplace_back(std::make_unique<GamePlayer>(Window::Center()));
+		_light.setPos(Window::Center());
 		return;
 	}
 

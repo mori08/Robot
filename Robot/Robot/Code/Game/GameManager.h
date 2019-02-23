@@ -247,6 +247,15 @@ namespace Robot
 		}
 
 		/// <summary>
+		/// 光の中心座標を設定します。
+		/// </summary>
+		/// <param name="pos"> 光の中心座標 </param>
+		void setLightPos(const Vec2 & pos)
+		{
+			_light.setPos(pos);
+		}
+
+		/// <summary>
 		/// 光の中心座標を取得します。
 		/// </summary>
 		const Vec2 & getLightPos() const
