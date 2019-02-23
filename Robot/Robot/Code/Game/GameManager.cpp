@@ -12,6 +12,8 @@
 #include "Object\RandomCentipede.h"
 #include "Object\ChasePlayerCentipede.h"
 #include "Object\GoalTailCentipede.h"
+#include "Object\HorizontalBlockEnemy.h"
+#include "Object\VerticalBlockEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -44,6 +46,8 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<RandomCentipede>     (L"RandomCentipede");
 	makeGenerateFunc<ChasePlayerCentipede>(L"ChasePlayerCentipede");
 	makeGenerateFunc<GoalTailCentipede>   (L"GoalTailCentipede");
+	makeGenerateFunc<HorizontalBlockEnemy>(L"HorizontalBlock");
+	makeGenerateFunc<VerticalBlockEnemy>  (L"VerticalBlock");
 }
 
 

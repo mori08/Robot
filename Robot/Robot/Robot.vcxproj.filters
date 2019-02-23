@@ -645,6 +645,12 @@
     <ClInclude Include="Code\Game\Object\GoalTailCentipede.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\HorizontalBlockEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\VerticalBlockEnemy.h">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -819,6 +825,12 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\GoalTailCentipede.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\HorizontalBlockEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\VerticalBlockEnemy.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
