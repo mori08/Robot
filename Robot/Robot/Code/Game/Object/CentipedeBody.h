@@ -13,7 +13,7 @@ namespace Robot
 	*/
 	class CentipedeBody : public GameObject
 	{
-	private:
+	protected:
 
 		Vec2 _goalPos;    // –Ú“IÀ•W
 

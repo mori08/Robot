@@ -11,6 +11,7 @@
 #include "Object\GiantEnemy.h"
 #include "Object\RandomCentipede.h"
 #include "Object\ChasePlayerCentipede.h"
+#include "Object\GoalTailCentipede.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -42,6 +43,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<GiantEnemy>          (L"Giant");
 	makeGenerateFunc<RandomCentipede>     (L"RandomCentipede");
 	makeGenerateFunc<ChasePlayerCentipede>(L"ChasePlayerCentipede");
+	makeGenerateFunc<GoalTailCentipede>   (L"GoalTailCentipede");
 }
 
 

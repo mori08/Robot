@@ -6,7 +6,7 @@ namespace
 	const int  TEXTURE_CHANGE_SPAN = 4;    // 画像を変更する間隔のフレーム数
 	const Size TEXTURE_SIZE(40, 40);       // 画像の大きさ
 	const double GAMEOVER_DISTANCE = 15.0; // ゲームオーバー判定が行われる距離
-	const double SPEED = 0.5;
+	const double SPEED = 0.4;
 }
 
 

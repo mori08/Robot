@@ -4,7 +4,7 @@
 namespace
 {
 	const size_t LEADER_INDEX  = 0;  // 先頭のインデックス
-	const size_t BODY_DISTANCE = 30; // 体の部品が保つ距離
+	const size_t BODY_DISTANCE = 40; // 体の部品が保つ距離
 }
 
 

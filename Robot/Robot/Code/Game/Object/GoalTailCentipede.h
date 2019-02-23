@@ -7,10 +7,10 @@
 namespace Robot
 {
 	/*
-	ChaseLightCentibeteƒNƒ‰ƒX
-	Œõ‚ğ’ÇÕ‚·‚éƒ€ƒJƒfŒ^‚Ì“G
+	GoalTailCentipedeƒNƒ‰ƒX
+	K”ö‚ªƒS[ƒ‹‚É‚È‚Á‚Ä‚¢‚éƒ€ƒJƒfŒ^‚Ì“G
 	*/
-	class RandomCentipede : public CentipedeEnemy
+	class GoalTailCentipede : public CentipedeEnemy
 	{
 	private:
 
@@ -19,7 +19,7 @@ namespace Robot
 
 	public:
 
-		RandomCentipede(const Vec2 & pos);
+		GoalTailCentipede(const Vec2 & pos);
 
 	private:
 

@@ -588,9 +588,6 @@
     <ClInclude Include="Code\Game\State\GameOverState.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Game\Object\GameGoal.h">
-      <Filter>ヘッダー ファイル\Game\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Menu\MenuScene.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
@@ -637,6 +634,15 @@
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
     <ClInclude Include="Code\Game\Object\RandomCentipede.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\GameGoal.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\CentipedeGoalBody.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\GoalTailCentipede.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
   </ItemGroup>
@@ -807,6 +813,12 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\RandomCentipede.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\CentipedeGoalBody.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\GoalTailCentipede.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>
