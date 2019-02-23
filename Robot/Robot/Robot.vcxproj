@@ -304,6 +304,7 @@
     <ClInclude Include="Code\Game\Object\CentipedeEnemy.h" />
     <ClInclude Include="Code\Game\Object\CentipedeGoalBody.h" />
     <ClInclude Include="Code\Game\Object\ChaseEnemy.h" />
+    <ClInclude Include="Code\Game\Object\DefenceEnemy.h" />
     <ClInclude Include="Code\Game\Object\GoalTailCentipede.h" />
     <ClInclude Include="Code\Game\Object\HorizontalBlockEnemy.h" />
     <ClInclude Include="Code\Game\Object\RandomCentipede.h" />
@@ -367,6 +368,7 @@
     <ClCompile Include="Code\Game\Object\CentipedeEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\CentipedeGoalBody.cpp" />
     <ClCompile Include="Code\Game\Object\ChaseEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\DefenceEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\GoalTailCentipede.cpp" />
     <ClCompile Include="Code\Game\Object\HorizontalBlockEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\RandomCentipede.cpp" />

@@ -54,6 +54,8 @@ namespace Robot
 
 		Vec2       _playerPos; // プレイヤーの座標
 
+		Vec2       _goalPos;   // ゴールの座標
+
 		bool       _isChangeAbleScene; // シーン遷移可能か
 
 		String     _sceneName; // シーン名
@@ -224,6 +226,24 @@ namespace Robot
 		const Vec2 & getPlayerPos() const
 		{
 			return _playerPos;
+		}
+
+		/// <summary>
+		/// ゴールの座標を設定します。
+		/// </summary>
+		/// <param name="goalPos"> ゴールの座標 </param>
+		void setGoalPos(const Vec2 & goalPos)
+		{
+			_goalPos = goalPos;
+		}
+
+		/// <summary>
+		/// ゴールの座標を取得します。
+		/// </summary>
+		/// <returns> ゴールの座標 </returns>
+		const Vec2 & getGoalPos() const
+		{
+			return _goalPos;
 		}
 
 		/// <summary>

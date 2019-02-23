@@ -15,7 +15,7 @@ namespace Robot
 	*/
 	class EnemyBase : public GameObject
 	{
-	private:
+	protected:
 
 		int   _frameCount; // Œo‰ßƒtƒŒ[ƒ€”
 
