@@ -17,10 +17,16 @@ namespace
 
 Robot::SaveDataManager::SaveDataManager()
 {
-	setKey(L"Flag0", 0);
-	setKey(L"Flag1", 1);
-	setKey(L"Flag2", 2);
-	setKey(L"Flag3", 3);
+	setKey(L"Stage0", 0);
+	setKey(L"Stage1", 1);
+	setKey(L"Stage2", 2);
+	setKey(L"Stage3", 3);
+	setKey(L"Stage4", 4);
+	setKey(L"Stage5", 5);
+	setKey(L"Stage6", 6);
+	setKey(L"Stage7", 7);
+	setKey(L"Stage8", 8);
+	setKey(L"Stage9", 9);
 }
 
 
@@ -30,6 +36,7 @@ Robot::SaveDataManager::LoadResult Robot::SaveDataManager::load()
 
 	if (!reader.isOpened())
 	{
+		initOfNewGame();
 		return LoadResult::NEW_GAME;
 	}
 
@@ -41,6 +48,15 @@ Robot::SaveDataManager::LoadResult Robot::SaveDataManager::load()
 	}
 
 	return LoadResult::ERROR;
+}
+
+
+void Robot::SaveDataManager::initOfNewGame()
+{
+	for(auto && flag : _flagList)
+	{
+		flag = false;
+	}
 }
 
 

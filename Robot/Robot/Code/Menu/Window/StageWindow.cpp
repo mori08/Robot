@@ -1,5 +1,6 @@
 #include "StageWindow.h"
 #include "../../Input/InputManager.h"
+#include "../../SaveData/SaveDataManager.h"
 
 
 namespace
@@ -32,6 +33,10 @@ void Robot::StageWindow::draw() const
 	for (const auto & button : _buttonPtrList)
 	{
 		TextureAsset(button->getKey()).draw(button->getPoint());
+		if (SaveDataManager::Instance().getFlag(button->getKey()))
+		{
+			TextureAsset(L"Check").draw(button->getPoint());
+		}
 	}
 }
 

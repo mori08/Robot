@@ -24,7 +24,7 @@ namespace Robot
 
 	private:
 		
-		static const int FLAG_NUM = 4;            // フラグの個数
+		static const int FLAG_NUM = 10;           // フラグの個数
 
 		std::array<bool, FLAG_NUM> _flagList;     // フラグのリスト
 
@@ -57,6 +57,11 @@ namespace Robot
 		LoadResult load();
 
 		/// <summary>
+		/// NewGame時の初期化を行います。
+		/// </summary>
+		void initOfNewGame();
+
+		/// <summary>
 		/// セーブします。
 		/// </summary>
 		void save();
@@ -82,7 +87,7 @@ namespace Robot
 		/// フラグを取得します。
 		/// </summary>
 		/// <param name="name"> フラグの名前 </param>
-		/// <returns> 指定したフラグ </param>
+		/// <returns> 指定したフラグ </returns>
 		bool getFlag(const String & name)
 		{
 #ifdef _DEBUG

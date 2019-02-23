@@ -44,6 +44,8 @@ namespace Robot
 
 	private:
 
+		String     _stageName; // ステージ名
+
 		StatePtr   _gameState; // 状態
 
 		StageData  _stageData; // ステージデータ
@@ -160,6 +162,22 @@ namespace Robot
 		bool isChangeAbleScene(String & sceneName, String & sceneInfo) const;
 
 	public: // GameStateで使用する関数
+
+		/// <summary>
+		/// ステージ名を設定します
+		/// </summary>
+		void setStageName(const String & name)
+		{
+			_stageName = name;
+		}
+
+		/// <summary>
+		/// ステージ名を取得します
+		/// </summary>
+		const String & getStageName() const
+		{
+			return _stageName;
+		}
 
 		/// <summary>
 		/// オブジェクトと光の更を行います。
