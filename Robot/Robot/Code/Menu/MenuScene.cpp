@@ -29,7 +29,9 @@ Robot::MenuScene::MenuScene()
 		));
 	}
 
-	_windowStack.emplace_back(_windowList[L"Main"]);
+	_windowList[L"Stage"]->setClickedProcessing(L"TitleButton", std::make_unique<Processing>([this]() { changeScene(L"TitleScene"); }));
+
+	_windowStack.emplace_back(_windowList[L"Stage"]);
 	(*_windowStack.rbegin())->updateInputManager();
 }
 
