@@ -16,6 +16,7 @@ namespace
 
 	const int TEXT_DRAW_SPAN = 12; // テキストを表示するフレーム数
 	const int CHAR_WIDTH     = 64; // 1文字の幅
+	const int TEXT_LENGTH    = 5;  // 文字数
 
 	const String RETRY_KEY(L"retry"); // リトライボタンのキー
 	const String MENU_KEY (L"menu");  // メニューに戻るボタンのキー
@@ -70,11 +71,11 @@ void Robot::GameOverState::update(GameManager & gameManager)
 	{
 		if (*selectButtonkey == RETRY_KEY)
 		{
-			gameManager.setSceneName(L"TitleScene", L"");
+			gameManager.setSceneName(L"LoadGameScene", gameManager.getStageName());
 		}
 		if (*selectButtonkey == MENU_KEY)
 		{
-			gameManager.setSceneName(L"TitleScene", L"");
+			gameManager.setSceneName(L"MenuScene", L"");
 		}
 	}
 
