@@ -7,10 +7,13 @@ namespace
 	const String ENTER_KEY(L"enter"); // 始めるボタンのキー
 	const String EXIT_KEY(L"exit");   // 終えるボタンのキー
 
-	const Point ENTER_BUTTON_POS(420, 300); // 始めるボタンの座標
-	const Point EXIT_BUTTON_POS(420, 370);  // 終えるボタンの座標
+	const Point ENTER_BUTTON_POS(400, 300); // 始めるボタンの座標
+	const Point EXIT_BUTTON_POS (400, 370); // 終えるボタンの座標
 
-	const Size  BUTTON_SIZE(160, 70);       // ボタンのサイズ
+	const Size  BUTTON_SIZE(210, 70);        // ボタンのサイズ
+	const Size  BUTTON_BOARD_SIZE(210, 140); // ボタン二つのサイズ
+	const int   BUTTON_BOARD_ALPHA = 40;     // ボタン二つの背景の不透明度
+	const Size  CURSOR_SIZE(300, 70);        // 
 
 	const Point TITLE_LOGO_POS(80, 120); // タイトルロゴの座標
 
@@ -37,6 +40,7 @@ Robot::TitleScene::TitleScene()
 	InputManager::Instance().setSelectedButton(ENTER_KEY);
 
 	_cursor = InputManager::Instance().getSelectedButton().getRegion();
+	_cursor.size = CURSOR_SIZE;
 }
 
 
@@ -84,7 +88,10 @@ void Robot::TitleScene::draw() const
 {
 	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 
-	_cursor.draw(Palette::MyWhite);
+	_cursor.drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
+
+	Color boardColor(Palette::MyWhite, BUTTON_BOARD_ALPHA);
+	Rect(ENTER_BUTTON_POS, BUTTON_BOARD_SIZE).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
 
 	for (const auto & light : _lightList)
 	{
