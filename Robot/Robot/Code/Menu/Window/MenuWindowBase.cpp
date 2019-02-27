@@ -8,6 +8,7 @@ namespace
 
 	const ColorF WHITE(0.9); // ”’
 	const ColorF GRAY(0.3);  // ŠD
+	const double MIN_COLOR_DIFFERENCE = 0.05; // F‚ÌŒë·‚ÌÅ¬’l
 
 	const double BLUR_RADIUS = 5.0;   // ‰e‚Ì‚Ú‚©‚µ•û
 	const double SHADOW_SPREAD = 3.0; // ‰e‚ÌL‚ª‚è•û
@@ -17,17 +18,19 @@ namespace
 void Robot::MenuWindowBase::update()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
-
+	ClearPrint();
 	for (const auto & button : _buttonPtrList)
 	{
 		if (button->getKey() == _selectedButtonKey)
 		{
-			_colorMap[button->getKey()] = COLOR_CHANGE_RATE*_colorMap[button->getKey()] + (1 - COLOR_CHANGE_RATE)*WHITE;
+			changeColor(_colorMap[button->getKey()], WHITE);
 		}
 		else
 		{
-			_colorMap[button->getKey()] = COLOR_CHANGE_RATE*_colorMap[button->getKey()] + (1 - COLOR_CHANGE_RATE)*GRAY;
+			changeColor(_colorMap[button->getKey()], GRAY);
 		}
+
+		Println(button->getKey(), L" : ", _colorMap[button->getKey()]);
 	}
 
 	Optional<String> selectButtonKey = InputManager::Instance().selectButton();
@@ -74,4 +77,14 @@ void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect 
 	_buttonPtrList.emplace_back(std::make_shared<Button>(buttonKey, region));
 
 	_colorMap[buttonKey] = ColorF(Palette::MyBlack);
+}
+
+
+void Robot::MenuWindowBase::changeColor(ColorF & color, const ColorF & goalColor)
+{
+	color = COLOR_CHANGE_RATE*color + (1 - COLOR_CHANGE_RATE)*goalColor;
+	if (color.r - goalColor.r < MIN_COLOR_DIFFERENCE)
+	{
+		color = goalColor;
+	}
 }

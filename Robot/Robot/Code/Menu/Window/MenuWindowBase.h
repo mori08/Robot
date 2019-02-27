@@ -84,5 +84,14 @@ namespace Robot
 		/// <param name="region"> 範囲 </param>
 		void registerButton(const String & buttonKey, const Rect & region);
 
+	private:
+
+		/// <summary>
+		/// 色を変更します
+		/// </summary>
+		/// <param name="color"> 変更したい色 </param>
+		/// <param name="goalColor"> 変更先 </param>
+		static void changeColor(ColorF & color, const ColorF & goalColor);
+
 	};
 }
