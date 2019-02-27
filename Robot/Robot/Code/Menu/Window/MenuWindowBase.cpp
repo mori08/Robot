@@ -8,7 +8,7 @@ namespace
 
 	const ColorF WHITE(0.9); // ”’
 	const ColorF GRAY(0.3);  // ŠD
-	const double MIN_COLOR_DIFFERENCE = 0.05; // F‚ÌŒë·‚ÌÅ¬’l
+	const double MIN_COLOR_DIFFERENCE = 0.01; // F‚ÌŒë·‚ÌÅ¬’l
 
 	const double BLUR_RADIUS = 5.0;   // ‰e‚Ì‚Ú‚©‚µ•û
 	const double SHADOW_SPREAD = 3.0; // ‰e‚ÌL‚ª‚è•û
@@ -36,6 +36,15 @@ void Robot::MenuWindowBase::update()
 	if (selectButtonKey && processingExists(*selectButtonKey))
 	{		
 		(*_processingMap[*selectButtonKey])();
+	}
+}
+
+
+void Robot::MenuWindowBase::updateNonSelectedWindow()
+{
+	for (const auto & button : _buttonPtrList)
+	{
+		changeColor(_colorMap[button->getKey()], GRAY);
 	}
 }
 

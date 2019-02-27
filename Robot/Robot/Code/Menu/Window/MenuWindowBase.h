@@ -35,6 +35,11 @@ namespace Robot
 		virtual void update();
 
 		/// <summary>
+		/// 更新(選択されていないウィンドウのとき)
+		/// </summary>
+		virtual void updateNonSelectedWindow();
+
+		/// <summary>
 		/// 描画
 		/// </summary>
 		virtual void draw() const = 0 ;

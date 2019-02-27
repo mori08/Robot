@@ -24,8 +24,6 @@ Robot::StageWindow::StageWindow()
 
 		registerButton(L"Stage" + ToString(i), Rect(pos, BUTTON_SIZE));
 	}
-	
-	registerButton(L"TitleButton", TITLE_BUTTON_REGION);
 
 	_selectedButtonKey = L"Stage0";
 }
@@ -65,8 +63,6 @@ void Robot::StageWindow::updateInputManager() const
 		int horizontalId = (i - 1 + BUTTON_NUM) % BUTTON_NUM;
 		InputManager::Instance().setHorizontalAdjacentButton(_buttonPtrList[horizontalId]->getKey(), _buttonPtrList[i]->getKey());
 	}
-
-	InputManager::Instance().registerButton(_buttonPtrList[BUTTON_NUM]);
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

@@ -31,14 +31,20 @@ Robot::MenuScene::MenuScene()
 
 	_windowList[L"Stage"]->setClickedProcessing(L"TitleButton", std::make_unique<Processing>([this]() { changeScene(L"TitleScene"); }));
 
-	_windowStack.emplace_back(_windowList[L"Stage"]);
+	_windowStack.emplace_back(_windowList[L"Main"]);
 	(*_windowStack.rbegin())->updateInputManager();
 }
 
 
 void Robot::MenuScene::update()
 {
-	(*_windowStack.rbegin())->update();
+	auto itr = _windowStack.rbegin();
+	(*itr)->update();
+	
+	for (++itr; itr != _windowStack.rend(); ++itr)
+	{
+		(*itr)->updateNonSelectedWindow();
+	}
 }
 
 
