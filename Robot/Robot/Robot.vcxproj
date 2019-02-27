@@ -337,6 +337,7 @@
     <ClInclude Include="Code\Load\LoadScene.h" />
     <ClInclude Include="Code\Main.h" />
     <ClInclude Include="Code\Menu\MenuScene.h" />
+    <ClInclude Include="Code\Menu\State\WindowState.h" />
     <ClInclude Include="Code\Menu\Window\MainWindow.h" />
     <ClInclude Include="Code\Menu\Window\MenuWindowBase.h" />
     <ClInclude Include="Code\Menu\Window\StageWindow.h" />

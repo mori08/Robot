@@ -142,6 +142,9 @@
     <Filter Include="ソース ファイル\Menu">
       <UniqueIdentifier>{81265636-6517-4a98-ad79-c36b81e7fade}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Menu\State">
+      <UniqueIdentifier>{b8e263a9-0be5-495a-919c-8745fd08b5ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -668,6 +671,9 @@
     </ClInclude>
     <ClInclude Include="Code\SaveData\SavingDataScene.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\State\WindowState.h">
+      <Filter>ヘッダー ファイル\Menu\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
