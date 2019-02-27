@@ -11,21 +11,27 @@ namespace
 
 	const Size CELL_SIZE(40, 40); // 1マスの大きさ
 
-	const int TEXT_DRAW_FRAME_COUNT = 40; // 振動するフレーム数
-	const int SELCT_FRAME_COUNT = 120;    // 選択肢がでるフレーム数
+	const int TEXT_DRAW_FRAME_COUNT = 40;      // 振動するフレーム数
+	const int SELCT_FRAME_COUNT     = 120;     // 選択肢がでるフレーム数
+	const int MAX_TEXT_LENGTH       = 64*6+16; // 文字の長さの最大   
 
 	const int TEXT_DRAW_SPAN = 12; // テキストを表示するフレーム数
 	const int CHAR_WIDTH     = 64; // 1文字の幅
-	const int TEXT_LENGTH    = 5;  // 文字数
 
 	const String RETRY_KEY(L"retry"); // リトライボタンのキー
 	const String MENU_KEY (L"menu");  // メニューに戻るボタンのキー
 
-	const Point RETRY_BUTTON_POS(420, 368); // リトライボタンの座標
-	const Point MENU_BUTTON_POS(420, 424);  // メニューに戻るボタンの座標
-	const Size  BUTTON_SIZE(168, 56);       // ボタンのサイズ
+	const Point RETRY_BUTTON_POS(400, 300); // リトライボタンの座標
+	const Point MENU_BUTTON_POS(400, 370);  // メニューに戻るボタンの座標
+	const Size  BUTTON_SIZE(210, 70);       // ボタンのサイズ
+	const Size  BOARD_SIZE(210, 140);       // ボタンを置く板のサイズ
+	const int   BOARD_ALPHA = 80;           // ボタンを置く板の不透明度
+	const int   CURSOR_WIDTH = 300;         // カーソルの横幅
 
 	const double CURSOR_MOVE_RATE = 0.8; // カーソルが動くときの割合
+
+	const double SHADOW_BLUR_RADIUS = 20.0; // 影のぼかしの大きさ
+	const double SHADOW_SPREAD      = 8.0;  // 影の広がりかた
 }
 
 
@@ -33,7 +39,7 @@ Robot::GameOverState::GameOverState()
 	: _frameCount(0)
 	, _cellColor(Palette::MyBlack, 0)
 	, _backColor(Palette::MyWhite, 0)
-	, _textDrawRegion(12,112)
+	, _textDrawRegion(16,112)
 {
 	InputManager::Instance().clearButtonList();
 
@@ -45,6 +51,7 @@ Robot::GameOverState::GameOverState()
 	InputManager::Instance().setSelectedButton(RETRY_KEY);
 
 	_cursor = InputManager::Instance().getSelectedButton().getRegion();
+	_cursor.w = CURSOR_WIDTH;
 }
 
 
@@ -60,7 +67,7 @@ void Robot::GameOverState::update(GameManager & gameManager)
 
 	if (_frameCount%TEXT_DRAW_SPAN == 0)
 	{
-		_textDrawRegion.x += CHAR_WIDTH;
+		_textDrawRegion.x = Min(_textDrawRegion.x + CHAR_WIDTH, MAX_TEXT_LENGTH);
 	}
 
 	if (_frameCount < SELCT_FRAME_COUNT) { return; }
@@ -101,10 +108,13 @@ void Robot::GameOverState::draw(const GameManager &) const
 
 	if (_frameCount < SELCT_FRAME_COUNT) { return; }
 
+	Color boardColor(Palette::MyWhite, BOARD_ALPHA);
+	Rect(RETRY_BUTTON_POS, BOARD_SIZE).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
+
 	_cursor.draw(Palette::MyWhite);
 
-	TextureAsset(L"ReTryButton").draw(RETRY_BUTTON_POS);
-	TextureAsset(L"BackMenuButton").draw(MENU_BUTTON_POS);
+	TextureAsset(L"RetryButton").draw(RETRY_BUTTON_POS);
+	TextureAsset(L"MenuButton").draw(MENU_BUTTON_POS);
 }
 
 
