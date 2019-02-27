@@ -2,6 +2,7 @@
 
 
 #include<Siv3D.hpp>
+#include"State\WindowState.h"
 #include"../../Input/Button.h"
 
 
@@ -17,6 +18,12 @@ namespace Robot
 
 		using ProcessingPtr = std::unique_ptr<std::function<void()>>;
 
+	public:
+
+		static const ColorF NON_SHOWED_COLOR;
+		static const ColorF NON_SELECTED_COLOR;
+		static const ColorF SELECTED_COLOR;
+
 	protected:
 
 		std::vector<std::shared_ptr<Button>>      _buttonPtrList; // ボタンのポインタのリスト
@@ -27,7 +34,7 @@ namespace Robot
 
 		String _selectedButtonKey; // 選択されているボタンのキー
 
-	public:
+	public: // MenuSceneで使用
 
 		/// <summary>
 		/// 更新
@@ -56,6 +63,20 @@ namespace Robot
 		/// <param name="processing"> ボタンを押したときの処理 </param>
 		void setClickedProcessing(const String & buttonKey, ProcessingPtr processing);
 		
+	public: // WindowStateで使用
+
+		/// <summary>
+		/// ボタンの色を変更します。
+		/// </summary>
+		/// <param name="color"> 色 </param>
+		/// <param name="num"> 変更する個数 </param>
+		void setColor(const Color color, size_t num = String::npos);
+
+		/// <summary>
+		/// ボタンと光を描画します。
+		/// </summary>
+		void drawButtonAndLight() const;
+
 	protected:
 
 		/// <summary>

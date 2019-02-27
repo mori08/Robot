@@ -15,6 +15,10 @@ namespace
 }
 
 
+const ColorF Robot::MenuWindowBase::NON_SHOWED_COLOR  (Palette::MyWhite, 0);
+const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(Palette::MyWhite, 0.3);
+const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(Palette::MyWhite, 1);
+
 void Robot::MenuWindowBase::update()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
@@ -60,6 +64,26 @@ void Robot::MenuWindowBase::setClickedProcessing(const String & buttonKey, Proce
 }
 
 
+void Robot::MenuWindowBase::setColor(const Color color, size_t num)
+{
+	num = Min(num, _buttonPtrList.size());
+	for (size_t i = 0; i < num; ++i)
+	{
+		changeColor(_colorMap[_buttonPtrList[i]->getKey()], color);
+	}
+}
+
+
+void Robot::MenuWindowBase::drawButtonAndLight() const
+{
+	for (const auto button : _buttonPtrList)
+	{
+		button->getRegion().drawShadow(Vec2::Zero, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
+		TextureAsset(button->getKey()).draw(button->getRegion().tl);
+	}
+}
+
+
 void Robot::MenuWindowBase::drawLight() const
 {
 	for (const auto button : _buttonPtrList)
@@ -90,7 +114,7 @@ void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect 
 void Robot::MenuWindowBase::changeColor(ColorF & color, const ColorF & goalColor)
 {
 	color = COLOR_CHANGE_RATE*color + (1 - COLOR_CHANGE_RATE)*goalColor;
-	if (color.r - goalColor.r < MIN_COLOR_DIFFERENCE)
+	if (Abs(color.a - goalColor.a) < MIN_COLOR_DIFFERENCE)
 	{
 		color = goalColor;
 	}
