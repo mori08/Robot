@@ -18,7 +18,7 @@ namespace
 void Robot::MenuWindowBase::update()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
-	ClearPrint();
+
 	for (const auto & button : _buttonPtrList)
 	{
 		if (button->getKey() == _selectedButtonKey)
@@ -29,8 +29,6 @@ void Robot::MenuWindowBase::update()
 		{
 			changeColor(_colorMap[button->getKey()], GRAY);
 		}
-
-		Println(button->getKey(), L" : ", _colorMap[button->getKey()]);
 	}
 
 	Optional<String> selectButtonKey = InputManager::Instance().selectButton();
