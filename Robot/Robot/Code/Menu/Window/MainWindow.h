@@ -18,8 +18,6 @@ namespace Robot
 
 	private:
 
-		void draw() const override;
-
 		void updateInputManager() const override;
 
 	};

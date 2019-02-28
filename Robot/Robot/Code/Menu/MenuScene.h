@@ -16,9 +16,8 @@ namespace Robot
 	{
 	private:
 
-		std::list<std::shared_ptr<MenuWindowBase>> _windowStack;
-
-		std::unordered_map<String, std::shared_ptr<MenuWindowBase>> _windowList;
+		String _selectedWindowName; // 選択されているウィンドウの名前
+		std::unordered_map<String, std::shared_ptr<MenuWindowBase>> _windowMap; // ウィンドウのマップ
 
 	public:
 

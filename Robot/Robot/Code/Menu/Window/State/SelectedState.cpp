@@ -9,5 +9,5 @@ void Robot::SelectedState::update(MenuWindowBase & window)
 
 void Robot::SelectedState::draw(const MenuWindowBase & window) const
 {
-	window.draw();
+	window.drawButtonAndLight();
 }

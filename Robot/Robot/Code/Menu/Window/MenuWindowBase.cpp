@@ -1,5 +1,8 @@
 #include "MenuWindowBase.h"
 #include "../../Input/InputManager.h"
+#include "../Window/State/ClosedState.h"
+#include "../Window/State/OpenedState.h"
+#include "../Window/State/SelectedState.h"
 
 
 namespace
@@ -15,41 +18,49 @@ namespace
 }
 
 
-const ColorF Robot::MenuWindowBase::NON_SHOWED_COLOR  (Palette::MyWhite, 0);
-const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(Palette::MyWhite, 0.3);
-const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(Palette::MyWhite, 1);
+const ColorF Robot::MenuWindowBase::NON_SHOWED_COLOR  (ColorF(Palette::MyWhite), 0);
+const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(ColorF(Palette::MyWhite), 0.3);
+const ColorF Robot::MenuWindowBase::SELECTED_COLOR    (ColorF(Palette::MyWhite), 1);
 
-void Robot::MenuWindowBase::update()
+
+Robot::MenuWindowBase::MenuWindowBase()
 {
-	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
-
-	for (const auto & button : _buttonPtrList)
-	{
-		if (button->getKey() == _selectedButtonKey)
-		{
-			changeColor(_colorMap[button->getKey()], WHITE);
-		}
-		else
-		{
-			changeColor(_colorMap[button->getKey()], GRAY);
-		}
-	}
-
-	Optional<String> selectButtonKey = InputManager::Instance().selectButton();
-
-	if (selectButtonKey && processingExists(*selectButtonKey))
-	{		
-		(*_processingMap[*selectButtonKey])();
-	}
+	_state = std::unique_ptr<ClosedState>();
 }
 
 
-void Robot::MenuWindowBase::updateNonSelectedWindow()
+void Robot::MenuWindowBase::update()
 {
-	for (const auto & button : _buttonPtrList)
-	{
-		changeColor(_colorMap[button->getKey()], GRAY);
+	if (_state == nullptr) { 
+		return; 
 	}
+	
+	_state->update(*this);
+}
+
+
+void Robot::MenuWindowBase::draw() const
+{
+	if (_state == nullptr) { return; }
+	_state->draw(*this);
+}
+
+
+void Robot::MenuWindowBase::open()
+{
+	_state = std::make_unique<SelectedState>();
+}
+
+
+void Robot::MenuWindowBase::nonSelect()
+{
+	_state = std::make_unique<OpenedState>();
+}
+
+
+void Robot::MenuWindowBase::close()
+{
+	_state = std::make_unique<ClosedState>();
 }
 
 
@@ -77,12 +88,12 @@ void Robot::MenuWindowBase::setColor(const Color color, size_t num)
 void Robot::MenuWindowBase::updateSelectedWindowButton()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
-
+	
 	for (const auto & button : _buttonPtrList)
 	{
 		if (button->getKey() == _selectedButtonKey)
 		{
-			changeColor(_colorMap[button->getKey()], SELECTED_COLOR);
+			_colorMap[button->getKey()] = Palette::MyWhite;
 		}
 		else
 		{
@@ -109,15 +120,6 @@ void Robot::MenuWindowBase::drawButtonAndLight() const
 }
 
 
-void Robot::MenuWindowBase::drawLight() const
-{
-	for (const auto button : _buttonPtrList)
-	{
-		button->getRegion().drawShadow(Vec2::Zero, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
-	}
-}
-
-
 bool Robot::MenuWindowBase::keyExistsAtButtonList(const String & buttonKey) const
 {
 	for (const auto & button : _buttonPtrList)
@@ -132,15 +134,15 @@ void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect 
 {
 	_buttonPtrList.emplace_back(std::make_shared<Button>(buttonKey, region));
 
-	_colorMap[buttonKey] = ColorF(Palette::MyBlack);
+	_colorMap[buttonKey] = ColorF(Palette::MyWhite).setAlpha(0);
 }
 
 
 void Robot::MenuWindowBase::changeColor(ColorF & color, const ColorF & goalColor)
 {
-	color = COLOR_CHANGE_RATE*color + (1 - COLOR_CHANGE_RATE)*goalColor;
+	color.a = COLOR_CHANGE_RATE*color.a + (1 - COLOR_CHANGE_RATE)*goalColor.a;
 	if (Abs(color.a - goalColor.a) < MIN_COLOR_DIFFERENCE)
 	{
-		color = goalColor;
+		color.a = goalColor.a;
 	}
 }

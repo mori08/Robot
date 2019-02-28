@@ -13,19 +13,10 @@ namespace
 
 Robot::MainWindow::MainWindow()
 {
-	registerButton(L"Stage", Rect(STAGE_POS, BUTTON_SIZE));
-	registerButton(L"Title", Rect(TITLE_POS, BUTTON_SIZE));
+	registerButton(L"StageButton", Rect(STAGE_POS, BUTTON_SIZE));
+	registerButton(L"TitleButton", Rect(TITLE_POS, BUTTON_SIZE));
 
-	_selectedButtonKey = L"Stage";
-}
-
-
-void Robot::MainWindow::draw() const
-{
-	drawLight();
-
-	TextureAsset(L"StageButton").draw(STAGE_POS);
-	TextureAsset(L"TitleButton").draw(TITLE_POS);
+	_selectedButtonKey = L"StageButton";
 }
 
 
@@ -33,10 +24,10 @@ void Robot::MainWindow::updateInputManager() const
 {
 	InputManager::Instance().clearButtonList();
 
-	InputManager::Instance().registerButton(L"Stage", Rect(STAGE_POS, BUTTON_SIZE));
-	InputManager::Instance().registerButton(L"Title", Rect(TITLE_POS, BUTTON_SIZE));
+	InputManager::Instance().registerButton(L"StageButton", Rect(STAGE_POS, BUTTON_SIZE));
+	InputManager::Instance().registerButton(L"TitleButton", Rect(TITLE_POS, BUTTON_SIZE));
 
-	InputManager::Instance().setHorizontalAdjacentButton(L"Stage", L"Title");
+	InputManager::Instance().setHorizontalAdjacentButton(L"StageButton", L"TitleButton");
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

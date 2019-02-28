@@ -12,15 +12,15 @@ namespace
 
 Robot::MenuScene::MenuScene()
 {
-	_windowList[L"Main"] = std::make_shared<MainWindow>();
-	_windowList[L"Main"]->setClickedProcessing(L"Title", std::make_unique<Processing>([this]() { changeScene(L"TitleScene"); }));
-	_windowList[L"Main"]->setClickedProcessing(L"Stage", std::make_unique<Processing>([this]() { openWindow(L"Stage"); }));
+	_windowMap[L"Main"] = std::make_shared<MainWindow>();
+	_windowMap[L"Main"]->setClickedProcessing(L"TitleButton", std::make_unique<Processing>([this]() { changeScene(L"TitleScene"); }));
+	_windowMap[L"Main"]->setClickedProcessing(L"StageButton", std::make_unique<Processing>([this]() { openWindow(L"Stage"); }));
 
-	_windowList[L"Stage"] = std::make_shared<StageWindow>();
+	_windowMap[L"Stage"] = std::make_shared<StageWindow>();
 	for (int i = 0; i < 10; ++i)
 	{
 		String stageName = L"Stage" + ToString(i);
-		_windowList[L"Stage"]->setClickedProcessing(stageName, std::make_unique<Processing>(
+		_windowMap[L"Stage"]->setClickedProcessing(stageName, std::make_unique<Processing>(
 			[this,stageName]() 
 			{
 				m_data->sceneInfo = stageName;
@@ -29,38 +29,37 @@ Robot::MenuScene::MenuScene()
 		));
 	}
 
-	_windowList[L"Stage"]->setClickedProcessing(L"TitleButton", std::make_unique<Processing>([this]() { changeScene(L"TitleScene"); }));
-
-	_windowStack.emplace_back(_windowList[L"Main"]);
-	(*_windowStack.rbegin())->updateInputManager();
+	_selectedWindowName = L"Main";
+	
+	_windowMap[_selectedWindowName]->open();
+	_windowMap[_selectedWindowName]->updateInputManager();
 }
 
 
 void Robot::MenuScene::update()
 {
-	auto itr = _windowStack.rbegin();
-	(*itr)->update();
-	
-	for (++itr; itr != _windowStack.rend(); ++itr)
+	for (auto & window : _windowMap)
 	{
-		(*itr)->updateNonSelectedWindow();
+		window.second->update();
 	}
 }
 
 
 void Robot::MenuScene::draw() const
 {
-	for (const auto & window : _windowStack)
+	for (const auto & window : _windowMap)
 	{
-		window->draw();
+		window.second->draw();
 	}
 }
 
 
 void Robot::MenuScene::openWindow(const String & windowName)
 {
-	if (_windowList.find(windowName) == _windowList.end()) { return; }
+	if (_windowMap.find(windowName) == _windowMap.end()) { return; }
 
-	_windowStack.emplace_back(_windowList[windowName]);
-	(*_windowStack.rbegin())->updateInputManager();
+	_windowMap[_selectedWindowName]->nonSelect();
+	_windowMap[windowName]->open();
+	_windowMap[windowName]->updateInputManager();
+	_selectedWindowName = windowName;
 }

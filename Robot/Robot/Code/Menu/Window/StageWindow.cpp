@@ -31,11 +31,10 @@ Robot::StageWindow::StageWindow()
 
 void Robot::StageWindow::draw() const
 {
-	drawLight();
+	MenuWindowBase::draw();
 	for (const auto & button : _buttonPtrList)
 	{
-		TextureAsset(button->getKey()).draw(button->getPoint());
-		if (button->getKey().includes(L"Stage") && SaveDataManager::Instance().getFlag(button->getKey()))
+		if (SaveDataManager::Instance().getFlag(button->getKey()))
 		{
 			TextureAsset(L"Check").draw(button->getPoint());
 		}

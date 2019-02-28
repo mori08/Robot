@@ -2,7 +2,7 @@
 
 
 #include<Siv3D.hpp>
-#include"State\WindowState.h"
+#include"State/WindowState.h"
 #include"../../Input/Button.h"
 
 
@@ -26,6 +26,8 @@ namespace Robot
 
 	protected:
 
+		std::unique_ptr<WindowState>              _state;         // 状態
+
 		std::vector<std::shared_ptr<Button>>      _buttonPtrList; // ボタンのポインタのリスト
 		
 		std::unordered_map<String, ColorF>        _colorMap;      // 色のリスト ボタンのキーと結びつける
@@ -36,20 +38,32 @@ namespace Robot
 
 	public: // MenuSceneで使用
 
+		MenuWindowBase();
+
 		/// <summary>
 		/// 更新
 		/// </summary>
 		virtual void update();
 
 		/// <summary>
-		/// 更新(選択されていないウィンドウのとき)
-		/// </summary>
-		virtual void updateNonSelectedWindow();
-
-		/// <summary>
 		/// 描画
 		/// </summary>
-		virtual void draw() const = 0 ;
+		virtual void draw() const;
+
+		/// <summary>
+		/// ウィンドウを開きます。
+		/// </summary>
+		void open();
+
+		/// <summary>
+		/// ウィンドウの選択を外します。
+		/// </summary>
+		void nonSelect();
+
+		/// <summary>
+		/// ウィンドウを閉じます。
+		/// </summary>
+		void close();
 
 		/// <summary>
 		/// InputManagerにボタンの情報を更新します。
@@ -83,11 +97,6 @@ namespace Robot
 		void drawButtonAndLight() const;
 
 	protected:
-
-		/// <summary>
-		/// ボタンを照らす光を描画します。
-		/// </summary>
-		void drawLight() const;
 
 		/// <summary>
 		/// 指定されたキーを持つボタンがあるか示します。
