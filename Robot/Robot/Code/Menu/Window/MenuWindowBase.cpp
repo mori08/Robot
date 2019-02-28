@@ -3,6 +3,7 @@
 #include "../Window/State/ClosedState.h"
 #include "../Window/State/OpenedState.h"
 #include "../Window/State/SelectedState.h"
+#include "../Window/State/OpeningState.h"
 
 
 namespace
@@ -48,7 +49,7 @@ void Robot::MenuWindowBase::draw() const
 
 void Robot::MenuWindowBase::open()
 {
-	_state = std::make_unique<SelectedState>();
+	_state = std::make_unique<OpeningState>(numOfButton(), _openOffset);
 }
 
 
@@ -110,12 +111,18 @@ void Robot::MenuWindowBase::updateSelectedWindowButton()
 }
 
 
-void Robot::MenuWindowBase::drawButtonAndLight() const
+void Robot::MenuWindowBase::drawButtonAndLight(const std::vector<Vec2> & offsetList, const std::vector<double> & alphaList) const
 {
+	size_t i = 0;
 	for (const auto button : _buttonPtrList)
 	{
-		button->getRegion().drawShadow(Vec2::Zero, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
-		TextureAsset(button->getKey()).draw(button->getRegion().tl);
+		Vec2   offset = (i < offsetList.size()) ? offsetList[i] : Vec2::Zero;
+		double alpha  = (i < alphaList.size())  ? alphaList[i] : 1;
+
+		button->getRegion().drawShadow(offset, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
+		TextureAsset(button->getKey()).draw(button->getRegion().tl + offset, AlphaF(alpha));
+
+		++i;
 	}
 }
 

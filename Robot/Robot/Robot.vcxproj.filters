@@ -687,6 +687,9 @@
     <ClInclude Include="Code\Menu\Window\State\ClosedState.h">
       <Filter>ヘッダー ファイル\Menu\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Menu\Window\State\OpeningState.h">
+      <Filter>ヘッダー ファイル\Menu\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -894,6 +897,9 @@
       <Filter>ソース ファイル\Menu\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\ClosedState.cpp">
+      <Filter>ソース ファイル\Menu\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp">
       <Filter>ソース ファイル\Menu\State</Filter>
     </ClCompile>
   </ItemGroup>

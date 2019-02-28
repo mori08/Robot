@@ -342,6 +342,7 @@
     <ClInclude Include="Code\Menu\Window\StageWindow.h" />
     <ClInclude Include="Code\Menu\Window\State\ClosedState.h" />
     <ClInclude Include="Code\Menu\Window\State\OpenedState.h" />
+    <ClInclude Include="Code\Menu\Window\State\OpeningState.h" />
     <ClInclude Include="Code\Menu\Window\State\SelectedState.h" />
     <ClInclude Include="Code\Menu\Window\State\WindowState.h" />
     <ClInclude Include="Code\SaveData\LoadSaveDataScene.h" />
@@ -414,6 +415,7 @@
     <ClCompile Include="Code\Menu\Window\StageWindow.cpp" />
     <ClCompile Include="Code\Menu\Window\State\ClosedState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\OpenedState.cpp" />
+    <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\SelectedState.cpp" />
     <ClCompile Include="Code\SaveData\LoadSaveDataScene.cpp" />
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp" />

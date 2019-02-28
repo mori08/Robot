@@ -36,6 +36,8 @@ namespace Robot
 
 		String _selectedButtonKey; // 選択されているボタンのキー
 
+		Vec2   _openOffset;        // ウィンドウを開くときの演出開始位置
+
 	public: // MenuSceneで使用
 
 		MenuWindowBase();
@@ -87,6 +89,14 @@ namespace Robot
 		void setColor(const Color color, size_t num = String::npos);
 
 		/// <summary>
+		/// ボタンの数を取得します
+		/// </summary>
+		int numOfButton() const
+		{
+			return (int)_buttonPtrList.size();
+		}
+
+		/// <summary>
 		/// 選択中の更新
 		/// </summary>
 		void updateSelectedWindowButton();
@@ -94,7 +104,16 @@ namespace Robot
 		/// <summary>
 		/// ボタンと光を描画します。
 		/// </summary>
-		void drawButtonAndLight() const;
+		/// <param name="offsetList"> ずらし </param>
+		void drawButtonAndLight(const std::vector<Vec2> & offsetList = std::vector<Vec2>(), const std::vector<double> & alphaList = std::vector<double>()) const;
+
+		/// <summary>
+		/// 状態を変更します。
+		/// </summary>
+		void changeState(std::unique_ptr<WindowState> state)
+		{
+			_state = std::move(state);
+		}
 
 	protected:
 

@@ -10,6 +10,8 @@ namespace
 	const Size  WIDTH(15, 15);         // ボタンの間隔
 	const int   COLUMNS = 5;           // 1行に配置するボタン数
 	const int   BUTTON_NUM = 10;       // ボタンの数
+
+	const Vec2 OPEN_OFFSET(0, -50);
 }
 
 
@@ -26,6 +28,8 @@ Robot::StageWindow::StageWindow()
 	}
 
 	_selectedButtonKey = L"Stage0";
+
+	_openOffset = OPEN_OFFSET;
 }
 
 
