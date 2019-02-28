@@ -73,6 +73,11 @@ namespace Robot
 		void setColor(const Color color, size_t num = String::npos);
 
 		/// <summary>
+		/// 選択中の更新
+		/// </summary>
+		void updateSelectedWindowButton();
+
+		/// <summary>
 		/// ボタンと光を描画します。
 		/// </summary>
 		void drawButtonAndLight() const;

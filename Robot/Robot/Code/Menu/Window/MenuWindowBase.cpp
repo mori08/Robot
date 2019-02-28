@@ -74,6 +74,31 @@ void Robot::MenuWindowBase::setColor(const Color color, size_t num)
 }
 
 
+void Robot::MenuWindowBase::updateSelectedWindowButton()
+{
+	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
+
+	for (const auto & button : _buttonPtrList)
+	{
+		if (button->getKey() == _selectedButtonKey)
+		{
+			changeColor(_colorMap[button->getKey()], SELECTED_COLOR);
+		}
+		else
+		{
+			changeColor(_colorMap[button->getKey()], NON_SELECTED_COLOR);
+		}
+	}
+
+	Optional<String> selectButtonKey = InputManager::Instance().selectButton();
+
+	if (selectButtonKey && processingExists(*selectButtonKey))
+	{
+		(*_processingMap[*selectButtonKey])();
+	}
+}
+
+
 void Robot::MenuWindowBase::drawButtonAndLight() const
 {
 	for (const auto button : _buttonPtrList)
