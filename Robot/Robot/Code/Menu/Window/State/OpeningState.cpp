@@ -28,7 +28,7 @@ void Robot::OpeningState::update(MenuWindowBase & window)
 		_alphaList[i]  = RATE * _alphaList[i] + (1 - RATE)*1.0;
 	}
 
-	window.setColor(MenuWindowBase::SELECTED_COLOR, _frameCount / DRAW_BUTTON_SPAN);
+	window.setColor(MenuWindowBase::NON_SELECTED_COLOR, _frameCount / DRAW_BUTTON_SPAN);
 
 	if (_frameCount / DRAW_BUTTON_SPAN > window.numOfButton())
 	{

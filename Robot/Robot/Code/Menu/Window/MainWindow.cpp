@@ -9,7 +9,7 @@ namespace
 
 	const Size BUTTON_SIZE(168, 56); // ボタンのサイズ
 
-	const Vec2 OPEN_OFFSET(0, -50);
+	const Vec2 OPEN_OFFSET(0, 0);
 }
 
 
