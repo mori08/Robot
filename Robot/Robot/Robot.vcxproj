@@ -341,6 +341,7 @@
     <ClInclude Include="Code\Menu\Window\MenuWindowBase.h" />
     <ClInclude Include="Code\Menu\Window\StageWindow.h" />
     <ClInclude Include="Code\Menu\Window\State\ClosedState.h" />
+    <ClInclude Include="Code\Menu\Window\State\ClosingState.h" />
     <ClInclude Include="Code\Menu\Window\State\OpenedState.h" />
     <ClInclude Include="Code\Menu\Window\State\OpeningState.h" />
     <ClInclude Include="Code\Menu\Window\State\SelectedState.h" />

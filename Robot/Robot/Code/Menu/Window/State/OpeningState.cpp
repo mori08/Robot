@@ -4,15 +4,14 @@
 
 namespace
 {
-	const int    DRAW_BUTTON_SPAN = 3;
 	const double RATE = 0.8;
+	const double CHANGE_STATE_FRAME_COUNT = 5;
 }
 
 
-Robot::OpeningState::OpeningState(size_t numOfButton, const Vec2 & offset)
+Robot::OpeningState::OpeningState(const Vec2 & offset)
 	: _frameCount(0)
-	, _offsetList(numOfButton, offset)
-	, _alphaList(numOfButton, 0)
+	, _offset(offset)
 {
 
 }
@@ -22,15 +21,11 @@ void Robot::OpeningState::update(MenuWindowBase & window)
 {
 	++_frameCount;
 
-	for (size_t i = 0; i < Min(_frameCount / DRAW_BUTTON_SPAN, window.numOfButton()); ++i)
-	{
-		_offsetList[i] *= RATE;
-		_alphaList[i]  = RATE * _alphaList[i] + (1 - RATE)*1.0;
-	}
+	_offset *= RATE;
 
-	window.setColor(MenuWindowBase::NON_SELECTED_COLOR, _frameCount / DRAW_BUTTON_SPAN);
+	window.setColor(MenuWindowBase::NON_SELECTED_COLOR);
 
-	if (_frameCount / DRAW_BUTTON_SPAN > window.numOfButton())
+	if (_frameCount > CHANGE_STATE_FRAME_COUNT)
 	{
 		window.changeState(std::make_unique<SelectedState>());
 	}
@@ -39,5 +34,5 @@ void Robot::OpeningState::update(MenuWindowBase & window)
 
 void Robot::OpeningState::draw(const MenuWindowBase & window) const
 {
-	window.drawButtonAndLight(_offsetList, _alphaList);
+	window.drawButtonAndLight(_offset);
 }

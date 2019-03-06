@@ -37,5 +37,11 @@ namespace Robot
 		/// <param name="windowName"> 開くウィンドウの名前 </param>
 		void openWindow(const String & windowName);
 
+		/// <summary>
+		/// ウィンドウを閉じます。
+		/// </summary>
+		/// <param name="windowName"> 新しく選択するウィンドウの名前 </param>
+		void closeWindow(const String & windowName);
+
 	};
 }

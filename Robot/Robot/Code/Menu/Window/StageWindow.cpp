@@ -11,7 +11,7 @@ namespace
 	const int   COLUMNS = 5;           // 1行に配置するボタン数
 	const int   BUTTON_NUM = 10;       // ボタンの数
 
-	const Vec2 OPEN_OFFSET(0, 0);
+	const Vec2 OPEN_OFFSET(0, -10);
 }
 
 

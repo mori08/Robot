@@ -27,6 +27,7 @@ const ColorF Robot::MenuWindowBase::SELECTED_COLOR    (ColorF(Palette::MyWhite),
 Robot::MenuWindowBase::MenuWindowBase()
 {
 	_state = std::unique_ptr<ClosedState>();
+	_closedProcessing = nullptr;
 }
 
 
@@ -49,7 +50,13 @@ void Robot::MenuWindowBase::draw() const
 
 void Robot::MenuWindowBase::open()
 {
-	_state = std::make_unique<OpeningState>(numOfButton(), _openOffset);
+	_state = std::make_unique<OpeningState>(_openOffset);
+}
+
+
+void Robot::MenuWindowBase::select()
+{
+	_state = std::make_unique<SelectedState>();
 }
 
 
@@ -104,25 +111,26 @@ void Robot::MenuWindowBase::updateSelectedWindowButton()
 
 	Optional<String> selectButtonKey = InputManager::Instance().selectButton();
 
-	if (selectButtonKey && processingExists(*selectButtonKey))
+	if (selectButtonKey)
 	{
-		(*_processingMap[*selectButtonKey])();
+		if (processingExists(*selectButtonKey))
+		{
+			(*_processingMap[*selectButtonKey])();
+		}
+	}
+	else if (InputManager::Instance().decision() && _closedProcessing != nullptr)
+	{
+		(*_closedProcessing)();
 	}
 }
 
 
-void Robot::MenuWindowBase::drawButtonAndLight(const std::vector<Vec2> & offsetList, const std::vector<double> & alphaList) const
+void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 {
-	size_t i = 0;
 	for (const auto button : _buttonPtrList)
 	{
-		Vec2   offset = (i < offsetList.size()) ? offsetList[i] : Vec2::Zero;
-		double alpha  = (i < alphaList.size())  ? alphaList[i] : 1;
-
 		button->getRegion().drawShadow(offset, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
-		TextureAsset(button->getKey()).draw(button->getRegion().tl + offset, AlphaF(alpha));
-
-		++i;
+		TextureAsset(button->getKey()).draw(button->getRegion().tl + offset);
 	}
 }
 

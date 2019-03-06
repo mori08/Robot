@@ -34,9 +34,11 @@ namespace Robot
 
 		std::unordered_map<String, ProcessingPtr> _processingMap; // ボタンを押したときの処理リスト
 
-		String _selectedButtonKey; // 選択されているボタンのキー
+		ProcessingPtr _closedProcessing;  // ウィンドウを閉じるときの処理
 
-		Vec2   _openOffset;        // ウィンドウを開くときの演出開始位置
+		String        _selectedButtonKey; // 選択されているボタンのキー
+
+		Vec2          _openOffset;        // ウィンドウを開くときの演出開始位置
 
 	public: // MenuSceneで使用
 
@@ -56,6 +58,11 @@ namespace Robot
 		/// ウィンドウを開きます。
 		/// </summary>
 		void open();
+
+		/// <summary>
+		/// ウィンドウを選択します。
+		/// </summary>
+		void select();
 
 		/// <summary>
 		/// ウィンドウの選択を外します。
@@ -79,6 +86,14 @@ namespace Robot
 		/// <param name="processing"> ボタンを押したときの処理 </param>
 		void setClickedProcessing(const String & buttonKey, ProcessingPtr processing);
 		
+		/// <summary>
+		/// ウィンドウを閉じたときの処理を設定します。
+		/// </summary>
+		void setClosedProcessing(ProcessingPtr processing)
+		{
+			_closedProcessing = std::move(processing);
+		}
+
 	public: // WindowStateで使用
 
 		/// <summary>
@@ -105,7 +120,7 @@ namespace Robot
 		/// ボタンと光を描画します。
 		/// </summary>
 		/// <param name="offsetList"> ずらし </param>
-		void drawButtonAndLight(const std::vector<Vec2> & offsetList = std::vector<Vec2>(), const std::vector<double> & alphaList = std::vector<double>()) const;
+		void drawButtonAndLight(const Vec2 & offset = Vec2::Zero) const;
 
 		/// <summary>
 		/// 状態を変更します。

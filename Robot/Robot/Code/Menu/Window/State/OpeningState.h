@@ -14,15 +14,13 @@ namespace Robot
 	{
 	private:
 
-		int _frameCount; // 経過フレーム数
+		int  _frameCount; // 経過フレーム数
 
-		std::vector<Vec2>   _offsetList; // ずらし
-
-		std::vector<double> _alphaList;  // 不透明度
+		Vec2 _offset;     // ずらし
 
 	public:
 
-		OpeningState(size_t numOfButton, const Vec2 & offset);
+		OpeningState(const Vec2 & offset);
 
 		void update(MenuWindowBase & window) override;
 

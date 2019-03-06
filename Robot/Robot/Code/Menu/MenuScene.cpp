@@ -28,6 +28,7 @@ Robot::MenuScene::MenuScene()
 			}
 		));
 	}
+	_windowMap[L"Stage"]->setClosedProcessing(std::make_unique<Processing>([this]() { closeWindow(L"Main"); }));
 
 	_selectedWindowName = L"Main";
 	
@@ -60,6 +61,17 @@ void Robot::MenuScene::openWindow(const String & windowName)
 
 	_windowMap[_selectedWindowName]->nonSelect();
 	_windowMap[windowName]->open();
+	_windowMap[windowName]->updateInputManager();
+	_selectedWindowName = windowName;
+}
+
+
+void Robot::MenuScene::closeWindow(const String & windowName)
+{
+	if (_windowMap.find(windowName) == _windowMap.end()) { return; }
+
+	_windowMap[_selectedWindowName]->close();
+	_windowMap[windowName]->select();
 	_windowMap[windowName]->updateInputManager();
 	_selectedWindowName = windowName;
 }
