@@ -4,6 +4,7 @@
 #include "../Window/State/OpenedState.h"
 #include "../Window/State/SelectedState.h"
 #include "../Window/State/OpeningState.h"
+#include "../Window/State/ClosingState.h"
 
 
 namespace
@@ -68,7 +69,7 @@ void Robot::MenuWindowBase::nonSelect()
 
 void Robot::MenuWindowBase::close()
 {
-	_state = std::make_unique<ClosedState>();
+	_state = std::make_unique<ClosingState>(_openOffset);
 }
 
 
@@ -107,6 +108,12 @@ void Robot::MenuWindowBase::updateSelectedWindowButton()
 		{
 			changeColor(_colorMap[button->getKey()], NON_SELECTED_COLOR);
 		}
+	}
+
+	if (InputManager::Instance().option() && _closedProcessing != nullptr)
+	{
+		(*_closedProcessing)();
+		return;
 	}
 
 	Optional<String> selectButtonKey = InputManager::Instance().selectButton();

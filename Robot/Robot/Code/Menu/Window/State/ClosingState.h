@@ -16,7 +16,17 @@ namespace Robot
 
 		int _frameCount; // 経過フレーム数
 
-		
+		Vec2 _offset;    // ずらし
+
+		const Vec2 MAX_OFFSET; // ずらしの最大値
+
+	public:
+
+		ClosingState(const Vec2 & offset);
+
+		void update(MenuWindowBase & window) override;
+
+		void draw(const MenuWindowBase & window) const override;
 
 	};
 }

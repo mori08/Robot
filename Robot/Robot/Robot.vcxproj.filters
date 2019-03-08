@@ -905,5 +905,8 @@
     <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp">
       <Filter>ソース ファイル\Menu\State</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Menu\Window\State\ClosingState.cpp">
+      <Filter>ソース ファイル\Menu\State</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

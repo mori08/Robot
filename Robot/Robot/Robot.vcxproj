@@ -415,6 +415,7 @@
     <ClCompile Include="Code\Menu\Window\MenuWindowBase.cpp" />
     <ClCompile Include="Code\Menu\Window\StageWindow.cpp" />
     <ClCompile Include="Code\Menu\Window\State\ClosedState.cpp" />
+    <ClCompile Include="Code\Menu\Window\State\ClosingState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\OpenedState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\SelectedState.cpp" />

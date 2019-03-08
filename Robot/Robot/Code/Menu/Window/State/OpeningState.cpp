@@ -5,7 +5,7 @@
 namespace
 {
 	const double RATE = 0.8;
-	const double CHANGE_STATE_FRAME_COUNT = 5;
+	const int    CHANGE_STATE_FRAME_COUNT = 30;
 }
 
 
