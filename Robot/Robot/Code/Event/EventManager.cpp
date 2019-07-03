@@ -230,6 +230,8 @@ void Robot::EventManager::load(const String & eventFileName)
 
 void Robot::EventManager::update()
 {
+	if (!_isSuccess) { return; }
+
 	++_frameCount;
 	++_shakeFrameCount;
 
@@ -257,6 +259,8 @@ void Robot::EventManager::updateEventObject()
 
 void Robot::EventManager::draw() const
 {
+	if (!_isSuccess) { return; }
+
 	Vec2 s = getShakePos();
 
 	drawShadow();
@@ -274,6 +278,12 @@ void Robot::EventManager::draw() const
 
 bool Robot::EventManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
 {
+	if (!_isSuccess)
+	{
+		sceneName = L"TitleScene";
+		return true;
+	}
+
 	if (_isChangeAbleScene)
 	{
 		sceneName = _sceneName.first;
