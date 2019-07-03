@@ -16,7 +16,7 @@ namespace Robot
 	{
 	protected:
 
-		using Range = std::pair<Point, Point>;             // 移動の視点と終点
+		using Range = std::pair<Point, Point>;             // 移動の始点と終点
 
 		using Act    = std::function<void()>;              // 演出用関数
 

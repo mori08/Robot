@@ -1,6 +1,23 @@
 #include "EventObject.h"
 
 
+namespace
+{
+	/// <summary>
+	/// 数値を線形的に変更します。
+	/// </summary>
+	/// <param name="s"> 始点 </param>
+	/// <param name="t"> 終点 </param>
+	/// <param name="r"> 内分比 </param>
+	int changeLinearly(int s, int t, double r)
+	{
+		if (s == t) { return s; }
+
+		return static_cast<int>((1 - r)*s + r*t);
+	}
+}
+
+
 const Robot::EventObject::ActPtr Robot::EventObject::noAct(std::make_shared<std::function<void()>>([](){}));
 
 
@@ -89,5 +106,6 @@ void Robot::EventObject::moveObject()
 
 	double rate = 1.0*_moveFrameCount / _spanMoveFrameCount;
 
-	_pos = ((1 - rate)*_moveRange.first + rate*_moveRange.second).asPoint();
+	_pos.x = changeLinearly(_moveRange.first.x, _moveRange.second.x, rate);
+	_pos.y = changeLinearly(_moveRange.first.y, _moveRange.second.y, rate);
 }
