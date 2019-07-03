@@ -13,9 +13,16 @@ void Robot::LoadSaveDataScene::complete()
 	{
 	case SaveDataManager::LoadResult::NEW_GAME:
 	case SaveDataManager::LoadResult::CONTINUE:
+		m_data->sceneInfo = L"Event0";
+		changeScene(L"LoadEventScene");
+		// ↑Eventのテスト用
+		// ↓正規の実装
+		/*
 		m_data->sceneInfo = L"Test";
 		changeScene(L"MenuScene");
+		*/ 
 		break;
+
 	case SaveDataManager::LoadResult::ERROR:
 	default:
 		changeScene(L"TitleScene");

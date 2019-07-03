@@ -19,7 +19,14 @@ Robot::EventObject::EventObject(const Point & pos)
 
 void Robot::EventObject::setLinearMove(const Point & goal, int spanFrameCount)
 {
-	if(_moveFrameCount>0)
+	if (spanFrameCount == 0)
+	{
+		_pos = _moveRange.first = _moveRange.second = goal;
+
+		_moveFrameCount     = 0;
+		_spanMoveFrameCount = 0;
+		return;
+	}
 
 	_moveRange.first  = _pos;
 	_moveRange.second = goal;

@@ -2,6 +2,7 @@
 
 #include "../Object/TestEventObject.h"
 #include "../Object/BoxRobotObject.h"
+#include "../Object/HelpRobotObject.h"
 
 
 namespace
@@ -68,4 +69,5 @@ void Robot::GenerateEvent::setObjectMap()
 {
 	makeGenerateFunc<TestEventObject>(L"TestEventObject");
 	makeGenerateFunc<BoxRobotObject> (L"BoxRobot");
+	makeGenerateFunc<HelpRobotObject>(L"HelpRobot");
 }

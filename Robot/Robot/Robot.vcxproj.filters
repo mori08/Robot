@@ -693,6 +693,9 @@
     <ClInclude Include="Code\Menu\Window\State\ClosingState.h">
       <Filter>ヘッダー ファイル\Menu\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\Object\HelpRobotObject.h">
+      <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -907,6 +910,9 @@
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\ClosingState.cpp">
       <Filter>ソース ファイル\Menu\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Object\HelpRobotObject.cpp">
+      <Filter>ソース ファイル\Event\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

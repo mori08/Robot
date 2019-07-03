@@ -293,6 +293,7 @@
     <ClInclude Include="Code\Event\Object\BoxRobotObject.h" />
     <ClInclude Include="Code\Event\Object\ChangeTextureObject.h" />
     <ClInclude Include="Code\Event\Object\EventObject.h" />
+    <ClInclude Include="Code\Event\Object\HelpRobotObject.h" />
     <ClInclude Include="Code\Event\Object\TestEventObject.h" />
     <ClInclude Include="Code\Event\TextBox.h" />
     <ClInclude Include="Code\Game\GameLight.h" />
@@ -370,6 +371,7 @@
     <ClCompile Include="Code\Event\Object\BoxRobotObject.cpp" />
     <ClCompile Include="Code\Event\Object\ChangeTextureObject.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />
+    <ClCompile Include="Code\Event\Object\HelpRobotObject.cpp" />
     <ClCompile Include="Code\Event\TextBox.cpp" />
     <ClCompile Include="Code\Game\GameLight.cpp" />
     <ClCompile Include="Code\Game\GameManager.cpp" />
