@@ -25,8 +25,6 @@ namespace Robot
 
 		EnemyBase(const Vec2 & pos);
 
-	private:
-
 		virtual void update(GameManager & gameManager) override;
 
 		virtual void draw() const override;
