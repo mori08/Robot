@@ -16,6 +16,7 @@
 #include "Object\VerticalBlockEnemy.h"
 #include "Object\LastGoal.h"
 #include "Object\DefenceEnemy.h"
+#include "Object\FlashEnemy.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -53,6 +54,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<HorizontalBlockEnemy>(L"HorizontalBlock");
 	makeGenerateFunc<VerticalBlockEnemy>  (L"VerticalBlock");
 	makeGenerateFunc<DefenceEnemy>        (L"Defence");
+	makeGenerateFunc<FlashEnemy>          (L"Flash");
 }
 
 
@@ -223,6 +225,11 @@ void Robot::GameManager::drawObjectAndLight() const
 #endif // _DEBUG
 
 	_light.draw();
+
+	for (const auto & obj : _objList)
+	{
+		obj->drawLight();
+	}
 
 	for (const auto & obj : _objList)
 	{

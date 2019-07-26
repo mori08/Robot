@@ -32,6 +32,8 @@ namespace Robot
 
 		void draw() const override;
 
+		void drawLight() const override;
+
 		/// <summary>
 		/// プレイヤーの移動方向をキー入力から決定します。
 		/// </summary>

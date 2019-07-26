@@ -20,7 +20,7 @@ Point Robot::StageData::translatePos(const Vec2 & pos)
 
 Vec2 Robot::StageData::centerPosOfCell(const Point & pos)
 {
-	return SIZE*Vec2::One*pos + Vec2::One / 2;
+	return SIZE*(Vec2::One*pos + Vec2::One / 2);
 }
 
 

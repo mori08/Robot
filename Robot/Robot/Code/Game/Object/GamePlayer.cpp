@@ -41,11 +41,15 @@ void Robot::GamePlayer::update(GameManager & gameManager)
 
 void Robot::GamePlayer::draw() const
 {
+	TextureAsset(L"Player").drawAt(_pos);
+}
+
+
+void Robot::GamePlayer::drawLight() const
+{
 	ColorF lightColor(Palette::MyWhite);
 	lightColor.setAlpha(Sqrt(_lightCircleRate));
 	Circle(_pos, (1 - _lightCircleRate)*LIGHT_CIRCLE_RADIUS).drawFrame(LIGHT_CIRCLE_THICKNESS, LIGHT_CIRCLE_THICKNESS, lightColor);
-
-	TextureAsset(L"Player").drawAt(_pos);
 }
 
 

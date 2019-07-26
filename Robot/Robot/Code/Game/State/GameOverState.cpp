@@ -113,7 +113,7 @@ void Robot::GameOverState::draw(const GameManager &) const
 
 	_cursor.draw(Palette::MyWhite);
 
-	TextureAsset(L"RetryButton").draw(RETRY_BUTTON_POS);
+	TextureAsset(L"ReTryButton").draw(RETRY_BUTTON_POS);
 	TextureAsset(L"MenuButton").draw(MENU_BUTTON_POS);
 }
 

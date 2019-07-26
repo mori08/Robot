@@ -12,11 +12,13 @@ namespace
 Robot::RunAwayGoal::RunAwayGoal(const Vec2 & pos)
 	: GameGoal(pos)
 {
-	_goalPointId = 0;
+	_goalPointId = Random(0, 3);
 	_runPointList.emplace_back(0, 0);
 	_runPointList.emplace_back(StageData::WIDTH - 1, 0);
 	_runPointList.emplace_back(StageData::WIDTH - 1, StageData::HEIGHT - 1);
 	_runPointList.emplace_back(0, StageData::HEIGHT - 1);
+
+	_pos = StageData::centerPosOfCell(_runPointList[_goalPointId]);
 }
 
 Vec2 Robot::RunAwayGoal::getMoveVec(GameManager & gameManager)

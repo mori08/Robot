@@ -41,6 +41,13 @@ namespace Robot
 		/// </summary>
 		virtual void draw() const = 0;
 
+		/// <summary>
+		/// Œõ‚Ì•`‰æ
+		/// </summary>
+		virtual void drawLight() const
+		{
+		}
+
 	protected:
 
 		/// <summary>
