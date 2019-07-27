@@ -2,6 +2,7 @@
 
 
 #include "DoctorDefence.h"
+#include "DoctorSwitch.h"
 
 
 namespace Robot
@@ -17,11 +18,15 @@ namespace Robot
 
 		using DefenceList = std::list<std::unique_ptr<DoctorDefence>>;
 
+		using SwitchList  = std::vector<DoctorSwitch>;
+
 	private:
 
 		double      _defenceRadian; // DoctorDefenceの回転の角度
 
 		DefenceList _defenceList;   // DoctorDefenceのリスト
+
+		SwitchList  _switchList;    // DoctorSwitchのリスト
 
 		int   _frameCount; // 経過フレーム数
 
@@ -42,6 +47,12 @@ namespace Robot
 		/// </summary>
 		/// <param name="gameManager"> GameManagerのインスタンス </param>
 		void updateDefence(GameManager & gameManager);
+
+		/// <summary>
+		/// DoctorSwitchの判定と更新
+		/// </summary>
+		/// <param name="gameManager"> GameManagerのインスタンス </param>
+		void updateSwitch(GameManager & gameManager);
 
 	};
 }

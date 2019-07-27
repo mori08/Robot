@@ -11,6 +11,14 @@ namespace
 
 	const int    DEFENCE_NUM  = 4;    // DoctorDefenceÇÃêî
 	const double RADIAN_SPEED = 0.02; // DoctorDefenceÇÃâÒì]ÇÃäpë¨ìx
+
+	const std::vector<Point> SWITCH_POINT // DoctorSwitchÇÃç¿ïW
+	{
+		Point(0                          , 0),
+		Point(Robot::StageData::WIDTH - 1, 0),
+		Point(Robot::StageData::WIDTH - 1, Robot::StageData::HEIGHT - 1),
+		Point(0                          , Robot::StageData::HEIGHT - 1)
+	};
 }
 
 Robot::DoctorEnemy::DoctorEnemy(const Vec2 & pos)
@@ -21,6 +29,10 @@ Robot::DoctorEnemy::DoctorEnemy(const Vec2 & pos)
 	for (int i = 0; i < DEFENCE_NUM; ++i)
 	{
 		_defenceList.emplace_back(std::make_unique<DoctorDefence>(_pos));
+	}
+	for (int i = 0; i < DEFENCE_NUM; ++i)
+	{
+		_switchList.emplace_back(StageData::centerPosOfCell(SWITCH_POINT[i]));
 	}
 }
 
@@ -41,6 +53,8 @@ void Robot::DoctorEnemy::update(GameManager & gameManager)
 		gameManager.gameClear();
 	}
 
+	updateSwitch(gameManager);
+
 	updateDefence(gameManager);
 }
 
@@ -52,6 +66,11 @@ void Robot::DoctorEnemy::draw() const
 	for (const auto & defence : _defenceList)
 	{
 		defence->draw();
+	}
+
+	for(const auto & sw : _switchList)
+	{
+		sw.draw();
 	}
 }
 
@@ -69,5 +88,15 @@ void Robot::DoctorEnemy::updateDefence(GameManager & gameManager)
 
 		defence->setDefencePos(p);
 		defence->update(gameManager);
+	}
+}
+
+
+void Robot::DoctorEnemy::updateSwitch(GameManager & gameManager)
+{
+	for (auto & sw : _switchList)
+	{
+		sw.update(gameManager);
+		sw.checkPlayer(gameManager);
 	}
 }
