@@ -55,6 +55,8 @@ void Robot::DoctorEnemy::update(GameManager & gameManager)
 
 	updateSwitch(gameManager);
 
+	for (auto & enemy : _enemyList) { enemy->update(gameManager); }
+
 	updateDefence(gameManager);
 }
 
@@ -72,11 +74,15 @@ void Robot::DoctorEnemy::draw() const
 	{
 		sw.draw();
 	}
+
+	for (const auto & enemy : _enemyList) { enemy->draw(); }
 }
 
 
 void Robot::DoctorEnemy::updateDefence(GameManager & gameManager)
 {
+	if (_defenceList.empty()) { return; }
+
 	_defenceRadian += RADIAN_SPEED;
 	double radian = _defenceRadian;
 
@@ -97,6 +103,30 @@ void Robot::DoctorEnemy::updateSwitch(GameManager & gameManager)
 	for (auto & sw : _switchList)
 	{
 		sw.update(gameManager);
-		sw.checkPlayer(gameManager);
+
+		if (!sw.checkPlayer(gameManager))
+		{
+			continue;
+		}
+
+		if (_defenceList.empty()) { continue; }
+
+		Vec2 pos = _defenceList.back()->getPos();
+
+		_defenceList.pop_back();
+
+		switch (_enemyList.size())
+		{
+		case 0:
+		case 1:
+			_enemyList.emplace_back(std::make_unique<RandomEnemy>(pos));
+			break;
+		case 2:
+			_enemyList.emplace_back(std::make_unique<ChaseEnemy>(pos));
+			break;
+		case 3:
+			_enemyList.emplace_back(std::make_unique<RandomCentipede>(pos));
+			break;
+		}
 	}
 }

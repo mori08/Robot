@@ -3,6 +3,9 @@
 
 #include "DoctorDefence.h"
 #include "DoctorSwitch.h"
+#include "RandomEnemy.h"
+#include "ChaseEnemy.h"
+#include "RandomCentipede.h"
 
 
 namespace Robot
@@ -20,6 +23,8 @@ namespace Robot
 
 		using SwitchList  = std::vector<DoctorSwitch>;
 
+		using EnemyList   = std::vector<std::unique_ptr<GameObject>>;
+
 	private:
 
 		double      _defenceRadian; // DoctorDefenceの回転の角度
@@ -27,6 +32,8 @@ namespace Robot
 		DefenceList _defenceList;   // DoctorDefenceのリスト
 
 		SwitchList  _switchList;    // DoctorSwitchのリスト
+
+		EnemyList   _enemyList;     // スイッチが押されたときに呼び出したオブジェクト
 
 		int   _frameCount; // 経過フレーム数
 

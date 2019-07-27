@@ -27,7 +27,13 @@ namespace Robot
 		/// <param name="pos"> À•W </param>
 		void setDefencePos(const Vec2 & pos);
 
-
+		/// <summary>
+		/// À•W‚ğæ“¾
+		/// </summary>
+		Vec2 getPos() const
+		{
+			return _pos;
+		}
 
 	private:
 

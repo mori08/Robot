@@ -6,9 +6,9 @@ namespace
 	const int  TEXTURE_CHANGE_SPAN = 4; // 画像を変更する間隔のフレーム数
 	const Size TEXTURE_SIZE(20, 20);    // 画像の大きさ
 
-	const Point OFF_TEXTURE_POS(2, 0);  // 停止時のボタンの座標
+	const Point OFF_TEXTURE_POS(0, 1);  // 停止時のボタンの座標
 
-	const double PLAYER_DISTANCE = 7.0; // プレイヤーとの距離
+	const double PLAYER_DISTANCE = 10.0; // プレイヤーとの距離
 
 	const double RADIUS             = 30.0; // 光の半径
 	const double SHADOW_BLUR_RADIUS = 20.0; // 影のぼかしの大きさ
