@@ -103,7 +103,7 @@ namespace Robot
 		/// </summary>
 		/// <param name="posS"> 始点 </param>
 		/// <param name="posT"> 終点 </param>
-		/// <returns> 経路上で最初に進む方向 </returns>
+		/// <returns> 経路上で最初に進む方向 行くことができない場合 Vec2::Zero </returns>
 		Vec2 getPath(const Vec2 & posS, const Vec2 & posT) const;
 
 		/// <summary>

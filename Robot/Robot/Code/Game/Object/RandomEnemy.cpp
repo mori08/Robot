@@ -3,7 +3,7 @@
 
 namespace
 {
-	const double SPEED = 0.4;
+	const double SPEED = 0.8;
 	const double MIN_VEC_LENGTH = 0.5;
 }
 
