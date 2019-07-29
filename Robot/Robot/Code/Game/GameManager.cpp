@@ -18,6 +18,7 @@
 #include "Object\DefenceEnemy.h"
 #include "Object\FlashEnemy.h"
 #include "Object\DoctorEnemy.h"
+#include "Object\LockGoal.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -57,6 +58,7 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<DefenceEnemy>        (L"Defence");
 	makeGenerateFunc<FlashEnemy>          (L"Flash");
 	makeGenerateFunc<DoctorEnemy>         (L"Doctor");
+	makeGenerateFunc<LockGoal>            (L"LockGoal");
 }
 
 

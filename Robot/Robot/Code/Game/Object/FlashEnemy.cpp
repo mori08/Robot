@@ -3,13 +3,13 @@
 
 namespace 
 {
-	const double SLOW_SPEED = 0.5; // 発光時でないときの速さ
+	const double SLOW_SPEED = 0.2; // 発光時でないときの速さ
 	const double SPEED = 1.3;      // 速さ
 
 	const int FLASH_FRAMECOUNT    = 60;  // 発光のフレーム数
 	const int CHASE_FRAMECOUNT    = 240; // 追跡のフレーム数
-	const int MIN_WAIT_FRAMECOUNT = 60;  // 停止の最小フレーム数
-	const int MAX_WAIT_FRAMECOUNT = 720; // 停止の最大フレーム数
+	const int MIN_WAIT_FRAMECOUNT = 300; // 停止の最小フレーム数
+	const int MAX_WAIT_FRAMECOUNT = 900; // 停止の最大フレーム数
 
 	const double RADIUS = 30; // 光の半径
 

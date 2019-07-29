@@ -708,6 +708,12 @@
     <ClInclude Include="Code\Game\Object\DoctorSwitch.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\LockGoal.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\LockKey.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -936,6 +942,12 @@
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\DoctorSwitch.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\LockGoal.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\LockKey.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
     </ClCompile>
   </ItemGroup>

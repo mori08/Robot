@@ -79,6 +79,17 @@ void Robot::DoctorEnemy::draw() const
 }
 
 
+void Robot::DoctorEnemy::drawLight() const
+{
+	for (const auto & sw : _switchList)
+	{
+		sw.drawLight();
+	}
+
+	for (const auto & enemy : _enemyList) { enemy->drawLight(); }
+}
+
+
 void Robot::DoctorEnemy::updateDefence(GameManager & gameManager)
 {
 	if (_defenceList.empty()) { return; }

@@ -26,7 +26,7 @@ Robot::DoctorSwitch::DoctorSwitch(const Vec2 & pos)
 }
 
 
-void Robot::DoctorSwitch::update(GameManager &)
+void Robot::DoctorSwitch::update(GameManager & gameManager)
 {
 	if (_isPressed) { return; }
 
@@ -34,6 +34,8 @@ void Robot::DoctorSwitch::update(GameManager &)
 	{
 		_texturePos.x++;
 	}
+
+	moveObject(gameManager, getMoveVec(gameManager));
 }
 
 

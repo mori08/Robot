@@ -47,6 +47,8 @@ namespace Robot
 
 		void draw() const override;
 
+		void drawLight() const override;
+
 	private:
 
 		/// <summary>
