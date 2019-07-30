@@ -20,6 +20,8 @@ namespace
 	const Size   TEXTURE_SIZE(40, 40); // 画像のサイズ
 
 	const int    CHANGE_TEXTURE_SPAN = 10;  // 画像を変更するフレーム数
+
+	const Point  DRAW_TEXT_POS(320, 460);
 }
 
 
@@ -72,6 +74,11 @@ void Robot::LockGoal::draw() const
 	for(const auto & key : _keyList)
 	{
 		key.draw();
+	}
+
+	if (_lastKeyNum > 0 && (_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
+	{
+		FontAsset(L"20")(L"鍵が足りない").drawAt(DRAW_TEXT_POS, Palette::MyWhite);
 	}
 }
 

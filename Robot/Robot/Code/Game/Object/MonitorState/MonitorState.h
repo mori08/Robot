@@ -16,7 +16,8 @@ namespace Robot
 	{
 	protected:
 
-		const double RADIUS = 50; // Œõ‚Ì”¼Œa
+		const double RADIUS        = 40;          // Œõ‚Ì”¼Œa
+		const double CHASE_DISTANCE = RADIUS + 20; // ’Ç‚¢‚©‚¯Žn‚Ü‚é‹——£
 
 	public:
 

@@ -3,7 +3,7 @@
 
 namespace 
 {
-	const double SLOW_SPEED = 0.2; // ”­Œõ‚Å‚È‚¢‚Æ‚«‚Ì‘¬‚³
+	const double SLOW_SPEED = 0.1; // ”­Œõ‚Å‚È‚¢‚Æ‚«‚Ì‘¬‚³
 	const double SPEED = 1.3;      // ‘¬‚³
 
 	const int FLASH_FRAMECOUNT    = 60;  // ”­Œõ‚ÌƒtƒŒ[ƒ€”

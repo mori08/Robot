@@ -16,6 +16,8 @@ namespace Robot
 
 		Vec2 _pos; // 光の中心座標
 
+		bool _off; // trueのときライトを消す
+
 	public:
 
 		/// <summary>
@@ -34,6 +36,22 @@ namespace Robot
 		const Vec2 & getPos() const
 		{
 			return _pos;
+		}
+
+		/// <summary>
+		/// ライトを消す
+		/// </summary>
+		void Off()
+		{
+			_off = true;
+		}
+
+		/// <summary>
+		/// ライトをつける
+		/// </summary>
+		void On()
+		{
+			_off = false;
 		}
 
 		/// <summary>

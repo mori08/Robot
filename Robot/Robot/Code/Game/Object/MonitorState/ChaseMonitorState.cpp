@@ -4,7 +4,7 @@
 
 namespace
 {
-	const double SPEED = 0.6; // ‘¬‚³
+	const double SPEED = 0.4; // ‘¬‚³
 }
 
 
@@ -16,7 +16,7 @@ void Robot::ChaseMonitorState::getMoveVec(Vec2 & monitorPos)
 
 void Robot::ChaseMonitorState::changeState(PatrolTeamEnemy & patrolTeam)
 {
-	if ((patrolTeam.getMonitorPos() - GameManager::Instance().getPlayerPos()).length() > RADIUS)
+	if ((patrolTeam.getMonitorPos() - GameManager::Instance().getPlayerPos()).length() > CHASE_DISTANCE)
 	{
 		patrolTeam.changeMonitorState(std::make_unique<StayMonitorState>());
 		patrolTeam.setPoliceChasing(false);

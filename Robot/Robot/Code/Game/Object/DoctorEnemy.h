@@ -3,9 +3,6 @@
 
 #include "DoctorDefence.h"
 #include "DoctorSwitch.h"
-#include "RandomEnemy.h"
-#include "ChaseEnemy.h"
-#include "RandomCentipede.h"
 
 
 namespace Robot

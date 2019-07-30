@@ -33,6 +33,8 @@ namespace
 	const size_t POINT_Y         = 1; // Y座標のインデックス
 	const size_t OBJ_NUM_COLUMN  = 0; // オブジェクトの数が記載されている列番号
 	const size_t OBJ_TYPE_COLUMN = 2; // オブジェクトの種類が記述されている列番号
+
+	const String LIGHT_OFF_TEXT = L"LightOFF"; // 光を消すテキスト
 }
 
 
@@ -89,6 +91,10 @@ void Robot::GameManager::init()
 	_isChangeAbleScene = false;
 	_sceneName = L"";
 	_sceneInfo = L"";
+
+	// 光の初期位置の設定
+	_light.On();
+	_light.setPos(Window::Center());
 }
 
 
@@ -156,6 +162,12 @@ void Robot::GameManager::load(const String & gameDataFileName)
 			return;
 		}
 
+		if (gameData.get<String>(readingRow, 0) == LIGHT_OFF_TEXT)
+		{
+			_light.Off();
+			continue;
+		}
+
 		Optional<Vec2> pos = getPointFromCSVReader(gameData, readingRow);
 		if (!pos) 
 		{
@@ -169,10 +181,6 @@ void Robot::GameManager::load(const String & gameDataFileName)
 		}
 		_objList.emplace_back(genarateEnemyMap[enemyType](*pos));
 	}
-
-
-	// 光の初期位置の設定
-	_light.setPos(Window::Center());
 }
 
 

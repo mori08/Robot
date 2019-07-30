@@ -25,9 +25,9 @@ void Robot::PoliceEnemy::drawLight() const
 	if (!_isChasing) { return; }
 
 	Color color = Palette::MyWhite;
-	color.a = _frameCount;
+	color.a = 10*_frameCount % 0x80 + 0x80;
 	
-	Circle(_pos, RADIUS).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
+	Circle(_pos, RADIUS).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, color);
 }
 
 

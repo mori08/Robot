@@ -1,4 +1,7 @@
 #include "DoctorEnemy.h"
+#include "RandomEnemy.h"
+#include "ChaseEnemy.h"
+#include "RandomCentipede.h"
 
 
 namespace
@@ -7,7 +10,7 @@ namespace
 	const Size   TEXTURE_SIZE(40, 40); // 画像のサイズ
 	const int    CHANGE_TEXTURE_SPAN = 10;  // 画像を変更するフレーム数
 
-	const double SPEED        = 0.2;  // ゴールの移動の速さ
+	const double SPEED        = 0.1;  // ゴールの移動の速さ
 
 	const int    DEFENCE_NUM  = 4;    // DoctorDefenceの数
 	const double RADIAN_SPEED = 0.02; // DoctorDefenceの回転の角速度

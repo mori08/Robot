@@ -19,5 +19,6 @@ void Robot::GameLight::update()
 
 void Robot::GameLight::draw() const
 {
+	if (_off) { return; }
 	Circle(_pos, RADIUS).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 }
