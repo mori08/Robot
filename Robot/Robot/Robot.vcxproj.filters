@@ -148,6 +148,12 @@
     <Filter Include="ソース ファイル\Menu\State">
       <UniqueIdentifier>{8c44a008-c866-4345-8892-687048dcbf5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Game\Object\MonitorState">
+      <UniqueIdentifier>{0f2e2292-ee41-409f-baae-6742f340a63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object\MonitorState">
+      <UniqueIdentifier>{a79afb29-ac28-4a82-99e7-ac37a22bbb4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -714,6 +720,18 @@
     <ClInclude Include="Code\Game\Object\LockKey.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\PatrolTeamEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\PoliceEnemy.h">
+      <Filter>ヘッダー ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\MonitorState\MonitorState.h">
+      <Filter>ヘッダー ファイル\Game\Object\MonitorState</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Game\Object\MonitorState\StayMonitorState.h">
+      <Filter>ヘッダー ファイル\Game\Object\MonitorState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -949,6 +967,18 @@
     </ClCompile>
     <ClCompile Include="Code\Game\Object\LockKey.cpp">
       <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\PoliceEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\PatrolTeamEnemy.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\MonitorState\MonitorState.cpp">
+      <Filter>ソース ファイル\Game\Object\MonitorState</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\MonitorState\StayMonitorState.cpp">
+      <Filter>ソース ファイル\Game\Object\MonitorState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

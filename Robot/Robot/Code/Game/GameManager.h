@@ -7,22 +7,6 @@
 #include "GameLight.h"
 
 
-namespace
-{
-	// オブジェクトのポインタ
-	using ObjPtr = std::unique_ptr<Robot::GameObject>;
-
-	// オブジェクトのリスト
-	using ObjList = std::vector<ObjPtr>;
-
-	// オブジェクトを生成する関数
-	using GenerateFunc = std::function<ObjPtr(const Vec2 & pos)>;
-
-	// 状態のポインタ
-	using StatePtr = std::unique_ptr<Robot::GameState>;
-}
-
-
 namespace Robot
 {
 	/*
@@ -34,6 +18,18 @@ namespace Robot
 	class GameManager
 	{
 	private:
+
+		// オブジェクトのポインタ
+		using ObjPtr = std::unique_ptr<Robot::GameObject>;
+
+		// オブジェクトのリスト
+		using ObjList = std::vector<ObjPtr>;
+
+		// オブジェクトを生成する関数
+		using GenerateFunc = std::function<ObjPtr(const Vec2 & pos)>;
+
+		// 状態のポインタ
+		using StatePtr = std::unique_ptr<Robot::GameState>;
 
 		// オブジェクトを生成する関数のマップ
 		using FuncMap = std::unordered_map<String, GenerateFunc>;
