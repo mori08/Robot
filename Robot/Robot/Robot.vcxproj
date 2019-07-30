@@ -318,6 +318,7 @@
     <ClInclude Include="Code\Game\Object\MonitorState\MonitorState.h" />
     <ClInclude Include="Code\Game\Object\MonitorState\MoveMonitorState.h" />
     <ClInclude Include="Code\Game\Object\MonitorState\StayMonitorState.h" />
+    <ClInclude Include="Code\Game\Object\MonitorState\TargetMonitorState.h" />
     <ClInclude Include="Code\Game\Object\PatrolTeamEnemy.h" />
     <ClInclude Include="Code\Game\Object\PoliceEnemy.h" />
     <ClInclude Include="Code\Game\Object\RandomCentipede.h" />
@@ -405,6 +406,7 @@
     <ClCompile Include="Code\Game\Object\MonitorState\MonitorState.cpp" />
     <ClCompile Include="Code\Game\Object\MonitorState\MoveMonitorState.cpp" />
     <ClCompile Include="Code\Game\Object\MonitorState\StayMonitorState.cpp" />
+    <ClCompile Include="Code\Game\Object\MonitorState\TargetMonitorState.cpp" />
     <ClCompile Include="Code\Game\Object\PatrolTeamEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\PoliceEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\RandomCentipede.cpp" />

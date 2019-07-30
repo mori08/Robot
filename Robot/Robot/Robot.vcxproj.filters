@@ -735,6 +735,9 @@
     <ClInclude Include="Code\Game\Object\MonitorState\MoveMonitorState.h">
       <Filter>ヘッダー ファイル\Game\Object\MonitorState</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\Object\MonitorState\TargetMonitorState.h">
+      <Filter>ヘッダー ファイル\Game\Object\MonitorState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -984,6 +987,9 @@
       <Filter>ソース ファイル\Game\Object\MonitorState</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\MonitorState\MoveMonitorState.cpp">
+      <Filter>ソース ファイル\Game\Object\MonitorState</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\Object\MonitorState\TargetMonitorState.cpp">
       <Filter>ソース ファイル\Game\Object\MonitorState</Filter>
     </ClCompile>
   </ItemGroup>

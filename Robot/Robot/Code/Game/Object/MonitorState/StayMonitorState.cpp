@@ -1,5 +1,6 @@
 #include "StayMonitorState.h"
 #include "MoveMonitorState.h"
+#include "TargetMonitorState.h"
 
 
 namespace
@@ -23,6 +24,12 @@ void Robot::StayMonitorState::getMoveVec(Vec2 &)
 
 void Robot::StayMonitorState::changeState(PatrolTeamEnemy & patrolTeam)
 {
+	if ((patrolTeam.getMonitorPos() - GameManager::Instance().getPlayerPos()).length() < RADIUS)
+	{
+		patrolTeam.changeMonitorState(std::make_unique<TargetMonitorState>());
+		return;
+	}
+
 	if (--_stayFrameCount > 0) { return; }
 
 	patrolTeam.changeMonitorState(std::make_unique<MoveMonitorState>());

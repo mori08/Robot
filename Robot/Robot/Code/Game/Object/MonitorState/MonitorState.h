@@ -14,9 +14,9 @@ namespace Robot
 	*/
 	class MonitorState
 	{
-	private:
+	protected:
 
-		const double RADIUS = 70; // Œõ‚Ì”¼Œa
+		const double RADIUS = 50; // Œõ‚Ì”¼Œa
 
 	public:
 
