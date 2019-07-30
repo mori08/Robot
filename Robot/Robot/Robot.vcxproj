@@ -310,6 +310,7 @@
     <ClInclude Include="Code\Game\Object\DoctorEnemy.h" />
     <ClInclude Include="Code\Game\Object\DoctorSwitch.h" />
     <ClInclude Include="Code\Game\Object\FlashEnemy.h" />
+    <ClInclude Include="Code\Game\Object\FriendEnemy.h" />
     <ClInclude Include="Code\Game\Object\GoalTailCentipede.h" />
     <ClInclude Include="Code\Game\Object\HorizontalBlockEnemy.h" />
     <ClInclude Include="Code\Game\Object\LastGoal.h" />
@@ -399,6 +400,7 @@
     <ClCompile Include="Code\Game\Object\DoctorEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\DoctorSwitch.cpp" />
     <ClCompile Include="Code\Game\Object\FlashEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\FriendEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\GoalTailCentipede.cpp" />
     <ClCompile Include="Code\Game\Object\HorizontalBlockEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\LastGoal.cpp" />
