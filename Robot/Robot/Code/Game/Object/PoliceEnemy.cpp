@@ -4,7 +4,7 @@
 namespace
 {
 	const double RETURN_SPEED = 0.2; // 持場に変える速さ
-	const double CHASE_SPEED  = 1.0; // プレイヤーを追いかける速さ
+	const double CHASE_SPEED  = 2.4; // プレイヤーを追いかける速さ
 
 	const double RADIUS = 30; // 光の半径
 	const double SHADOW_BLUR_RADIUS = 20.0; // 影のぼかしの大きさ

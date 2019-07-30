@@ -27,6 +27,7 @@ void Robot::StayMonitorState::changeState(PatrolTeamEnemy & patrolTeam)
 	if ((patrolTeam.getMonitorPos() - GameManager::Instance().getPlayerPos()).length() < RADIUS)
 	{
 		patrolTeam.changeMonitorState(std::make_unique<TargetMonitorState>());
+		patrolTeam.setPoliceChasing(true);
 		return;
 	}
 

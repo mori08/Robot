@@ -54,6 +54,12 @@ namespace Robot
 			return _monitorPos;
 		}
 
+		/// <summary>
+		/// PoliceEnemy‚Ì‹““®‚ð•Ï‚¦‚é
+		/// </summary>
+		/// <param name="isChasing"> true ‚È‚ç ’Ç‚¢‚©‚¯‚é , false ‚È‚ç –ß‚é </param>
+		void setPoliceChasing(bool isChasing);
+
 	private:
 
 		void update(GameManager & gameManager) override;
