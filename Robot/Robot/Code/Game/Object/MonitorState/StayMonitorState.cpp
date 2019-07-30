@@ -1,4 +1,5 @@
 #include "StayMonitorState.h"
+#include "MoveMonitorState.h"
 
 
 namespace
@@ -24,5 +25,5 @@ void Robot::StayMonitorState::changeState(PatrolTeamEnemy & patrolTeam)
 {
 	if (--_stayFrameCount > 0) { return; }
 
-	// patrolTeam.changeMonitorState(std::make_unique<MoveMonitorState>());
+	patrolTeam.changeMonitorState(std::make_unique<MoveMonitorState>());
 }

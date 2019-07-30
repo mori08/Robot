@@ -316,6 +316,7 @@
     <ClInclude Include="Code\Game\Object\LockGoal.h" />
     <ClInclude Include="Code\Game\Object\LockKey.h" />
     <ClInclude Include="Code\Game\Object\MonitorState\MonitorState.h" />
+    <ClInclude Include="Code\Game\Object\MonitorState\MoveMonitorState.h" />
     <ClInclude Include="Code\Game\Object\MonitorState\StayMonitorState.h" />
     <ClInclude Include="Code\Game\Object\PatrolTeamEnemy.h" />
     <ClInclude Include="Code\Game\Object\PoliceEnemy.h" />
@@ -402,6 +403,7 @@
     <ClCompile Include="Code\Game\Object\LockGoal.cpp" />
     <ClCompile Include="Code\Game\Object\LockKey.cpp" />
     <ClCompile Include="Code\Game\Object\MonitorState\MonitorState.cpp" />
+    <ClCompile Include="Code\Game\Object\MonitorState\MoveMonitorState.cpp" />
     <ClCompile Include="Code\Game\Object\MonitorState\StayMonitorState.cpp" />
     <ClCompile Include="Code\Game\Object\PatrolTeamEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\PoliceEnemy.cpp" />

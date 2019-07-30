@@ -41,9 +41,17 @@ namespace Robot
 		/// 監視用の光の状態を切り替える
 		/// </summary>
 		/// <param name="newState"> 新しい状態 </param>
-		void changeMonitorState(MonitorState & newState)
+		void changeMonitorState(MonitorState && newState)
 		{
 			_monitorState = std::move(newState);
+		}
+
+		/// <summary>
+		/// 監視用の光の座標を取得
+		/// </summary>
+		const Vec2 & getMonitorPos() const
+		{
+			return _monitorPos;
 		}
 
 	private:
