@@ -4,8 +4,6 @@
 
 namespace
 {
-	const int DRAW_TEXT_SPAN = 5; // 描画
-
 	const String NO_ICON = L"NoIcon"; // アイコン非表示時の表示画像
 
 	const Point TEXT_BOX_DRAW_POS(0, 320);       // テキストボックスを表示する座標
@@ -14,13 +12,14 @@ namespace
 }
 
 
-void Robot::TextBox::set(const String & speakerName, const String & iconName, const String & text)
+void Robot::TextBox::set(const String & speakerName, const String & iconName, const String & text, int drawTextSpan)
 {
 	_isReady        = false;
 	_drawTextLength = 0;
 	_speakerName    = speakerName;
 	_iconName       = iconName;
 	_text           = text;
+	_drawTextSpan   = drawTextSpan;
 }
 
 
@@ -44,7 +43,7 @@ void Robot::TextBox::update()
 		return;
 	}
 
-	if (++frameCount%DRAW_TEXT_SPAN == 0)
+	if (_drawTextSpan != 0 && ++frameCount%_drawTextSpan == 0)
 	{
 		++_drawTextLength;
 	}

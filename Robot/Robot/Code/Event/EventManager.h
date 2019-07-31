@@ -284,9 +284,10 @@ namespace Robot
 		/// <param name="speakerName"> 話し手の名前 </param>
 		/// <param name="iconName"> アイコンの名前 </param>
 		/// <param name="text"> テキスト </param>
-		void setTextBox(const String & speakerName, const String & iconName, const String & text)
+		/// <param name="textSpeed"> テキストを表示する速さ </param>
+		void setTextBox(const String & speakerName, const String & iconName, const String & text, int textSpeed)
 		{
-			_textBox.set(speakerName, iconName, text);
+			_textBox.set(speakerName, iconName, text, textSpeed);
 		}
 
 		/// <summary>

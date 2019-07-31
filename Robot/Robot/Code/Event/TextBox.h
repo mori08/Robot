@@ -16,6 +16,8 @@ namespace Robot
 		
 		bool   _isReady;        // テキストが設定できるか
 
+		int    _drawTextSpan;   // テキストを表示するフレーム数の間隔
+
 		size_t _drawTextLength; // 描画するテキストの長さ
 
 		String _speakerName;    // 話し手の名前
@@ -37,7 +39,8 @@ namespace Robot
 		/// <param name="speakerName"> 話し手の名前 </param>
 		/// <param name="iconName"> 表示するアイコンの名前 </param>
 		/// <param name="text"> 表示するテキスト </param>
-		void set(const String & speakerName, const String & iconName, const String & text);
+		/// <param name="drawTextSpan"> テキストを表示するフレーム数の間隔 </param>
+		void set(const String & speakerName, const String & iconName, const String & text, int dratTextSpan);
 
 		/// <summary>
 		/// 初期化

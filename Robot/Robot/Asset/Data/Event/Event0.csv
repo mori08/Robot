@@ -15,5 +15,5 @@ Act,BoxRobot,Blink,#,,,
 Act,BoxRobot,Blink,#,,,
 Move,HelpRobot,TRUE,180,220,360,#
 Wait,150,#,,,,
-Text,BoxRobot,BoxRobotIcon,あ、開いた…。,#,,
+Text,BoxRobot,HelpRobotIcon,10,あ、開いた…。,#,
 Scene,TitleScene,,#,,,

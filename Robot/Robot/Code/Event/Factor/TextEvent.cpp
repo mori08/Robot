@@ -3,11 +3,12 @@
 
 namespace
 {
-	const size_t INFO_SIZE = 3; // 詳細の配列のサイズ
+	const size_t INFO_SIZE = 4; // 詳細の配列のサイズ
 
 	const size_t SPEAKER_NAME = 0; // 話し手の名前のインデックス
 	const size_t ICON_NAME    = 1; // アイコンの画像の名前のインデックス
-	const size_t TEXT         = 2; // 表示するテキストのインデックス
+	const size_t TEXT_SPEED   = 2; // テキストを表示する速さ
+	const size_t TEXT         = 3; // 表示するテキストのインデックス
 }
 
 
@@ -29,6 +30,15 @@ bool Robot::TextEvent::load(const Info & info, const EventManager &)
 		return false;
 	}
 
+	Optional<int> optSpeed = FromStringOpt<int>(info[TEXT_SPEED], 10);
+	if (!optSpeed)
+	{
+		printError(L"数値ではない値が指定されました");
+		printError(L"textSpeed : " + info[TEXT_SPEED]);
+		return false;
+	}
+	_textSpeed = *optSpeed;
+
 	_text = info[TEXT];
 
 	return _isSuccess = true;
@@ -37,7 +47,7 @@ bool Robot::TextEvent::load(const Info & info, const EventManager &)
 
 void Robot::TextEvent::perform(EventManager & eventManager) const
 {
-	eventManager.setTextBox(_speakerName, _iconName, _text);
+	eventManager.setTextBox(_speakerName, _iconName, _text, _textSpeed);
 }
 
 

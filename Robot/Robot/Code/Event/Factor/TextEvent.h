@@ -19,6 +19,8 @@ namespace Robot
 
 		String _iconName;    // アイコンの画像の名前
 
+		int    _textSpeed;   // テキストを表示する速さ
+
 		String _text;        // 表示するテキスト
 
 	private:
