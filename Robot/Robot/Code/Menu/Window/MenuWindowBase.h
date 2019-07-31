@@ -8,14 +8,17 @@
 
 namespace Robot
 {
+	class MenuScene;
+
 	/*
 	MenuWindowBaseクラス
 	MenuSceneに表示するWindowwoを表す
 	*/
 	class MenuWindowBase
 	{
-	private:
+	protected:
 
+		using Processing    = std::function<void()>;
 		using ProcessingPtr = std::unique_ptr<std::function<void()>>;
 
 	public:
@@ -80,13 +83,6 @@ namespace Robot
 		virtual void updateInputManager() const = 0;
 
 		/// <summary>
-		/// ボタンを押したときの処理を設定します。
-		/// </summary>
-		/// <param name="buttonKey"> ボタンのキー </param>
-		/// <param name="processing"> ボタンを押したときの処理 </param>
-		void setClickedProcessing(const String & buttonKey, ProcessingPtr processing);
-		
-		/// <summary>
 		/// ウィンドウを閉じたときの処理を設定します。
 		/// </summary>
 		void setClosedProcessing(ProcessingPtr processing)
@@ -133,16 +129,6 @@ namespace Robot
 	protected:
 
 		/// <summary>
-		/// 指定されたキーを持つボタンがあるか示します。
-		/// </summary>
-		/// <param name="buttonKey"> ボタンのキー </param>
-		/// <returns> キーがあるとき true , そうでないとき false </returns>
-		/// <remarks>
-		/// O(ボタンの数)だけの時間がかかります
-		/// </remarks>
-		bool keyExistsAtButtonList(const String & buttonKey) const;
-
-		/// <summary>
 		/// 指定された処理があるか示します。
 		/// </summary>
 		/// <param name="buttonKey"> ボタンのキー </param>
@@ -156,7 +142,8 @@ namespace Robot
 		/// </summary>
 		/// <param name="butttonKey"> ボタンのキー </param>
 		/// <param name="region"> 範囲 </param>
-		void registerButton(const String & buttonKey, const Rect & region);
+		/// <param name="processing"> ボタンを押したときの処理 </param>
+		void registerButton(const String & buttonKey, const Rect & region, ProcessingPtr processing);
 
 	private:
 

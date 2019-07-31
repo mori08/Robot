@@ -29,7 +29,7 @@ namespace Robot
 
 		void draw() const override;
 
-	private:
+	public:
 
 		/// <summary>
 		/// ウィンドウを開きます。
@@ -42,6 +42,17 @@ namespace Robot
 		/// </summary>
 		/// <param name="windowName"> 新しく選択するウィンドウの名前 </param>
 		void closeWindow(const String & windowName);
+
+		/// <summary>
+		/// シーンを変更する
+		/// </summary>
+		/// <param name="sceneName"> シーン名 </param>
+		/// <param name="sceneInfo"> シーン遷移後に扱う文字列 </param>
+		void changeSceneAndInfo(const String & sceneName, const String & sceneInfo)
+		{
+			m_data->sceneInfo = sceneInfo;
+			changeScene(sceneName);
+		}
 
 	};
 }

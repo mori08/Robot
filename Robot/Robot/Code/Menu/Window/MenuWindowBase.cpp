@@ -73,17 +73,6 @@ void Robot::MenuWindowBase::close()
 }
 
 
-void Robot::MenuWindowBase::setClickedProcessing(const String & buttonKey, ProcessingPtr processing)
-{
-	if (!keyExistsAtButtonList(buttonKey))
-	{
-		return;
-	}
-
-	_processingMap[buttonKey] = std::move(processing);
-}
-
-
 void Robot::MenuWindowBase::setColor(const Color color, size_t num)
 {
 	num = Min(num, _buttonPtrList.size());
@@ -142,19 +131,11 @@ void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 }
 
 
-bool Robot::MenuWindowBase::keyExistsAtButtonList(const String & buttonKey) const
-{
-	for (const auto & button : _buttonPtrList)
-	{
-		if (button->getKey() == buttonKey) { return true; }
-	}
-	return false;
-}
-
-
-void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect & region)
+void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect & region, ProcessingPtr processing)
 {
 	_buttonPtrList.emplace_back(std::make_shared<Button>(buttonKey, region));
+
+	_processingMap[buttonKey] = std::move(processing);
 
 	_colorMap[buttonKey] = ColorF(Palette::MyWhite).setAlpha(0);
 }

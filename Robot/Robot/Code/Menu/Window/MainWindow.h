@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "MenuWindowBase.h"
+#include "../MenuScene.h"
 
 
 namespace Robot
@@ -14,7 +14,7 @@ namespace Robot
 	{
 	public:
 
-		MainWindow();
+		MainWindow(MenuScene & menuScene);
 
 	private:
 

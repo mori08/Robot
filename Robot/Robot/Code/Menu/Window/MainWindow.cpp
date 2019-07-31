@@ -13,10 +13,20 @@ namespace
 }
 
 
-Robot::MainWindow::MainWindow()
+Robot::MainWindow::MainWindow(MenuScene & menuScene)
 {
-	registerButton(L"StageButton", Rect(STAGE_POS, BUTTON_SIZE));
-	registerButton(L"TitleButton", Rect(TITLE_POS, BUTTON_SIZE));
+	registerButton
+	(
+		L"StageButton",
+		Rect(STAGE_POS, BUTTON_SIZE),
+		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Stage"); })
+	);
+	registerButton
+	(
+		L"TitleButton", 
+		Rect(TITLE_POS, BUTTON_SIZE),
+		std::make_unique<Processing>([&menuScene]() { menuScene.changeSceneAndInfo(L"TitleScene", L""); })
+	); 
 
 	_selectedButtonKey = L"StageButton";
 

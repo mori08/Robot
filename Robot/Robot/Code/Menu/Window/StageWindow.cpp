@@ -15,7 +15,7 @@ namespace
 }
 
 
-Robot::StageWindow::StageWindow()
+Robot::StageWindow::StageWindow(MenuScene & menuScene)
 {
 	const Rect TITLE_BUTTON_REGION(16, 16, 168, 56); // タイトルボタンの範囲
 	
@@ -24,8 +24,17 @@ Robot::StageWindow::StageWindow()
 		Point pos = POS_BASE;
 		pos += Point(i%COLUMNS, i / COLUMNS)*Point(BUTTON_SIZE + WIDTH);
 
-		registerButton(L"Stage" + ToString(i), Rect(pos, BUTTON_SIZE));
+		registerButton
+		(
+			L"Stage" + ToString(i),
+			Rect(pos, BUTTON_SIZE),
+			std::make_unique<Processing>
+			(
+				[&menuScene, i]() { menuScene.changeSceneAndInfo(L"LoadEventScene", L"Event" + ToString(i)); }
+			)
+		);
 	}
+	setClosedProcessing(std::make_unique<Processing>([&menuScene]() { menuScene.closeWindow(L"Main"); }));
 
 	_selectedButtonKey = L"Stage0";
 
