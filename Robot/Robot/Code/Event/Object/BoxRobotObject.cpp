@@ -16,7 +16,7 @@ namespace
 	const std::vector<Point> SLEEP_TEXTURE_POS_LIST // 睡眠の画像のリスト
 	{ Point(0,1),Point(1,1),Point(2,1),Point(3,1) };
 
-	const size_t WAKE_SPAN = 6;                   // 起きる時の画像を切り替えるフレームの間隔
+	const size_t WAKE_SPAN = 6;                    // 起きる時の画像を切り替えるフレームの間隔
 	const std::vector<Point> WAKE_TEXTURE_POS_LIST // 起きる画像のリスト
 	{ Point(3,0),Point(2,0),Point(1,0),Point(0,0) };
 }

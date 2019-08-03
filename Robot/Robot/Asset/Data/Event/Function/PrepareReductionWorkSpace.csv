@@ -1,6 +1,7 @@
 Background,WorkSpace(reduction),#,,,
 Generate,BoxRobot,BoxRobot,65,211,#
 Generate,HelpRobot,HelpRobot,640,220,#
+Generate,Television,TV,290,40,#
 Run,#,,,,
 Init,BoxRobot,Reduction,#,,
 Init,HelpRobot,Reduction,#,,
