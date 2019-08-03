@@ -19,6 +19,14 @@ namespace
 	const size_t WAKE_SPAN = 6;                    // 起きる時の画像を切り替えるフレームの間隔
 	const std::vector<Point> WAKE_TEXTURE_POS_LIST // 起きる画像のリスト
 	{ Point(3,0),Point(2,0),Point(1,0),Point(0,0) };
+
+	const size_t SURPRISED_SPAN = 10;                  // 驚く時の画像を切り替えるフレームの間隔
+	const std::vector<Point> SURPRISD_TEXTURE_POS_LIST // 驚く画像のリスト
+	{ Point(0,2),Point(1,2),Point(2,2),Point(3,2),Point(3,2),Point(3,2),Point(0,0) };
+
+	const size_t ACCESS_SPAN = 8;                    // 通信時の画像を切り替えるフレームの間隔
+	const std::vector<Point> ACCESS_TEXTURE_POS_LIST // 通信する画像のリスト
+	{ Point(0,3),Point(1,3),Point(2,3),Point(3,3),Point(3,3),Point(0,4),Point(1,4),Point(2,4) };
 }
 
 
@@ -29,7 +37,9 @@ Robot::BoxRobotObject::BoxRobotObject(const Point & pos)
 	_initMap[L"Enlarged"]  = std::make_shared<Act>([this]() { changeTextureName(ENLARGED_TEXTURE_SIZE , ENLARGED_TEXTURE_NAME ); });
 	_initMap[L"Sleep"]     = std::make_shared<Act>([this]() { setTextureUpdating(SLEEP_SPAN,SLEEP_TEXTURE_POS_LIST); });
 
-	_actMap[L"Blink"] = std::make_shared<Act>([this]() {changeTextureAct(BLINK_SPAN, BLINK_TEXTURE_POS_LIST);});
-	_actMap[L"Wake"]  = std::make_shared<Act>([this]() {changeTextureAct(WAKE_SPAN , WAKE_TEXTURE_POS_LIST); });
+	_actMap[L"Blink"]     = std::make_shared<Act>([this]() {changeTextureAct(BLINK_SPAN    , BLINK_TEXTURE_POS_LIST   ); });
+	_actMap[L"Wake"]      = std::make_shared<Act>([this]() {changeTextureAct(WAKE_SPAN     , WAKE_TEXTURE_POS_LIST    ); });
+	_actMap[L"Surprised"] = std::make_shared<Act>([this]() {changeTextureAct(SURPRISED_SPAN, SURPRISD_TEXTURE_POS_LIST); });
+	_actMap[L"Access"]    = std::make_shared<Act>([this]() {changeTextureAct(ACCESS_SPAN   , ACCESS_TEXTURE_POS_LIST  ); });
 }
 
