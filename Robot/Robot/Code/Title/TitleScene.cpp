@@ -52,6 +52,15 @@ void Robot::TitleScene::init()
 
 void Robot::TitleScene::update()
 {
+#ifdef _DEBUG
+	if (Input::KeyT.clicked)
+	{
+		m_data->sceneInfo = L"TestEvent";
+		changeScene(L"LoadEventScene");
+	}
+#endif // _DEBUG
+
+
 	if (--_generateLightFrameCount <= 0)
 	{
 		_lightList.emplace_back(Light::get());

@@ -22,11 +22,15 @@ namespace
 
 	const size_t SURPRISED_SPAN = 10;                  // 驚く時の画像を切り替えるフレームの間隔
 	const std::vector<Point> SURPRISD_TEXTURE_POS_LIST // 驚く画像のリスト
-	{ Point(0,2),Point(1,2),Point(2,2),Point(3,2),Point(3,2),Point(3,2),Point(0,0) };
+	{ Point(0,2),Point(1,2),Point(2,2),Point(3,2),Point(3,2),Point(3,2),Point(3,2),Point(3,2),Point(0,0) };
 
 	const size_t ACCESS_SPAN = 10;                   // 通信時の画像を切り替えるフレームの間隔
 	const std::vector<Point> ACCESS_TEXTURE_POS_LIST // 通信する画像のリスト
 	{ Point(0,3),Point(1,3),Point(2,3),Point(3,3),Point(3,3),Point(0,4),Point(1,4),Point(2,4) };
+
+	const size_t DOT_SPAN = 30;                   // 考える時の画像を切り替えるフレーム数
+	const std::vector<Point> DOT_TEXTURE_POS_LIST // 考える画像のリスト
+	{ Point(3,4),Point(0,5),Point(1,5),Point(1,5),Point(0,0) };
 }
 
 
@@ -41,5 +45,6 @@ Robot::BoxRobotObject::BoxRobotObject(const Point & pos)
 	_actMap[L"Wake"]      = std::make_shared<Act>([this]() {changeTextureAct(WAKE_SPAN     , WAKE_TEXTURE_POS_LIST    ); });
 	_actMap[L"Surprised"] = std::make_shared<Act>([this]() {changeTextureAct(SURPRISED_SPAN, SURPRISD_TEXTURE_POS_LIST); });
 	_actMap[L"Access"]    = std::make_shared<Act>([this]() {changeTextureAct(ACCESS_SPAN   , ACCESS_TEXTURE_POS_LIST  ); });
+	_actMap[L"Dot"]       = std::make_shared<Act>([this]() {changeTextureAct(DOT_SPAN      , DOT_TEXTURE_POS_LIST     ); });
 }
 
