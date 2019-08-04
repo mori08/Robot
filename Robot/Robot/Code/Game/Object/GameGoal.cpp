@@ -26,6 +26,7 @@ void Robot::GameGoal::update(GameManager & gameManager)
 	{
 		gameManager.gameClear();
 	}
+
 }
 
 void Robot::GameGoal::draw() const

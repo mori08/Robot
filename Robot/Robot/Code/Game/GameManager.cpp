@@ -218,6 +218,14 @@ void Robot::GameManager::updateObjectAndLight()
 	{
 		obj->update(*this);
 	}
+
+#ifdef _DEBUG
+	if (Input::KeyG.clicked)
+	{
+		gameClear();
+	}
+#endif // _DEBUG
+
 }
 
 

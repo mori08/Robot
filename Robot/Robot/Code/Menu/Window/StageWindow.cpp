@@ -23,6 +23,7 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 	{
 		Point pos = POS_BASE;
 		pos += Point(i%COLUMNS, i / COLUMNS)*Point(BUTTON_SIZE + WIDTH);
+		String stageName = L"Stage" + ToString(i);
 
 		registerButton
 		(
@@ -30,7 +31,17 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 			Rect(pos, BUTTON_SIZE),
 			std::make_unique<Processing>
 			(
-				[&menuScene, i]() { menuScene.changeSceneAndInfo(L"LoadEventScene", L"Event" + ToString(i)); }
+				[&menuScene, stageName]() 
+				{ 
+					if (SaveDataManager::Instance().getFlag(stageName))
+					{
+						menuScene.changeSceneAndInfo(L"LoadGameScene" , stageName);
+					}
+					else
+					{
+						menuScene.changeSceneAndInfo(L"LoadEventScene", stageName + L"Start");
+					}
+				}
 			)
 		);
 	}

@@ -1,0 +1,5 @@
+Function,PrepareReductionWorkSpace,#,,,
+Init,TV,On,#,,
+Wait,120,#,,,
+Text,???,HelpRobotIcon,7,やっと見つけた…。\n工場の設備にアクセスできるロボットを…。,#
+Scene,MenuScene,,#,,

@@ -49,11 +49,18 @@ void Robot::GameClearState::update(GameManager & gameManager)
 
 	_smallLightDist = SMALL_LIGHT_MOVE_RATE*_smallLightDist + (1 - SMALL_LIGHT_MOVE_RATE)*SMALL_LIGHT_DIST_MAX;
 
-	if (_frameCount > CHANGE_SCENE_FRAME_COUNT)
+	if (_frameCount <= CHANGE_SCENE_FRAME_COUNT) { return; }
+
+	if (SaveDataManager::Instance().getFlag(gameManager.getStageName()))
 	{
-		SaveDataManager::Instance().setFlag(gameManager.getStageName(), true);
 		gameManager.setSceneName(L"SavingDataScene", L"");
 	}
+	else
+	{
+		gameManager.setSceneName(L"LoadEventScene" , gameManager.getStageName() + L"End");
+	}
+
+	SaveDataManager::Instance().setFlag(gameManager.getStageName(), true);
 }
 
 
