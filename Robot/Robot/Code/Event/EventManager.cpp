@@ -11,6 +11,7 @@
 #include "Factor\SceneEvent.h"
 #include "Factor\ShadowEvent.h"
 #include "Factor\InitEvent.h"
+#include "Factor\DarkEvent.h"
 
 
 namespace
@@ -36,6 +37,8 @@ namespace
 
 	const int LINE_RAND  = 30; // ‰e‚Ìü‚ğ‚¾‚·•p“x
 	const int LINE_WIDTH = 1;  // ‰e‚Ìü‚Ì•
+
+	const int DARK_ALPHA_CHANGE_SPEED = 5; // ˆÃ“]‚Ì•s“§–¾“x‚ğ•ÏX‚·‚é‘¬‚³
 }
 
 
@@ -61,6 +64,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<SceneEvent>     (L"Scene");
 	setEvent<ShadowEvent>    (L"Shadow");
 	setEvent<InitEvent>      (L"Init");
+	setEvent<DarkEvent>      (L"Dark");
 }
 
 
@@ -89,6 +93,9 @@ void Robot::EventManager::init()
 
 	// ‰e‚ğæ‚èœ‚«‚Ü‚·
 	_shadow = false;
+
+	// ˆÃ“]‚ğæ‚èœ‚«‚Ü‚·
+	_darkAlpha = { 0,0 };
 }
 
 
@@ -244,6 +251,8 @@ void Robot::EventManager::update()
 
 	updateEventObject();
 
+	changeDarkAlpha();
+
 	_textBox.update();
 }
 
@@ -271,6 +280,8 @@ void Robot::EventManager::draw() const
 	{
 		object.second->draw(s);
 	}
+
+	Rect(Point::Zero, EVENT_SIZE).draw(Color(Palette::MyBlack, _darkAlpha.first));
 
 	_textBox.draw();
 }
@@ -336,6 +347,22 @@ void Robot::EventManager::setSceneName(const String & sceneName, const String & 
 {
 	_isChangeAbleScene = true;
 	_sceneName = { sceneName,sceneInfo };
+}
+
+
+void Robot::EventManager::changeDarkAlpha()
+{
+	if (_darkAlpha.first > _darkAlpha.second)
+	{
+		_darkAlpha.first -= DARK_ALPHA_CHANGE_SPEED;
+		return;
+	}
+
+	if (_darkAlpha.first < _darkAlpha.second)
+	{
+		_darkAlpha.first += DARK_ALPHA_CHANGE_SPEED;
+		return;
+	}
 }
 
 

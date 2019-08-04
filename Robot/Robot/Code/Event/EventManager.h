@@ -34,6 +34,8 @@ namespace Robot
 
 		using SceneName = std::pair<String, String>;
 
+		using DarkAlpha = std::pair<int, int>;
+
 	private:
 
 		bool         _isSuccess;           // ロードが成功しているか
@@ -61,6 +63,8 @@ namespace Robot
 		SceneName    _sceneName;           // { シーン名, 遷移先の補足 }
 
 		bool         _shadow;              // 影を付与するか
+
+		DarkAlpha    _darkAlpha;           // { 暗転のときの不透明度,目的地 }
 
 	private:
 
@@ -312,6 +316,29 @@ namespace Robot
 		void setShadow(bool shadow)
 		{
 			_shadow = shadow;
+		}
+
+		/// <summary>
+		/// 暗転の不透明度を変更します。
+		/// </summary>
+		void changeDarkAlpha();
+
+		/// <summary>
+		/// 暗転の不透明度を変更させます。
+		/// </summary>
+		/// <param name="alpha"> 設定したい不透明度 </param>
+		void setDarkAlpha(int alpha)
+		{
+			_darkAlpha.second = alpha;
+		}
+
+		/// <summary>
+		/// 暗転の不透明度が変更し終えているか返します。
+		/// </summary>
+		/// <returns> 変更が終了されているなら true, そうでないなら false </returns>
+		bool completeChangingDarkAlpha() const
+		{
+			return _darkAlpha.first == _darkAlpha.second;
 		}
 
 	};

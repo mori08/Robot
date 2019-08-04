@@ -3,8 +3,8 @@
 
 namespace
 {
-	const Size   ENLARGED_TEXTURE_SIZE(50, 100);                   // 拡大版の画像のサイズ
-	const String ENLARGED_TEXTURE_NAME = L"HelpRobot(reduction)";  // 拡大版の画像の名前
+	const Size   ENLARGED_TEXTURE_SIZE(100, 200);                   // 拡大版の画像のサイズ
+	const String ENLARGED_TEXTURE_NAME = L"HelpRobot(enlarged)";  // 拡大版の画像の名前
 	const Size   REDUCTION_TEXTURE_SIZE(50, 100);                  // 縮小版の画像のサイズ
 	const String REDUCTION_TEXTURE_NAME = L"HelpRobot(reduction)"; // 縮小版の画像の名前
 

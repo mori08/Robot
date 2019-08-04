@@ -4,7 +4,7 @@
 namespace
 {
 	const Size   ENLARGED_TEXTURE_SIZE(60,60);                    // 拡大版の画像のサイズ
-	const String ENLARGED_TEXTURE_NAME = L"BoxRobot(reduction)";  // 拡大版の画像の名前
+	const String ENLARGED_TEXTURE_NAME = L"BoxRobot(enlarged)";   // 拡大版の画像の名前
 	const Size   REDUCTION_TEXTURE_SIZE(30, 30);                  // 縮小版の画像のサイズ
 	const String REDUCTION_TEXTURE_NAME = L"BoxRobot(reduction)"; // 縮小版の画像の名前
 
@@ -24,7 +24,7 @@ namespace
 	const std::vector<Point> SURPRISD_TEXTURE_POS_LIST // 驚く画像のリスト
 	{ Point(0,2),Point(1,2),Point(2,2),Point(3,2),Point(3,2),Point(3,2),Point(0,0) };
 
-	const size_t ACCESS_SPAN = 8;                    // 通信時の画像を切り替えるフレームの間隔
+	const size_t ACCESS_SPAN = 10;                   // 通信時の画像を切り替えるフレームの間隔
 	const std::vector<Point> ACCESS_TEXTURE_POS_LIST // 通信する画像のリスト
 	{ Point(0,3),Point(1,3),Point(2,3),Point(3,3),Point(3,3),Point(0,4),Point(1,4),Point(2,4) };
 }
