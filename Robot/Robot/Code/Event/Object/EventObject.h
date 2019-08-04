@@ -46,6 +46,8 @@ namespace Robot
 
 		ActPtr _act;                // 演出
 
+		bool   _isHidding;          // true のとき非表示
+
 	public:
 
 		/// <summary>
@@ -101,6 +103,15 @@ namespace Robot
 		/// </summary>
 		/// <param name="actName"> 演出の名前 </param>
 		void setAct(const String & actName);
+
+		/// <summary>
+		/// 非表示・表示を切り替えます。
+		/// </summary>
+		/// <param name="hide"> true のとき 非表示 , false のとき 表示 </param>
+		void setHide(bool hide)
+		{
+			_isHidding = hide;
+		}
 
 		/// <summary>
 		/// 更新

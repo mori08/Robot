@@ -278,6 +278,7 @@
     <ClInclude Include="Code\Event\Factor\ActEvent.h" />
     <ClInclude Include="Code\Event\Factor\BackgroundEvent.h" />
     <ClInclude Include="Code\Event\Factor\DarkEvent.h" />
+    <ClInclude Include="Code\Event\Factor\HideEvent.h" />
     <ClInclude Include="Code\Event\Factor\InitEvent.h" />
     <ClInclude Include="Code\Event\Factor\MoveEvent.h" />
     <ClInclude Include="Code\Event\Factor\SceneEvent.h" />
@@ -377,6 +378,7 @@
     <ClCompile Include="Code\Event\Factor\DarkEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\EventBase.cpp" />
     <ClCompile Include="Code\Event\Factor\GenerateEvent.cpp" />
+    <ClCompile Include="Code\Event\Factor\HideEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\InitEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\MoveEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\SceneEvent.cpp" />

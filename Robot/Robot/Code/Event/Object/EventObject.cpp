@@ -29,6 +29,7 @@ Robot::EventObject::EventObject(const Point & pos)
 	, _isActing(false)
 	, _actFrameCount(0)
 	, _act(noAct)
+	, _isHidding(false)
 {
 
 }

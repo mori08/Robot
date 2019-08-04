@@ -10,6 +10,7 @@ Init,BoxRobot,Enlarged,#,,,
 Init,HelpRobot,Enlarged,#,,,
 Move,BoxRobot,FALSE,130,102,0,#
 Move,HelpRobot,FALSE,320,120,0,#
+Hide,TV,TRUE,#,,,
 Wait,120,#,,,,
 Dark,FALSE,#,,,,
 Wait,600,#,,,,

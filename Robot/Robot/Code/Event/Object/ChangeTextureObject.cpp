@@ -13,6 +13,8 @@ Robot::ChangeTextureObject::ChangeTextureObject(const Point & pos, const Point &
 
 void Robot::ChangeTextureObject::draw(const Vec2 & shakeSize) const
 {
+	if (_isHidding) { return; }
+
 	TextureAsset(_textureName)(_texturePos*_textureSize, _textureSize).draw(_pos + shakeSize);
 }
 

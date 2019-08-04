@@ -12,6 +12,7 @@
 #include "Factor\ShadowEvent.h"
 #include "Factor\InitEvent.h"
 #include "Factor\DarkEvent.h"
+#include "Factor\HideEvent.h"
 
 
 namespace
@@ -65,6 +66,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<ShadowEvent>    (L"Shadow");
 	setEvent<InitEvent>      (L"Init");
 	setEvent<DarkEvent>      (L"Dark");
+	setEvent<HideEvent>      (L"Hide");
 }
 
 
