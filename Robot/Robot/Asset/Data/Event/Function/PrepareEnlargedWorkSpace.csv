@@ -1,0 +1,7 @@
+﻿Background,WorkSpace(enlarged),#,,,
+Genrerate,BoxRobot,BoxRobot,130,102,#
+Genrerate,HelpRobot,HelpRobot,320,120,#
+Run,#,,,,
+Init,BoxRobot,Enlarged,#,,
+Init,HelpRobot,Enlarged,#,,
+Run,#,,,,

@@ -6,8 +6,9 @@ Robot::ChangeTextureObject::ChangeTextureObject(const Point & pos, const Point &
 	, _texturePos(texturePos)
 	, _textureSize(textureSize)
 	, _textureName(textureName)
+	, _mirror(false)
 {
-
+	_initMap[L"Mirror"] = std::make_shared<Act>([this]() {_mirror = !_mirror; });
 }
 
 
@@ -15,7 +16,11 @@ void Robot::ChangeTextureObject::draw(const Vec2 & shakeSize) const
 {
 	if (_isHidding) { return; }
 
-	TextureAsset(_textureName)(_texturePos*_textureSize, _textureSize).draw(_pos + shakeSize);
+	auto texture = TextureAsset(_textureName)(_texturePos*_textureSize, _textureSize);
+
+	if (_mirror) { texture = texture.mirror(); }
+
+	texture.draw(_pos + shakeSize);
 }
 
 

@@ -1,0 +1,4 @@
+Function,PrepareEnlargedWorkSpace,#,,,
+Act,BoxRobot,Wink,#,,
+Text,箱型ロボット,BoxRobot,8,どうして施設から出たいのですか？,＃
+Text,お手伝いロボット,HelpRobotIcon,5,博士がとっても悪い人だからだよ。,#

@@ -20,6 +20,7 @@ namespace Robot
 		Point  _texturePos;  // 描画する画像の番号
 		Size   _textureSize; // ロボット(など)一つ分の画像の大きさ
 		String _textureName; // 画像の名前
+		bool   _mirror;      // true のとき左右反転して描画
 
 	public:
 
