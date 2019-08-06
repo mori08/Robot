@@ -1,4 +1,13 @@
-Function,PrepareEnlargedWorkSpace,#,,,
-Act,BoxRobot,Wink,#,,
-Text,箱型ロボット,BoxRobot,8,どうして施設から出たいのですか？,＃
-Text,お手伝いロボット,HelpRobotIcon,5,博士がとっても悪い人だからだよ。,#
+Function,PrepareEnlargedWorkSpace,#,,,,
+Move,HelpRobot,TRUE,320,120,180,#
+Wait,30,#,,,,
+Act,HelpRobot,ArmUp,#,,,
+Wait,30,#,,,,
+Text,お手伝いロボット,HelpRobotIcon,5,次は、\n施設の警備システムにアクセスしてほしいんだ。,#,
+Text,お手伝いロボット,HelpRobotQuestionIcon,5,難しいと思うけどできる？,#,
+Wait,30,#,,,,
+Act,BoxRobot,Blink,#,,,
+Wait,30,#,,,,
+Text,箱型ロボット,BoxRobotIcon,8,分かりました。,#,
+Act,BoxRobot,Access,#,,,
+Scene,LoadGameScene,Stage1,#,,,
