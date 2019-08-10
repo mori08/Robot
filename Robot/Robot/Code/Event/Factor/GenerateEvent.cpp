@@ -4,6 +4,7 @@
 #include "../Object/BoxRobotObject.h"
 #include "../Object/HelpRobotObject.h"
 #include "../Object/TelevisionObject.h"
+#include "../Object/RoadBackObject.h"
 
 
 namespace
@@ -72,5 +73,5 @@ void Robot::GenerateEvent::setObjectMap()
 	makeGenerateFunc<BoxRobotObject>  (L"BoxRobot");
 	makeGenerateFunc<HelpRobotObject> (L"HelpRobot");
 	makeGenerateFunc<TelevisionObject>(L"Television");
-
+	makeGenerateFunc<RoadBackObject>  (L"RoadBack");
 }

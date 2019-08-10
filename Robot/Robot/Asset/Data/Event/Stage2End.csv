@@ -1,0 +1,8 @@
+﻿Function,PrepareEnlarged,#,,,
+Move,HelpRobot,FALSE,320,120,#
+Run,#,,,,
+Text,箱型ロボット,BoxRobotIcon,8,玄関、開きました。,#
+Dark,TRUE,#,,,
+BackGround,WhiteBack,#,,,
+Hide,BoxRobot,TRUE,#,,
+Hide,HelpRobot,TRUE,#,,

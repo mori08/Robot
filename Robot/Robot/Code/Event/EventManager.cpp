@@ -84,6 +84,9 @@ void Robot::EventManager::init()
 	// 空のイベントをキューに入れます
 	_eventQueue.push(std::make_unique<StartEvent>());
 
+	// 背景を白くする
+	_backgroundName = L"WhiteBack";
+
 	// テキストボックスを初期化します
 	_textBox.reset();
 
