@@ -25,7 +25,7 @@ namespace Robot
 
 		RoadBackObject(const Point & pos);
 
-		void draw(const Vec2 & pos) const override;
+		void draw(const Vec2 & shakeSize) const override;
 
 	public:
 

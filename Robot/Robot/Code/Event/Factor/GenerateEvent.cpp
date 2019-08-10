@@ -5,6 +5,7 @@
 #include "../Object/HelpRobotObject.h"
 #include "../Object/TelevisionObject.h"
 #include "../Object/RoadBackObject.h"
+#include "../Object/AccompanyObject.h"
 
 
 namespace
@@ -74,4 +75,5 @@ void Robot::GenerateEvent::setObjectMap()
 	makeGenerateFunc<HelpRobotObject> (L"HelpRobot");
 	makeGenerateFunc<TelevisionObject>(L"Television");
 	makeGenerateFunc<RoadBackObject>  (L"RoadBack");
+	makeGenerateFunc<AccompanyObject> (L"Accompany");
 }

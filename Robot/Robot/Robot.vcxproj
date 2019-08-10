@@ -292,6 +292,7 @@
     <ClInclude Include="Code\Event\Factor\EventBase.h" />
     <ClInclude Include="Code\Event\Factor\GenerateEvent.h" />
     <ClInclude Include="Code\Event\Factor\StartEvent.h" />
+    <ClInclude Include="Code\Event\Object\AccompanyObject.h" />
     <ClInclude Include="Code\Event\Object\BoxRobotObject.h" />
     <ClInclude Include="Code\Event\Object\ChangeTextureObject.h" />
     <ClInclude Include="Code\Event\Object\EventObject.h" />
@@ -388,6 +389,7 @@
     <ClCompile Include="Code\Event\Factor\TextEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\WaitEvent.cpp" />
     <ClCompile Include="Code\Event\LoadEventScene.cpp" />
+    <ClCompile Include="Code\Event\Object\AccompanyObject.cpp" />
     <ClCompile Include="Code\Event\Object\BoxRobotObject.cpp" />
     <ClCompile Include="Code\Event\Object\ChangeTextureObject.cpp" />
     <ClCompile Include="Code\Event\Object\EventObject.cpp" />

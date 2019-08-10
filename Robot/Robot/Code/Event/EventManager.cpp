@@ -125,7 +125,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 			CSVReader reader(L"Asset/Data/Event/Function/" + funcFileName + L".csv");
 			if (!reader.isOpened())
 			{
-				printError(L"イベント関数ファイル[" + FileSystem::BaseName(reader.path()) + L"] は存在しません");
+				printError(L"イベント関数ファイル[" + funcFileName + L"] は存在しません");
 				printError(L"[" + eventFile.path() + L"] " + ToString(loadingRow + 1) + L"行目");
 			}
 			if (!translateEventData(reader))
