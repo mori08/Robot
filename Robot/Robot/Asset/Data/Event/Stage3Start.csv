@@ -1,0 +1,7 @@
+﻿Function,PrepareEntrance,#,,,
+Act,BoxRobot,Access,#,,
+Wait,60,#,,,
+Text,箱型ロボット,BoxRobotAccessIcon,8,ダメです。\n玄関ゲートが開きません。,#
+Text,お手伝いロボット,HelpRobotQuestionIcon,5,原因を探れそう？,#
+Text,箱型ロボット,BoxRobotAccessIcon,8,やってみます。,#
+Scene,LoadGameScene,Stage3,#,,

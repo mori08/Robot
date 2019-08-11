@@ -13,6 +13,7 @@
 #include "Factor\InitEvent.h"
 #include "Factor\DarkEvent.h"
 #include "Factor\HideEvent.h"
+#include "Factor\ReloadEvent.h"
 
 
 namespace
@@ -67,6 +68,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<InitEvent>      (L"Init");
 	setEvent<DarkEvent>      (L"Dark");
 	setEvent<HideEvent>      (L"Hide");
+	setEvent<ReloadEvent>    (L"Reload");
 }
 
 
@@ -352,6 +354,13 @@ void Robot::EventManager::setSceneName(const String & sceneName, const String & 
 {
 	_isChangeAbleScene = true;
 	_sceneName = { sceneName,sceneInfo };
+}
+
+
+void Robot::EventManager::reload()
+{
+	_isChangeAbleScene = true;
+	_sceneName = { L"LoadEventScene",_name };
 }
 
 

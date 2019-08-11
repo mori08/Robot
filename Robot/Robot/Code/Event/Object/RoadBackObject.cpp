@@ -22,7 +22,8 @@ Robot::RoadBackObject::RoadBackObject(const Point & pos)
 		TextureAsset(TEXTURE_NAME)(ROAD_TEXTURE_RECT)
 	};
 
-	_initMap[L"Scroll"] = std::make_shared<Act>([this]() { _act = std::make_shared<Act>([this]() { scroll(); }); });
+	_initMap[L"Entrance"] = std::make_shared<Act>([this]() { _act = std::make_shared<Act>([this]() { startEntrance(); }); });
+	_initMap[L"Scroll"]   = std::make_shared<Act>([this]() { _act = std::make_shared<Act>([this]() { scroll();        }); });
 
 	_actMap[L"Entrance"] = std::make_shared<Act>([this]() { goEntrance(); });
 }
@@ -34,6 +35,14 @@ void Robot::RoadBackObject::draw(const Vec2 & shakeSize) const
 
 	_texture.first .draw(Vec2(-_scrollPx                 , 0) + shakeSize);
 	_texture.second.draw(Vec2(-_scrollPx + TEXTURE_SIZE.x, 0) + shakeSize);
+}
+
+
+void Robot::RoadBackObject::startEntrance()
+{
+	_act = noAct;
+	_scrollPx = 0;
+	_texture.first = TextureAsset(TEXTURE_NAME)(ENTRANCE_TEXTURE_RECT);
 }
 
 

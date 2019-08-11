@@ -38,6 +38,8 @@ namespace Robot
 
 	private:
 
+		String       _name;                // 管理しているイベントの名前
+
 		bool         _isSuccess;           // ロードが成功しているか
 
 		ObjectList   _objectList;          // EventOjectのリスト
@@ -160,6 +162,15 @@ namespace Robot
 		/// </summary>
 		/// <param name="eventFileName"> csvファイルの名前 </param>
 		void load(const String & eventFileName);
+
+		/// <summary>
+		/// イベントの名前を設定します。
+		/// </summary>
+		/// <param name="name"> イベント名 </param>
+		void setName(const String & name)
+		{
+			_name = name;
+		}
 
 		/// <summary>
 		/// 更新
@@ -309,6 +320,11 @@ namespace Robot
 		/// <param name="sceneName"> シーンの遷移先 </param>
 		/// <param name="sceneInfo"> 遷移先の補足情報 </param>
 		void setSceneName(const String & sceneName, const String & sceneInfo);
+
+		/// <summary>
+		/// イベントを読み込みなおします。
+		/// </summary>
+		void reload();
 
 		/// <summary>
 		/// 影を設定します。

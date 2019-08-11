@@ -29,6 +29,8 @@ namespace Robot
 
 	public:
 
+		void startEntrance();
+
 		void scroll();
 
 		void goEntrance();

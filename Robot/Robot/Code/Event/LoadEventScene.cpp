@@ -4,6 +4,7 @@
 
 void Robot::LoadEventScene::load()
 {
+	EventManager::Instance().setName(m_data->sceneInfo);
 	EventManager::Instance().load(L"Asset/Data/Event/" + m_data->sceneInfo + L".csv");
 }
 
