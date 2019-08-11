@@ -14,6 +14,7 @@
 #include "Factor\DarkEvent.h"
 #include "Factor\HideEvent.h"
 #include "Factor\ReloadEvent.h"
+#include "Factor\NoiseEvent.h"
 
 
 namespace
@@ -25,6 +26,7 @@ namespace
 	const String FUNC_EVENT_KEY = L"Function"; // CSVファイル中で別CSVファイルのイベントを読み込む命令
 
 	const Size EVENT_SIZE(640, 320); // テキストボックスを除くイベントのサイズ
+	const int  NOISE_SIZE = 20;      // ノイズの一辺の大きさ
 
 	const RoundRect SHADOW_SHAPE(50, 50, 540, 220, 100); // 影の形
 
@@ -69,6 +71,7 @@ void Robot::EventManager::setAllEvent()
 	setEvent<DarkEvent>      (L"Dark");
 	setEvent<HideEvent>      (L"Hide");
 	setEvent<ReloadEvent>    (L"Reload");
+	setEvent<NoiseEvent>     (L"Noise");
 }
 
 
@@ -98,11 +101,11 @@ void Robot::EventManager::init()
 	// 遷移先をタイトルにします
 	_sceneName = { L"TitleScene",L"" };
 
-	// 影を取り除きます
-	_shadow = false;
-
 	// 暗転を取り除きます
 	_darkAlpha = { 0,0 };
+
+	// 背景の白を描画する関数を初期化
+	_whiteDrawFunc = []() { Window::ClientRect().draw(Palette::MyWhite); };
 }
 
 
@@ -207,12 +210,6 @@ const Vec2 Robot::EventManager::getShakePos() const
 
 void Robot::EventManager::drawShadow() const
 {
-	if (!_shadow)
-	{
-		Window::ClientRect().draw(Palette::MyWhite);
-		return;
-	}
-
 	SHADOW_SHAPE.drawShadow(
 		Vec2::Zero,
 		SHADOW_BLUR,
@@ -223,6 +220,19 @@ void Robot::EventManager::drawShadow() const
 	if (Random(LINE_RAND) == 0)
 	{
 		Rect(0, Random(EVENT_SIZE.y), EVENT_SIZE.x, LINE_WIDTH).draw(Palette::MyBlack);
+	}
+}
+
+
+void Robot::EventManager::drawNoise() const
+{
+	for (int y = 0; y < EVENT_SIZE.y; y += NOISE_SIZE)
+	{
+		for (int x = 0; x < EVENT_SIZE.x; x += NOISE_SIZE)
+		{
+			Point rnd(Random(-1, 1), Random(-1, 1));
+			Rect(Point(x, y) + rnd, NOISE_SIZE).draw(Palette::MyWhite);
+		}
 	}
 }
 
@@ -279,7 +289,7 @@ void Robot::EventManager::draw() const
 
 	Vec2 s = getShakePos();
 
-	drawShadow();
+	_whiteDrawFunc();
 
 	TextureAsset(_backgroundName).draw(s);
 

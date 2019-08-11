@@ -64,9 +64,9 @@ namespace Robot
 
 		SceneName    _sceneName;           // { シーン名, 遷移先の補足 }
 
-		bool         _shadow;              // 影を付与するか
-
 		DarkAlpha    _darkAlpha;           // { 暗転のときの不透明度,目的地 }
+
+		std::function<void()> _whiteDrawFunc; // 背景の白を描画する関数
 
 	private:
 
@@ -143,6 +143,11 @@ namespace Robot
 		/// 影を描画します。
 		/// </summary>
 		void drawShadow() const;
+
+		/// <summary>
+		/// ノイズを描画します。
+		/// </summary>
+		void drawNoise() const;
 
 		/// <summary>
 		/// エラーメッセージを出力します。
@@ -329,9 +334,23 @@ namespace Robot
 		/// <summary>
 		/// 影を設定します。
 		/// </summary>
+		/// <param name="shadow"> true のとき影を付与 </param>
 		void setShadow(bool shadow)
 		{
-			_shadow = shadow;
+			_whiteDrawFunc = shadow
+				? std::function<void()>([this]() { drawShadow(); })
+				: std::function<void()>([this]() { Window::ClientRect().draw(Palette::MyWhite); });
+		}
+
+		/// <summary>
+		/// ノイズを設定します。
+		/// </summary>
+		/// <param name="noise"> true のときノイズを付与 </param>
+		void setNoise(bool noise)
+		{
+			_whiteDrawFunc = noise
+				? std::function<void()>([this]() { drawNoise(); })
+				: std::function<void()>([this]() { Window::ClientRect().draw(Palette::MyWhite); });
 		}
 
 		/// <summary>

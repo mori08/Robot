@@ -281,6 +281,7 @@
     <ClInclude Include="Code\Event\Factor\HideEvent.h" />
     <ClInclude Include="Code\Event\Factor\InitEvent.h" />
     <ClInclude Include="Code\Event\Factor\MoveEvent.h" />
+    <ClInclude Include="Code\Event\Factor\NoiseEvent.h" />
     <ClInclude Include="Code\Event\Factor\ReloadEvent.h" />
     <ClInclude Include="Code\Event\Factor\SceneEvent.h" />
     <ClInclude Include="Code\Event\Factor\ShadowEvent.h" />
@@ -384,6 +385,7 @@
     <ClCompile Include="Code\Event\Factor\HideEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\InitEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\MoveEvent.cpp" />
+    <ClCompile Include="Code\Event\Factor\NoiseEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\ReloadEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\SceneEvent.cpp" />
     <ClCompile Include="Code\Event\Factor\ShadowEvent.cpp" />
