@@ -1,0 +1,16 @@
+﻿Function,PrepareAloneEntrance,#,,,
+Init,BoxRobot,Tired,#,,
+Run,#,,,,
+Noise,TRUE,#,,,
+Wait,60,#,,,
+Noise,FALSE,#,,,
+Wait,30,#,,,
+Noise,TRUE,#,,,
+Wait,30,#,,,
+Noise,FALSE,#,,,
+Wait,30,#,,,
+Text,箱型ロボット,BoxRobotTiredIcon,8,何かおかしい…。頭の中に何かある…。,#
+Wait,60,#,,,
+Text,箱型ロボット,BoxRobotTiredIcon,8,自分にアクセスして調べよう…。,#
+Act,BoxRobot,Access,#,,
+Scene,LoadGameScene,Stage5,#,,

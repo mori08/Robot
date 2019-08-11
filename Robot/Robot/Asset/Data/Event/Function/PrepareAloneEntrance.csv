@@ -1,0 +1,7 @@
+﻿Background,WhiteBack,#,,,
+Generate,BoxRobot,BoxRobot,160,262,#
+Generate,RoadBack,Road,0,0,#
+Run,#,,,,
+Init,BoxRobot,Enlarged,#,,
+Init,Road,Entrance,#,,
+Run,#,,,,
