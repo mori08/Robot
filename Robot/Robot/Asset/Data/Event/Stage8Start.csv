@@ -1,0 +1,10 @@
+﻿Function,PrepareAloneEntrance,#,,,
+Wait,30,#,,,
+Text,箱型ロボット,BoxRobotIcon,8,ハカセはお手伝いロボットに\n私より人間に近いココロを実装しようとした。,#
+Text,箱型ロボット,BoxRobotQuestionIcon,8,想定外の動きが多かったそうだけど、\nその後どうなったんだろう？,#
+Wait,30,#,,,
+Act,BoxRobot,Dot,#,,
+Wait,30,#,,,
+Text,箱型ロボット,BoxRobotIcon,8,続きを探そう。,#
+Act,BoxRobot,Access,#,,
+Scene,LoadGameScene,Stage8,#,,
