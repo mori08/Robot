@@ -245,6 +245,7 @@ void Robot::EventManager::load(const String & eventFileName)
 	if (!reader.isOpened())
 	{
 		printError(L"Error > Event‚ğ“Ç‚İ‚ß‚Ü‚¹‚ñ‚Å‚µ‚½B : " + eventFileName);
+		_isSuccess = false;
 		return;
 	}
 

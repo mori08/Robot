@@ -13,6 +13,12 @@ namespace
 	{ Point(0,0),Point(1,0),Point(2,0) };
 	const std::vector<Point> ARMDOWN_TEXTURE_POS_LIST // 腕を下げる動きの画像のリスト
 	{ Point(2,0),Point(1,0),Point(0,0) };
+
+	const size_t ACCESS_SPAN = 30;                   // 通信時の画像を切り替えるフレームの間隔
+	const std::vector<Point> ACCESS_TEXTURE_POS_LIST // 通信する画像のリスト
+	{ Point(4,0),Point(5,0),Point(6,0) };
+
+	const Point BLOOD_POS(3, 0); // 血まみれの画像の番号
 }
 
 
@@ -21,7 +27,9 @@ Robot::HelpRobotObject::HelpRobotObject(const Point & pos)
 {
 	_initMap[L"Reduction"] = std::make_shared<Act>([this]() { changeTextureName(REDUCTION_TEXTURE_SIZE, REDUCTION_TEXTURE_NAME); });
 	_initMap[L"Enlarged"]  = std::make_shared<Act>([this]() { changeTextureName(ENLARGED_TEXTURE_SIZE , ENLARGED_TEXTURE_NAME ); });
+	_initMap[L"Blood"]     = std::make_shared<Act>([this]() { setTexturePos(BLOOD_POS); });
 
 	_actMap[L"ArmUp"]   = std::make_shared<Act>([this]() { changeTextureAct(ARM_SPAN, ARMUP_TEXTURE_POS_LIST); });
 	_actMap[L"ArmDown"] = std::make_shared<Act>([this]() { changeTextureAct(ARM_SPAN, ARMDOWN_TEXTURE_POS_LIST); });
+	_actMap[L"Access"]  = std::make_shared<Act>([this]() { changeTextureAct(ACCESS_SPAN, ACCESS_TEXTURE_POS_LIST); });
 }

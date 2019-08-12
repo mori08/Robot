@@ -38,6 +38,15 @@ namespace Robot
 		virtual void  draw(const Vec2 & shakeSize) const;
 
 		/// <summary>
+		/// 描画する画像の番号を設定します。
+		/// </summary>
+		/// <param name="pos"> 座標 </param>
+		void setTexturePos(const Point & pos)
+		{
+			_texturePos = pos;
+		}
+
+		/// <summary>
 		/// 表示する画像の名前を変更します。
 		/// </summary>
 		/// <param name="size"> 一つ分の画像の大きさ </param>
