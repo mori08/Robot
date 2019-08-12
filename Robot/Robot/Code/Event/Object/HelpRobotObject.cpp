@@ -8,7 +8,7 @@ namespace
 	const Size   REDUCTION_TEXTURE_SIZE(50, 100);                  // 縮小版の画像のサイズ
 	const String REDUCTION_TEXTURE_NAME = L"HelpRobot(reduction)"; // 縮小版の画像の名前
 
-	const size_t             ARM_SPAN = 5;            // 腕を動かす動きの画像を切り替えるフレームの間隔
+	const size_t             ARM_SPAN = 10;           // 腕を動かす動きの画像を切り替えるフレームの間隔
 	const std::vector<Point> ARMUP_TEXTURE_POS_LIST   // 腕を上がる動きの画像のリスト
 	{ Point(0,0),Point(1,0),Point(2,0) };
 	const std::vector<Point> ARMDOWN_TEXTURE_POS_LIST // 腕を下げる動きの画像のリスト

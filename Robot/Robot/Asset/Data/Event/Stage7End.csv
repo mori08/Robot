@@ -1,0 +1,12 @@
+﻿Function,PrepareDiary,#,,,,
+Hide,BoxRobot,FALSE,#,,,
+Hide,HelpRobot,FALSE,#,,,
+Init,BoxRobot,Sleep,#,,,
+Run,#,,,,,
+Wait,30,#,,,,
+Text,ハカセ,DoctorIcon,5,お手伝いロボットを作成した。\n今度はより人間に近いココロを実装した。,#,
+Act,HelpRobot,ArmUp,#,,,
+Init,HelpRobot,Mirror,#,,,
+Move,HelpRobot,FALSE,640,220,240,#
+Text,ハカセ,DoctorIcon,5,想定外の動きが多く、調整に時間がかかりそうだ。,#,
+Scene,SavingDataScene,,#,,,

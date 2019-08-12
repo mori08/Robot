@@ -1,0 +1,8 @@
+﻿Function,PrepareAloneEntrance,#,,,
+Text,箱型ロボット,BoxRobotIcon,8,ハカセは私を作って、施設の管理を任せた。,#
+Wait,30,#,,,
+Act,BoxRobot,Blink,#,,
+Wait,30,#,,,
+Text,箱型ロボット,BoxRobotIcon,8,続きを探そう。\nもっとハカセのことを知るべきだと思う。,#
+Act,BoxRobot,Access,#,,
+Scene,LoadGameScene,Stage7,#,,

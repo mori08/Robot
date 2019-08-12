@@ -1,0 +1,9 @@
+﻿Background,Diary,#,,,
+Shadow,TRUE,#,,,
+Generate,Television,TV,290,40,#
+Generate,BoxRobot,BoxRobot,65,211,#
+Generate,HelpRobot,HelpRobot,400,220,#
+Run,#,,,,
+Hide,BoxRobot,TRUE,#,,
+Hide,HelpRobot,TRUE,#,,
+Run,#,,,,
