@@ -1,0 +1,14 @@
+﻿Function,PrepareAloneEntrance,#,,,
+Act,BoxRobot,Dot,#,,
+Text,箱型ロボット,BoxRobotIcon,8,さっきの日記によると…、\nハカセが私たちのココロを作ったのかな。,#
+Wait,30,#,,,
+Init,BoxRobot,Tired,#,,
+Noise,TRUE,#,,,
+Wait,30,#,,,
+Noise,FALSE,#,,,
+Wait,30,#,,,
+Text,箱型ロボット,BoxRobotTiredIcon,8,まだ、調子が悪い。,#
+Text,箱型ロボット,BoxRobotIcon,8,続きを探してみよう。,#
+Wait,30,#,,,
+Act,BoxRobot,Access,#,,
+Scene,LoadGameScene,Stage6,#,,
