@@ -35,6 +35,12 @@ namespace
 	const size_t TIRED_SPAN = 60;                    // 疲れの画像を切り替えるフレーム数
 	const std::vector<Point> TIRED_TEXTURE_POS_LIST  // 疲れ画像のリスト
 	{ Point(2,5),Point(3,5) };
+
+	const size_t ERROR_SPAN = 60;                    // 壊れの画像を切り替えるフレーム数
+	const std::vector<Point> ERROR_TEXTURE_POS_LIST  // 壊れの画像のリスト
+	{ Point(2,5),Point(3,5),Point(0,6),Point(1,6),Point(2,6),Point(3,6) };
+
+	const Point BROKEN_POS(3, 6); // 壊れた画像の番号
 }
 
 
@@ -45,6 +51,8 @@ Robot::BoxRobotObject::BoxRobotObject(const Point & pos)
 	_initMap[L"Enlarged"]  = std::make_shared<Act>([this]() { changeTextureName(ENLARGED_TEXTURE_SIZE , ENLARGED_TEXTURE_NAME ); });
 	_initMap[L"Sleep"]     = std::make_shared<Act>([this]() { setTextureUpdating(SLEEP_SPAN, SLEEP_TEXTURE_POS_LIST); });
 	_initMap[L"Tired"]     = std::make_shared<Act>([this]() { setTextureUpdating(TIRED_SPAN, TIRED_TEXTURE_POS_LIST); });
+	_initMap[L"Error"]     = std::make_shared<Act>([this]() { setTextureUpdating(ERROR_SPAN, ERROR_TEXTURE_POS_LIST); });
+	_initMap[L"Broken"]    = std::make_shared<Act>([this]() { setTexturePos(BROKEN_POS); });
 
 	_actMap[L"Blink"]     = std::make_shared<Act>([this]() {changeTextureAct(BLINK_SPAN    , BLINK_TEXTURE_POS_LIST   ); });
 	_actMap[L"Wake"]      = std::make_shared<Act>([this]() {changeTextureAct(WAKE_SPAN     , WAKE_TEXTURE_POS_LIST    ); });

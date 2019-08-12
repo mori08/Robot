@@ -765,6 +765,9 @@
     <ClInclude Include="Code\Event\Factor\NoiseEvent.h">
       <Filter>ヘッダー ファイル\Event\Factor</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\Object\DoctorEventObject.h">
+      <Filter>ヘッダー ファイル\Event\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">

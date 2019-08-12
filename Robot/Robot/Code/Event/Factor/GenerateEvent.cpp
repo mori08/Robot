@@ -6,6 +6,7 @@
 #include "../Object/TelevisionObject.h"
 #include "../Object/RoadBackObject.h"
 #include "../Object/AccompanyObject.h"
+#include "../Object/DoctorEventObject.h"
 
 
 namespace
@@ -70,10 +71,11 @@ bool Robot::GenerateEvent::isCompleted(const EventManager &) const
 
 void Robot::GenerateEvent::setObjectMap()
 {
-	makeGenerateFunc<TestEventObject> (L"TestEventObject");
-	makeGenerateFunc<BoxRobotObject>  (L"BoxRobot");
-	makeGenerateFunc<HelpRobotObject> (L"HelpRobot");
-	makeGenerateFunc<TelevisionObject>(L"Television");
-	makeGenerateFunc<RoadBackObject>  (L"RoadBack");
-	makeGenerateFunc<AccompanyObject> (L"Accompany");
+	makeGenerateFunc<TestEventObject>  (L"TestEventObject");
+	makeGenerateFunc<BoxRobotObject>   (L"BoxRobot");
+	makeGenerateFunc<HelpRobotObject>  (L"HelpRobot");
+	makeGenerateFunc<TelevisionObject> (L"Television");
+	makeGenerateFunc<RoadBackObject>   (L"RoadBack");
+	makeGenerateFunc<AccompanyObject>  (L"Accompany");
+	makeGenerateFunc<DoctorEventObject>(L"Doctor");
 }

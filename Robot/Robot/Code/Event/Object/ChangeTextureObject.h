@@ -44,6 +44,7 @@ namespace Robot
 		void setTexturePos(const Point & pos)
 		{
 			_texturePos = pos;
+			_act = noAct;
 		}
 
 		/// <summary>

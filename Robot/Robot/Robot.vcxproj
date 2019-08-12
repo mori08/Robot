@@ -297,6 +297,7 @@
     <ClInclude Include="Code\Event\Object\AccompanyObject.h" />
     <ClInclude Include="Code\Event\Object\BoxRobotObject.h" />
     <ClInclude Include="Code\Event\Object\ChangeTextureObject.h" />
+    <ClInclude Include="Code\Event\Object\DoctorEventObject.h" />
     <ClInclude Include="Code\Event\Object\EventObject.h" />
     <ClInclude Include="Code\Event\Object\HelpRobotObject.h" />
     <ClInclude Include="Code\Event\Object\RoadBackObject.h" />
