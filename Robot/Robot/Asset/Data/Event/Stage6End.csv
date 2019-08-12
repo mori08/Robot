@@ -1,0 +1,13 @@
+﻿Background,Diary,#,,,
+Shadow,TRUE,#,,,
+Generate,BoxRobot,BoxRobot,340,241,#
+Run,#,,,,
+Wait,30,#,,,
+Act,BoxRobot,Blink,#,,
+Act,BoxRobot,Blink,#,,
+Wait,30,#,,,
+Text,ハカセ,DoctorIcon,5,箱型ロボットを作成した。,#
+Text,ハカセ,DoctorIcon,5,簡単な会話と感情を実装している。,#
+Act,BoxRobot,Access,#,,
+Text,ハカセ,DoctorIcon,5,完成したら施設の一部管理を任せようと思う。,#
+Scene,SavingDataScene,,#,,
