@@ -30,7 +30,7 @@ void Robot::FriendEnemy::drawLight() const
 	}
 
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"僕のこころは\n不完全なんかじゃない";
+	String text = L"僕のこころは\n未完成なんかじゃない";
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyBlack);
 }
 

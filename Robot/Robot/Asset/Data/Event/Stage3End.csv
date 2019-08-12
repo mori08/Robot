@@ -3,4 +3,4 @@ Text,箱型ロボット,BoxRobotSurprisedIcon,8,原因わかりました。,#
 Text,箱型ロボット,BoxRobotIcon,8,誰かが玄関ゲートへのアクセスを妨害しています。,#
 Wait,60,#,,,
 Text,お手伝いロボット,HelpRobotIcon,10,ハカセだ…。\nきっとハカセが邪魔してるんだ…。,#
-Scene,LoadGameScene,Stage3,#,,
+Scene,SavingDataScene,,#,,

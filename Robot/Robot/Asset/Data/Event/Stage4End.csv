@@ -11,5 +11,6 @@ Move,HelpRobot,TRUE,-200,120,240,#
 Noise,TRUE,#,,,,
 Wait,30,#,,,,
 Noise,FALSE,#,,,,
-Text,箱型ロボット,BoxRobotIcon,10,（調子が悪い…。）,#,
+Text,箱型ロボット,BoxRobotIcon,10,調子が悪い…。,#,
+Text,箱型ロボット,BoxRobotIcon,10,無理やりアクセスしようとしたから\nハカセに何かされたのかな…。,#,
 Scene,SavingDataScene,,#,,,

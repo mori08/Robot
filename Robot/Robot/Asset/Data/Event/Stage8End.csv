@@ -28,6 +28,7 @@ Background,WhiteBack,#,,,,
 Init,BoxRobot,Enlarged,#,,,
 Move,BoxRobot,FALSE,160,262,0,#
 Act,BoxRobot,Blink,#,,,
+Shadow,FALSE,#,,,,
 Dark,FALSE,#,,,,
 Wait,30,#,,,,
 Text,箱型ロボット,BoxRobotIcon,8,私達のココロは未完成…。,#,

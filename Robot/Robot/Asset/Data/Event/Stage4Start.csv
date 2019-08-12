@@ -2,9 +2,9 @@
 Text,箱型ロボット,BoxRobotIcon,8,だめです。\n妨害が強すぎて玄関ゲートにアクセスできません。,#
 Act,HelpRobot,ArmUp,#,,
 Wait,30,#,,,
-Text,お手伝いロボット,HelpRobotIcon,5,ハカセにアクセスすることはできる？,#
+Text,お手伝いロボット,HelpRobotIcon,5,ハカセの端末にアクセスすることはできる？,#
 Text,箱型ロボット,BoxRobotIcon,8,かなり厳しいと思います。\nアクセスしたとしても妨害を止めることは…。,#
-Text,お手伝いロボット,HelpRobotIcon,5,ハカセがいる位置を割り出すだけでもいいから。,#
+Text,お手伝いロボット,HelpRobotQuestionIcon,5,ハカセの場所だけでもいいから分からない？,#
 Act,BoxRobot,Dot,#,,
 Wait,60,#,,,
 Text,箱型ロボット,BoxRobotIcon,8,わかりました。試してみます。,#
