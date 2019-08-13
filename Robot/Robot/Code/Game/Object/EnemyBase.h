@@ -38,5 +38,13 @@ namespace Robot
 		/// <returns> 移動ベクトル </returns>
 		virtual Vec2 getMoveVec(GameManager & gameManager) = 0;
 
+		/// <summary>
+		/// プレイヤーと接触したときの処理
+		/// </summary>
+		virtual void gameOver(GameManager & gameManager)
+		{
+			gameManager.gameOver();
+		}
+
 	};
 }

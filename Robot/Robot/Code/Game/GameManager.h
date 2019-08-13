@@ -301,5 +301,10 @@ namespace Robot
 		/// </summary>
 		void gameOver();
 
+		/// <summary>
+		/// ゲームオーバー(負けイベ用)
+		/// </summary>
+		void lose();
+
 	};
 }

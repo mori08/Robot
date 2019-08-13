@@ -30,7 +30,7 @@ void Robot::EnemyBase::update(GameManager & gameManager)
 
 	if ((_pos - gameManager.getPlayerPos()).length() < GAMEOVER_DISTANCE)
 	{
-		gameManager.gameOver();
+		gameOver(gameManager);
 	}
 }
 

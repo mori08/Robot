@@ -30,5 +30,10 @@ namespace Robot
 
 		Vec2 getMoveVec(GameManager & gameManager) override;
 
+		void gameOver(GameManager & gameManager) override
+		{
+			gameManager.lose();
+		}
+
 	};
 }

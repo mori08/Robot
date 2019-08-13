@@ -25,6 +25,7 @@
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
 #include "State\TutorialOfPlayerMove.h"
+#include "State\LoseState.h"
 
 
 namespace
@@ -308,5 +309,11 @@ void Robot::GameManager::gameClear()
 void Robot::GameManager::gameOver()
 {
 	_gameState = std::make_unique<GameOverState>();
+}
+
+
+void Robot::GameManager::lose()
+{
+	_gameState = std::make_unique<LoseState>();
 }
 
