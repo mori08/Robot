@@ -9,7 +9,7 @@ namespace
 	const Point POS_BASE(15, 100);     // 座標の基準
 	const Size  WIDTH(15, 15);         // ボタンの間隔
 	const int   COLUMNS = 5;           // 1行に配置するボタン数
-	const int   BUTTON_NUM = 10;       // ボタンの数
+	const int   MAX_BUTTON_NUM = 10;   // ボタンの数の最大値
 
 	const Vec2 OPEN_OFFSET(0, -10);
 }
@@ -19,7 +19,7 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 {
 	const Rect TITLE_BUTTON_REGION(16, 16, 168, 56); // タイトルボタンの範囲
 	
-	for (int i = 0; i < BUTTON_NUM; ++i)
+	for (int i = 0; i < MAX_BUTTON_NUM; ++i)
 	{
 		Point pos = POS_BASE;
 		pos += Point(i%COLUMNS, i / COLUMNS)*Point(BUTTON_SIZE + WIDTH);
@@ -44,6 +44,13 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 				}
 			)
 		);
+
+		_buttonNum = i + 1;
+
+		if (!SaveDataManager::Instance().getFlag(stageName))
+		{
+			break;
+		}
 	}
 	setClosedProcessing(std::make_unique<Processing>([&menuScene]() { menuScene.closeWindow(L"Main"); }));
 
@@ -70,21 +77,24 @@ void Robot::StageWindow::updateInputManager() const
 {
 	InputManager::Instance().clearButtonList();
 
-	for (int i = 0; i < BUTTON_NUM; ++i)
+	for (int i = 0; i < _buttonNum; ++i)
 	{
 		InputManager::Instance().registerButton(_buttonPtrList[i]);
 	}
 
-	for (int i = 0; i < BUTTON_NUM; ++i)
+	for (int i = 0; i < _buttonNum; ++i)
 	{
 		int verticalId = i - COLUMNS;
-		if (verticalId >= 0)
+		if (verticalId >= 0 && verticalId < _buttonNum)
 		{
 			InputManager::Instance().setVerticalAdjacentButton(_buttonPtrList[verticalId]->getKey(), _buttonPtrList[i]->getKey());
 		}
 
-		int horizontalId = (i - 1 + BUTTON_NUM) % BUTTON_NUM;
-		InputManager::Instance().setHorizontalAdjacentButton(_buttonPtrList[horizontalId]->getKey(), _buttonPtrList[i]->getKey());
+		int horizontalId = (i - 1 + MAX_BUTTON_NUM) % MAX_BUTTON_NUM;
+		if (horizontalId < _buttonNum)
+		{
+			InputManager::Instance().setHorizontalAdjacentButton(_buttonPtrList[horizontalId]->getKey(), _buttonPtrList[i]->getKey());
+		}
 	}
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);

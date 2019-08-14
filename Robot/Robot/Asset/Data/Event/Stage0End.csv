@@ -3,7 +3,7 @@ Move,HelpRobot,FALSE,500,220,0,#
 Run,#,,,,,
 Init,TV,On,#,,,
 Wait,120,#,,,,
-Text,???,HelpRobotIcon,7,やっと見つけた…。\n工場の設備にアクセスできるロボット…。,#,
+Text,???,HelpRobotIcon,7,やっと見つけた…。\n施設の設備にアクセスできるロボット…。,#,
 Dark,TRUE,#,,,,
 Background,WorkSpace(enlarged),#,,,,
 Init,BoxRobot,Enlarged,#,,,

@@ -12,6 +12,10 @@ namespace Robot
 	*/
 	class StageWindow : public MenuWindowBase
 	{
+	private:
+
+		int _buttonNum;
+
 	public:
 
 		StageWindow(MenuScene & menuScene);
