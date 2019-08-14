@@ -26,6 +26,7 @@
 #include "State\GameOverState.h"
 #include "State\TutorialOfPlayerMove.h"
 #include "State\LoseState.h"
+#include "State\AccessState.h"
 
 
 namespace
@@ -88,7 +89,7 @@ Optional<Vec2> Robot::GameManager::getPointFromCSVReader(const CSVReader & csvRe
 
 void Robot::GameManager::init()
 {
-	_gameState = std::make_unique<PlayingState>();
+	_gameState = std::make_unique<AccessState>(false);
 	_objList.clear();
 	_stageData.clear();
 	_isChangeAbleScene = false;
@@ -116,7 +117,7 @@ void Robot::GameManager::load(const String & gameDataFileName)
 
 	if (gameData.get<String>(0, 0) == L"Tutorial")
 	{
-		_gameState = std::make_unique<TutorialOfPlayerMove>();
+		_gameState = std::make_unique<AccessState>(true);
 		_objList.emplace_back(std::make_unique<GamePlayer>(Window::Center()));
 		_light.setPos(Window::Center());
 		return;

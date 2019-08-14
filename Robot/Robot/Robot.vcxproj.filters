@@ -771,6 +771,9 @@
     <ClInclude Include="Code\Game\State\LoseState.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\AccessState.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1034,9 +1037,6 @@
     <ClCompile Include="Code\Event\Object\TelevisionObject.cpp">
       <Filter>ソース ファイル\Event\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Event\Factor\DarkEvent.cpp">
-      <Filter>ソース ファイル\Game\State</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Event\Factor\HideEvent.cpp">
       <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
@@ -1054,6 +1054,12 @@
     </ClCompile>
     <ClCompile Include="Code\Game\State\LoseState.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\Factor\DarkEvent.cpp">
+      <Filter>ソース ファイル\Event\Factor</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\AccessState.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

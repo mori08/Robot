@@ -3,8 +3,8 @@
 
 void Robot::LoadGameScene::load()
 {
-	GameManager::Instance().load(L"Asset/Data/Game/" + m_data->sceneInfo + L".csv");
 	GameManager::Instance().setStageName(m_data->sceneInfo);
+	GameManager::Instance().load(L"Asset/Data/Game/" + m_data->sceneInfo + L".csv");
 }
 
 

@@ -345,6 +345,7 @@
     <ClInclude Include="Code\Game\Object\VerticalBlockEnemy.h" />
     <ClInclude Include="Code\Game\Object\VerticalEnemy.h" />
     <ClInclude Include="Code\Game\StageData.h" />
+    <ClInclude Include="Code\Game\State\AccessState.h" />
     <ClInclude Include="Code\Game\State\GameClearState.h" />
     <ClInclude Include="Code\Game\State\GameOverState.h" />
     <ClInclude Include="Code\Game\State\GameState.h" />
@@ -444,6 +445,7 @@
     <ClCompile Include="Code\Game\Object\VerticalBlockEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
+    <ClCompile Include="Code\Game\State\AccessState.cpp" />
     <ClCompile Include="Code\Game\State\GameClearState.cpp" />
     <ClCompile Include="Code\Game\State\GameOverState.cpp" />
     <ClCompile Include="Code\Game\State\LoseState.cpp" />
