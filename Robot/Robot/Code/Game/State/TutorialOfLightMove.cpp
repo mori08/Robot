@@ -4,7 +4,7 @@
 
 namespace
 {
-	const int CHANGE_STATE_FRAMECOUNT = 20 * 60;
+	const int CHANGE_STATE_FRAMECOUNT = 10 * 60;
 	const Point  DRAW_TEXT_POS(320, 460);
 	const size_t DRAW_TEXT_SPAN = 5;
 }
