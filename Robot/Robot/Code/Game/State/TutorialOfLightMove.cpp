@@ -7,6 +7,8 @@ namespace
 	const int CHANGE_STATE_FRAMECOUNT = 10 * 60;
 	const Point  DRAW_TEXT_POS(320, 460);
 	const size_t DRAW_TEXT_SPAN = 5;
+
+	const Point MOUSE_POS(30, 240);
 }
 
 
@@ -34,9 +36,11 @@ void Robot::TutorialOfLightMove::update(GameManager & gameManager)
 void Robot::TutorialOfLightMove::draw(const GameManager & gameManager) const
 {
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"マウスで光を操作してください";
+	String text = L"今度は光を動かしてみよう。";
 
 	gameManager.drawObjectAndLight();
+
+	TextureAsset(L"Mouse").draw(MOUSE_POS, Alpha(0xF0));
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
 }

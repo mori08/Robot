@@ -7,6 +7,8 @@ namespace
 	const size_t DRAW_TEXT_SPAN = 5;
 	const Point  DRAW_TEXT_POS(320, 460);
 	const double CHANGE_STATE_DIST = 500;
+
+	const Point WASD_POS(30, 240);
 }
 
 
@@ -38,10 +40,12 @@ void Robot::TutorialOfPlayerMove::update(GameManager & gameManager)
 
 void Robot::TutorialOfPlayerMove::draw(const GameManager & gameManager) const
 {
-	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"WASDキーでプレイヤーを操作してください";
+	const size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
+	String text = L"とりあえず移動してみよう。";
 
 	gameManager.drawObjectAndLight();
+
+	TextureAsset(L"WASD").draw(WASD_POS, Alpha(0xf0));
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
 }

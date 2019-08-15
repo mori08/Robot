@@ -1,6 +1,6 @@
 #include "AccessState.h"
 #include "PlayingState.h"
-#include "TutorialOfPlayerMove.h"
+#include "TutorialStartState.h"
 
 
 namespace
@@ -24,7 +24,7 @@ Robot::AccessState::AccessState(bool isTutorial)
 {
 	if (isTutorial)
 	{
-		_nextState = std::make_unique<TutorialOfPlayerMove>();
+		_nextState = std::make_unique<TutorialStartState>();
 	}
 	else
 	{

@@ -25,7 +25,7 @@ void Robot::TutorialOfSearchGoal::update(GameManager & gameManager)
 void Robot::TutorialOfSearchGoal::draw(const GameManager & gameManager) const
 {
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"ゴールを探し\nプレイヤーをそこまで操作してください";
+	String text = L"ゴールを探して、\nそこに行ってみよう";
 
 	gameManager.drawObjectAndLight();
 

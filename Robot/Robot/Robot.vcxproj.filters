@@ -774,6 +774,9 @@
     <ClInclude Include="Code\Game\State\AccessState.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\TutorialStartState.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1059,7 +1062,10 @@
       <Filter>ソース ファイル\Event\Factor</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\State\AccessState.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\TutorialStartState.cpp">
+      <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
