@@ -4,8 +4,9 @@
 
 namespace
 {
-	const Point STAGE_POS(16, 16);  // ステージボタンの座標
-	const Point TITLE_POS(200, 16); // タイトルボタンの座標
+	const Point STAGE_POS(16 , 16);  // ステージボタンの座標
+	const Point RESET_POS(200, 16);
+	const Point TITLE_POS(384, 16); // タイトルボタンの座標
 
 	const Size BUTTON_SIZE(168, 56); // ボタンのサイズ
 
@@ -20,6 +21,12 @@ Robot::MainWindow::MainWindow(MenuScene & menuScene)
 		L"StageButton",
 		Rect(STAGE_POS, BUTTON_SIZE),
 		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Stage"); })
+	);
+	registerButton
+	(
+		L"ResetButton",
+		Rect(RESET_POS, BUTTON_SIZE),
+		std::make_unique<Processing>([&menuScene]() { menuScene.changeSceneAndInfo(L"ResetSaveDataScene", L""); })
 	);
 	registerButton
 	(
@@ -39,9 +46,11 @@ void Robot::MainWindow::updateInputManager() const
 	InputManager::Instance().clearButtonList();
 
 	InputManager::Instance().registerButton(L"StageButton", Rect(STAGE_POS, BUTTON_SIZE));
+	InputManager::Instance().registerButton(L"ResetButton", Rect(RESET_POS, BUTTON_SIZE));
 	InputManager::Instance().registerButton(L"TitleButton", Rect(TITLE_POS, BUTTON_SIZE));
 
-	InputManager::Instance().setHorizontalAdjacentButton(L"StageButton", L"TitleButton");
+	InputManager::Instance().setHorizontalAdjacentButton(L"StageButton", L"ResetButton");
+	InputManager::Instance().setHorizontalAdjacentButton(L"ResetButton", L"TitleButton");
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

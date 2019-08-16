@@ -373,6 +373,7 @@
     <ClInclude Include="Code\Menu\Window\State\SelectedState.h" />
     <ClInclude Include="Code\Menu\Window\State\WindowState.h" />
     <ClInclude Include="Code\SaveData\LoadSaveDataScene.h" />
+    <ClInclude Include="Code\SaveData\ResetSaveDataScene.h" />
     <ClInclude Include="Code\SaveData\SaveDataManager.h" />
     <ClInclude Include="Code\SaveData\SavingDataScene.h" />
     <ClInclude Include="Code\Title\Light.h" />
@@ -471,6 +472,7 @@
     <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp" />
     <ClCompile Include="Code\Menu\Window\State\SelectedState.cpp" />
     <ClCompile Include="Code\SaveData\LoadSaveDataScene.cpp" />
+    <ClCompile Include="Code\SaveData\ResetSaveDataScene.cpp" />
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp" />
     <ClCompile Include="Code\SaveData\SavingDataScene.cpp" />
     <ClCompile Include="Code\Title\Light.cpp" />

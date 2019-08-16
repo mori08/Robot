@@ -12,6 +12,7 @@
 #include"Menu\MenuScene.h"
 #include"Game\GameManager.h"
 #include"SaveData\SavingDataScene.h"
+#include"SaveData\ResetSaveDataScene.h"
 
 
 void asseter(const String & dirname);
@@ -36,14 +37,15 @@ void Main()
 
 	// シーンの準備
 	MyApp sceneManager;
-	sceneManager.add<Robot::TitleScene>       (L"TitleScene");
-	sceneManager.add<Robot::LoadSaveDataScene>(L"LoadSaveDataScene");
-	sceneManager.add<Robot::LoadEventScene>   (L"LoadEventScene");
-	sceneManager.add<Robot::EventScene>       (L"EventScene");
-	sceneManager.add<Robot::GameScene>        (L"GameScene");
-	sceneManager.add<Robot::LoadGameScene>    (L"LoadGameScene");
-	sceneManager.add<Robot::MenuScene>        (L"MenuScene");
-	sceneManager.add<Robot::SavingDataScene>  (L"SavingDataScene");
+	sceneManager.add<Robot::TitleScene>        (L"TitleScene");
+	sceneManager.add<Robot::LoadSaveDataScene> (L"LoadSaveDataScene");
+	sceneManager.add<Robot::LoadEventScene>    (L"LoadEventScene");
+	sceneManager.add<Robot::EventScene>        (L"EventScene");
+	sceneManager.add<Robot::GameScene>         (L"GameScene");
+	sceneManager.add<Robot::LoadGameScene>     (L"LoadGameScene");
+	sceneManager.add<Robot::MenuScene>         (L"MenuScene");
+	sceneManager.add<Robot::SavingDataScene>   (L"SavingDataScene");
+	sceneManager.add<Robot::ResetSaveDataScene>(L"ResetSaveDataScene");
 
 	while (System::Update())
 	{
