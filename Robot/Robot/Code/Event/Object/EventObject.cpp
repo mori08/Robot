@@ -94,6 +94,14 @@ void Robot::EventObject::update()
 }
 
 
+void Robot::EventObject::checkHiddingAndDraw(const Vec2 & shakeSize) const
+{
+	if (_isHidding)return;
+
+	draw(shakeSize);
+}
+
+
 void Robot::EventObject::finishAct()
 {
 	_act      = noAct;

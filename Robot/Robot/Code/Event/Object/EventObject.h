@@ -119,10 +119,10 @@ namespace Robot
 		virtual void update();
 
 		/// <summary>
-		/// 描画
+		/// _isHidding を確認し、 true なら draw 関数を呼ぶ
 		/// </summary>
 		/// <param name="shakeSize"> 振動の大きさ </param>
-		virtual void draw(const Vec2 & shakeSize) const = 0;
+		void checkHiddingAndDraw(const Vec2 & shakeSize) const;
 
 	protected:
 
@@ -130,6 +130,12 @@ namespace Robot
 		/// 演出を終了します。
 		/// </summary>
 		void finishAct();
+
+		/// <summary>
+		/// 描画
+		/// </summary>
+		/// <param name="shakeSize"> 振動の大きさ </param>
+		virtual void draw(const Vec2 & shakeSize) const = 0;
 
 	private:
 

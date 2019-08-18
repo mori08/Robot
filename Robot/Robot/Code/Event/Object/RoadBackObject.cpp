@@ -31,8 +31,6 @@ Robot::RoadBackObject::RoadBackObject(const Point & pos)
 
 void Robot::RoadBackObject::draw(const Vec2 & shakeSize) const
 {
-	if (_isHidding) { return; }
-
 	_texture.first .draw(Vec2(-_scrollPx                 , 0) + shakeSize);
 	_texture.second.draw(Vec2(-_scrollPx + TEXTURE_SIZE.x, 0) + shakeSize);
 }

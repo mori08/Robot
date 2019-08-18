@@ -296,7 +296,7 @@ void Robot::EventManager::draw() const
 
 	for (const auto & object : _objectList)
 	{
-		object.second->draw(s);
+		object.second->checkHiddingAndDraw(s);
 	}
 
 	Rect(Point::Zero, EVENT_SIZE).draw(Color(Palette::MyBlack, _darkAlpha.first));

@@ -22,8 +22,6 @@ Robot::TelevisionObject::TelevisionObject(const Point & pos)
 
 void Robot::TelevisionObject::draw(const Vec2 & shakeSize) const
 {
-	if (_isHidding) { return; }
-
 	Vec2 pos = _pos + shakeSize;
 	_texture.draw(pos);
 
