@@ -1,4 +1,5 @@
 #include "InitEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

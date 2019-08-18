@@ -1,4 +1,5 @@
 #include "TextEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

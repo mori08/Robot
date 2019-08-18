@@ -1,5 +1,5 @@
 ﻿
-#include"Main.h"
+#include"MyLibrary.h"
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
 #include"SaveData\LoadSaveDataScene.h"
@@ -15,9 +15,6 @@
 #include"SaveData\ResetSaveDataScene.h"
 
 
-void asseter(const String & dirname);
-
-
 void Main()
 {
 	// ウィンドウのタイトルの設定
@@ -27,7 +24,7 @@ void Main()
 	Graphics::SetBackground(Palette::MyBlack);
 
 	// 画像をアセット管理
-	asseter(L"Asset/");
+	Robot::asseter(L"Asset/");
 
 	// フォントのアセット管理
 	FontAsset::Register(L"15", 15, L"メイリオ");
@@ -60,44 +57,5 @@ void Main()
 		FontAsset(L"15")(Profiler::FPS()).draw(Point::Zero, Palette::Red);
 #endif // _DEBUG
 
-	}
-}
-
-
-void asseter(const String & direname)
-{
-	// 指定されたディレクトリのファイルパスを配列に
-	Array<FilePath> contents = FileSystem::DirectoryContents(direname);
-
-	for (const auto& content : contents)
-	{
-
-		String filename = FileSystem::FileName(content);
-
-
-		// 指定されたパスがディレクトリであるとき
-		if (FileSystem::IsDirectory(content))
-		{
-			asseter(direname + filename + L"/"); // 関数を再び呼ぶ
-		}
-
-
-		// 指定されたパスがファイルであるとき
-		else if (FileSystem::IsFile(content))
-		{
-
-			// 拡張子がpngのとき
-			if (FileSystem::Extension(content) == L"png")
-			{
-				TextureAsset::Register(FileSystem::BaseName(content), direname + filename);
-			}
-
-			// 拡張子がmp3のとき
-			else if (FileSystem::Extension(content) == L"mp3")
-			{
-				SoundAsset::Register(FileSystem::BaseName(content), direname + filename);
-			}
-
-		}
 	}
 }

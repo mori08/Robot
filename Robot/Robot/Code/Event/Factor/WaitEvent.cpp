@@ -1,4 +1,5 @@
 #include "WaitEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

@@ -1,4 +1,5 @@
 #include "BackgroundEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

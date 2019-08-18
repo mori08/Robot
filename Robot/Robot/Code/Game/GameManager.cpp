@@ -1,3 +1,4 @@
+#include "../MyLibrary.h"
 #include "GameManager.h"
 #include "Object\TestGameObject.h"
 #include "Object\GamePlayer.h"

@@ -1,4 +1,5 @@
 #include "ShadowEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

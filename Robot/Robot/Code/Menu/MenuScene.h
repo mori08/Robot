@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../Main.h"
+#include "../MyLibrary.h"
 #include "Window\MenuWindowBase.h"
 
 

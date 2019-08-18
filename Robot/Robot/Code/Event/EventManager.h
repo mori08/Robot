@@ -1,7 +1,5 @@
 #pragma once
 
-#include<Siv3D.hpp>
-
 #include<queue>
 
 #include"Object/EventObject.h"
@@ -148,17 +146,6 @@ namespace Robot
 		/// ノイズを描画します。
 		/// </summary>
 		void drawNoise() const;
-
-		/// <summary>
-		/// エラーメッセージを出力します。
-		/// </summary>
-		/// <param name="message"> メッセージ </param>
-		void printError(const String & message)
-		{
-#ifdef _DEBUG
-			Println(message);
-#endif // _DEBUG
-		}
 
 	public: // EventSceneで使用する関数
 

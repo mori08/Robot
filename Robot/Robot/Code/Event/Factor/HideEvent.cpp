@@ -1,4 +1,5 @@
 #include "HideEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

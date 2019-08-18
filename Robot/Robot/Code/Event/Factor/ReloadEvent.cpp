@@ -1,4 +1,5 @@
 #include "ReloadEvent.h"
+#include "../../MyLibrary.h"
 
 
 bool Robot::ReloadEvent::load(const Info & info)

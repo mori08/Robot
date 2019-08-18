@@ -1,5 +1,7 @@
 #include "GenerateEvent.h"
 
+#include "../../MyLibrary.h"
+
 #include "../Object/TestEventObject.h"
 #include "../Object/BoxRobotObject.h"
 #include "../Object/HelpRobotObject.h"

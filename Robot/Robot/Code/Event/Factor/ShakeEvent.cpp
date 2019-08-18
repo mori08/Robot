@@ -1,4 +1,5 @@
 #include "ShakeEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

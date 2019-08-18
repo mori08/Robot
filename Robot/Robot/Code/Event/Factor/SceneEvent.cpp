@@ -1,4 +1,5 @@
 #include "SceneEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

@@ -471,9 +471,6 @@
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Main.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Input\Button.h">
       <Filter>ヘッダー ファイル\Input</Filter>
     </ClInclude>
@@ -780,6 +777,9 @@
     <ClInclude Include="Code\SaveData\ResetSaveDataScene.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
+    <ClInclude Include="Code\MyLibrary.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1072,6 +1072,9 @@
     </ClCompile>
     <ClCompile Include="Code\SaveData\ResetSaveDataScene.cpp">
       <Filter>ソース ファイル\SaveData</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\MyLibrary.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 
 #include<Siv3D.hpp>
+#include"../MyLibrary.h"
 
 
 namespace Robot

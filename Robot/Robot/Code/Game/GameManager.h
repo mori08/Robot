@@ -92,17 +92,6 @@ namespace Robot
 	private:
 
 		/// <summary>
-		/// エラーメッセージを出力します。
-		/// </summary>
-		/// <param name="message"> メッセージ </param>
-		static void printError(const String & message)
-		{
-#ifdef _DEBUG
-			Println(message);
-#endif // _DEBUG
-		}
-
-		/// <summary>
 		/// 型名gameObjectTypeのunique_ptrを作る関数をマップに登録します。
 		/// </summary>
 		/// <param name="name"> オブジェクトの名前 </param>

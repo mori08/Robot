@@ -1,4 +1,5 @@
 #include "NoiseEvent.h"
+#include "../../MyLibrary.h"
 
 
 namespace

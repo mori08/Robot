@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include<Siv3D.hpp>
+#include <Siv3D.hpp>
 
 
 namespace Robot
@@ -63,18 +63,6 @@ namespace Robot
 		/// </summary>
 		/// <param name="eventManager"> EventManager </param>
 		virtual void perform() const = 0;
-
-		/// <summary>
-		/// エラーメッセージを出力します。
-		/// </summary>
-		/// <param name="message"> エラーの内容 </param>
-		/// <remarks> デバッグモードでのみ出力します。 </remarks>
-		void printError(const String & message)
-		{
-#ifdef _DEBUG
-			Println(message);
-#endif // _DEBUG
-		}
 
 	};
 }
