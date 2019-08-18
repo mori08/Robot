@@ -20,6 +20,9 @@ void asseter(const String & dirname);
 
 void Main()
 {
+	// ウィンドウのタイトルの設定
+	Window::SetTitle(L"556");
+
 	// 背景色の設定
 	Graphics::SetBackground(Palette::MyBlack);
 

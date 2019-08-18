@@ -5,7 +5,7 @@
 namespace
 {
 	const size_t DRAW_TEXT_SPAN = 5;
-	const Point  DRAW_TEXT_POS(320, 460);
+	const Point  DRAW_TEXT_POS(320, 440);
 	const double CHANGE_STATE_DIST = 500;
 
 	const Point WASD_POS(30, 240);
@@ -41,7 +41,7 @@ void Robot::TutorialOfPlayerMove::update(GameManager & gameManager)
 void Robot::TutorialOfPlayerMove::draw(const GameManager & gameManager) const
 {
 	const size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
-	String text = L"とりあえず移動してみよう。";
+	String text = L"とりあえず移動してみよう。\n(WASDキー)";
 
 	gameManager.drawObjectAndLight();
 
