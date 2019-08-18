@@ -15,7 +15,7 @@ namespace
 }
 
 
-bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::MoveEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -25,7 +25,7 @@ bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager
 	}
 
 	_name = info[NAME];
-	if (!eventManager.isExistedObject(_name))
+	if (!EventManager::Instance().isExistedObject(_name))
 	{
 		printError(L"オブジェクト[" + _name + L"]は存在しません");
 		return false;
@@ -56,9 +56,9 @@ bool Robot::MoveEvent::load(const Info & info, const EventManager & eventManager
 	return _isSuccess = true;
 }
 
-void Robot::MoveEvent::perform(EventManager & eventManager) const
+void Robot::MoveEvent::perform() const
 {
-	auto objOpt = eventManager.getObjectOpt(_name);
+	auto objOpt = EventManager::Instance().getObjectOpt(_name);
 
 	if (!objOpt)
 	{
@@ -71,12 +71,12 @@ void Robot::MoveEvent::perform(EventManager & eventManager) const
 	(*objOpt)->setLinearMove(_goal, _spanMoveFrameCount);
 }
 
-bool Robot::MoveEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::MoveEvent::isCompleted() const
 {
 	if (!_wait)
 	{
 		return true;
 	}
 
-	return eventManager.isWaitingObject(_name);
+	return EventManager::Instance().isWaitingObject(_name);
 }

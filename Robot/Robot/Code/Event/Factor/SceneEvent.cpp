@@ -10,7 +10,7 @@ namespace
 }
 
 
-bool Robot::SceneEvent::load(const Info & info, const EventManager &)
+bool Robot::SceneEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -26,12 +26,12 @@ bool Robot::SceneEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::SceneEvent::perform(EventManager & eventManager) const
+void Robot::SceneEvent::perform() const
 {
-	eventManager.setSceneName(_sceneName, _sceneInfo);
+	EventManager::Instance().setSceneName(_sceneName, _sceneInfo);
 }
 
-bool Robot::SceneEvent::isCompleted(const EventManager &) const
+bool Robot::SceneEvent::isCompleted() const
 {
 	return true;
 }

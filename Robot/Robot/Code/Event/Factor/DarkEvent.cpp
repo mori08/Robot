@@ -9,7 +9,7 @@ namespace
 }
 
 
-bool Robot::DarkEvent::load(const Info & info, const EventManager &)
+bool Robot::DarkEvent::load(const Info & info)
 {
 
 	if (info.size() != INFO_SIZE)
@@ -32,13 +32,13 @@ bool Robot::DarkEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::DarkEvent::perform(EventManager & eventManager) const
+void Robot::DarkEvent::perform() const
 {
-	eventManager.setDarkAlpha(_darkAlpha);
+	EventManager::Instance().setDarkAlpha(_darkAlpha);
 }
 
 
-bool Robot::DarkEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::DarkEvent::isCompleted() const
 {
-	return eventManager.completeChangingDarkAlpha();
+	return EventManager::Instance().completeChangingDarkAlpha();
 }

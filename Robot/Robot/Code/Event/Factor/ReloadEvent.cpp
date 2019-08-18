@@ -1,7 +1,7 @@
 #include "ReloadEvent.h"
 
 
-bool Robot::ReloadEvent::load(const Info & info, const EventManager &)
+bool Robot::ReloadEvent::load(const Info & info)
 {
 	if (!info.empty())
 	{
@@ -14,13 +14,13 @@ bool Robot::ReloadEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::ReloadEvent::perform(EventManager & eventManager) const
+void Robot::ReloadEvent::perform() const
 {
-	eventManager.reload();
+	EventManager::Instance().reload();
 }
 
 
-bool Robot::ReloadEvent::isCompleted(const EventManager &) const
+bool Robot::ReloadEvent::isCompleted() const
 {
 	return true;
 }

@@ -9,7 +9,7 @@ namespace
 }
 
 
-bool Robot::WaitEvent::load(const Info & info, const EventManager &)
+bool Robot::WaitEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -31,13 +31,13 @@ bool Robot::WaitEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::WaitEvent::perform(EventManager & eventManager) const
+void Robot::WaitEvent::perform() const
 {
-	eventManager.resetFrameCount();
+	EventManager::Instance().resetFrameCount();
 }
 
 
-bool Robot::WaitEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::WaitEvent::isCompleted() const
 {
-	return eventManager.getFrameCount() >= _waitFrameCount;
+	return EventManager::Instance().getFrameCount() >= _waitFrameCount;
 }

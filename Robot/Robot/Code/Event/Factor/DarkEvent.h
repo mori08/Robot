@@ -18,11 +18,11 @@ namespace Robot
 
 	private:
 
-		bool load(const Info & info, const EventManager & eventManager)override;
+		bool load(const Info & info) override;
 
-		void perform(EventManager & eventManager) const override;
+		void perform() const override;
 
-		bool isCompleted(const EventManager &) const override;
+		bool isCompleted() const override;
 
 	};
 }

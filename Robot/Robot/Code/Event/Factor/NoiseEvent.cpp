@@ -9,7 +9,7 @@ namespace
 }
 
 
-bool Robot::NoiseEvent::load(const Info & info, const EventManager &)
+bool Robot::NoiseEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -31,13 +31,13 @@ bool Robot::NoiseEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::NoiseEvent::perform(EventManager & eventManager) const
+void Robot::NoiseEvent::perform() const
 {
-	eventManager.setNoise(_noise);
+	EventManager::Instance().setNoise(_noise);
 }
 
 
-bool Robot::NoiseEvent::isCompleted(const EventManager &) const
+bool Robot::NoiseEvent::isCompleted() const
 {
 	return true;
 }

@@ -7,9 +7,9 @@ Robot::EventBase::EventBase()
 }
 
 
-void Robot::EventBase::checkAndPerform(EventManager & eventManager) const
+void Robot::EventBase::checkAndPerform() const
 {
 	if (!_isSuccess) { return; }
 
-	perform(eventManager);
+	perform();
 }

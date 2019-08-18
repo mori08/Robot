@@ -41,20 +41,20 @@ namespace Robot
 		/// <param name="info"> イベントの詳細 </param>
 		/// <param name="eventManager"> EventManager </param>
 		/// <returns> 正しく決定できたとき true , そうでないとき false </returns>
-		virtual bool load(const Info & info, const EventManager & eventManager) = 0;
+		virtual bool load(const Info & info) = 0;
 
 		/// <summary>
 		/// Eventが正しくロードできているか確認し、実行します。
 		/// </summary>
 		/// <param name="eventManager"> EventManager </param>
-		void checkAndPerform(EventManager & eventManager) const;
+		void checkAndPerform() const;
 
 		/// <summary>
 		/// 終了しているか示します。
 		/// </summary>
 		/// <param name="eventManager"> EventManager </param>
 		/// <returns> 終了しているとき true , そうでないとき false </returns>
-		virtual bool isCompleted(const EventManager & eventManager) const = 0;
+		virtual bool isCompleted() const = 0;
 
 	protected:
 
@@ -62,7 +62,7 @@ namespace Robot
 		/// Eventを実行します。
 		/// </summary>
 		/// <param name="eventManager"> EventManager </param>
-		virtual void perform(EventManager & eventManager) const = 0;
+		virtual void perform() const = 0;
 
 		/// <summary>
 		/// エラーメッセージを出力します。

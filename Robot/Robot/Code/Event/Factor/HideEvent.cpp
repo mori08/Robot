@@ -10,7 +10,7 @@ namespace
 }
 
 
-bool Robot::HideEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::HideEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -20,7 +20,7 @@ bool Robot::HideEvent::load(const Info & info, const EventManager & eventManager
 	}
 
 	_name = info[NAME];
-	if (!eventManager.isExistedObject(_name))
+	if (!EventManager::Instance().isExistedObject(_name))
 	{
 		printError(L"オブジェクト[" + _name + L"]は存在しません");
 		return false;
@@ -39,9 +39,9 @@ bool Robot::HideEvent::load(const Info & info, const EventManager & eventManager
 }
 
 
-void Robot::HideEvent::perform(EventManager & eventManager) const
+void Robot::HideEvent::perform() const
 {
-	auto objOpt = eventManager.getObjectOpt(_name);
+	auto objOpt = EventManager::Instance().getObjectOpt(_name);
 
 	if (!objOpt)
 	{
@@ -55,7 +55,7 @@ void Robot::HideEvent::perform(EventManager & eventManager) const
 }
 
 
-bool Robot::HideEvent::isCompleted(const EventManager &) const
+bool Robot::HideEvent::isCompleted() const
 {
 	return true;
 }

@@ -10,7 +10,7 @@ namespace
 }
 
 
-bool Robot::ActEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::ActEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -20,14 +20,14 @@ bool Robot::ActEvent::load(const Info & info, const EventManager & eventManager)
 	}
 
 	_objectName = info[OBJECT_NAME];
-	if (!eventManager.isExistedObject(_objectName))
+	if (!EventManager::Instance().isExistedObject(_objectName))
 	{
 		printError(L"オブジェクト["+_objectName + L"]は存在しません");
 		return false;
 	}
 
 	_actName = info[ACT_NAME];
-	if (!eventManager.isExistedAct(_objectName, _actName))
+	if (!EventManager::Instance().isExistedAct(_objectName, _actName))
 	{
 		printError(L"演出[" + _actName + L"]は存在しません");
 		return false;
@@ -37,9 +37,9 @@ bool Robot::ActEvent::load(const Info & info, const EventManager & eventManager)
 }
 
 
-void Robot::ActEvent::perform(EventManager & eventManager) const
+void Robot::ActEvent::perform() const
 {
-	auto objOpt = eventManager.getObjectOpt(_objectName);
+	auto objOpt = EventManager::Instance().getObjectOpt(_objectName);
 
 	if (!objOpt)
 	{
@@ -53,7 +53,7 @@ void Robot::ActEvent::perform(EventManager & eventManager) const
 }
 
 
-bool Robot::ActEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::ActEvent::isCompleted() const
 {
-	return eventManager.isWaitingObject(_objectName);
+	return EventManager::Instance().isWaitingObject(_objectName);
 }

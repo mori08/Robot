@@ -12,7 +12,7 @@ namespace
 }
 
 
-bool Robot::ShakeEvent::load(const Info & info, const EventManager &)
+bool Robot::ShakeEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -35,13 +35,13 @@ bool Robot::ShakeEvent::load(const Info & info, const EventManager &)
 	return _isSuccess = true;
 }
 
-void Robot::ShakeEvent::perform(EventManager & eventManager) const
+void Robot::ShakeEvent::perform() const
 {
-	eventManager.setShake(_size, _span);
+	EventManager::Instance().setShake(_size, _span);
 }
 
 
-bool Robot::ShakeEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::ShakeEvent::isCompleted() const
 {
-	return eventManager.isCompleteShaking();
+	return EventManager::Instance().isCompleteShaking();
 }

@@ -171,7 +171,7 @@ bool Robot::EventManager::translateEventData(const CSVReader & eventFile)
 		EventPtr eventPtr = _makeEventMap[eventName]();
 
 		// イベントの詳細を読み込みます
-		if (!eventPtr->load(eventInfo, *this))
+		if (!eventPtr->load(eventInfo))
 		{
 			printError(L"[" + FileSystem::BaseName(eventFile.path()) + L"] " + ToString(loadingRow + 1) + L"行目");
 			return false;
@@ -189,7 +189,7 @@ void Robot::EventManager::runAllEvent()
 {
 	while (!_eventQueue.empty())
 	{
-		_eventQueue.front()->checkAndPerform(*this);
+		_eventQueue.front()->checkAndPerform();
 		_eventQueue.pop();
 	}
 
@@ -261,10 +261,10 @@ void Robot::EventManager::update()
 	++_shakeFrameCount;
 
 	// キューの中にイベントが1つだけならスキップ
-	if (_eventQueue.size() > 1 && _eventQueue.front()->isCompleted(*this))
+	if (_eventQueue.size() > 1 && _eventQueue.front()->isCompleted())
 	{
 		_eventQueue.pop();
-		_eventQueue.front()->checkAndPerform(*this);
+		_eventQueue.front()->checkAndPerform();
 	}
 
 	updateEventObject();

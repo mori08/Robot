@@ -12,7 +12,7 @@ namespace
 }
 
 
-bool Robot::TextEvent::load(const Info & info, const EventManager &)
+bool Robot::TextEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -45,13 +45,13 @@ bool Robot::TextEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::TextEvent::perform(EventManager & eventManager) const
+void Robot::TextEvent::perform() const
 {
-	eventManager.setTextBox(_speakerName, _iconName, _text, _textSpeed);
+	EventManager::Instance().setTextBox(_speakerName, _iconName, _text, _textSpeed);
 }
 
 
-bool Robot::TextEvent::isCompleted(const EventManager & eventManager) const
+bool Robot::TextEvent::isCompleted() const
 {
-	return eventManager.isReadyTextBox();
+	return EventManager::Instance().isReadyTextBox();
 }

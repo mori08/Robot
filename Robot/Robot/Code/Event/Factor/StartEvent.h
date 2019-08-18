@@ -22,16 +22,16 @@ namespace Robot
 
 	private:
 
-		bool load(const Info &, const EventManager &) override
+		bool load(const Info & ) override
 		{
 			return true;
 		}
 
-		void perform(EventManager &)const override
+		void perform()const override
 		{
 		}
 
-		bool isCompleted(const EventManager &)const override
+		bool isCompleted()const override
 		{
 			return true;
 		}

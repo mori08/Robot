@@ -10,7 +10,7 @@ namespace
 }
 
 
-bool Robot::InitEvent::load(const Info & info, const EventManager & eventManager)
+bool Robot::InitEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -20,14 +20,14 @@ bool Robot::InitEvent::load(const Info & info, const EventManager & eventManager
 	}
 
 	_objectName = info[OBJECT_NAME];
-	if (!eventManager.isExistedObject(_objectName))
+	if (!EventManager::Instance().isExistedObject(_objectName))
 	{
 		printError(L"オブジェクト[" + _objectName + L"]は存在しません");
 		return false;
 	}
 
 	_initName = info[INIT_NAME];
-	if (!eventManager.isExistedInit(_objectName, _initName))
+	if (!EventManager::Instance().isExistedInit(_objectName, _initName))
 	{
 		printError(L"初期化関数[" + _initName + L"]は存在しません");
 		return false;
@@ -37,15 +37,15 @@ bool Robot::InitEvent::load(const Info & info, const EventManager & eventManager
 }
 
 
-void Robot::InitEvent::perform(EventManager & eventManager) const
+void Robot::InitEvent::perform() const
 {
-	auto objOpt = eventManager.getObjectOpt(_objectName);
+	auto objOpt = EventManager::Instance().getObjectOpt(_objectName);
 
 	(*objOpt)->init(_initName);
 }
 
 
-bool Robot::InitEvent::isCompleted(const EventManager &) const
+bool Robot::InitEvent::isCompleted() const
 {
 	return true;
 }

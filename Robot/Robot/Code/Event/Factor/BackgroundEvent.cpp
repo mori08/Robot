@@ -9,7 +9,7 @@ namespace
 }
 
 
-bool Robot::BackgroundEvent::load(const Info & info, const EventManager &)
+bool Robot::BackgroundEvent::load(const Info & info)
 {
 	if (info.size() != INFO_SIZE)
 	{
@@ -29,13 +29,13 @@ bool Robot::BackgroundEvent::load(const Info & info, const EventManager &)
 }
 
 
-void Robot::BackgroundEvent::perform(EventManager & eventManager) const
+void Robot::BackgroundEvent::perform() const
 {
-	eventManager.setBackground(_name);
+	EventManager::Instance().setBackground(_name);
 }
 
 
-bool Robot::BackgroundEvent::isCompleted(const EventManager &) const
+bool Robot::BackgroundEvent::isCompleted() const
 {
 	return true;
 }
