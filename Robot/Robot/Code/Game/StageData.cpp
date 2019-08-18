@@ -1,4 +1,5 @@
 #include "StageData.h"
+#include "../MyColor.h"
 
 
 namespace

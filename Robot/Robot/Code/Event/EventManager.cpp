@@ -1,4 +1,5 @@
 #include "../MyLibrary.h"
+#include "../MyColor.h"
 #include "EventManager.h"
 
 #include "Factor\StartEvent.h"

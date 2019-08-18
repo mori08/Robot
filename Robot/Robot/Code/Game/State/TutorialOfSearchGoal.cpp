@@ -1,4 +1,5 @@
 #include "TutorialOfSearchGoal.h"
+#include "../../MyColor.h"
 
 
 namespace

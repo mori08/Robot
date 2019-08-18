@@ -1,4 +1,5 @@
 #include "LockGoal.h"
+#include "../../MyColor.h"
 
 
 namespace

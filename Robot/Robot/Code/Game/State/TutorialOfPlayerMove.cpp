@@ -1,5 +1,6 @@
 #include "TutorialOfPlayerMove.h"
 #include "TutorialOfLightMove.h"
+#include "../../MyColor.h"
 
 
 namespace

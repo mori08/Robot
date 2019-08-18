@@ -1,4 +1,5 @@
 #include "MenuWindowBase.h"
+#include "../../MyColor.h"
 #include "../../Input/InputManager.h"
 #include "../Window/State/ClosedState.h"
 #include "../Window/State/OpenedState.h"

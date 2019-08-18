@@ -8,6 +8,8 @@
 
 #include"TextBox.h"
 
+#include"../MyColor.h"
+
 namespace Robot
 {
 	/*

@@ -2,6 +2,7 @@
 
 
 #include"EventObject.h"
+#include"../../MyColor.h"
 
 
 namespace

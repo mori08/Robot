@@ -21,6 +21,7 @@ Robot::RunAwayGoal::RunAwayGoal(const Vec2 & pos)
 	_pos = StageData::centerPosOfCell(_runPointList[_goalPointId]);
 }
 
+
 Vec2 Robot::RunAwayGoal::getMoveVec(GameManager & gameManager)
 {
 	if (_runPointList[_goalPointId] != StageData::translatePos(_pos))

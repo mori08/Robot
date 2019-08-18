@@ -1,5 +1,6 @@
 #include "LoseState.h"
 #include "../../SaveData/SaveDataManager.h"
+#include "../../MyColor.h"
 
 
 namespace

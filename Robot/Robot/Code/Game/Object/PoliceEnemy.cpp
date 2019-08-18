@@ -1,4 +1,5 @@
 #include "PoliceEnemy.h"
+#include "../../MyColor.h"
 
 
 namespace

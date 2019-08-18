@@ -1,4 +1,5 @@
 #include "GamePlayer.h"
+#include "../../MyColor.h"
 
 
 namespace

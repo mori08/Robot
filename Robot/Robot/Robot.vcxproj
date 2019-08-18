@@ -361,6 +361,7 @@
     <ClInclude Include="Code\Input\KeyInputState.h" />
     <ClInclude Include="Code\Input\MouseInputState.h" />
     <ClInclude Include="Code\Load\LoadScene.h" />
+    <ClInclude Include="Code\MyColor.h" />
     <ClInclude Include="Code\MyLibrary.h" />
     <ClInclude Include="Code\Menu\MenuScene.h" />
     <ClInclude Include="Code\Menu\Window\MainWindow.h" />

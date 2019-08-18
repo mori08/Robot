@@ -1,9 +1,10 @@
 #include "MonitorState.h"
+#include "../../../MyColor.h"
 
 
 namespace
 {
-	const Color LIGHT_COLOR(Palette::MyWhite, 200); // Œõ‚ÌF
+	const Color LIGHT_COLOR(Robot::Palette::MyWhite, 200); // Œõ‚ÌF
 
 	const double SHADOW_BLUR_RADIUS = 30.0; // ‰e‚Ì‚Ú‚©‚µ‚Ì‘å‚«‚³
 	const double SHADOW_SPREAD      = 30.0; // ‰e‚ÌL‚ª‚è•û

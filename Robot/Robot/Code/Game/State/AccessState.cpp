@@ -1,6 +1,7 @@
 #include "AccessState.h"
 #include "PlayingState.h"
 #include "TutorialStartState.h"
+#include "../../MyColor.h"
 
 
 namespace

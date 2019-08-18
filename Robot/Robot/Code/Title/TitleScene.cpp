@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 #include "../Input/InputManager.h"
+#include "../MyColor.h"
 
 
 namespace

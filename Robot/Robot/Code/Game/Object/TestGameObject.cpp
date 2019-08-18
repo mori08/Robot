@@ -1,4 +1,5 @@
 #include "TestGameObject.h"
+#include "../../MyColor.h"
 
 
 namespace

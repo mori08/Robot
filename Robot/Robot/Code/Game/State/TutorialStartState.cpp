@@ -1,5 +1,6 @@
 #include "TutorialStartState.h"
 #include "TutorialOfPlayerMove.h"
+#include "../../MyColor.h"
 
 
 namespace

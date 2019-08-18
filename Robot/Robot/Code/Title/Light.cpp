@@ -1,10 +1,9 @@
 #include "Light.h"
+#include "../MyColor.h"
 
 
 namespace
 {
-	const Color COLOR(240); // åıÇÃêF
-
 	const int LONG_LENGTH  = 80; // í∑Ç¢ï˚ÇÃí∑Ç≥
 	const int SHORT_LENGTH = 5;  // íZÇ¢ï˚ÇÃí∑Ç≥
 
@@ -59,7 +58,7 @@ void Robot::Light::update()
 
 void Robot::Light::draw() const
 {
-	_region.drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, COLOR);
+	_region.drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 }
 
 

@@ -1,5 +1,6 @@
 #include "GameOverState.h"
 #include "../../Input/InputManager.h"
+#include "../../MyColor.h"
 
 
 namespace

@@ -1,4 +1,5 @@
 #include "FlashEnemy.h"
+#include "../../MyColor.h"
 
 
 namespace 

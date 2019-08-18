@@ -1,4 +1,5 @@
 #include "../MyLibrary.h"
+#include "../MyColor.h"
 #include "GameManager.h"
 #include "Object\TestGameObject.h"
 #include "Object\GamePlayer.h"
@@ -242,7 +243,7 @@ void Robot::GameManager::drawObjectAndLight() const
 	if (debugMode)
 	{
 		// Œõ‚ð”–‚­•`‰æ
-		Window::ClientRect().draw(Color(Palette::MyWhite, 128));
+		Window::ClientRect().draw(Color(Palette::MyWhite, 0xF0));
 		// ƒ}ƒX–Ú‚ð•`‰æ
 		for (int i = 0; i < StageData::N; ++i)
 		{

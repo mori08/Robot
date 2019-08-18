@@ -1,5 +1,6 @@
 ﻿
 #include"MyLibrary.h"
+#include"MyColor.h"
 #include"Input\InputManager.h"
 #include"Title\TitleScene.h"
 #include"SaveData\LoadSaveDataScene.h"
@@ -21,7 +22,7 @@ void Main()
 	Window::SetTitle(L"556");
 
 	// 背景色の設定
-	Graphics::SetBackground(Palette::MyBlack);
+	Graphics::SetBackground(Robot::Palette::MyBlack);
 
 	// 画像をアセット管理
 	Robot::asseter(L"Asset/");

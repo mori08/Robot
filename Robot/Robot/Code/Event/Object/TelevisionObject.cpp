@@ -1,4 +1,5 @@
 #include "TelevisionObject.h"
+#include "../../MyColor.h"
 
 
 namespace

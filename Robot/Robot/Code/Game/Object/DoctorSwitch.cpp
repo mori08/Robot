@@ -1,4 +1,5 @@
 #include "DoctorSwitch.h"
+#include "../../MyColor.h"
 
 
 namespace

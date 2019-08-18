@@ -1,4 +1,5 @@
 #include "FriendEnemy.h"
+#include "../../MyColor.h"
 
 
 namespace

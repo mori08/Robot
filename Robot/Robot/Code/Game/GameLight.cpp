@@ -1,4 +1,5 @@
 #include "GameLight.h"
+#include "../MyColor.h"
 
 
 namespace
