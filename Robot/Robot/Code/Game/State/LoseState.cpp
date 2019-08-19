@@ -13,7 +13,7 @@ namespace
 	const Size CELL_SIZE(40, 40); // 1マスの大きさ
 
 	const int TEXT_DRAW_FRAME_COUNT = 40;      // テキストを表示し始めるフレーム数
-	const int SCENE_FRAME_COUNT     = 360;     // シーン遷移するフレーム数
+	const int SCENE_FRAME_COUNT     = 600;     // シーン遷移するフレーム数
 
 	const int TEXT_DRAW_SPAN = 12; // テキストを表示するフレーム数
 	const int CHAR_WIDTH     = 64; // 1文字の幅

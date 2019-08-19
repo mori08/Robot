@@ -243,7 +243,7 @@ void Robot::GameManager::drawObjectAndLight() const
 	if (debugMode)
 	{
 		// Œõ‚ð”–‚­•`‰æ
-		Window::ClientRect().draw(Color(Palette::MyWhite, 0xF0));
+		Window::ClientRect().draw(Color(Palette::MyWhite, 0x40));
 		// ƒ}ƒX–Ú‚ð•`‰æ
 		for (int i = 0; i < StageData::N; ++i)
 		{

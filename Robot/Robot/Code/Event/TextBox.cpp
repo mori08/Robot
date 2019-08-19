@@ -57,7 +57,14 @@ void Robot::TextBox::update()
 
 void Robot::TextBox::draw() const
 {
-	TextureAsset(L"TextBox").draw(TEXT_BOX_DRAW_POS);
+	if (_speakerName == L"")
+	{
+		TextureAsset(L"TextBox").draw(TEXT_BOX_DRAW_POS);
+	}
+	else
+	{
+		TextureAsset(L"TextBoxLine").draw(TEXT_BOX_DRAW_POS);
+	}
 
 	TextureAsset(_iconName).draw(ICON_DRAW_POS);
 

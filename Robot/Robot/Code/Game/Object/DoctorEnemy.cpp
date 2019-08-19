@@ -1,7 +1,6 @@
 #include "DoctorEnemy.h"
 #include "RandomEnemy.h"
 #include "ChaseEnemy.h"
-#include "RandomCentipede.h"
 
 
 namespace
@@ -138,13 +137,11 @@ void Robot::DoctorEnemy::updateSwitch()
 		{
 		case 0:
 		case 1:
+		case 2:
 			_enemyList.emplace_back(std::make_unique<RandomEnemy>(pos));
 			break;
-		case 2:
-			_enemyList.emplace_back(std::make_unique<ChaseEnemy>(pos));
-			break;
 		case 3:
-			_enemyList.emplace_back(std::make_unique<RandomCentipede>(pos));
+			_enemyList.emplace_back(std::make_unique<ChaseEnemy>(pos));
 			break;
 		}
 	}
