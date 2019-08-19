@@ -192,13 +192,13 @@ void Robot::GameManager::load(const String & gameDataFileName)
 
 void Robot::GameManager::update()
 {
-	_gameState->update(*this);
+	_gameState->update();
 }
 
 
 void Robot::GameManager::draw() const
 {
-	_gameState->draw(*this);
+	_gameState->draw();
 }
 
 
@@ -220,7 +220,7 @@ void Robot::GameManager::updateObjectAndLight()
 
 	for (auto && obj : _objList)
 	{
-		obj->update(*this);
+		obj->update();
 	}
 
 #ifdef _DEBUG

@@ -23,7 +23,7 @@ Robot::GiantEnemy::GiantEnemy(const Vec2 & pos)
 }
 
 
-void Robot::GiantEnemy::update(GameManager & gameManager)
+void Robot::GiantEnemy::update()
 {
 	++_frameCount;
 	if (_frameCount % TEXTURE_CHANGE_SPAN == 0)
@@ -31,11 +31,11 @@ void Robot::GiantEnemy::update(GameManager & gameManager)
 		_texturePos.x++;
 	}
 
-	moveObject(gameManager, getMoveVec(gameManager));
+	moveObject(getMoveVec());
 
-	if ((_pos - gameManager.getPlayerPos()).length() < GAMEOVER_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < GAMEOVER_DISTANCE)
 	{
-		gameManager.gameOver();
+		GameManager::Instance().gameOver();
 	}
 }
 
@@ -46,9 +46,10 @@ void Robot::GiantEnemy::draw() const
 }
 
 
-Vec2 Robot::GiantEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::GiantEnemy::getMoveVec()
 {
-	Vec2 moveVec = gameManager.getPath(_pos, _goalPos);
+	// ƒ‰ƒ“ƒ_ƒ€‚ÈÀ•W‚ÖˆÚ“®
+	Vec2 moveVec = GameManager::Instance().getPath(_pos, _goalPos);
 	if (moveVec.length() < MIN_VEC_LENGTH)
 	{
 		_goalPos = RandomVec2(StageData::SIZE*StageData::WIDTH, StageData::SIZE*StageData::HEIGHT);

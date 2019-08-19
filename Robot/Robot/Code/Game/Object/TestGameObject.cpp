@@ -14,9 +14,9 @@ Robot::TestGameObject::TestGameObject()
 }
 
 
-void Robot::TestGameObject::update(GameManager & gameManager)
+void Robot::TestGameObject::update()
 {
-	_pos += gameManager.getPath(_pos, Mouse::PosF());
+	_pos += GameManager::Instance().getPath(_pos, Mouse::PosF());
 }
 
 

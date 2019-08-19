@@ -27,7 +27,7 @@ Robot::FlashEnemy::FlashEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::FlashEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::FlashEnemy::getMoveVec()
 {
 	++_changeMoveFramecount;
 
@@ -37,12 +37,14 @@ Vec2 Robot::FlashEnemy::getMoveVec(GameManager & gameManager)
 		_goalPos = RandomVec2(StageData::SIZE*StageData::WIDTH, StageData::SIZE*StageData::HEIGHT);
 	}
 	
+	// 一定時間 低速でランダムな座標に移動
 	if (_changeMoveFramecount < FLASH_FRAMECOUNT)
 	{
-		return SLOW_SPEED*gameManager.getPath(_pos, _goalPos);
+		return SLOW_SPEED*GameManager::Instance().getPath(_pos, _goalPos);
 	}
 
-	return SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+	// プレイヤーを追跡
+	return SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 }
 
 
@@ -53,5 +55,6 @@ void Robot::FlashEnemy::drawLight() const
 		return;
 	}
 
+	// プレイヤーを追跡中は光る
 	Circle(_pos, RADIUS).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 }

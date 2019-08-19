@@ -29,14 +29,14 @@ Robot::GamePlayer::GamePlayer(const Vec2 & pos)
 }
 
 
-void Robot::GamePlayer::update(GameManager & gameManager)
+void Robot::GamePlayer::update()
 {
 	_lightCircleRate *= CHANGE_RATE;
 	if (_lightCircleRate < RATE_MIN) { _lightCircleRate = 1; }
 
-	moveObject(gameManager, getMoveVec());
+	moveObject(getMoveVec());
 
-	gameManager.setPlayerPos(_pos);
+	GameManager::Instance().setPlayerPos(_pos);
 }
 
 

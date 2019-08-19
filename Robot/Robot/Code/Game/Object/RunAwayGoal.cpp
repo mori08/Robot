@@ -22,11 +22,12 @@ Robot::RunAwayGoal::RunAwayGoal(const Vec2 & pos)
 }
 
 
-Vec2 Robot::RunAwayGoal::getMoveVec(GameManager & gameManager)
+Vec2 Robot::RunAwayGoal::getMoveVec()
 {
+	// ƒ‰ƒ“ƒ_ƒ€‚ÉÀ•W‚ğ‘I‘ğ‚µˆÚ“®
 	if (_runPointList[_goalPointId] != StageData::translatePos(_pos))
 	{
-		return SPEED*gameManager.getPath(_pos,StageData::centerPosOfCell(_runPointList[_goalPointId]));
+		return SPEED*GameManager::Instance().getPath(_pos,StageData::centerPosOfCell(_runPointList[_goalPointId]));
 	}
 	
 	int nextId = RandomSelect<int>({ -1,1 });

@@ -40,27 +40,28 @@ Robot::DoctorEnemy::DoctorEnemy(const Vec2 & pos)
 }
 
 
-void Robot::DoctorEnemy::update(GameManager & gameManager)
+void Robot::DoctorEnemy::update()
 {
 	if (++_frameCount%CHANGE_TEXTURE_SPAN == 0)
 	{
 		_texturePos.x++;
 	}
 
-	moveObject(gameManager, SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos()));
+	// プレイヤーを追跡
+	moveObject(SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos()));
 
-	gameManager.setGoalPos(_pos);
+	GameManager::Instance().setGoalPos(_pos);
 
-	if ((_pos - gameManager.getPlayerPos()).length() < CLEAR_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		gameManager.gameClear();
+		GameManager::Instance().gameClear();
 	}
 
-	updateSwitch(gameManager);
+	updateSwitch();
 
-	for (auto & enemy : _enemyList) { enemy->update(gameManager); }
+	for (auto & enemy : _enemyList) { enemy->update(); }
 
-	updateDefence(gameManager);
+	updateDefence();
 }
 
 
@@ -93,9 +94,11 @@ void Robot::DoctorEnemy::drawLight() const
 }
 
 
-void Robot::DoctorEnemy::updateDefence(GameManager & gameManager)
+void Robot::DoctorEnemy::updateDefence()
 {
 	if (_defenceList.empty()) { return; }
+
+	// ゴールをの周りをまわるように移動
 
 	_defenceRadian += RADIAN_SPEED;
 	double radian = _defenceRadian;
@@ -107,23 +110,25 @@ void Robot::DoctorEnemy::updateDefence(GameManager & gameManager)
 		Vec2 p = _pos + (StageData::SIZE) * Vec2(Sin(radian), Cos(radian));
 
 		defence->setDefencePos(p);
-		defence->update(gameManager);
+		defence->update();
 	}
 }
 
 
-void Robot::DoctorEnemy::updateSwitch(GameManager & gameManager)
+void Robot::DoctorEnemy::updateSwitch()
 {
 	for (auto & sw : _switchList)
 	{
-		sw.update(gameManager);
+		sw.update();
 
-		if (!sw.checkPlayer(gameManager))
+		if (!sw.checkPlayer())
 		{
 			continue;
 		}
 
 		if (_defenceList.empty()) { continue; }
+
+		// スイッチを押されたとき敵を追加
 
 		Vec2 pos = _defenceList.back()->getPos();
 

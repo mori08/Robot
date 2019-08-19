@@ -14,7 +14,8 @@ Robot::ChaseEnemy::ChaseEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::ChaseEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::ChaseEnemy::getMoveVec()
 {
-	return SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+	// ƒvƒŒƒCƒ„[‚ğ’ÇÕ
+	return SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 }

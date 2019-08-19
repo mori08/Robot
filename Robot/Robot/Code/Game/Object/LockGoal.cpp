@@ -41,29 +41,30 @@ Robot::LockGoal::LockGoal(const Vec2 & pos)
 }
 
 
-void Robot::LockGoal::update(GameManager & gameManager)
+void Robot::LockGoal::update()
 {
 	updateKey();
 
-	Vec2 moveVec = gameManager.getPath(_pos, _goal);
+	// ƒ‰ƒ“ƒ_ƒ€‚ÈÀ•W‚ÖˆÚ“®
+	Vec2 moveVec = GameManager::Instance().getPath(_pos, _goal);
 	if (moveVec.length() < MIN_VEC_LENGTH)
 	{
 		_goal = RandomVec2(StageData::SIZE*StageData::WIDTH, StageData::SIZE*StageData::HEIGHT);
 	}
-	moveObject(gameManager, SPEED*moveVec);
+	moveObject(SPEED*moveVec);
 
 	if (_lastKeyNum > 0) { return; }
 
-	gameManager.setGoalPos(_pos);
+	GameManager::Instance().setGoalPos(_pos);
 
 	if (++_frameCount%CHANGE_TEXTURE_SPAN == 0)
 	{
 		_texturePos.x++;
 	}
 
-	if ((_pos - gameManager.getPlayerPos()).length() < CLEAR_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		gameManager.gameClear();
+		GameManager::Instance().gameClear();
 	}
 }
 
@@ -97,9 +98,9 @@ void Robot::LockGoal::updateKey()
 {
 	for (auto & key : _keyList)
 	{
-		key.update(GameManager::Instance());
+		key.update();
 
-		if (!key.checkPlayer(GameManager::Instance())) { continue; }
+		if (!key.checkPlayer()) { continue; }
 
 		--_lastKeyNum;
 	}

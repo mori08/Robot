@@ -30,11 +30,11 @@ namespace Robot
 
 	private:
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
 		void draw() const override;
 
-		Vec2 getMoveVec(GameManager & gameManager) override;
+		Vec2 getMoveVec() override;
 
 	};
 }

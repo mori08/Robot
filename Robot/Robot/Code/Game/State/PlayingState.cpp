@@ -1,13 +1,13 @@
 #include "PlayingState.h"
 
 
-void Robot::PlayingState::update(GameManager & gameManager)
+void Robot::PlayingState::update()
 {
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 }
 
 
-void Robot::PlayingState::draw(const GameManager & gameManager) const
+void Robot::PlayingState::draw() const
 {
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 }

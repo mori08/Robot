@@ -15,9 +15,10 @@ Robot::RandomEnemy::RandomEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::RandomEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::RandomEnemy::getMoveVec()
 {
-	Vec2 moveVec = gameManager.getPath(_pos, _goalPos);
+	// ƒ‰ƒ“ƒ_ƒ€‚ÈÀ•W‚ÖˆÚ“®
+	Vec2 moveVec = GameManager::Instance().getPath(_pos, _goalPos);
 	if (moveVec.length() < MIN_VEC_LENGTH)
 	{
 		_goalPos = RandomVec2(StageData::SIZE*StageData::WIDTH, StageData::SIZE*StageData::HEIGHT);

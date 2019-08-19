@@ -38,7 +38,7 @@ Robot::GameClearState::GameClearState()
 }
 
 
-void Robot::GameClearState::update(GameManager & gameManager)
+void Robot::GameClearState::update()
 {
 	++_frameCount;
 
@@ -52,22 +52,22 @@ void Robot::GameClearState::update(GameManager & gameManager)
 
 	if (_frameCount <= CHANGE_SCENE_FRAME_COUNT) { return; }
 
-	if (SaveDataManager::Instance().getFlag(gameManager.getStageName()))
+	if (SaveDataManager::Instance().getFlag(GameManager::Instance().getStageName()))
 	{
-		gameManager.setSceneName(L"SavingDataScene", L"");
+		GameManager::Instance().setSceneName(L"SavingDataScene", L"");
 	}
 	else
 	{
-		gameManager.setSceneName(L"LoadEventScene" , gameManager.getStageName() + L"End");
+		GameManager::Instance().setSceneName(L"LoadEventScene" , GameManager::Instance().getStageName() + L"End");
 	}
 
-	SaveDataManager::Instance().setFlag(gameManager.getStageName(), true);
+	SaveDataManager::Instance().setFlag(GameManager::Instance().getStageName(), true);
 }
 
 
-void Robot::GameClearState::draw(const GameManager & gameManager) const
+void Robot::GameClearState::draw() const
 {
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	Window::ClientRect().draw(_backColor);
 

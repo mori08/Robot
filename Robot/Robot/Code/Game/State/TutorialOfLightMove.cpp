@@ -20,26 +20,26 @@ Robot::TutorialOfLightMove::TutorialOfLightMove()
 }
 
 
-void Robot::TutorialOfLightMove::update(GameManager & gameManager)
+void Robot::TutorialOfLightMove::update()
 {
 	++_frameCount;
 
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 
 	if (_frameCount > CHANGE_STATE_FRAMECOUNT)
 	{
-		gameManager.makeTutorialGoal();
-		gameManager.changeGameState(std::make_unique<TutorialOfSearchGoal>());
+		GameManager::Instance().makeTutorialGoal();
+		GameManager::Instance().changeGameState(std::make_unique<TutorialOfSearchGoal>());
 	}
 }
 
 
-void Robot::TutorialOfLightMove::draw(const GameManager & gameManager) const
+void Robot::TutorialOfLightMove::draw() const
 {
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"今度は光を動かしてみよう。(マウス)";
 
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	TextureAsset(L"Mouse").draw(MOUSE_POS, Alpha(0xF0));
 

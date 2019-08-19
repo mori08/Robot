@@ -20,6 +20,7 @@ Robot::RandomCentipede::RandomCentipede(const Vec2 & pos)
 
 Vec2 Robot::RandomCentipede::getGoalPos()
 {
+	// ƒ‰ƒ“ƒ_ƒ€‚ÈÀ•W‚ÖˆÚ“®
 	if ((_goalPos - _bodyList[0]->getPos()).length() < MIN_DISTANCE || !GameManager::Instance().isWalkingAblePos(_goalPos))
 	{
 		_goalPos.x = Random(640.0);

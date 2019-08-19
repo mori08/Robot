@@ -25,7 +25,7 @@ namespace Robot
 
 		void draw() const override;
 
-		void connectedPlayerProcess(GameManager & gameManager) override;
+		void connectedPlayerProcess() override;
 
 	};
 }

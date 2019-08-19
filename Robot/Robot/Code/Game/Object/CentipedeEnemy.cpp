@@ -8,15 +8,17 @@ namespace
 }
 
 
-void Robot::CentipedeEnemy::update(GameManager & gameManager)
+void Robot::CentipedeEnemy::update()
 {
-	if (gameManager.isWalkingAblePos(getGoalPos()))
+	// 先頭はgetGoalPos関数で指定された目的地へ移動
+	if (GameManager::Instance().isWalkingAblePos(getGoalPos()))
 	{
 		_bodyList[LEADER_INDEX]->setGoalPos(getGoalPos());
 	}
 
 	for (int i = 1; i < _bodyList.size(); ++i)
 	{
+		// 自分より前の敵を追跡
 		if ((_bodyList[i]->getPos() - _bodyList[i-1]->getPos()).length() < BODY_DISTANCE)
 		{
 			continue;
@@ -26,7 +28,7 @@ void Robot::CentipedeEnemy::update(GameManager & gameManager)
 
 	for (auto && body : _bodyList)
 	{
-		body->update(gameManager);
+		body->update();
 	}
 }
 

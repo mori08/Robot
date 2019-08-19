@@ -14,7 +14,8 @@ Robot::HorizontalBlockEnemy::HorizontalBlockEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::HorizontalBlockEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::HorizontalBlockEnemy::getMoveVec()
 {
-	return SPEED*gameManager.getPath(_pos, Vec2(gameManager.getPlayerPos().x, 240));
+	// プレイヤーのx座標を追跡
+	return SPEED*GameManager::Instance().getPath(_pos, Vec2(GameManager::Instance().getPlayerPos().x, 240));
 }

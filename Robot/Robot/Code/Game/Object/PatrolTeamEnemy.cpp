@@ -37,14 +37,14 @@ void Robot::PatrolTeamEnemy::setPoliceChasing(bool isChasing)
 }
 
 
-void Robot::PatrolTeamEnemy::update(GameManager & gameManager)
+void Robot::PatrolTeamEnemy::update()
 {
 	_monitorState->changeState(*this);
 	_monitorState->getMoveVec(_monitorPos);
 
 	for (auto & police : _policeList)
 	{
-		police.update(gameManager);
+		police.update();
 	}
 }
 

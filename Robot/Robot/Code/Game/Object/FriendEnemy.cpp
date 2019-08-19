@@ -36,8 +36,9 @@ void Robot::FriendEnemy::drawLight() const
 }
 
 
-Vec2 Robot::FriendEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::FriendEnemy::getMoveVec()
 {
+	// スピードを上げていく
 	if (_frameCount%SPEED_UP_SPAN == 0)
 	{
 		_speed += SPEEDUP;
@@ -48,5 +49,6 @@ Vec2 Robot::FriendEnemy::getMoveVec(GameManager & gameManager)
 		_shake += SHAKEUP;
 	}
 
-	return _speed*gameManager.getPath(_pos, gameManager.getPlayerPos());
+	// プレイヤーを追跡
+	return _speed*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 }

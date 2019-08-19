@@ -27,7 +27,7 @@ Robot::DoctorSwitch::DoctorSwitch(const Vec2 & pos)
 }
 
 
-void Robot::DoctorSwitch::update(GameManager & gameManager)
+void Robot::DoctorSwitch::update()
 {
 	if (_isPressed) { return; }
 
@@ -36,7 +36,7 @@ void Robot::DoctorSwitch::update(GameManager & gameManager)
 		_texturePos.x++;
 	}
 
-	moveObject(gameManager, getMoveVec(gameManager));
+	moveObject(getMoveVec());
 }
 
 
@@ -54,11 +54,11 @@ void Robot::DoctorSwitch::drawLight() const
 }
 
 
-bool Robot::DoctorSwitch::checkPlayer(const GameManager & gameManager)
+bool Robot::DoctorSwitch::checkPlayer()
 {
 	if (_isPressed) { return false; }
 
-	if ((_pos - gameManager.getPlayerPos()).length() < PLAYER_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < PLAYER_DISTANCE)
 	{
 		_isPressed  = true;
 		_texturePos = OFF_TEXTURE_POS;

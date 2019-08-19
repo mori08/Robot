@@ -18,15 +18,15 @@ Robot::CentipedeBody::CentipedeBody(const Vec2 & pos)
 }
 
 
-void Robot::CentipedeBody::update(GameManager & gameManager)
+void Robot::CentipedeBody::update()
 {
 	++_frameCount;
 
-	moveObject(gameManager, SPEED*gameManager.getPath(_pos, _goalPos));
+	moveObject(SPEED*GameManager::Instance().getPath(_pos, _goalPos));
 
-	if ((_pos - gameManager.getPlayerPos()).length() < GAMEOVER_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < GAMEOVER_DISTANCE)
 	{
-		connectedPlayerProcess(gameManager);
+		connectedPlayerProcess();
 	}
 }
 
@@ -38,7 +38,7 @@ void Robot::CentipedeBody::draw() const
 }
 
 
-void Robot::CentipedeBody::connectedPlayerProcess(GameManager & gameManager)
+void Robot::CentipedeBody::connectedPlayerProcess()
 {
-	gameManager.gameOver();
+	GameManager::Instance().gameOver();
 }

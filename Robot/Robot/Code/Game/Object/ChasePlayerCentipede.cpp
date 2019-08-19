@@ -18,5 +18,6 @@ Robot::ChasePlayerCentipede::ChasePlayerCentipede(const Vec2 & pos)
 
 Vec2 Robot::ChasePlayerCentipede::getGoalPos()
 {
+	// ƒvƒŒƒCƒ„[‚ğ’ÇÕ
 	return GameManager::Instance().getPlayerPos();
 }

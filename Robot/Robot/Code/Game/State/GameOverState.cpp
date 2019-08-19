@@ -56,7 +56,7 @@ Robot::GameOverState::GameOverState()
 }
 
 
-void Robot::GameOverState::update(GameManager & gameManager)
+void Robot::GameOverState::update()
 {
 	++_frameCount;
 
@@ -79,11 +79,11 @@ void Robot::GameOverState::update(GameManager & gameManager)
 	{
 		if (*selectButtonkey == RETRY_KEY)
 		{
-			gameManager.setSceneName(L"LoadGameScene", gameManager.getStageName());
+			GameManager::Instance().setSceneName(L"LoadGameScene", GameManager::Instance().getStageName());
 		}
 		if (*selectButtonkey == MENU_KEY)
 		{
-			gameManager.setSceneName(L"MenuScene", L"");
+			GameManager::Instance().setSceneName(L"MenuScene", L"");
 		}
 	}
 
@@ -91,7 +91,7 @@ void Robot::GameOverState::update(GameManager & gameManager)
 }
 
 
-void Robot::GameOverState::draw(const GameManager &) const
+void Robot::GameOverState::draw() const
 {
 	static const Rect SHAKE_RANGE(-1, -1, 2, 2); // êUìÆÇÃîÕàÕ
 

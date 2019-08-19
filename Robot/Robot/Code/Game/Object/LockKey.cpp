@@ -15,11 +15,13 @@ Robot::LockKey::LockKey(const Vec2 & pos)
 }
 
 
-Vec2 Robot::LockKey::getMoveVec(GameManager & gameManager)
+Vec2 Robot::LockKey::getMoveVec()
 {
+	// スイッチが押されていたら静止
 	if (_isPressed) { return Vec2::Zero; }
 
-	Vec2 moveVec = gameManager.getPath(_pos, _goal);
+	// ランダムな座標に移動
+	Vec2 moveVec = GameManager::Instance().getPath(_pos, _goal);
 	if (moveVec.length() < MIN_VEC_LENGTH)
 	{
 		_goal = RandomVec2(StageData::SIZE*StageData::WIDTH, StageData::SIZE*StageData::HEIGHT);

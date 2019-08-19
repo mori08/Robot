@@ -29,7 +29,7 @@ Robot::LoseState::LoseState()
 }
 
 
-void Robot::LoseState::update(GameManager & gameManager)
+void Robot::LoseState::update()
 {
 	++_frameCount;
 
@@ -46,20 +46,20 @@ void Robot::LoseState::update(GameManager & gameManager)
 
 	if (_frameCount < SCENE_FRAME_COUNT) { return; }
 
-	if (SaveDataManager::Instance().getFlag(gameManager.getStageName()))
+	if (SaveDataManager::Instance().getFlag(GameManager::Instance().getStageName()))
 	{
-		gameManager.setSceneName(L"SavingDataScene", L"");
+		GameManager::Instance().setSceneName(L"SavingDataScene", L"");
 	}
 	else
 	{
-		gameManager.setSceneName(L"LoadEventScene", gameManager.getStageName() + L"End");
+		GameManager::Instance().setSceneName(L"LoadEventScene", GameManager::Instance().getStageName() + L"End");
 	}
 
-	SaveDataManager::Instance().setFlag(gameManager.getStageName(), true);
+	SaveDataManager::Instance().setFlag(GameManager::Instance().getStageName(), true);
 }
 
 
-void Robot::LoseState::draw(const GameManager &) const
+void Robot::LoseState::draw() const
 {
 	static const Rect SHAKE_RANGE(-1, -1, 2, 2); // U“®‚Ì”ÍˆÍ
 

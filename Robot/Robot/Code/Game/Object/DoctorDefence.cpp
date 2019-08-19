@@ -23,16 +23,18 @@ void Robot::DoctorDefence::setDefencePos(const Vec2 & pos)
 }
 
 
-Vec2 Robot::DoctorDefence::getMoveVec(GameManager & gameManager)
+Vec2 Robot::DoctorDefence::getMoveVec()
 {
-	const Vec2 playerPos = gameManager.getPlayerPos();
-	const Vec2 goalPos   = gameManager.getGoalPos();
+	const Vec2 playerPos = GameManager::Instance().getPlayerPos();
+	const Vec2 goalPos   = GameManager::Instance().getGoalPos();
 
+	// プレイヤーが近いとき プレイヤーを追跡
 	if ((playerPos - goalPos).length() < CHASE_DISTANCE_PIXEL
-		&& gameManager.getDistance(playerPos, goalPos) < CHASE_DISTANCE_PIXEL)
+		&& GameManager::Instance().getDistance(playerPos, goalPos) < CHASE_DISTANCE_CELL)
 	{
-		return SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+		return SPEED*GameManager::Instance().getPath(_pos, playerPos);
 	}
 
-	return SPEED*gameManager.getPath(_pos, _defencePos);
+	// DoctorEnemyに指定された場所へ移動
+	return SPEED*GameManager::Instance().getPath(_pos, _defencePos);
 }

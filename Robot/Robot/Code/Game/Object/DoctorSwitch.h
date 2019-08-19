@@ -27,7 +27,7 @@ namespace Robot
 
 		DoctorSwitch(const Vec2 & pos);
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
 		void draw() const override;
 
@@ -40,15 +40,14 @@ namespace Robot
 		/// _isPressedが true になったら true
 		/// 既に true のとき または false のとき false
 		/// </returns>
-		bool checkPlayer(const GameManager & gameManager);
+		bool checkPlayer();
 
 	protected:
 
 		/// <summary>
 		/// 移動ベクトルを取得します。
 		/// </summary>
-		/// <param name="gameManager"> GameManagerクラスのインスタンス </param>
-		virtual Vec2 getMoveVec(GameManager &)
+		virtual Vec2 getMoveVec()
 		{
 			return Vec2::Zero;
 		}

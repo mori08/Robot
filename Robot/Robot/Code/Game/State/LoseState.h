@@ -28,9 +28,9 @@ namespace Robot
 
 	private:
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
-		void draw(const GameManager & gameManager) const override;
+		void draw() const override;
 
 		/// <summary>
 		/// 色のアルファ値を加算します。

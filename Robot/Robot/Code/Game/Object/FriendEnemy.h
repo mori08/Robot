@@ -28,11 +28,11 @@ namespace Robot
 
 		void drawLight() const override;
 
-		Vec2 getMoveVec(GameManager & gameManager) override;
+		Vec2 getMoveVec() override;
 
-		void gameOver(GameManager & gameManager) override
+		void gameOver() override
 		{
-			gameManager.lose();
+			GameManager::Instance().lose();
 		}
 
 	};

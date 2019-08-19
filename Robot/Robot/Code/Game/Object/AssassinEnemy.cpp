@@ -15,17 +15,20 @@ Robot::AssassinEnemy::AssassinEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::AssassinEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::AssassinEnemy::getMoveVec()
 {
-	if ((_pos - gameManager.getPlayerPos()).length() < LIGHT_RADIUS)
+	// プレイヤーと近いときプレイヤーを追跡
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < LIGHT_RADIUS)
 	{
-		return FAST_SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+		return FAST_SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 	}
 
-	if ((_pos - gameManager.getLightPos()).length() < LIGHT_RADIUS)
+	// 光が近いとき静止
+	if ((_pos - GameManager::Instance().getLightPos()).length() < LIGHT_RADIUS)
 	{
 		return Vec2::Zero;
 	}
 
-	return SLOW_SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+	// ゆっくりプレイヤーを追跡
+	return SLOW_SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 }

@@ -34,7 +34,7 @@ Robot::AccessState::AccessState(bool isTutorial)
 }
 
 
-void Robot::AccessState::update(GameManager & gameManager)
+void Robot::AccessState::update()
 {
 	++_framecount;
 
@@ -44,18 +44,18 @@ void Robot::AccessState::update(GameManager & gameManager)
 
 	if (_alpha == 0)
 	{
-		gameManager.changeGameState(std::move(_nextState));
+		GameManager::Instance().changeGameState(std::move(_nextState));
 	}
 
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 
-	gameManager.setLightPos(gameManager.getPlayerPos());
+	GameManager::Instance().setLightPos(GameManager::Instance().getPlayerPos());
 }
 
 
-void Robot::AccessState::draw(const GameManager & gameManager) const
+void Robot::AccessState::draw() const
 {
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	Window::ClientRect().draw(Color(Palette::MyBlack, _alpha));
 

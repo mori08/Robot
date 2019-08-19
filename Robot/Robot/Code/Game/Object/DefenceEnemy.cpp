@@ -15,12 +15,16 @@ Robot::DefenceEnemy::DefenceEnemy(const Vec2 & pos)
 }
 
 
-Vec2 Robot::DefenceEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::DefenceEnemy::getMoveVec()
 {
-	Vec2 goalPos = (1-RATE)*gameManager.getPlayerPos() + RATE*gameManager.getGoalPos();
-	if (gameManager.isWalkingAblePos(goalPos))
+	// プレイヤーとゴールの内分点へ移動
+	Vec2 goalPos = (1-RATE)*GameManager::Instance().getPlayerPos() + RATE*GameManager::Instance().getGoalPos();
+
+	// 移動できない場合ゴールへ移動
+	if (GameManager::Instance().isWalkingAblePos(goalPos))
 	{
-		return SPEED*gameManager.getPath(_pos, goalPos);
+		return SPEED*GameManager::Instance().getPath(_pos, goalPos);
 	}
-	return SPEED*gameManager.getPath(_pos, gameManager.getGoalPos());
+
+	return SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getGoalPos());
 }

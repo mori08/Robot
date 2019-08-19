@@ -35,7 +35,7 @@ namespace Robot
 
 	private:
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
 		void draw() const override;
 
@@ -45,7 +45,7 @@ namespace Robot
 		/// 移動ベクトルを取得します。
 		/// </summary>
 		/// <param name="gameManager"> GameManagerクラスのインスタンス </param>
-		virtual Vec2 getMoveVec(GameManager &)
+		virtual Vec2 getMoveVec()
 		{
 			return Vec2::Zero;
 		}

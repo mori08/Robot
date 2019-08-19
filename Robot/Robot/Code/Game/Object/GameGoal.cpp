@@ -11,20 +11,20 @@ namespace
 }
 
 
-void Robot::GameGoal::update(GameManager & gameManager)
+void Robot::GameGoal::update()
 {
 	if (++_frameCount%CHANGE_TEXTURE_SPAN == 0)
 	{
 		_texturePos.x++;
 	}
 
-	moveObject(gameManager, getMoveVec(gameManager));
+	moveObject(getMoveVec());
 
-	gameManager.setGoalPos(_pos);
+	GameManager::Instance().setGoalPos(_pos);
 
-	if ((_pos - gameManager.getPlayerPos()).length() < CLEAR_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		gameManager.gameClear();
+		GameManager::Instance().gameClear();
 	}
 
 }

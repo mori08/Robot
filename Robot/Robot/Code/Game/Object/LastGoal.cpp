@@ -23,8 +23,9 @@ Robot::LastGoal::LastGoal(const Vec2 & pos)
 }
 
 
-Vec2 Robot::LastGoal::getMoveVec(GameManager & gameManager)
+Vec2 Robot::LastGoal::getMoveVec()
 {
+	// プレイヤーから遠ざかるための点を選択し移動
 	if ((_pos - _goalPosList[_goalPosIndex]).length() < CHANGE_DISTANCE)
 	{
 		double maxDistance = 0;
@@ -32,14 +33,14 @@ Vec2 Robot::LastGoal::getMoveVec(GameManager & gameManager)
 		for (int i = -1; i <= 1; ++i)
 		{
 			int index = (_goalPosIndex + i + (int)_goalPosList.size()) % (int)_goalPosList.size();
-			if ((gameManager.getPlayerPos() - _goalPosList[index]).length() > maxDistance)
+			if ((GameManager::Instance().getPlayerPos() - _goalPosList[index]).length() > maxDistance)
 			{
-				maxDistance = (gameManager.getPlayerPos() - _goalPosList[index]).length();
+				maxDistance = (GameManager::Instance().getPlayerPos() - _goalPosList[index]).length();
 				maxIndex    = index;
 			}
 		}
 		_goalPosIndex = maxIndex;
 	}
 
-	return SPEED*gameManager.getPath(_pos, _goalPosList[_goalPosIndex]);
+	return SPEED*GameManager::Instance().getPath(_pos, _goalPosList[_goalPosIndex]);
 }

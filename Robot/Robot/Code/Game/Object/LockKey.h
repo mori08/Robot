@@ -24,7 +24,7 @@ namespace Robot
 
 	private:
 
-		Vec2 getMoveVec(GameManager &);
+		Vec2 getMoveVec();
 
 	};
 

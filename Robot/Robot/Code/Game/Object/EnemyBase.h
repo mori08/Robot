@@ -25,7 +25,7 @@ namespace Robot
 
 		EnemyBase(const Vec2 & pos);
 
-		virtual void update(GameManager & gameManager) override;
+		virtual void update() override;
 
 		virtual void draw() const override;
 
@@ -34,16 +34,15 @@ namespace Robot
 		/// <summary>
 		/// 移動ベクトルを決めます。
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
 		/// <returns> 移動ベクトル </returns>
-		virtual Vec2 getMoveVec(GameManager & gameManager) = 0;
+		virtual Vec2 getMoveVec() = 0;
 
 		/// <summary>
 		/// プレイヤーと接触したときの処理
 		/// </summary>
-		virtual void gameOver(GameManager & gameManager)
+		virtual void gameOver()
 		{
-			gameManager.gameOver();
+			GameManager::Instance().gameOver();
 		}
 
 	};

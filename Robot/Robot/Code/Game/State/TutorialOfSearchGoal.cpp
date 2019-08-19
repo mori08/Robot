@@ -15,20 +15,20 @@ Robot::TutorialOfSearchGoal::TutorialOfSearchGoal()
 }
 
 
-void Robot::TutorialOfSearchGoal::update(GameManager & gameManager)
+void Robot::TutorialOfSearchGoal::update()
 {
 	++_frameCount;
 
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 }
 
 
-void Robot::TutorialOfSearchGoal::draw(const GameManager & gameManager) const
+void Robot::TutorialOfSearchGoal::draw() const
 {
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"ÉSÅ[ÉãÇíTÇµÇƒÅA\nÇªÇ±Ç…çsÇ¡ÇƒÇ›ÇÊÇ§";
 
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
 }

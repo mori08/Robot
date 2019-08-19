@@ -27,7 +27,7 @@ namespace Robot
 		/// <param name="pos"> 目的座標 </para,>
 		CentipedeBody(const Vec2 & pos);
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
 		virtual void draw() const override;
 
@@ -53,8 +53,7 @@ namespace Robot
 		/// <summary>
 		/// プレイヤーと接触したときの処理
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		virtual void connectedPlayerProcess(GameManager & gameManager);
+		virtual void connectedPlayerProcess();
 
 	};
 }

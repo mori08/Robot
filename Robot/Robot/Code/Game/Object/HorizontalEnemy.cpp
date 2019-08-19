@@ -14,9 +14,10 @@ Robot::HorizontalEnemy::HorizontalEnemy(const Vec2 & pos)
 
 }
 
-Vec2 Robot::HorizontalEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::HorizontalEnemy::getMoveVec()
 {
-	if (gameManager.isWalkingAblePos(_pos + _moveVec))
+	// xÀ•W•ûŒü‚É‰•œ‚·‚é
+	if (GameManager::Instance().isWalkingAblePos(_pos + _moveVec))
 	{
 		return _moveVec;
 	}

@@ -40,7 +40,7 @@ namespace Robot
 
 		DoctorEnemy(const Vec2 & pos);
 
-		void update(GameManager & gameManager) override;
+		void update() override;
 
 		void draw() const override;
 
@@ -51,14 +51,12 @@ namespace Robot
 		/// <summary>
 		/// DoctorDefenceの目的地指定と更新
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		void updateDefence(GameManager & gameManager);
+		void updateDefence();
 
 		/// <summary>
 		/// DoctorSwitchの判定と更新
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		void updateSwitch(GameManager & gameManager);
+		void updateSwitch();
 
 	};
 }

@@ -18,7 +18,7 @@ Robot::EnemyBase::EnemyBase(const Vec2 & pos)
 }
 
 
-void Robot::EnemyBase::update(GameManager & gameManager)
+void Robot::EnemyBase::update()
 {
 	++_frameCount;
 	if (_frameCount % TEXTURE_CHANGE_SPAN == 0) 
@@ -26,11 +26,11 @@ void Robot::EnemyBase::update(GameManager & gameManager)
 		_texturePos.x++;
 	}
 
-	moveObject(gameManager, getMoveVec(gameManager));
+	moveObject(getMoveVec());
 
-	if ((_pos - gameManager.getPlayerPos()).length() < GAMEOVER_DISTANCE)
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < GAMEOVER_DISTANCE)
 	{
-		gameOver(gameManager);
+		gameOver();
 	}
 }
 

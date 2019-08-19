@@ -20,7 +20,7 @@ namespace Robot
 
 	private:
 
-		Vec2 getMoveVec(GameManager & gameManager) override;
+		Vec2 getMoveVec() override;
 
 	};
 }

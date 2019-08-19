@@ -11,27 +11,27 @@ namespace
 }
 
 
-void Robot::TutorialStartState::update(GameManager & gameManager)
+void Robot::TutorialStartState::update()
 {
 	++_framecount;
 
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 
-	gameManager.setLightPos(gameManager.getPlayerPos());
+	GameManager::Instance().setLightPos(GameManager::Instance().getPlayerPos());
 
 	if (_framecount > CHANGE_STATE_FRAMECOUNT)
 	{
-		gameManager.changeGameState(std::make_unique<TutorialOfPlayerMove>());
+		GameManager::Instance().changeGameState(std::make_unique<TutorialOfPlayerMove>());
 	}
 }
 
 
-void Robot::TutorialStartState::draw(const GameManager & gameManager) const
+void Robot::TutorialStartState::draw() const
 {
 	const size_t drawTextLength = _framecount / DRAW_TEXT_SPAN;
 	String text = L"ここがテレビの中かな…。";
 
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
 }

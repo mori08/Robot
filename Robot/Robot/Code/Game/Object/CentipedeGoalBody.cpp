@@ -21,7 +21,7 @@ void Robot::CentipedeGoalBody::draw() const
 }
 
 
-void Robot::CentipedeGoalBody::connectedPlayerProcess(GameManager & gameManager)
+void Robot::CentipedeGoalBody::connectedPlayerProcess()
 {
-	gameManager.gameClear();
+	GameManager::Instance().gameClear();
 }

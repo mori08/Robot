@@ -21,30 +21,30 @@ Robot::TutorialOfPlayerMove::TutorialOfPlayerMove()
 }
 
 
-void Robot::TutorialOfPlayerMove::update(GameManager & gameManager)
+void Robot::TutorialOfPlayerMove::update()
 {
 	++_frameCount;
 
-	gameManager.updateObjectAndLight();
+	GameManager::Instance().updateObjectAndLight();
 
-	gameManager.setLightPos(gameManager.getPlayerPos());
+	GameManager::Instance().setLightPos(GameManager::Instance().getPlayerPos());
 
-	_playerMoveDist += (gameManager.getPlayerPos() - _prePlayerPos).length();
-	_prePlayerPos = gameManager.getPlayerPos();
+	_playerMoveDist += (GameManager::Instance().getPlayerPos() - _prePlayerPos).length();
+	_prePlayerPos = GameManager::Instance().getPlayerPos();
 	
 	if (_playerMoveDist > CHANGE_STATE_DIST)
 	{
-		gameManager.changeGameState(std::make_unique<TutorialOfLightMove>());
+		GameManager::Instance().changeGameState(std::make_unique<TutorialOfLightMove>());
 	}
 }
 
 
-void Robot::TutorialOfPlayerMove::draw(const GameManager & gameManager) const
+void Robot::TutorialOfPlayerMove::draw() const
 {
 	const size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"Ç∆ÇËÇ†Ç¶Ç∏à⁄ìÆÇµÇƒÇ›ÇÊÇ§ÅB\n(WASDÉLÅ[)";
 
-	gameManager.drawObjectAndLight();
+	GameManager::Instance().drawObjectAndLight();
 
 	TextureAsset(L"WASD").draw(WASD_POS, Alpha(0xf0));
 

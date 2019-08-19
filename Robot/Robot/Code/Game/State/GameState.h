@@ -16,14 +16,12 @@ namespace Robot
 		/// <summary>
 		/// 更新
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		virtual void update(GameManager & gameManager) = 0;
+		virtual void update() = 0;
 
 		/// <summary>
 		/// 描画
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		virtual void draw(const GameManager & gamaManager) const = 0;
+		virtual void draw() const = 0;
 
 	};
 }

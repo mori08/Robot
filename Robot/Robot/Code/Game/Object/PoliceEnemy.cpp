@@ -32,12 +32,14 @@ void Robot::PoliceEnemy::drawLight() const
 }
 
 
-Vec2 Robot::PoliceEnemy::getMoveVec(GameManager & gameManager)
+Vec2 Robot::PoliceEnemy::getMoveVec()
 {
+	// プレイヤーを追跡
 	if (_isChasing)
 	{
-		return CHASE_SPEED*gameManager.getPath(_pos, gameManager.getPlayerPos());
+		return CHASE_SPEED*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
 	}
 
-	return RETURN_SPEED*gameManager.getPath(_pos, _startPos);
+	// スタートに戻る
+	return RETURN_SPEED*GameManager::Instance().getPath(_pos, _startPos);
 }

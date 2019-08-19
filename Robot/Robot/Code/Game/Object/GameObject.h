@@ -33,8 +33,7 @@ namespace Robot
 		/// <summary>
 		/// 更新
 		/// </summary>
-		/// <param name="gameManager"> GameManagerのインスタンス </param>
-		virtual void update(GameManager & gameManager) = 0;
+		virtual void update() = 0;
 
 		/// <summary>
 		/// 描画
@@ -53,9 +52,8 @@ namespace Robot
 		/// <summary>
 		/// オブジェクトの位置を移動させます。
 		/// </summary>
-		/// <param name="gameManager"> GameManager </param>
 		/// <param name="vec"> 加算する座標 </param>
-		void moveObject(const GameManager & gameManager, const Vec2 & vec);
+		void moveObject(const Vec2 & vec);
 
 	};
 }
