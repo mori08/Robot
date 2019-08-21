@@ -24,6 +24,7 @@ namespace Robot
 	public:
 
 		static const ColorF NON_SHOWED_COLOR;
+		static const ColorF SHOWED_COLOR;
 		static const ColorF NON_SELECTED_COLOR;
 		static const ColorF SELECTED_COLOR;
 

@@ -377,7 +377,7 @@
     <ClInclude Include="Code\SaveData\ResetSaveDataScene.h" />
     <ClInclude Include="Code\SaveData\SaveDataManager.h" />
     <ClInclude Include="Code\SaveData\SavingDataScene.h" />
-    <ClInclude Include="Code\Title\Light.h" />
+    <ClInclude Include="Code\Title\TitleLight.h" />
     <ClInclude Include="Code\Title\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -477,7 +477,7 @@
     <ClCompile Include="Code\SaveData\ResetSaveDataScene.cpp" />
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp" />
     <ClCompile Include="Code\SaveData\SavingDataScene.cpp" />
-    <ClCompile Include="Code\Title\Light.cpp" />
+    <ClCompile Include="Code\Title\TitleLight.cpp" />
     <ClCompile Include="Code\Title\TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

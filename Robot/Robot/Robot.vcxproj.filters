@@ -489,9 +489,6 @@
     <ClInclude Include="Code\Title\TitleScene.h">
       <Filter>ヘッダー ファイル\Title</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Title\Light.h">
-      <Filter>ヘッダー ファイル\Title</Filter>
-    </ClInclude>
     <ClInclude Include="Code\SaveData\SaveDataManager.h">
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
@@ -783,6 +780,9 @@
     <ClInclude Include="Code\MyColor.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Title\TitleLight.h">
+      <Filter>ヘッダー ファイル\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -801,9 +801,6 @@
       <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
     <ClCompile Include="Code\Title\TitleScene.cpp">
-      <Filter>ソース ファイル\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Title\Light.cpp">
       <Filter>ソース ファイル\Title</Filter>
     </ClCompile>
     <ClCompile Include="Code\SaveData\SaveDataManager.cpp">
@@ -1078,6 +1075,9 @@
     </ClCompile>
     <ClCompile Include="Code\MyLibrary.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Title\TitleLight.cpp">
+      <Filter>ソース ファイル\Title</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace Robot
 	Lightクラス
 	タイトルシーンに流す光
 	*/
-	class Light
+	class TitleLight
 	{
 	private:
 
@@ -20,11 +20,11 @@ namespace Robot
 
 	private:
 
-		Light(const Point & velocity, const Rect & region);
+		TitleLight(const Point & velocity, const Rect & region);
 
 	public:
 
-		static const Light get();
+		static const TitleLight get();
 
 	public:
 

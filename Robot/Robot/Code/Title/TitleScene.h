@@ -2,7 +2,7 @@
 
 
 #include"../MyLibrary.h"
-#include"Light.h"
+#include"TitleLight.h"
 
 
 namespace Robot
@@ -12,8 +12,8 @@ namespace Robot
 	{
 	private:
 
-		int              _generateLightFrameCount; // 光を生成するまでのフレーム数
-		std::list<Light> _lightList;               // 光のリスト
+		int                   _generateLightFrameCount; // 光を生成するまでのフレーム数
+		std::list<TitleLight> _lightList;               // 光のリスト
 
 		RectF            _cursor;                  // 指定したボタンの範囲
 

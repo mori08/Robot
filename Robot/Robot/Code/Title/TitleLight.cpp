@@ -1,4 +1,4 @@
-#include "Light.h"
+#include "TitleLight.h"
 #include "../MyColor.h"
 
 
@@ -18,7 +18,7 @@ namespace
 }
 
 
-Robot::Light::Light(const Point & velocity, const Rect & region)
+Robot::TitleLight::TitleLight(const Point & velocity, const Rect & region)
 	: _region(region)
 	, _velocity(velocity)
 {
@@ -26,16 +26,16 @@ Robot::Light::Light(const Point & velocity, const Rect & region)
 }
 
 
-const Robot::Light Robot::Light::get()
+const Robot::TitleLight Robot::TitleLight::get()
 {
 	static int direction = 0;
 	
 	switch (++direction%DIRECTION_NUM)
 	{
-	case UP   : return Robot::Light(Point::Up   , Rect(Random(Window::Width()), Window::Height()        , Size(SHORT_LENGTH, LONG_LENGTH )));
-	case DOWN : return Robot::Light(Point::Down , Rect(Random(Window::Width()), -LONG_LENGTH            , Size(SHORT_LENGTH, LONG_LENGTH )));
-	case LEFT : return Robot::Light(Point::Left , Rect(Window::Width()        , Random(Window::Height()), Size(LONG_LENGTH , SHORT_LENGTH)));
-	case RIGHT: return Robot::Light(Point::Right, Rect(-LONG_LENGTH           , Random(Window::Height()), Size(LONG_LENGTH , SHORT_LENGTH)));
+	case UP   : return Robot::TitleLight(Point::Up   , Rect(Random(Window::Width()), Window::Height()        , Size(SHORT_LENGTH, LONG_LENGTH )));
+	case DOWN : return Robot::TitleLight(Point::Down , Rect(Random(Window::Width()), -LONG_LENGTH            , Size(SHORT_LENGTH, LONG_LENGTH )));
+	case LEFT : return Robot::TitleLight(Point::Left , Rect(Window::Width()        , Random(Window::Height()), Size(LONG_LENGTH , SHORT_LENGTH)));
+	case RIGHT: return Robot::TitleLight(Point::Right, Rect(-LONG_LENGTH           , Random(Window::Height()), Size(LONG_LENGTH , SHORT_LENGTH)));
 
 	default:
 
@@ -45,24 +45,24 @@ const Robot::Light Robot::Light::get()
 
 #endif // _DEBUG
 
-		return Robot::Light(Point::Zero, Rect());
+		return Robot::TitleLight(Point::Zero, Rect());
 	}
 }
 
 
-void Robot::Light::update()
+void Robot::TitleLight::update()
 {
 	_region.pos += _velocity;
 }
 
 
-void Robot::Light::draw() const
+void Robot::TitleLight::draw() const
 {
 	_region.drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 }
 
 
-bool Robot::Light::isEraseAble() const
+bool Robot::TitleLight::isEraseAble() const
 {
 	if (_region.x < -LONG_LENGTH    ) { return true; }
 	if (_region.x > Window::Width() ) { return true; }

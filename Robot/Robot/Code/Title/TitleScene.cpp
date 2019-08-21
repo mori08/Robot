@@ -64,7 +64,7 @@ void Robot::TitleScene::update()
 
 	if (--_generateLightFrameCount <= 0)
 	{
-		_lightList.emplace_back(Light::get());
+		_lightList.emplace_back(TitleLight::get());
 
 		_generateLightFrameCount = Random(MIN_GENERATE_FRAME_COUNT, MAX_GENERATE_FRAME_COUNT);
 	}
@@ -74,7 +74,7 @@ void Robot::TitleScene::update()
 		light.update();
 	}
 
-	Erase_if(_lightList, [](Light & light) {return light.isEraseAble(); });
+	Erase_if(_lightList, [](TitleLight & light) {return light.isEraseAble(); });
 
 	Optional<String> selectButtonkey = InputManager::Instance().selectButton();
 
