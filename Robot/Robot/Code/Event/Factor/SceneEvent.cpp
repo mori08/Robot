@@ -23,13 +23,15 @@ bool Robot::SceneEvent::load(const Info & info)
 	_sceneName = info[SCENE_NAME];
 	_sceneInfo = info[SCENE_INFO];
 
+	EventManager::Instance().setSceneName(_sceneName, _sceneInfo);
+
 	return _isSuccess = true;
 }
 
 
 void Robot::SceneEvent::perform() const
 {
-	EventManager::Instance().setSceneName(_sceneName, _sceneInfo);
+	EventManager::Instance().changeScene();
 }
 
 bool Robot::SceneEvent::isCompleted() const

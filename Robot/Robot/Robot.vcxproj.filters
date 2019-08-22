@@ -798,6 +798,9 @@
     <ClInclude Include="Code\Event\State\PlayEventState.h">
       <Filter>ヘッダー ファイル\Event\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\State\PauseEventState.h">
+      <Filter>ヘッダー ファイル\Event\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1098,6 +1101,9 @@
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Event\State\PlayEventState.cpp">
+      <Filter>ソース ファイル\Event\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\State\PauseEventState.cpp">
       <Filter>ソース ファイル\Event\State</Filter>
     </ClCompile>
   </ItemGroup>

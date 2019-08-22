@@ -342,6 +342,14 @@ namespace Robot
 		void setSceneName(const String & sceneName, const String & sceneInfo);
 
 		/// <summary>
+		/// 設定されたシーンへ遷移します。
+		/// </summary>
+		void changeScene()
+		{
+			_isChangeAbleScene = true;
+		}
+
+		/// <summary>
 		/// イベントを読み込みなおします。
 		/// </summary>
 		void reload();

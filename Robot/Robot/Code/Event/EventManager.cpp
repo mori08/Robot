@@ -382,7 +382,6 @@ void Robot::EventManager::setShake(double size, int span)
 
 void Robot::EventManager::setSceneName(const String & sceneName, const String & sceneInfo)
 {
-	_isChangeAbleScene = true;
 	_sceneName = { sceneName,sceneInfo };
 }
 
