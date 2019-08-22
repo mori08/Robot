@@ -2,6 +2,8 @@
 
 #include<queue>
 
+#include"State\EventState.h"
+
 #include"Object/EventObject.h"
 
 #include"Factor/EventBase.h"
@@ -22,6 +24,8 @@ namespace Robot
 	{
 	private:
 
+		using StatePtr = std::unique_ptr<EventState>;
+
 		using ObjectPtr  = std::shared_ptr<EventObject>;
 		using ObjectList = std::map<String, ObjectPtr>;
 
@@ -41,6 +45,8 @@ namespace Robot
 		String       _name;                // 管理しているイベントの名前
 
 		bool         _isSuccess;           // ロードが成功しているか
+
+		StatePtr     _state;               // 状態
 
 		ObjectList   _objectList;          // EventOjectのリスト
 
@@ -188,6 +194,26 @@ namespace Robot
 		/// <param name="sceneInfo"> 遷移先での補足情報 </param>
 		/// <returns> 遷移可能なとき true , そうでないとき false </returns>
 		bool isChangeAbleScene(String & sceneName, String & sceneInfo) const;
+
+	public: // EventStateの派生クラスで使用する関数
+
+		/// <summary>
+		/// イベントの更新を行います
+		/// </summary>
+		void updateEventAndObject();
+
+		/// <summary>
+		/// イベントの描画を行います
+		/// </summary>
+		void drawEventAndObject();
+
+		/// <summary>
+		/// 状態を変更します。
+		/// </summary>
+		void setState(StatePtr && state)
+		{
+			_state = std::move(state);
+		}
 
 	public: // EventBaseの派生クラスで使用する関数
 

@@ -303,6 +303,8 @@
     <ClInclude Include="Code\Event\Object\RoadBackObject.h" />
     <ClInclude Include="Code\Event\Object\TelevisionObject.h" />
     <ClInclude Include="Code\Event\Object\TestEventObject.h" />
+    <ClInclude Include="Code\Event\State\EventState.h" />
+    <ClInclude Include="Code\Event\State\PlayEventState.h" />
     <ClInclude Include="Code\Event\TextBox.h" />
     <ClInclude Include="Code\Game\GameLight.h" />
     <ClInclude Include="Code\Game\GameManager.h" />
@@ -407,6 +409,7 @@
     <ClCompile Include="Code\Event\Object\HelpRobotObject.cpp" />
     <ClCompile Include="Code\Event\Object\RoadBackObject.cpp" />
     <ClCompile Include="Code\Event\Object\TelevisionObject.cpp" />
+    <ClCompile Include="Code\Event\State\PlayEventState.cpp" />
     <ClCompile Include="Code\Event\TextBox.cpp" />
     <ClCompile Include="Code\Game\GameLight.cpp" />
     <ClCompile Include="Code\Game\GameManager.cpp" />

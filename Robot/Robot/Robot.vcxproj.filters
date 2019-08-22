@@ -154,6 +154,12 @@
     <Filter Include="ソース ファイル\Game\Object\MonitorState">
       <UniqueIdentifier>{a79afb29-ac28-4a82-99e7-ac37a22bbb4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Event\State">
+      <UniqueIdentifier>{109401ed-e62a-42d6-85e0-4c8a2b3080da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Event\State">
+      <UniqueIdentifier>{d48e8e06-b1a7-4166-9e76-e44acdb4a333}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -786,6 +792,12 @@
     <ClInclude Include="Code\Game\State\PauseGameState.h">
       <Filter>ヘッダー ファイル\Game\State</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Event\State\EventState.h">
+      <Filter>ヘッダー ファイル\Event\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Event\State\PlayEventState.h">
+      <Filter>ヘッダー ファイル\Event\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1084,6 +1096,9 @@
     </ClCompile>
     <ClCompile Include="Code\Game\State\PauseGameState.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Event\State\PlayEventState.cpp">
+      <Filter>ソース ファイル\Event\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,8 @@
 #include "../MyColor.h"
 #include "EventManager.h"
 
+#include "State\PlayEventState.h"
+
 #include "Factor\StartEvent.h"
 #include "Factor\GenerateEvent.h"
 #include "Factor\BackgroundEvent.h"
@@ -81,6 +83,9 @@ void Robot::EventManager::init()
 {
 	// 経過フレームを 0 に戻します
 	resetFrameCount();
+
+	// 状態をPlayEventStateにします
+	setState(std::make_unique<PlayEventState>());
 
 	// イベントオブジェクトを全て削除します
 	_objectList.clear();
@@ -257,6 +262,45 @@ void Robot::EventManager::load(const String & eventFileName)
 
 void Robot::EventManager::update()
 {
+	_state->update();
+}
+
+
+void Robot::EventManager::updateEventObject()
+{
+	for (auto & object : _objectList)
+	{
+		object.second->update();
+	}
+}
+
+
+void Robot::EventManager::draw() const
+{
+	_state->draw();
+}
+
+
+bool Robot::EventManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
+{
+	if (!_isSuccess)
+	{
+		sceneName = L"TitleScene";
+		return true;
+	}
+
+	if (_isChangeAbleScene)
+	{
+		sceneName = _sceneName.first;
+		sceneInfo = _sceneName.second;
+	}
+
+	return _isChangeAbleScene;
+}
+
+
+void Robot::EventManager::updateEventAndObject()
+{
 	if (!_isSuccess) { return; }
 
 	++_frameCount;
@@ -277,16 +321,7 @@ void Robot::EventManager::update()
 }
 
 
-void Robot::EventManager::updateEventObject()
-{
-	for (auto & object : _objectList)
-	{
-		object.second->update();
-	}
-}
-
-
-void Robot::EventManager::draw() const
+void Robot::EventManager::drawEventAndObject()
 {
 	if (!_isSuccess) { return; }
 
@@ -304,24 +339,6 @@ void Robot::EventManager::draw() const
 	Rect(Point::Zero, EVENT_SIZE).draw(Color(Palette::MyBlack, _darkAlpha.first));
 
 	_textBox.draw();
-}
-
-
-bool Robot::EventManager::isChangeAbleScene(String & sceneName, String & sceneInfo) const
-{
-	if (!_isSuccess)
-	{
-		sceneName = L"TitleScene";
-		return true;
-	}
-
-	if (_isChangeAbleScene)
-	{
-		sceneName = _sceneName.first;
-		sceneInfo = _sceneName.second;
-	}
-
-	return _isChangeAbleScene;
 }
 
 
