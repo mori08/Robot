@@ -783,6 +783,9 @@
     <ClInclude Include="Code\Title\TitleLight.h">
       <Filter>ヘッダー ファイル\Title</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Game\State\PauseGameState.h">
+      <Filter>ヘッダー ファイル\Game\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Main.cpp">
@@ -1078,6 +1081,9 @@
     </ClCompile>
     <ClCompile Include="Code\Title\TitleLight.cpp">
       <Filter>ソース ファイル\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Game\State\PauseGameState.cpp">
+      <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
