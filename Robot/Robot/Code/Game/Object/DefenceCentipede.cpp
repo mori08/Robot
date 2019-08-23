@@ -3,7 +3,7 @@
 
 namespace
 {
-	const size_t BODY_NUM = 10;
+	const size_t BODY_NUM = 8;
 	const double RANGE    = 100.0;
 	const double MIN_DISTANCE = 10.0;
 }
