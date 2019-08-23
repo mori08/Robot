@@ -27,7 +27,7 @@ namespace Robot
 		/// <param name="pos"> –Ú“IÀ•W </para,>
 		CentipedeBody(const Vec2 & pos);
 
-		void update() override;
+		virtual void update() override;
 
 		virtual void draw() const override;
 

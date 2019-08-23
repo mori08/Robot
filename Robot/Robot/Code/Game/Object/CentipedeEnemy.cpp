@@ -1,10 +1,15 @@
 #include "CentipedeEnemy.h"
+#include "../../MyColor.h"
 
 
 namespace
 {
 	const size_t LEADER_INDEX  = 0;  // æ“ª‚ÌƒCƒ“ƒfƒbƒNƒX
 	const size_t BODY_DISTANCE = 40; // ‘Ì‚Ì•”•i‚ª•Û‚Â‹——£
+
+	const double RADIUS             = 30.0; // Œõ‚Ì”¼Œa
+	const double SHADOW_BLUR_RADIUS = 10.0; // ‰e‚Ì‚Ú‚©‚µ‚Ì‘å‚«‚³
+	const double SHADOW_SPREAD      = 10.0; // ‰e‚ÌL‚ª‚è•û
 }
 
 
@@ -39,4 +44,10 @@ void Robot::CentipedeEnemy::draw() const
 	{
 		body->draw();
 	}
+}
+
+
+void Robot::CentipedeEnemy::drawLight() const
+{
+	Circle(_bodyList[LEADER_INDEX]->getPos(), RADIUS).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Color(Palette::MyWhite, 0x50));
 }

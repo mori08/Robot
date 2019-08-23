@@ -9,6 +9,8 @@ namespace
 	const int ALPHA_START_FRAMECOUNT = 180; // アルファ値を変更し始めるフレーム数
 	const int ALPHA_SPEED            = 5;   // 
 
+	const size_t STAGE_ID_INDEX = 5;
+
 	const Size ICON_SIZE(120, 120);          // 表示するアイコンの
 
 	const Point BOXROBOT_ICON_POS(120, 240); // 箱型ロボットのアイコンを表示する座標
@@ -21,8 +23,16 @@ namespace
 Robot::AccessState::AccessState(bool isTutorial)
 	: _framecount(0)
 	, _alpha(0xFF)
-	, _stageId(GameManager::Instance().getStageName()[5] - '0')
 {
+	if (GameManager::Instance().getStageName().length < STAGE_ID_INDEX)
+	{
+		_stageId = 0;
+	}
+	else
+	{
+		_stageId = GameManager::Instance().getStageName()[STAGE_ID_INDEX] - '0';
+	}
+
 	if (isTutorial)
 	{
 		_nextState = std::make_unique<TutorialStartState>();

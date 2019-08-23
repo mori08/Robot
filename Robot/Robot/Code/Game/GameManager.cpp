@@ -23,6 +23,9 @@
 #include "Object\LockGoal.h"
 #include "Object\PatrolTeamEnemy.h"
 #include "Object\FriendEnemy.h"
+#include "Object\HorizontalChaseEnemy.h"
+#include "Object\VerticalChaseEnemy.h"
+#include "Object\DefenceCentipede.h"
 #include "State\PlayingState.h"
 #include "State\GameClearState.h"
 #include "State\GameOverState.h"
@@ -69,6 +72,9 @@ void Robot::GameManager::setObjMap()
 	makeGenerateFunc<LockGoal>            (L"LockGoal");
 	makeGenerateFunc<PatrolTeamEnemy>     (L"Patrol");
 	makeGenerateFunc<FriendEnemy>         (L"Friend");
+	makeGenerateFunc<HorizontalChaseEnemy>(L"HorizontalChase");
+	makeGenerateFunc<VerticalChaseEnemy>  (L"VerticalChase");
+	makeGenerateFunc<DefenceCentipede>    (L"DefenceCentipede");
 }
 
 

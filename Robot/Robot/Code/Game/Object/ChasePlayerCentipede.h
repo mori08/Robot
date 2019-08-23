@@ -1,9 +1,6 @@
 #pragma once
 
 
-#pragma once
-
-
 #include "CentipedeEnemy.h"
 
 

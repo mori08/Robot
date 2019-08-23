@@ -5,12 +5,29 @@ namespace
 {
 	const int    CHANGE_TEXTURE_SPAN = 10; // 画像を変更するフレーム数
 	const Size   TEXTURE_SIZE(40, 40);     // 画像のサイズ
+	const double SPEED = 0.4;
+	const double CLEAR_DISTANCE = 5.0; // クリア判定が行われる距離
 }
 
 
 Robot::CentipedeGoalBody::CentipedeGoalBody(const Vec2 & pos)
 	: CentipedeBody(pos)
 {
+}
+
+
+void Robot::CentipedeGoalBody::update()
+{
+	++_frameCount;
+
+	moveObject(SPEED*GameManager::Instance().getPath(_pos, _goalPos));
+
+	GameManager::Instance().setGoalPos(_pos);
+
+	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
+	{
+		connectedPlayerProcess();
+	}
 }
 
 

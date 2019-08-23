@@ -23,6 +23,8 @@ namespace Robot
 
 	private:
 
+		void update() override;
+
 		void draw() const override;
 
 		void connectedPlayerProcess() override;

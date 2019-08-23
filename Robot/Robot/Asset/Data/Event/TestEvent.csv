@@ -1,1 +1,5 @@
-Scene,LoadEventScene,Stage9End,#
+Shadow,TRUE,#,,,
+Text,,NoIcon,1,,#
+Noise,TRUE,#,,,
+Text,,NoIcon,1,,#
+Scene,TitleScene,,#,,

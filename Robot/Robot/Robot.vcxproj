@@ -316,6 +316,7 @@
     <ClInclude Include="Code\Game\Object\CentipedeEnemy.h" />
     <ClInclude Include="Code\Game\Object\CentipedeGoalBody.h" />
     <ClInclude Include="Code\Game\Object\ChaseEnemy.h" />
+    <ClInclude Include="Code\Game\Object\DefenceCentipede.h" />
     <ClInclude Include="Code\Game\Object\DefenceEnemy.h" />
     <ClInclude Include="Code\Game\Object\DoctorDefence.h" />
     <ClInclude Include="Code\Game\Object\DoctorEnemy.h" />
@@ -324,6 +325,7 @@
     <ClInclude Include="Code\Game\Object\FriendEnemy.h" />
     <ClInclude Include="Code\Game\Object\GoalTailCentipede.h" />
     <ClInclude Include="Code\Game\Object\HorizontalBlockEnemy.h" />
+    <ClInclude Include="Code\Game\Object\HorizontalChaseEnemy.h" />
     <ClInclude Include="Code\Game\Object\LastGoal.h" />
     <ClInclude Include="Code\Game\Object\LockGoal.h" />
     <ClInclude Include="Code\Game\Object\LockKey.h" />
@@ -346,6 +348,7 @@
     <ClInclude Include="Code\Game\Object\RunAwayGoal.h" />
     <ClInclude Include="Code\Game\Object\TestGameObject.h" />
     <ClInclude Include="Code\Game\Object\VerticalBlockEnemy.h" />
+    <ClInclude Include="Code\Game\Object\VerticalChaseEnemy.h" />
     <ClInclude Include="Code\Game\Object\VerticalEnemy.h" />
     <ClInclude Include="Code\Game\StageData.h" />
     <ClInclude Include="Code\Game\State\AccessState.h" />
@@ -421,6 +424,7 @@
     <ClCompile Include="Code\Game\Object\CentipedeEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\CentipedeGoalBody.cpp" />
     <ClCompile Include="Code\Game\Object\ChaseEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\DefenceCentipede.cpp" />
     <ClCompile Include="Code\Game\Object\DefenceEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\DoctorDefence.cpp" />
     <ClCompile Include="Code\Game\Object\DoctorEnemy.cpp" />
@@ -429,6 +433,7 @@
     <ClCompile Include="Code\Game\Object\FriendEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\GoalTailCentipede.cpp" />
     <ClCompile Include="Code\Game\Object\HorizontalBlockEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\HorizontalChaseEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\LastGoal.cpp" />
     <ClCompile Include="Code\Game\Object\LockGoal.cpp" />
     <ClCompile Include="Code\Game\Object\LockKey.cpp" />
@@ -452,6 +457,7 @@
     <ClCompile Include="Code\Game\Object\AssassinEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\TestGameObject.cpp" />
     <ClCompile Include="Code\Game\Object\VerticalBlockEnemy.cpp" />
+    <ClCompile Include="Code\Game\Object\VerticalChaseEnemy.cpp" />
     <ClCompile Include="Code\Game\Object\VerticalEnemy.cpp" />
     <ClCompile Include="Code\Game\StageData.cpp" />
     <ClCompile Include="Code\Game\State\AccessState.cpp" />
