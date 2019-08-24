@@ -57,7 +57,7 @@ void Robot::PauseEventState::update()
 		}
 		if (*selectButtonKey == MENU_KEY)
 		{
-			EventManager::Instance().setSceneName(L"MenuScene", L"");
+			EventManager::Instance().setSceneName(L"SavingDataScene", L"");
 			EventManager::Instance().changeScene();
 		}
 	}

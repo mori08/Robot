@@ -19,15 +19,16 @@ namespace
 	const int TEXT_DRAW_SPAN = 12; // テキストを表示するフレーム数
 	const int CHAR_WIDTH     = 64; // 1文字の幅
 
-	const String RETRY_KEY(L"retry"); // リトライボタンのキー
-	const String MENU_KEY (L"menu");  // メニューに戻るボタンのキー
+	const String RETRY_KEY(L"RETRY"); // リトライボタンのキー
+	const String MENU_KEY (L"MENU");  // メニューに戻るボタンのキー
+	std::vector<String> KEY_LIST      // キーのリスト
+	{
+		RETRY_KEY,
+		MENU_KEY
+	};
 
-	const Point RETRY_BUTTON_POS(400, 300); // リトライボタンの座標
-	const Point MENU_BUTTON_POS(400, 370);  // メニューに戻るボタンの座標
-	const Size  BUTTON_SIZE(210, 70);       // ボタンのサイズ
-	const Size  BOARD_SIZE(210, 140);       // ボタンを置く板のサイズ
-	const int   BOARD_ALPHA = 80;           // ボタンを置く板の不透明度
-	const int   CURSOR_WIDTH = 300;         // カーソルの横幅
+	const Point BUTTON_POS(510, 380); // 一番上のボタンの座標
+	const int   BUTTON_WIDTH(200);    // ボタンの幅
 
 	const double CURSOR_MOVE_RATE = 0.8; // カーソルが動くときの割合
 
@@ -44,15 +45,18 @@ Robot::GameOverState::GameOverState()
 {
 	InputManager::Instance().clearButtonList();
 
-	InputManager::Instance().registerButton(RETRY_KEY, Rect(RETRY_BUTTON_POS, BUTTON_SIZE));
-	InputManager::Instance().registerButton(MENU_KEY , Rect(MENU_BUTTON_POS , BUTTON_SIZE));
+	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+	for (const auto & key : KEY_LIST)
+	{
+		InputManager::Instance().registerButton(key, region);
+		region.y += FontAsset(L"15").height;
+	}
 
 	InputManager::Instance().setVerticalAdjacentButton(RETRY_KEY, MENU_KEY);
 
 	InputManager::Instance().setSelectedButton(RETRY_KEY);
 
 	_cursor = InputManager::Instance().getSelectedButton().getRegion();
-	_cursor.w = CURSOR_WIDTH;
 }
 
 
@@ -109,13 +113,18 @@ void Robot::GameOverState::draw() const
 
 	if (_frameCount < SELCT_FRAME_COUNT) { return; }
 
-	Color boardColor(Palette::MyWhite, BOARD_ALPHA);
-	Rect(RETRY_BUTTON_POS, BOARD_SIZE).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
+	Color boardColor(Palette::MyBlack, 0x80);
+	Rect(BUTTON_POS, BUTTON_WIDTH, (int)KEY_LIST.size()*FontAsset(L"15").height).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
 
 	_cursor.draw(Palette::MyWhite);
 
-	TextureAsset(L"ReTryButton").draw(RETRY_BUTTON_POS);
-	TextureAsset(L"MenuButton").draw(MENU_BUTTON_POS);
+	int y = BUTTON_POS.y;
+	for (const auto & key : KEY_LIST)
+	{
+		Color color = key == InputManager::Instance().getSelectedButton().getKey() ? Palette::MyBlack : Palette::MyWhite;
+		FontAsset(L"15")(key).draw(Window::Width() - FontAsset(L"15")(key).region().w - 10, y, color);
+		y += FontAsset(L"15").height;
+	}
 }
 
 

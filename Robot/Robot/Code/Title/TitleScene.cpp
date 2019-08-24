@@ -1,20 +1,23 @@
 #include "TitleScene.h"
 #include "../Input/InputManager.h"
 #include "../MyColor.h"
+#include "../SaveData/SaveDataManager.h"
 
 
 namespace
 {
-	const String ENTER_KEY(L"enter"); // 始めるボタンのキー
-	const String EXIT_KEY(L"exit");   // 終えるボタンのキー
+	const String NEWGAME_KEY (L"NEWGAME" ); // はじめからボタンのキー
+	const String CONTINUE_KEY(L"CONTINUE"); // つづきからボタンのキー
+	const String EXIT_KEY    (L"EXIT");     // やめるボタンのキー
+	const std::vector<String> KEY_LIST      // キーのリスト
+	{
+		NEWGAME_KEY,
+		CONTINUE_KEY,
+		EXIT_KEY
+	};
 
-	const Point ENTER_BUTTON_POS(400, 300); // 始めるボタンの座標
-	const Point EXIT_BUTTON_POS (400, 370); // 終えるボタンの座標
-
-	const Size  BUTTON_SIZE(210, 70);        // ボタンのサイズ
-	const Size  BUTTON_BOARD_SIZE(210, 140); // ボタン二つのサイズ
-	const int   BUTTON_BOARD_ALPHA = 40;     // ボタン二つの背景の不透明度
-	const Size  CURSOR_SIZE(300, 70);        // 
+	const Point BUTTON_POS(510, 380); // 一番上のボタンの座標
+	const int   BUTTON_WIDTH(200);    // ボタンの幅
 
 	const Point TITLE_LOGO_POS(80, 120); // タイトルロゴの座標
 
@@ -33,15 +36,19 @@ Robot::TitleScene::TitleScene()
 {
 	InputManager::Instance().clearButtonList();
 
-	InputManager::Instance().registerButton(ENTER_KEY, Rect(ENTER_BUTTON_POS, BUTTON_SIZE));
-	InputManager::Instance().registerButton(EXIT_KEY,  Rect(EXIT_BUTTON_POS , BUTTON_SIZE));
+	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+	for (const auto & key : KEY_LIST)
+	{
+		InputManager::Instance().registerButton(key, region);
+		region.y += FontAsset(L"15").height;
+	}
 
-	InputManager::Instance().setVerticalAdjacentButton(ENTER_KEY, EXIT_KEY);
+	InputManager::Instance().setVerticalAdjacentButton(NEWGAME_KEY , CONTINUE_KEY);
+	InputManager::Instance().setVerticalAdjacentButton(CONTINUE_KEY, EXIT_KEY    );
 
-	InputManager::Instance().setSelectedButton(ENTER_KEY);
+	InputManager::Instance().setSelectedButton(CONTINUE_KEY);
 
 	_cursor = InputManager::Instance().getSelectedButton().getRegion();
-	_cursor.size = CURSOR_SIZE;
 }
 
 
@@ -80,11 +87,17 @@ void Robot::TitleScene::update()
 
 	if(selectButtonkey)
 	{
-		if (*selectButtonkey == L"enter")
+		if (*selectButtonkey == NEWGAME_KEY)
+		{
+			SaveDataManager::Instance().initOfNewGame();
+			m_data->sceneInfo = L"Stage0";
+			changeScene(L"LoadGameScene");
+		}
+		if (*selectButtonkey == CONTINUE_KEY)
 		{
 			changeScene(L"LoadSaveDataScene");
 		}
-		if (*selectButtonkey == L"exit")
+		if (*selectButtonkey == EXIT_KEY)
 		{
 			System::Exit();
 		}
@@ -98,18 +111,23 @@ void Robot::TitleScene::draw() const
 {
 	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
 
-	_cursor.drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);
-
-	Color boardColor(Palette::MyWhite, BUTTON_BOARD_ALPHA);
-	Rect(ENTER_BUTTON_POS, BUTTON_BOARD_SIZE).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
-
 	for (const auto & light : _lightList)
 	{
 		light.draw();
 	}
 
-	TextureAsset(L"WakeButton").draw(ENTER_BUTTON_POS);
-	TextureAsset(L"SleepButton").draw(EXIT_BUTTON_POS);
+	Color boardColor(Palette::MyBlack, 0x80);
+	Rect(BUTTON_POS, BUTTON_WIDTH, (int)KEY_LIST.size()*FontAsset(L"15").height).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, boardColor);
+
+	_cursor.draw(Palette::MyWhite);
+
+	int y = BUTTON_POS.y;
+	for (const auto & key : KEY_LIST)
+	{
+		Color color = key == InputManager::Instance().getSelectedButton().getKey() ? Palette::MyBlack : Palette::MyWhite;
+		FontAsset(L"15")(key).draw(Window::Width() - FontAsset(L"15")(key).region().w - 10, y, color);
+		y += FontAsset(L"15").height;
+	}
 
 	TextureAsset(L"TitleLogo").draw(TITLE_LOGO_POS);
 }
