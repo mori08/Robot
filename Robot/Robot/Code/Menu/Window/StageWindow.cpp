@@ -1,17 +1,19 @@
 #include "StageWindow.h"
 #include "../../Input/InputManager.h"
 #include "../../SaveData/SaveDataManager.h"
+#include "../../MyColor.h"
 
 
 namespace
 {
-	const Size  BUTTON_SIZE(110, 110); // ボタンのサイズ
-	const Point POS_BASE(15, 100);     // 座標の基準
-	const Size  WIDTH(15, 15);         // ボタンの間隔
-	const int   COLUMNS = 5;           // 1行に配置するボタン数
 	const int   MAX_BUTTON_NUM = 10;   // ボタンの数の最大値
 
-	const Vec2 OPEN_OFFSET(0, -10);
+	const Point BUTTON_POS(210, 40);
+	const int   BUTTON_WIDTH(200);
+
+	const Point NEW_POS(90,0);
+
+	const Vec2 OPEN_OFFSET(-10, 0);
 }
 
 
@@ -19,16 +21,16 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 {
 	const Rect TITLE_BUTTON_REGION(16, 16, 168, 56); // タイトルボタンの範囲
 	
+	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+
 	for (int i = 0; i < MAX_BUTTON_NUM; ++i)
 	{
-		Point pos = POS_BASE;
-		pos += Point(i%COLUMNS, i / COLUMNS)*Point(BUTTON_SIZE + WIDTH);
 		String stageName = L"Stage" + ToString(i);
 
 		registerButton
 		(
 			L"Stage" + ToString(i),
-			Rect(pos, BUTTON_SIZE),
+			region,
 			std::make_unique<Processing>
 			(
 				[&menuScene, stageName]() 
@@ -44,7 +46,9 @@ Robot::StageWindow::StageWindow(MenuScene & menuScene)
 				}
 			)
 		);
+		_cursor = region;
 
+		region.y += FontAsset(L"15").height;
 		_buttonNum = i + 1;
 
 		if (!SaveDataManager::Instance().getFlag(stageName))
@@ -65,10 +69,10 @@ void Robot::StageWindow::draw() const
 	MenuWindowBase::draw();
 	for (const auto & button : _buttonPtrList)
 	{
-		if (SaveDataManager::Instance().getFlag(button->getKey()))
-		{
-			TextureAsset(L"Check").draw(button->getPoint());
-		}
+		if (SaveDataManager::Instance().getFlag(button->getKey())) { continue; }
+
+		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
+		FontAsset(L"15")(L"[NEW]").draw(button->getPoint() + NEW_POS, color);
 	}
 }
 
@@ -82,18 +86,12 @@ void Robot::StageWindow::updateInputManager() const
 		InputManager::Instance().registerButton(_buttonPtrList[i]);
 	}
 
-	for (int i = 0; i < _buttonNum; ++i)
+	for (int i = 1; i < _buttonNum; ++i)
 	{
-		int verticalId = i - COLUMNS;
-		if (verticalId >= 0 && verticalId < _buttonNum)
-		{
-			InputManager::Instance().setVerticalAdjacentButton(_buttonPtrList[verticalId]->getKey(), _buttonPtrList[i]->getKey());
-		}
-
 		int horizontalId = (i - 1 + MAX_BUTTON_NUM) % MAX_BUTTON_NUM;
 		if (horizontalId < _buttonNum)
 		{
-			InputManager::Instance().setHorizontalAdjacentButton(_buttonPtrList[horizontalId]->getKey(), _buttonPtrList[i]->getKey());
+			InputManager::Instance().setVerticalAdjacentButton(_buttonPtrList[horizontalId]->getKey(), _buttonPtrList[i]->getKey());
 		}
 	}
 

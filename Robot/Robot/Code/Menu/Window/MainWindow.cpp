@@ -4,38 +4,37 @@
 
 namespace
 {
-	const Point STAGE_POS(16 , 16);  // ステージボタンの座標
-	const Point RESET_POS(200, 16);
-	const Point TITLE_POS(384, 16); // タイトルボタンの座標
+	const String STAGE_KEY(L"STAGE SELECT"); // ステージボタンのキー
+	const String TITLE_KEY(L"TITLE");        // タイトルボタンのキー
 
-	const Size BUTTON_SIZE(168, 56); // ボタンのサイズ
+	const Point BUTTON_POS(0, 40); // 一番上のボタンの座標
+	const int   BUTTON_WIDTH(180); // ボタンの鼻
 
-	const Vec2 OPEN_OFFSET(0, 0);
+	const Vec2 OPEN_OFFSET(-10, 0);
 }
 
 
 Robot::MainWindow::MainWindow(MenuScene & menuScene)
 {
+	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+
+	_cursor = region;
+
 	registerButton
 	(
-		L"StageButton",
-		Rect(STAGE_POS, BUTTON_SIZE),
+		STAGE_KEY,
+		region,
 		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Stage"); })
 	);
+	region.y += FontAsset(L"15").height;
 	registerButton
 	(
-		L"ResetButton",
-		Rect(RESET_POS, BUTTON_SIZE),
-		std::make_unique<Processing>([&menuScene]() { menuScene.changeSceneAndInfo(L"ResetSaveDataScene", L""); })
-	);
-	registerButton
-	(
-		L"TitleButton", 
-		Rect(TITLE_POS, BUTTON_SIZE),
+		TITLE_KEY,
+		region,
 		std::make_unique<Processing>([&menuScene]() { menuScene.changeSceneAndInfo(L"TitleScene", L""); })
 	); 
 
-	_selectedButtonKey = L"StageButton";
+	_selectedButtonKey = STAGE_KEY;
 
 	_openOffset = OPEN_OFFSET;
 }
@@ -45,12 +44,12 @@ void Robot::MainWindow::updateInputManager() const
 {
 	InputManager::Instance().clearButtonList();
 
-	InputManager::Instance().registerButton(L"StageButton", Rect(STAGE_POS, BUTTON_SIZE));
-	InputManager::Instance().registerButton(L"ResetButton", Rect(RESET_POS, BUTTON_SIZE));
-	InputManager::Instance().registerButton(L"TitleButton", Rect(TITLE_POS, BUTTON_SIZE));
+	for (const auto & button : _buttonPtrList)
+	{
+		InputManager::Instance().registerButton(button->getKey(), button->getRegion());
+	}
 
-	InputManager::Instance().setHorizontalAdjacentButton(L"StageButton", L"ResetButton");
-	InputManager::Instance().setHorizontalAdjacentButton(L"ResetButton", L"TitleButton");
+	InputManager::Instance().setVerticalAdjacentButton(STAGE_KEY, TITLE_KEY);
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

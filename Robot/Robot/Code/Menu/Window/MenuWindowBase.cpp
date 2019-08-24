@@ -10,14 +10,10 @@
 
 namespace
 {
-	const double COLOR_CHANGE_RATE = 0.95; // 色の変更の割合
+	const double COLOR_CHANGE_RATE  = 0.80; // 色の変更の割合
+	const double CURSOR_MOVE_RATE  = 0.8;  // カーソルが動くときの割合
 
-	const ColorF WHITE(0.9); // 白
-	const ColorF GRAY(0.3);  // 灰
 	const double MIN_COLOR_DIFFERENCE = 0.01; // 色の誤差の最小値
-
-	const double BLUR_RADIUS = 5.0;   // 影のぼかし方
-	const double SHADOW_SPREAD = 3.0; // 影の広がり方
 }
 
 
@@ -31,6 +27,7 @@ Robot::MenuWindowBase::MenuWindowBase()
 {
 	_state = std::unique_ptr<ClosedState>();
 	_closedProcessing = nullptr;
+	_white = NON_SHOWED_COLOR;
 }
 
 
@@ -75,31 +72,19 @@ void Robot::MenuWindowBase::close()
 }
 
 
-void Robot::MenuWindowBase::setColor(const Color color, size_t num)
+void Robot::MenuWindowBase::setColor(const ColorF & color)
 {
-	num = Min(num, _buttonPtrList.size());
-	for (size_t i = 0; i < num; ++i)
-	{
-		changeColor(_colorMap[_buttonPtrList[i]->getKey()], color);
-	}
+	changeColor(_white, color);
 }
 
 
 void Robot::MenuWindowBase::updateSelectedWindowButton()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
-	
-	for (const auto & button : _buttonPtrList)
-	{
-		if (button->getKey() == _selectedButtonKey)
-		{
-			_colorMap[button->getKey()] = Palette::MyWhite;
-		}
-		else
-		{
-			changeColor(_colorMap[button->getKey()], NON_SELECTED_COLOR);
-		}
-	}
+
+	_cursor.pos = CURSOR_MOVE_RATE*_cursor.pos + (1 - CURSOR_MOVE_RATE)*InputManager::Instance().getSelectedButton().getRegion().pos;
+
+	changeColor(_white, SELECTED_COLOR);
 
 	if (InputManager::Instance().option() && _closedProcessing != nullptr)
 	{
@@ -125,10 +110,12 @@ void Robot::MenuWindowBase::updateSelectedWindowButton()
 
 void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 {
+	_cursor.movedBy(offset).draw(_white);
+	
 	for (const auto button : _buttonPtrList)
 	{
-		button->getRegion().drawShadow(offset, BLUR_RADIUS, SHADOW_SPREAD, _colorMap.find(button->getKey())->second);
-		TextureAsset(button->getKey()).draw(button->getRegion().tl + offset);
+		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
+		FontAsset(L"15")(L" ",button->getKey()).draw(button->getPoint() + offset, color);
 	}
 }
 
@@ -138,8 +125,6 @@ void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect 
 	_buttonPtrList.emplace_back(std::make_shared<Button>(buttonKey, region));
 
 	_processingMap[buttonKey] = std::move(processing);
-
-	_colorMap[buttonKey] = ColorF(Palette::MyWhite).setAlpha(0);
 }
 
 

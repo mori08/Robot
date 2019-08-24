@@ -90,8 +90,8 @@ void Robot::TitleScene::update()
 		if (*selectButtonkey == NEWGAME_KEY)
 		{
 			SaveDataManager::Instance().initOfNewGame();
-			m_data->sceneInfo = L"Stage0";
-			changeScene(L"LoadGameScene");
+			m_data->sceneInfo = L"Stage0Start";
+			changeScene(L"LoadEventScene");
 		}
 		if (*selectButtonkey == CONTINUE_KEY)
 		{

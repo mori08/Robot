@@ -34,9 +34,11 @@ namespace Robot
 
 		std::vector<std::shared_ptr<Button>>      _buttonPtrList; // ボタンのポインタのリスト
 		
-		std::unordered_map<String, ColorF>        _colorMap;      // 色のリスト ボタンのキーと結びつける
-
 		std::unordered_map<String, ProcessingPtr> _processingMap; // ボタンを押したときの処理リスト
+
+		ColorF        _white;             // 白色
+
+		RectF         _cursor;            // カーソル
 
 		ProcessingPtr _closedProcessing;  // ウィンドウを閉じるときの処理
 
@@ -97,8 +99,7 @@ namespace Robot
 		/// ボタンの色を変更します。
 		/// </summary>
 		/// <param name="color"> 色 </param>
-		/// <param name="num"> 変更する個数 </param>
-		void setColor(const Color color, size_t num = String::npos);
+		void setColor(const ColorF & color);
 
 		/// <summary>
 		/// ボタンの数を取得します

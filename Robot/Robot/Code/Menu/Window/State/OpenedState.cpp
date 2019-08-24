@@ -3,7 +3,7 @@
 
 void Robot::OpenedState::update(MenuWindowBase & window)
 {
-	window.setColor(MenuWindowBase::SHOWED_COLOR);
+	window.setColor(MenuWindowBase::NON_SELECTED_COLOR);
 }
 
 
