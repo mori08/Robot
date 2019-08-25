@@ -5,6 +5,7 @@
 namespace
 {
 	const String STAGE_KEY(L"STAGE SELECT"); // ステージボタンのキー
+	const String DIARY_KEY(L"DIARY");        // 日記ボタンのキー
 	const String TITLE_KEY(L"TITLE");        // タイトルボタンのキー
 
 	const Point BUTTON_POS(0, 40); // 一番上のボタンの座標
@@ -27,6 +28,15 @@ Robot::MainWindow::MainWindow(MenuScene & menuScene)
 		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Stage"); })
 	);
 	region.y += FontAsset(L"15").height;
+
+	registerButton
+	(
+		DIARY_KEY,
+		region,
+		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Diary"); })
+	);
+	region.y += FontAsset(L"15").height;
+	
 	registerButton
 	(
 		TITLE_KEY,
@@ -49,7 +59,8 @@ void Robot::MainWindow::updateInputManager() const
 		InputManager::Instance().registerButton(button->getKey(), button->getRegion());
 	}
 
-	InputManager::Instance().setVerticalAdjacentButton(STAGE_KEY, TITLE_KEY);
+	InputManager::Instance().setVerticalAdjacentButton(STAGE_KEY, DIARY_KEY);
+	InputManager::Instance().setVerticalAdjacentButton(DIARY_KEY, TITLE_KEY);
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

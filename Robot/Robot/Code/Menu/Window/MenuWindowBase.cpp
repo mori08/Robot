@@ -10,7 +10,7 @@
 
 namespace
 {
-	const double COLOR_CHANGE_RATE  = 0.80; // 色の変更の割合
+	const double COLOR_CHANGE_RATE = 0.90; // 色の変更の割合
 	const double CURSOR_MOVE_RATE  = 0.8;  // カーソルが動くときの割合
 
 	const double MIN_COLOR_DIFFERENCE = 0.01; // 色の誤差の最小値
@@ -115,7 +115,7 @@ void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 	for (const auto button : _buttonPtrList)
 	{
 		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
-		FontAsset(L"15")(L" ",button->getKey()).draw(button->getPoint() + offset, color);
+		FontAsset(L"15")(L" ", _buttonNameMap.find(button->getKey())->second).draw(button->getPoint() + offset, color);
 	}
 }
 
@@ -125,6 +125,8 @@ void Robot::MenuWindowBase::registerButton(const String & buttonKey, const Rect 
 	_buttonPtrList.emplace_back(std::make_shared<Button>(buttonKey, region));
 
 	_processingMap[buttonKey] = std::move(processing);
+
+	_buttonNameMap[buttonKey] = buttonKey;
 }
 
 

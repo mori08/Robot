@@ -1,6 +1,7 @@
 #include "MenuScene.h"
 #include "Window\MainWindow.h"
 #include "Window\StageWindow.h"
+#include "Window\DiaryWindow.h"
 
 
 namespace
@@ -13,6 +14,7 @@ Robot::MenuScene::MenuScene()
 {
 	_windowMap[L"Main"]  = std::make_shared<MainWindow>(*this);
 	_windowMap[L"Stage"] = std::make_shared<StageWindow>(*this);
+	_windowMap[L"Diary"] = std::make_shared<DiaryWindow>(*this);
 
 	_selectedWindowName = L"Main";
 	

@@ -34,6 +34,8 @@ namespace Robot
 
 		std::vector<std::shared_ptr<Button>>      _buttonPtrList; // ボタンのポインタのリスト
 		
+		std::unordered_map<String, String>        _buttonNameMap; // ボタンに表示する名前のマップ
+
 		std::unordered_map<String, ProcessingPtr> _processingMap; // ボタンを押したときの処理リスト
 
 		ColorF        _white;             // 白色
@@ -146,6 +148,16 @@ namespace Robot
 		/// <param name="region"> 範囲 </param>
 		/// <param name="processing"> ボタンを押したときの処理 </param>
 		void registerButton(const String & buttonKey, const Rect & region, ProcessingPtr processing);
+
+		/// <summary>
+		/// ボタンに表示する名前を設定します。
+		/// </summary>
+		/// <param name="buttonKey"> ボタンのキー </param>
+		/// <param name="buttonName"> ボタンの名前 </param>
+		void setButtonName(const String & buttonKey, const String & buttonName)
+		{
+			_buttonNameMap[buttonKey] = buttonName;
+		}
 
 	private:
 
