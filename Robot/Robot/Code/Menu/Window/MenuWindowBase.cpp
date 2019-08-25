@@ -28,6 +28,7 @@ Robot::MenuWindowBase::MenuWindowBase()
 	_state = std::unique_ptr<ClosedState>();
 	_closedProcessing = nullptr;
 	_white = NON_SHOWED_COLOR;
+	_boardColor = ColorF(Palette::MyBlack, 0);
 }
 
 
@@ -78,6 +79,12 @@ void Robot::MenuWindowBase::setColor(const ColorF & color)
 }
 
 
+void Robot::MenuWindowBase::setBoardAlpha(double alpha)
+{
+	changeColor(_boardColor, ColorF(Palette::MyBlack, alpha));
+}
+
+
 void Robot::MenuWindowBase::updateSelectedWindowButton()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
@@ -110,9 +117,14 @@ void Robot::MenuWindowBase::updateSelectedWindowButton()
 
 void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 {
+	for (const auto & button : _buttonPtrList)
+	{
+		button->getRegion().draw(_boardColor);
+	}
+
 	_cursor.movedBy(offset).draw(_white);
 	
-	for (const auto button : _buttonPtrList)
+	for (const auto & button : _buttonPtrList)
 	{
 		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
 		FontAsset(L"15")(L" ", _buttonNameMap.find(button->getKey())->second).draw(button->getPoint() + offset, color);

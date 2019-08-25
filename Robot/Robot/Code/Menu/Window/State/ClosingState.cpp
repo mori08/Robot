@@ -25,6 +25,7 @@ void Robot::ClosingState::update(MenuWindowBase & window)
 	_offset = RATE*_offset + (1 - RATE)*MAX_OFFSET;
 
 	window.setColor(MenuWindowBase::NON_SHOWED_COLOR);
+	window.setBoardAlpha(0);
 
 	if (_frameCount > CHANGE_STATE_FRAME_COUNT)
 	{

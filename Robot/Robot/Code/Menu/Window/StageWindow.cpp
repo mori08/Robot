@@ -68,7 +68,7 @@ void Robot::StageWindow::draw() const
 	{
 		if (SaveDataManager::Instance().getFlag(button->getKey())) { continue; }
 
-		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
+		ColorF color = _selectedButtonKey == button->getKey() ? _boardColor : _white;
 		FontAsset(L"15")(L"[NEW]").draw(button->getPoint() + NEW_POS, color);
 	}
 }

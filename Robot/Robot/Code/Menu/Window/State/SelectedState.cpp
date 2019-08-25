@@ -4,6 +4,7 @@
 void Robot::SelectedState::update(MenuWindowBase & window)
 {
 	window.updateSelectedWindowButton();
+	window.setBoardAlpha(0.5);
 }
 
 

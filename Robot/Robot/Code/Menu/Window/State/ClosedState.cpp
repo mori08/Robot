@@ -1,9 +1,9 @@
 #include "ClosedState.h"
 
 
-void Robot::ClosedState::update(MenuWindowBase &)
+void Robot::ClosedState::update(MenuWindowBase & window)
 {
-	
+	window.setBoardAlpha(0);
 }
 
 

@@ -40,6 +40,8 @@ namespace Robot
 
 		ColorF        _white;             // 白色
 
+		ColorF        _boardColor;        // ボードの色
+
 		RectF         _cursor;            // カーソル
 
 		ProcessingPtr _closedProcessing;  // ウィンドウを閉じるときの処理
@@ -102,6 +104,12 @@ namespace Robot
 		/// </summary>
 		/// <param name="color"> 色 </param>
 		void setColor(const ColorF & color);
+
+		/// <summary>
+		/// ボードのアルファ値を変更します。
+		/// </summary>
+		/// <param name="alpha"> アルファ値 </param>
+		void setBoardAlpha(double alpha);
 
 		/// <summary>
 		/// ボタンの数を取得します

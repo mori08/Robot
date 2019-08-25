@@ -4,6 +4,7 @@
 void Robot::OpenedState::update(MenuWindowBase & window)
 {
 	window.setColor(MenuWindowBase::NON_SELECTED_COLOR);
+	window.setBoardAlpha(0.5);
 }
 
 

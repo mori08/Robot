@@ -2,7 +2,8 @@
 
 
 #include "../MyLibrary.h"
-#include "Window\MenuWindowBase.h"
+#include "Window/MenuWindowBase.h"
+#include "../Title/TitleLight.h"
 
 
 namespace Robot
@@ -18,6 +19,9 @@ namespace Robot
 
 		String _selectedWindowName; // 選択されているウィンドウの名前
 		std::unordered_map<String, std::shared_ptr<MenuWindowBase>> _windowMap; // ウィンドウのマップ
+
+		int                   _generateLightFrameCount;
+		std::list<TitleLight> _lightList; // 光のリスト
 
 	public:
 

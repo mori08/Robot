@@ -1,17 +1,16 @@
 #include "DiaryWindow.h"
 #include "../../SaveData/SaveDataManager.h"
 #include "../../Input/InputManager.h"
+#include "../../MyColor.h"
 
 
 namespace
 {
 	const int MAX_STAGE_NUM = 10; // ステージ数の最大値
 
-	const int   BUTTON_WIDTH(60);
 	const int   STAGE_WIDTH (90);
 	const Point STAGE_POS   (210, 40);
 	const Point A_BUTTON_POS = STAGE_POS + Point(STAGE_WIDTH, 0);
-	const Point B_BUTTON_POS = A_BUTTON_POS + Point(BUTTON_WIDTH, 0);
 
 	const Vec2 OPEN_OFFSET(-10, 0);
 }
@@ -19,8 +18,10 @@ namespace
 
 Robot::DiaryWindow::DiaryWindow(MenuScene & menuScene)
 {
-	Rect regionA(A_BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
-	Rect regionB(B_BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+	Rect regionA(A_BUTTON_POS, FontAsset(L"15")(L" [ A ] ").region().w, FontAsset(L"15").height);
+	Rect regionB = regionA;
+	regionB.x += FontAsset(L"15")(L" [ A ] ").region().w;
+	regionB.w  = FontAsset(L"15")(L" [ B ] ").region().w;
 
 	_cursor = regionA;
 
@@ -79,6 +80,7 @@ void Robot::DiaryWindow::draw() const
 	Point pos = STAGE_POS;
 	for (int i = 0; i < _stageNum; ++i)
 	{
+		Rect(pos, STAGE_WIDTH, FontAsset(L"15").height).draw(_boardColor);
 		FontAsset(L"15")(L" Stage" + ToString(i)).draw(pos, _white);
 		pos.y += FontAsset(L"15").height;
 	}
