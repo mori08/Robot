@@ -1,4 +1,5 @@
 #include "GiantEnemy.h"
+#include "../State/GameOverState.h"
 
 
 namespace
@@ -35,7 +36,7 @@ void Robot::GiantEnemy::update()
 
 	if ((_pos - GameManager::Instance().getPlayerPos()).length() < GAMEOVER_DISTANCE)
 	{
-		GameManager::Instance().gameOver();
+		GameManager::Instance().changeGameState(std::make_unique<GameOverState>());
 	}
 }
 

@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "../../Input/InputManager.h"
+#include "../../SaveData/SaveDataManager.h"
 
 
 namespace
@@ -21,6 +22,7 @@ Robot::MainWindow::MainWindow(MenuScene & menuScene)
 
 	_cursor = region;
 
+	// ステージボタン
 	registerButton
 	(
 		STAGE_KEY,
@@ -29,14 +31,19 @@ Robot::MainWindow::MainWindow(MenuScene & menuScene)
 	);
 	region.y += FontAsset(L"15").height;
 
-	registerButton
-	(
-		DIARY_KEY,
-		region,
-		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Diary"); })
-	);
-	region.y += FontAsset(L"15").height;
-	
+	// 日記ボタン
+	if (SaveDataManager::Instance().getFlag(L"Stage0"))
+	{
+		registerButton
+		(
+			DIARY_KEY,
+			region,
+			std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Diary"); })
+		);
+		region.y += FontAsset(L"15").height;
+	}
+
+	// タイトルボタン
 	registerButton
 	(
 		TITLE_KEY,
@@ -59,8 +66,10 @@ void Robot::MainWindow::updateInputManager() const
 		InputManager::Instance().registerButton(button->getKey(), button->getRegion());
 	}
 
-	InputManager::Instance().setVerticalAdjacentButton(STAGE_KEY, DIARY_KEY);
-	InputManager::Instance().setVerticalAdjacentButton(DIARY_KEY, TITLE_KEY);
+	for (int i = 1; i < _buttonPtrList.size(); ++i)
+	{
+		InputManager::Instance().setVerticalAdjacentButton(_buttonPtrList[i - 1]->getKey(), _buttonPtrList[i]->getKey());
+	}
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
 }

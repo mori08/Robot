@@ -24,7 +24,7 @@ void Robot::TutorialOfLightMove::update()
 {
 	++_frameCount;
 
-	GameManager::Instance().updateObjectAndLight();
+	PlayingState::update();
 
 	if (_frameCount > CHANGE_STATE_FRAMECOUNT)
 	{
@@ -39,9 +39,9 @@ void Robot::TutorialOfLightMove::draw() const
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"今度は光を動かしてみよう。(マウス)";
 
-	GameManager::Instance().drawObjectAndLight();
-
 	TextureAsset(L"Mouse").draw(MOUSE_POS, Alpha(0xF0));
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
+
+	PlayingState::draw();
 }

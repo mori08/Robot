@@ -8,6 +8,7 @@
 #include"Event\LoadEventScene.h"
 #include"Event\EventManager.h"
 #include"Event\Factor\GenerateEvent.h"
+#include"Event\LoadDiaryScene.h"
 #include"Game\GameScene.h"
 #include"Game\LoadGameScene.h"
 #include"Menu\MenuScene.h"
@@ -47,6 +48,7 @@ void Main()
 	sceneManager.add<Robot::MenuScene>         (L"MenuScene");
 	sceneManager.add<Robot::SavingDataScene>   (L"SavingDataScene");
 	sceneManager.add<Robot::ResetSaveDataScene>(L"ResetSaveDataScene");
+	sceneManager.add<Robot::LoadDiaryScene>    (L"LoadDiaryScene");
 
 	while (System::Update())
 	{

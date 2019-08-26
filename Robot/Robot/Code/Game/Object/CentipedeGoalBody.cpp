@@ -1,4 +1,5 @@
 #include "CentipedeGoalBody.h"
+#include "../State/GameClearState.h"
 
 
 namespace
@@ -40,5 +41,5 @@ void Robot::CentipedeGoalBody::draw() const
 
 void Robot::CentipedeGoalBody::connectedPlayerProcess()
 {
-	GameManager::Instance().gameClear();
+	GameManager::Instance().changeGameState(std::make_unique<GameClearState>());
 }

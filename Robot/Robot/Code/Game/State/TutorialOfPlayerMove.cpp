@@ -25,7 +25,7 @@ void Robot::TutorialOfPlayerMove::update()
 {
 	++_frameCount;
 
-	GameManager::Instance().updateObjectAndLight();
+	PlayingState::update();
 
 	GameManager::Instance().setLightPos(GameManager::Instance().getPlayerPos());
 
@@ -44,9 +44,9 @@ void Robot::TutorialOfPlayerMove::draw() const
 	const size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"Ç∆ÇËÇ†Ç¶Ç∏à⁄ìÆÇµÇƒÇ›ÇÊÇ§ÅB\n(WASDÉLÅ[)";
 
-	GameManager::Instance().drawObjectAndLight();
-
 	TextureAsset(L"WASD").draw(WASD_POS, Alpha(0xf0));
 
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
+
+	PlayingState::draw();
 }

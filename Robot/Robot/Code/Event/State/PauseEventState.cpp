@@ -6,10 +6,10 @@
 
 namespace
 {
-	const Point BUTTON_POS(510, 380); // 一番上のボタンの座標
-	const int   BUTTON_WIDTH(200);      // ボタンの幅
+	const Point BUTTON_POS  (520, 380); // 一番上のボタンの座標
+	const int   BUTTON_WIDTH(120);    // ボタンの幅
 
-	const String CONTINUE_KEY = L"CONTINUE";
+	const String CONTINUE_KEY = L"RESUME";
 	const String SKIP_KEY = L"SKIP";
 	const String MENU_KEY = L"MENU";
 

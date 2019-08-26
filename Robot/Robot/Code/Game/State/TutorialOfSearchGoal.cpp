@@ -19,7 +19,7 @@ void Robot::TutorialOfSearchGoal::update()
 {
 	++_frameCount;
 
-	GameManager::Instance().updateObjectAndLight();
+	PlayingState::update();
 }
 
 
@@ -28,7 +28,7 @@ void Robot::TutorialOfSearchGoal::draw() const
 	size_t drawTextLength = _frameCount / DRAW_TEXT_SPAN;
 	String text = L"ƒS[ƒ‹‚ğ’T‚µ‚ÄA\n‚»‚±‚És‚Á‚Ä‚İ‚æ‚¤";
 
-	GameManager::Instance().drawObjectAndLight();
-
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
+
+	PlayingState::draw();
 }

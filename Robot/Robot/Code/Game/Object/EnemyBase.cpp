@@ -1,4 +1,5 @@
 #include "EnemyBase.h"
+#include "../State/GameOverState.h"
 
 
 namespace
@@ -38,4 +39,10 @@ void Robot::EnemyBase::update()
 void Robot::EnemyBase::draw() const
 {
 	TextureAsset(L"Enemy")(_texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
+}
+
+
+void Robot::EnemyBase::gameOver()
+{
+	GameManager::Instance().changeGameState(std::make_unique<GameOverState>());
 }

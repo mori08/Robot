@@ -1,5 +1,6 @@
 #include "LockGoal.h"
 #include "../../MyColor.h"
+#include "../State/GameClearState.h"
 
 
 namespace
@@ -64,14 +65,21 @@ void Robot::LockGoal::update()
 
 	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		GameManager::Instance().gameClear();
+		GameManager::Instance().changeGameState(std::make_unique<GameClearState>());
 	}
 }
 
 
 void Robot::LockGoal::draw() const
 {
-	TextureAsset(L"Goal")(_texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
+	if (_lastKeyNum > 0)
+	{
+		TextureAsset(L"LockGoal").drawAt(_pos);
+	}
+	else
+	{
+		TextureAsset(L"Goal")(_texturePos*TEXTURE_SIZE, TEXTURE_SIZE).drawAt(_pos);
+	}
 
 	for(const auto & key : _keyList)
 	{

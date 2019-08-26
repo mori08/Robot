@@ -15,7 +15,7 @@ void Robot::TutorialStartState::update()
 {
 	++_framecount;
 
-	GameManager::Instance().updateObjectAndLight();
+	PlayingState::update();
 
 	GameManager::Instance().setLightPos(GameManager::Instance().getPlayerPos());
 
@@ -31,7 +31,7 @@ void Robot::TutorialStartState::draw() const
 	const size_t drawTextLength = _framecount / DRAW_TEXT_SPAN;
 	String text = L"ここがテレビの中かな…。";
 
-	GameManager::Instance().drawObjectAndLight();
-
 	FontAsset(L"20")(text.substr(0, drawTextLength)).drawAt(DRAW_TEXT_POS, Palette::MyWhite);
+
+	PlayingState::draw();
 }

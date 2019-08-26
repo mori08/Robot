@@ -30,10 +30,7 @@ namespace Robot
 
 		Vec2 getMoveVec() override;
 
-		void gameOver() override
-		{
-			GameManager::Instance().lose();
-		}
+		void gameOver() override;
 
 	};
 }

@@ -12,7 +12,7 @@ namespace Robot
 	*/
 	class PlayingState : public GameState
 	{
-	private:
+	protected:
 
 		void update() override;
 

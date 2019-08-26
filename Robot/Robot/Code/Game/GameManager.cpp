@@ -27,11 +27,9 @@
 #include "Object\VerticalChaseEnemy.h"
 #include "Object\DefenceCentipede.h"
 #include "State\PlayingState.h"
-#include "State\GameClearState.h"
-#include "State\GameOverState.h"
 #include "State\TutorialOfPlayerMove.h"
-#include "State\LoseState.h"
 #include "State\AccessState.h"
+#include "State\PauseGameState.h"
 
 
 namespace
@@ -309,20 +307,15 @@ void Robot::GameManager::makeTutorialGoal()
 }
 
 
-void Robot::GameManager::gameClear()
+void Robot::GameManager::pause()
 {
-	_gameState = std::make_unique<GameClearState>();
+	_pauseState = std::move(_gameState);
+	_gameState  = std::make_unique<PauseGameState>();
 }
 
 
-void Robot::GameManager::gameOver()
+void Robot::GameManager::resume()
 {
-	_gameState = std::make_unique<GameOverState>();
-}
-
-
-void Robot::GameManager::lose()
-{
-	_gameState = std::make_unique<LoseState>();
+	_gameState = std::move(_pauseState);
 }
 

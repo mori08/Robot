@@ -40,19 +40,21 @@ namespace Robot
 
 	private:
 
-		String     _stageName; // ステージ名
+		String     _stageName;  // ステージ名
 
-		StatePtr   _gameState; // 状態
+		StatePtr   _gameState;  // 状態
 
-		StageData  _stageData; // ステージデータ
+		StatePtr   _pauseState; // ポーズ後に戻る状態
 
-		ObjList    _objList;   // オブジェクトのリスト
+		StageData  _stageData;  // ステージデータ
 
-		GameLight  _light;     // 光
+		ObjList    _objList;    // オブジェクトのリスト
 
-		Vec2       _playerPos; // プレイヤーの座標
+		GameLight  _light;      // 光
 
-		Vec2       _goalPos;   // ゴールの座標
+		Vec2       _playerPos;  // プレイヤーの座標
+
+		Vec2       _goalPos;    // ゴールの座標
 
 		bool       _isChangeAbleScene; // シーン遷移可能か
 
@@ -281,19 +283,14 @@ namespace Robot
 		}
 
 		/// <summary>
-		/// ゲームクリア
+		/// ポーズ
 		/// </summary>
-		void gameClear();
+		void pause();
 
 		/// <summary>
-		/// ゲームオーバー
+		/// 再開
 		/// </summary>
-		void gameOver();
-
-		/// <summary>
-		/// ゲームオーバー(負けイベ用)
-		/// </summary>
-		void lose();
+		void resume();
 
 	};
 }

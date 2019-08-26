@@ -1,6 +1,7 @@
 #include "DoctorEnemy.h"
 #include "RandomEnemy.h"
 #include "ChaseEnemy.h"
+#include "../State/GameClearState.h"
 
 
 namespace
@@ -53,7 +54,7 @@ void Robot::DoctorEnemy::update()
 
 	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		GameManager::Instance().gameClear();
+		GameManager::Instance().changeGameState(std::make_unique<GameClearState>());
 	}
 
 	updateSwitch();

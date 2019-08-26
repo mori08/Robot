@@ -6,10 +6,10 @@
 
 namespace
 {
-	const Point BUTTON_POS  (510, 380); // 一番上のボタンの座標
-	const int   BUTTON_WIDTH(200);      // ボタンの幅
+	const Point BUTTON_POS  (520, 380); // 一番上のボタンの座標
+	const int   BUTTON_WIDTH(120);      // ボタンの幅
 
-	const String CONTINUE_KEY = L"CONTINUE";
+	const String CONTINUE_KEY = L"RESUME";
 	const String RETRY_KEY    = L"RETRY";
 	const String MENU_KEY     = L"MENU";
 
@@ -42,14 +42,14 @@ void Robot::PauseGameState::update()
 
 	if (InputManager::Instance().option())
 	{
-		GameManager::Instance().changeGameState(std::make_unique<PlayingState>());
+		GameManager::Instance().resume();
 	}
 
 	if (selectButtonKey)
 	{
 		if (*selectButtonKey == CONTINUE_KEY)
 		{
-			GameManager::Instance().changeGameState(std::make_unique<PlayingState>());
+			GameManager::Instance().resume();
 		}
 		if (*selectButtonKey == RETRY_KEY)
 		{

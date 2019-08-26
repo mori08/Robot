@@ -1,5 +1,6 @@
 #include "FriendEnemy.h"
 #include "../../MyColor.h"
+#include "../State/LoseState.h"
 
 
 namespace
@@ -51,4 +52,10 @@ Vec2 Robot::FriendEnemy::getMoveVec()
 
 	// ƒvƒŒƒCƒ„[‚ğ’ÇÕ
 	return _speed*GameManager::Instance().getPath(_pos, GameManager::Instance().getPlayerPos());
+}
+
+
+void Robot::FriendEnemy::gameOver()
+{
+	GameManager::Instance().changeGameState(std::make_unique<LoseState>());
 }

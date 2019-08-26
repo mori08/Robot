@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../GameManager.h"
+#include "PlayingState.h"
 
 
 namespace Robot
@@ -10,7 +10,7 @@ namespace Robot
 	TutorialOfPlayerMoveクラス
 	プレイヤーの動作のチュートリアル
 	*/
-	class TutorialOfPlayerMove : public GameState
+	class TutorialOfPlayerMove : public PlayingState
 	{
 	private:
 

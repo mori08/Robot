@@ -1,4 +1,5 @@
 #include "GameGoal.h"
+#include "../State/GameClearState.h"
 
 
 namespace
@@ -24,7 +25,7 @@ void Robot::GameGoal::update()
 
 	if ((_pos - GameManager::Instance().getPlayerPos()).length() < CLEAR_DISTANCE)
 	{
-		GameManager::Instance().gameClear();
+		GameManager::Instance().changeGameState(std::make_unique<GameClearState>());
 	}
 
 }

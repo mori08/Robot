@@ -40,10 +40,7 @@ namespace Robot
 		/// <summary>
 		/// ƒvƒŒƒCƒ„[‚ÆÚG‚µ‚½‚Æ‚«‚Ìˆ—
 		/// </summary>
-		virtual void gameOver()
-		{
-			GameManager::Instance().gameOver();
-		}
+		virtual void gameOver();
 
 	};
 }

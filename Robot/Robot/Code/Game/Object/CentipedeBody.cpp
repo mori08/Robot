@@ -1,4 +1,5 @@
 #include "CentipedeBody.h"
+#include "../State/GameOverState.h"
 
 
 namespace
@@ -40,5 +41,5 @@ void Robot::CentipedeBody::draw() const
 
 void Robot::CentipedeBody::connectedPlayerProcess()
 {
-	GameManager::Instance().gameOver();
+	GameManager::Instance().changeGameState(std::make_unique<GameOverState>());
 }
