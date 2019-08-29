@@ -4,8 +4,8 @@
 
 namespace
 {
-	const int MAX_GENERATE_FRAME_COUNT = 240; // 光生成までの時間の最大値
-	const int MIN_GENERATE_FRAME_COUNT = 60;  // 光生成までの時間の最小値
+	const int MAX_GENERATE_FRAME_COUNT = 200; // 光生成までの時間の最大値
+	const int MIN_GENERATE_FRAME_COUNT = 100;  // 光生成までの時間の最小値
 }
 
 
@@ -20,7 +20,7 @@ void Robot::MenuScene::update()
 {
 	if (--_generateLightFrameCount <= 0)
 	{
-		_lightList.emplace_back(TitleLight::get());
+		_lightList.emplace_back(MenuLight::get());
 
 		_generateLightFrameCount = Random(MIN_GENERATE_FRAME_COUNT, MAX_GENERATE_FRAME_COUNT);
 	}
@@ -30,7 +30,9 @@ void Robot::MenuScene::update()
 		light.update();
 	}
 
-	Erase_if(_lightList, [](TitleLight & light) {return light.isEraseAble(); }); Erase_if(_lightList, [](TitleLight & light) {return light.isEraseAble(); });
+	Erase_if(_lightList, [](MenuLight & light) {return light.isEraseAble(); });
+
+	_lightList.sort();
 
 	MenuManager::Instance().update();
 
@@ -39,6 +41,15 @@ void Robot::MenuScene::update()
 	{
 		m_data->sceneInfo = sceneInfo;
 		changeScene(sceneName);
+	}
+}
+
+
+void Robot::MenuScene::updateFadeOut(double)
+{
+	for (auto & light : _lightList)
+	{
+		light.update();
 	}
 }
 

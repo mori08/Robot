@@ -7,7 +7,7 @@
 namespace Robot
 {
 	/*
-	Lightクラス
+	TitleLightクラス
 	タイトルシーンに流す光
 	*/
 	class TitleLight

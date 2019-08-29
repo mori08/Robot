@@ -2,7 +2,7 @@
 
 
 #include "../MyLibrary.h"
-#include "../Title/TitleLight.h"
+#include "MenuLight.h"
 
 
 namespace Robot
@@ -16,8 +16,8 @@ namespace Robot
 	{
 	private:
 
-		int                   _generateLightFrameCount;
-		std::list<TitleLight> _lightList; // 光のリスト
+		int                  _generateLightFrameCount;
+		std::list<MenuLight> _lightList; // 光のリスト
 
 	public:
 
@@ -26,6 +26,8 @@ namespace Robot
 	private:
 
 		void update() override;
+
+		void updateFadeOut(double) override;
 
 		void draw() const override;
 

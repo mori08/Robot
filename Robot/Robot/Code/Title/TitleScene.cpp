@@ -107,6 +107,17 @@ void Robot::TitleScene::update()
 }
 
 
+void Robot::TitleScene::updateFadeOut(double)
+{
+	for (auto & light : _lightList)
+	{
+		light.update();
+	}
+
+	_cursor.pos = CURSOR_MOVE_RATE*_cursor.pos + (1 - CURSOR_MOVE_RATE)*InputManager::Instance().getSelectedButton().getRegion().pos;
+}
+
+
 void Robot::TitleScene::draw() const
 {
 	Rect(TITLE_LOGO_POS, TextureAsset(L"TitleLogo").size).drawShadow(Vec2::Zero, SHADOW_BLUR_RADIUS, SHADOW_SPREAD, Palette::MyWhite);

@@ -10,7 +10,7 @@
 
 namespace
 {
-	const double COLOR_CHANGE_RATE = 0.90; // 色の変更の割合
+	const double COLOR_CHANGE_RATE = 0.85; // 色の変更の割合
 	const double CURSOR_MOVE_RATE  = 0.8;  // カーソルが動くときの割合
 
 	const double MIN_COLOR_DIFFERENCE = 0.01; // 色の誤差の最小値
@@ -22,7 +22,7 @@ const ColorF Robot::MenuWindowBase::SHOWED_COLOR      (ColorF(Palette::MyWhite),
 const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(ColorF(Palette::MyWhite), 0.4);
 const ColorF Robot::MenuWindowBase::SELECTED_COLOR    (ColorF(Palette::MyWhite), 1.0);
 
-const double Robot::MenuWindowBase::BOARD_ALPHA = 0.4;
+const double Robot::MenuWindowBase::BOARD_ALPHA = 0.5;
 
 
 Robot::MenuWindowBase::MenuWindowBase()
