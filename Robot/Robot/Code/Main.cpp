@@ -12,6 +12,7 @@
 #include"Game\GameScene.h"
 #include"Game\LoadGameScene.h"
 #include"Menu\MenuScene.h"
+#include"Menu\LoadMenuScene.h"
 #include"Game\GameManager.h"
 #include"SaveData\SavingDataScene.h"
 #include"SaveData\ResetSaveDataScene.h"
@@ -49,6 +50,7 @@ void Main()
 	sceneManager.add<Robot::SavingDataScene>   (L"SavingDataScene");
 	sceneManager.add<Robot::ResetSaveDataScene>(L"ResetSaveDataScene");
 	sceneManager.add<Robot::LoadDiaryScene>    (L"LoadDiaryScene");
+	sceneManager.add<Robot::LoadMenuScene>     (L"LoadMenuScene");
 
 	while (System::Update())
 	{

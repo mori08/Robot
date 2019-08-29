@@ -30,6 +30,7 @@
 #include "State\TutorialOfPlayerMove.h"
 #include "State\AccessState.h"
 #include "State\PauseGameState.h"
+#include "State\GameClearState.h"
 
 
 namespace
@@ -230,7 +231,7 @@ void Robot::GameManager::updateObjectAndLight()
 #ifdef _DEBUG
 	if (Input::KeyG.clicked)
 	{
-		gameClear();
+		GameManager::Instance().changeGameState(std::make_unique<GameClearState>());
 	}
 #endif // _DEBUG
 

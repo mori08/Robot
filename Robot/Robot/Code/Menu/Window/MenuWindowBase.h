@@ -28,6 +28,8 @@ namespace Robot
 		static const ColorF NON_SELECTED_COLOR;
 		static const ColorF SELECTED_COLOR;
 
+		static const double BOARD_ALPHA;
+
 	protected:
 
 		std::unique_ptr<WindowState>              _state;         // 状態
@@ -38,11 +40,13 @@ namespace Robot
 
 		std::unordered_map<String, ProcessingPtr> _processingMap; // ボタンを押したときの処理リスト
 
+		std::pair<RectF, RectF>                   _cursor;        // カーソル
+
+		std::pair<String,RectF>                   _defaultButton; // デフォルトのボタンの { 名前 , 範囲 }
+
 		ColorF        _white;             // 白色
 
 		ColorF        _boardColor;        // ボードの色
-
-		RectF         _cursor;            // カーソル
 
 		ProcessingPtr _closedProcessing;  // ウィンドウを閉じるときの処理
 
@@ -50,9 +54,14 @@ namespace Robot
 
 		Vec2          _openOffset;        // ウィンドウを開くときの演出開始位置
 
-	public: // MenuSceneで使用
+	public: // MenuManagerで使用
 
 		MenuWindowBase();
+
+		/// <summary>
+		/// セーブデータを参照しながらボタンを生成します。
+		/// </summary>
+		void load();
 
 		/// <summary>
 		/// 更新
@@ -106,6 +115,11 @@ namespace Robot
 		void setColor(const ColorF & color);
 
 		/// <summary>
+		/// カーソルの位置を変更します。
+		/// </summary>
+		void moveCursol();
+
+		/// <summary>
 		/// ボードのアルファ値を変更します。
 		/// </summary>
 		/// <param name="alpha"> アルファ値 </param>
@@ -139,6 +153,16 @@ namespace Robot
 		}
 
 	protected:
+
+		/// <summary>
+		/// ボタンをリセットします。
+		/// </summary>
+		void resetButton();
+
+		/// <summary>
+		/// ボタンを生成します。
+		/// </summary>
+		virtual void makeButton() = 0;
 
 		/// <summary>
 		/// 指定された処理があるか示します。

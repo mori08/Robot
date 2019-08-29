@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "../MenuManager.h"
 #include "../../Input/InputManager.h"
 #include "../../SaveData/SaveDataManager.h"
 
@@ -9,6 +10,8 @@ namespace
 	const String DIARY_KEY(L"DIARY");        // 日記ボタンのキー
 	const String TITLE_KEY(L"TITLE");        // タイトルボタンのキー
 
+	const String TITLE_COPY(L"TITLE_COPY"); // タイトルボタンのキー(TITLE_KEYとは位置が異なる)
+
 	const Point BUTTON_POS(0, 40); // 一番上のボタンの座標
 	const int   BUTTON_WIDTH(180); // ボタンの鼻
 
@@ -16,43 +19,8 @@ namespace
 }
 
 
-Robot::MainWindow::MainWindow(MenuScene & menuScene)
+Robot::MainWindow::MainWindow()
 {
-	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
-
-	_cursor = region;
-
-	// ステージボタン
-	registerButton
-	(
-		STAGE_KEY,
-		region,
-		std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Stage"); })
-	);
-	region.y += FontAsset(L"15").height;
-
-	// 日記ボタン
-	if (SaveDataManager::Instance().getFlag(L"Stage0"))
-	{
-		registerButton
-		(
-			DIARY_KEY,
-			region,
-			std::make_unique<Processing>([&menuScene]() { menuScene.openWindow(L"Diary"); })
-		);
-		region.y += FontAsset(L"15").height;
-	}
-
-	// タイトルボタン
-	registerButton
-	(
-		TITLE_KEY,
-		region,
-		std::make_unique<Processing>([&menuScene]() { menuScene.changeSceneAndInfo(L"TitleScene", L""); })
-	); 
-
-	_selectedButtonKey = STAGE_KEY;
-
 	_openOffset = OPEN_OFFSET;
 }
 
@@ -72,4 +40,52 @@ void Robot::MainWindow::updateInputManager() const
 	}
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
+}
+
+
+void Robot::MainWindow::makeButton()
+{
+	Rect region(BUTTON_POS, BUTTON_WIDTH, FontAsset(L"15").height);
+
+	_defaultButton = { STAGE_KEY,region };
+
+	// ステージボタン
+	registerButton
+	(
+		STAGE_KEY,
+		region,
+		std::make_unique<Processing>([]() { MenuManager::Instance().openWindow(L"Stage"); })
+	);
+	region.y += FontAsset(L"15").height;
+
+	// 日記ボタン
+	if (SaveDataManager::Instance().getFlag(L"Stage0"))
+	{
+		registerButton
+		(
+			DIARY_KEY,
+			region,
+			std::make_unique<Processing>([]() { MenuManager::Instance().openWindow(L"Diary"); })
+		);
+		region.y += FontAsset(L"15").height;
+
+		// タイトルボタン
+		registerButton
+		(
+			TITLE_KEY,
+			region,
+			std::make_unique<Processing>([]() { MenuManager::Instance().setSceneName(L"TitleScene", L""); })
+		);
+	}
+	else
+	{
+		// タイトルボタン
+		registerButton
+		(
+			TITLE_COPY,
+			region,
+			std::make_unique<Processing>([]() { MenuManager::Instance().setSceneName(L"TitleScene", L""); })
+		);
+		_buttonNameMap[TITLE_COPY] = TITLE_KEY;
+	}
 }

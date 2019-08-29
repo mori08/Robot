@@ -1,4 +1,5 @@
 #include"LoadSaveDataScene.h"
+#include"../Menu/MenuManager.h"
 
 
 void Robot::LoadSaveDataScene::load()
@@ -12,17 +13,9 @@ void Robot::LoadSaveDataScene::complete()
 	switch(_loadResult)
 	{
 	case SaveDataManager::LoadResult::NEW_GAME:
-	case SaveDataManager::LoadResult::CONTINUE:
-		/*
-		m_data->sceneInfo = L"Event0";
-		changeScene(L"LoadEventScene");
-		*/
-		// ↑Eventのテスト用
-		// ↓正規の実装
-		
-		m_data->sceneInfo = L"Test";
-		changeScene(L"MenuScene");
-		 
+	case SaveDataManager::LoadResult::CONTINUE:		
+		m_data->sceneInfo = L"";
+		changeScene(L"LoadMenuScene");
 		break;
 
 	case SaveDataManager::LoadResult::ERROR:

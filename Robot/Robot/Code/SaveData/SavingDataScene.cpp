@@ -1,5 +1,6 @@
 #include "SavingDataScene.h"
 #include "SaveDataManager.h"
+#include "../Menu/MenuManager.h"
 
 
 namespace
@@ -21,7 +22,7 @@ void Robot::SavingDataScene::load()
 
 void Robot::SavingDataScene::complete()
 {
-	changeScene(L"MenuScene");
+	changeScene(L"LoadMenuScene");
 }
 
 

@@ -24,7 +24,8 @@ void Robot::OpeningState::update(MenuWindowBase & window)
 	_offset *= RATE;
 
 	window.setColor(MenuWindowBase::SELECTED_COLOR);
-	window.setBoardAlpha(0.5);
+	window.moveCursol();
+	window.setBoardAlpha(MenuWindowBase::BOARD_ALPHA);
 
 	if (_frameCount > CHANGE_STATE_FRAME_COUNT)
 	{

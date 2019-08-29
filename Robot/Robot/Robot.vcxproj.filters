@@ -142,12 +142,6 @@
     <Filter Include="ソース ファイル\Menu">
       <UniqueIdentifier>{81265636-6517-4a98-ad79-c36b81e7fade}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Menu\State">
-      <UniqueIdentifier>{b8e263a9-0be5-495a-919c-8745fd08b5ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Menu\State">
-      <UniqueIdentifier>{8c44a008-c866-4345-8892-687048dcbf5d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Game\Object\MonitorState">
       <UniqueIdentifier>{0f2e2292-ee41-409f-baae-6742f340a63b}</UniqueIdentifier>
     </Filter>
@@ -159,6 +153,18 @@
     </Filter>
     <Filter Include="ソース ファイル\Event\State">
       <UniqueIdentifier>{d48e8e06-b1a7-4166-9e76-e44acdb4a333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Menu\Window">
+      <UniqueIdentifier>{80a15869-21e7-4392-9f01-90c8dfe3fe4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Menu\Window\State">
+      <UniqueIdentifier>{b8e263a9-0be5-495a-919c-8745fd08b5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\Window">
+      <UniqueIdentifier>{55f5ade4-4d13-4171-a14b-109c3a782b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\Window\State">
+      <UniqueIdentifier>{8c44a008-c866-4345-8892-687048dcbf5d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -603,15 +609,6 @@
     <ClInclude Include="Code\Menu\MenuScene.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Menu\Window\MenuWindowBase.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Menu\Window\MainWindow.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Menu\Window\StageWindow.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Game\Object\EnemyBase.h">
       <Filter>ヘッダー ファイル\Game\Object</Filter>
     </ClInclude>
@@ -682,22 +679,22 @@
       <Filter>ヘッダー ファイル\SaveData</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\WindowState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\OpenedState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\SelectedState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\ClosedState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\OpeningState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Menu\Window\State\ClosingState.h">
-      <Filter>ヘッダー ファイル\Menu\State</Filter>
+      <Filter>ヘッダー ファイル\Menu\Window\State</Filter>
     </ClInclude>
     <ClInclude Include="Code\Event\Object\HelpRobotObject.h">
       <Filter>ヘッダー ファイル\Event\Object</Filter>
@@ -813,7 +810,22 @@
     <ClInclude Include="Code\Event\LoadDiaryScene.h">
       <Filter>ヘッダー ファイル\Event</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Menu\MenuManager.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
     <ClInclude Include="Code\Menu\Window\DiaryWindow.h">
+      <Filter>ヘッダー ファイル\Menu\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\Window\MainWindow.h">
+      <Filter>ヘッダー ファイル\Menu\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\Window\StageWindow.h">
+      <Filter>ヘッダー ファイル\Menu\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\Window\MenuWindowBase.h">
+      <Filter>ヘッダー ファイル\Menu\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Menu\LoadMenuScene.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
   </ItemGroup>
@@ -935,16 +947,7 @@
     <ClCompile Include="Code\Game\State\GameOverState.cpp">
       <Filter>ソース ファイル\Game\State</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Menu\Window\MenuWindowBase.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Menu\Window\MainWindow.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Menu\MenuScene.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Menu\Window\StageWindow.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Code\Game\Object\EnemyBase.cpp">
@@ -1014,19 +1017,19 @@
       <Filter>ソース ファイル\SaveData</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\OpenedState.cpp">
-      <Filter>ソース ファイル\Menu\State</Filter>
+      <Filter>ソース ファイル\Menu\Window\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\SelectedState.cpp">
-      <Filter>ソース ファイル\Menu\State</Filter>
+      <Filter>ソース ファイル\Menu\Window\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\ClosedState.cpp">
-      <Filter>ソース ファイル\Menu\State</Filter>
+      <Filter>ソース ファイル\Menu\Window\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\OpeningState.cpp">
-      <Filter>ソース ファイル\Menu\State</Filter>
+      <Filter>ソース ファイル\Menu\Window\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Menu\Window\State\ClosingState.cpp">
-      <Filter>ソース ファイル\Menu\State</Filter>
+      <Filter>ソース ファイル\Menu\Window\State</Filter>
     </ClCompile>
     <ClCompile Include="Code\Event\Object\HelpRobotObject.cpp">
       <Filter>ソース ファイル\Event\Object</Filter>
@@ -1133,8 +1136,23 @@
     <ClCompile Include="Code\Event\LoadDiaryScene.cpp">
       <Filter>ソース ファイル\Event</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Menu\Window\DiaryWindow.cpp">
+    <ClCompile Include="Code\Menu\MenuManager.cpp">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\DiaryWindow.cpp">
+      <Filter>ソース ファイル\Menu\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\MainWindow.cpp">
+      <Filter>ソース ファイル\Menu\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\StageWindow.cpp">
+      <Filter>ソース ファイル\Menu\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\Window\MenuWindowBase.cpp">
+      <Filter>ソース ファイル\Menu\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Menu\LoadMenuScene.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

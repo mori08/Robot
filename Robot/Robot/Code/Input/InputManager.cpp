@@ -75,6 +75,7 @@ void Robot::InputManager::setSelectedButton(const String & key)
 	if (_buttonList.find(key) == _buttonList.end())
 	{
 		Println(L"Error > setSelectedButtonで存在しないキーが指定されています。");
+		Println(key);
 		return;
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../MenuScene.h"
+#include "MenuWindowBase.h"
 
 
 namespace Robot
@@ -18,13 +18,15 @@ namespace Robot
 
 	public:
 
-		DiaryWindow(MenuScene & menuScene);
+		DiaryWindow();
 
 	private:
 
 		void draw() const override;
 
 		void updateInputManager() const override;
+
+		void makeButton() override;
 
 	};
 }

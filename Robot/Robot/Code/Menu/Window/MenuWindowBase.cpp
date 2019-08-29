@@ -22,13 +22,29 @@ const ColorF Robot::MenuWindowBase::SHOWED_COLOR      (ColorF(Palette::MyWhite),
 const ColorF Robot::MenuWindowBase::NON_SELECTED_COLOR(ColorF(Palette::MyWhite), 0.4);
 const ColorF Robot::MenuWindowBase::SELECTED_COLOR    (ColorF(Palette::MyWhite), 1.0);
 
+const double Robot::MenuWindowBase::BOARD_ALPHA = 0.4;
+
 
 Robot::MenuWindowBase::MenuWindowBase()
+	: _defaultButton(L"", Rect())
 {
 	_state = std::unique_ptr<ClosedState>();
 	_closedProcessing = nullptr;
 	_white = NON_SHOWED_COLOR;
 	_boardColor = ColorF(Palette::MyBlack, 0);
+}
+
+
+void Robot::MenuWindowBase::load()
+{
+	resetButton();
+	makeButton();
+	if (!_buttonNameMap.count(_selectedButtonKey))
+	{
+		_selectedButtonKey = _defaultButton.first;
+		_cursor.second     = _defaultButton.second;
+	}
+	_cursor.first = _cursor.second;
 }
 
 
@@ -51,6 +67,9 @@ void Robot::MenuWindowBase::draw() const
 
 void Robot::MenuWindowBase::open()
 {
+	_selectedButtonKey = _defaultButton.first;
+	_cursor            = { _defaultButton.second,_defaultButton.second };
+
 	_state = std::make_unique<OpeningState>(_openOffset);
 }
 
@@ -79,6 +98,12 @@ void Robot::MenuWindowBase::setColor(const ColorF & color)
 }
 
 
+void Robot::MenuWindowBase::moveCursol()
+{
+	_cursor.first.pos = CURSOR_MOVE_RATE*_cursor.first.pos + (1 - CURSOR_MOVE_RATE)*_cursor.second.pos;
+}
+
+
 void Robot::MenuWindowBase::setBoardAlpha(double alpha)
 {
 	changeColor(_boardColor, ColorF(Palette::MyBlack, alpha));
@@ -88,8 +113,9 @@ void Robot::MenuWindowBase::setBoardAlpha(double alpha)
 void Robot::MenuWindowBase::updateSelectedWindowButton()
 {
 	_selectedButtonKey = InputManager::Instance().getSelectedButton().getKey();
+	_cursor.second.pos = InputManager::Instance().getSelectedButton().getRegion().pos;
 
-	_cursor.pos = CURSOR_MOVE_RATE*_cursor.pos + (1 - CURSOR_MOVE_RATE)*InputManager::Instance().getSelectedButton().getRegion().pos;
+	moveCursol();
 
 	changeColor(_white, SELECTED_COLOR);
 
@@ -122,13 +148,21 @@ void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 		button->getRegion().draw(_boardColor);
 	}
 
-	_cursor.movedBy(offset).draw(_white);
+	_cursor.first.movedBy(offset).draw(_white);
 	
 	for (const auto & button : _buttonPtrList)
 	{
 		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
 		FontAsset(L"15")(L" ", _buttonNameMap.find(button->getKey())->second).draw(button->getPoint() + offset, color);
 	}
+}
+
+
+void Robot::MenuWindowBase::resetButton()
+{
+	_buttonPtrList.clear();
+	_buttonNameMap.clear();
+	_processingMap.clear();
 }
 
 

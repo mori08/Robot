@@ -1,4 +1,5 @@
 #include "DiaryWindow.h"
+#include "../MenuManager.h"
 #include "../../SaveData/SaveDataManager.h"
 #include "../../Input/InputManager.h"
 #include "../../MyColor.h"
@@ -16,59 +17,8 @@ namespace
 }
 
 
-Robot::DiaryWindow::DiaryWindow(MenuScene & menuScene)
+Robot::DiaryWindow::DiaryWindow()
 {
-	Rect regionA(A_BUTTON_POS, FontAsset(L"15")(L" [ A ] ").region().w, FontAsset(L"15").height);
-	Rect regionB = regionA;
-	regionB.x += FontAsset(L"15")(L" [ A ] ").region().w;
-	regionB.w  = FontAsset(L"15")(L" [ B ] ").region().w;
-
-	_cursor = regionA;
-
-	for (int i = 0; i < MAX_STAGE_NUM; ++i)
-	{
-		String eventName = L"Stage" + ToString(i);
-
-		if (!SaveDataManager::Instance().getFlag(eventName)) { break; }
-
-		// スタートイベント
-		registerButton
-		(
-			eventName + L"Start",
-			regionA,
-			std::make_unique<Processing>
-			(
-				[&menuScene, eventName]()
-				{
-					menuScene.changeSceneAndInfo(L"LoadDiaryScene", eventName + L"Start");
-				}
-			)
-		);
-		setButtonName(eventName + L"Start", L"[ A ]");
-
-		// エンドイベント
-		registerButton
-		(
-			eventName + L"End",
-			regionB,
-			std::make_unique<Processing>
-			(
-				[&menuScene, eventName]()
-				{
-					menuScene.changeSceneAndInfo(L"LoadDiaryScene", eventName + L"End");
-				}
-			)
-		);
-		setButtonName(eventName + L"End", L"[ B ]");
-
-		regionA.y += FontAsset(L"15").height;
-		regionB.y += FontAsset(L"15").height;
-		_stageNum = i + 1;
-	}
-	setClosedProcessing(std::make_unique<Processing>([&menuScene]() { menuScene.closeWindow(L"Main"); }));
-
-	_selectedButtonKey = L"Stage0Start";
-
 	_openOffset = OPEN_OFFSET;
 }
 
@@ -111,4 +61,59 @@ void Robot::DiaryWindow::updateInputManager() const
 	}
 
 	InputManager::Instance().setSelectedButton(_selectedButtonKey);
+}
+
+
+void Robot::DiaryWindow::makeButton()
+{
+	Rect regionA(A_BUTTON_POS, FontAsset(L"15")(L" [ A ] ").region().w, FontAsset(L"15").height);
+	Rect regionB = regionA;
+	regionB.x += FontAsset(L"15")(L" [ A ] ").region().w;
+	regionB.w  = FontAsset(L"15")(L" [ B ] ").region().w;
+
+	_defaultButton = { L"Stage0Start", regionA };
+
+	for (int i = 0; i < MAX_STAGE_NUM; ++i)
+	{
+		String eventName = L"Stage" + ToString(i);
+
+		if (!SaveDataManager::Instance().getFlag(eventName)) { break; }
+
+		// スタートイベント
+		registerButton
+		(
+			eventName + L"Start",
+			regionA,
+			std::make_unique<Processing>
+			(
+				[eventName]()
+				{
+					MenuManager::Instance().setSceneName(L"LoadDiaryScene", eventName + L"Start");
+				}
+			)
+		);
+		setButtonName(eventName + L"Start", L"[ A ]");
+
+		// エンドイベント
+		registerButton
+		(
+			eventName + L"End",
+			regionB,
+			std::make_unique<Processing>
+			(
+				[eventName]()
+				{
+					MenuManager::Instance().setSceneName(L"LoadDiaryScene", eventName + L"End");
+				}
+			)
+		);
+		setButtonName(eventName + L"End", L"[ B ]");
+
+		regionA.y += FontAsset(L"15").height;
+		regionB.y += FontAsset(L"15").height;
+		_stageNum = i + 1;
+	}
+	setClosedProcessing(std::make_unique<Processing>([]() { MenuManager::Instance().closeWindow(L"Main"); }));
+
+	_openOffset = OPEN_OFFSET;
 }

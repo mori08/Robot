@@ -87,7 +87,7 @@ void Robot::GameOverState::update()
 		}
 		if (*selectButtonkey == MENU_KEY)
 		{
-			GameManager::Instance().setSceneName(L"MenuScene", L"");
+			GameManager::Instance().setSceneName(L"SavingDataScene", L"");
 		}
 	}
 
