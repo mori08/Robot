@@ -16,8 +16,8 @@ namespace Robot
 	{
 	private:
 
-		int                  _generateLightFrameCount;
-		std::list<MenuLight> _lightList; // 光のリスト
+		int _generateLightFrameCount;
+		static std::list<MenuLight> _lightList; // 光のリスト
 
 	public:
 
@@ -26,6 +26,8 @@ namespace Robot
 	private:
 
 		void update() override;
+
+		void updateFadeIn(double) override;
 
 		void updateFadeOut(double) override;
 

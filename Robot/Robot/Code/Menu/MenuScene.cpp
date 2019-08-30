@@ -1,12 +1,17 @@
 #include "MenuScene.h"
 #include "MenuManager.h"
+#include "../SaveData/SaveDataManager.h"
+#include "../MyColor.h"
 
 
 namespace
 {
-	const int MAX_GENERATE_FRAME_COUNT = 200; // Œõ¶¬‚Ü‚Å‚ÌŠÔ‚ÌÅ‘å’l
+	const int MAX_GENERATE_FRAME_COUNT = 300; // Œõ¶¬‚Ü‚Å‚ÌŠÔ‚ÌÅ‘å’l
 	const int MIN_GENERATE_FRAME_COUNT = 100;  // Œõ¶¬‚Ü‚Å‚ÌŠÔ‚ÌÅ¬’l
 }
+
+
+std::list<Robot::MenuLight> Robot::MenuScene::_lightList;
 
 
 Robot::MenuScene::MenuScene()
@@ -41,6 +46,15 @@ void Robot::MenuScene::update()
 	{
 		m_data->sceneInfo = sceneInfo;
 		changeScene(sceneName);
+	}
+}
+
+
+void Robot::MenuScene::updateFadeIn(double)
+{
+	for (auto & light : _lightList)
+	{
+		light.update();
 	}
 }
 
