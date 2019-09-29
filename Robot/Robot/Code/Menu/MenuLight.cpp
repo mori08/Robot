@@ -1,5 +1,6 @@
 #include "MenuLight.h"
 #include "../MyColor.h"
+#include "../SaveData/SaveDataManager.h"
 
 
 namespace
@@ -11,6 +12,8 @@ namespace
 
 	const double SHADOW_BLUR_RADIUS = 20.0; // âeÇÃÇ⁄Ç©ÇµÇÃëÂÇ´Ç≥
 	const double SHADOW_SPREAD      = 20.0; // âeÇÃçLÇ™ÇËÇ©ÇΩ
+
+	const int ALPHA_SPPED = 10;
 }
 
 
@@ -39,7 +42,14 @@ const Robot::MenuLight Robot::MenuLight::get()
 
 void Robot::MenuLight::update()
 {
-	_region.y -= _speed;
+	if (SaveDataManager::Instance().getFlag(L"Stage9"))
+	{
+		_alpha -= 1 / Random(1, ALPHA_SPPED);
+	}
+	else
+	{
+		_region.y -= _speed;
+	}
 }
 
 
@@ -51,5 +61,5 @@ void Robot::MenuLight::draw() const
 
 bool Robot::MenuLight::isEraseAble() const
 {
-	return _region.y + _region.r + SHADOW_BLUR_RADIUS < 0;
+	return _region.y + _region.r + SHADOW_BLUR_RADIUS < 0 || _alpha < 0;
 }

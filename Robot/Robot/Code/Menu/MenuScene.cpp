@@ -23,7 +23,7 @@ Robot::MenuScene::MenuScene()
 
 void Robot::MenuScene::update()
 {
-	if (--_generateLightFrameCount <= 0)
+	if (!SaveDataManager::Instance().getFlag(L"Stage9")&&--_generateLightFrameCount <= 0)
 	{
 		_lightList.emplace_back(MenuLight::get());
 

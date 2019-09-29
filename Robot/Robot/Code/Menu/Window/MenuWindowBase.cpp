@@ -152,7 +152,8 @@ void Robot::MenuWindowBase::drawButtonAndLight(const Vec2 & offset) const
 	
 	for (const auto & button : _buttonPtrList)
 	{
-		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : _white;
+		ColorF color = _selectedButtonKey == button->getKey() ? Palette::MyBlack : Palette::MyWhite;
+		color.a = _white.a;
 		FontAsset(L"15")(L" ", _buttonNameMap.find(button->getKey())->second).draw(button->getPoint() + offset, color);
 	}
 }

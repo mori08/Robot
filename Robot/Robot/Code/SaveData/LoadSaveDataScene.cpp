@@ -13,6 +13,11 @@ void Robot::LoadSaveDataScene::complete()
 	switch(_loadResult)
 	{
 	case SaveDataManager::LoadResult::NEW_GAME:
+		SaveDataManager::Instance().initOfNewGame();
+		m_data->sceneInfo = L"Stage0Start";
+		changeScene(L"LoadEventScene");
+		break;
+
 	case SaveDataManager::LoadResult::CONTINUE:		
 		m_data->sceneInfo = L"";
 		changeScene(L"LoadMenuScene");
